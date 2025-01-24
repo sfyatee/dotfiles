@@ -10,10 +10,10 @@ PLAN9=/usr/local/plan9
 path=(. $BIN $home/go/bin $path $PLAN9/bin)
 
 # personal variables
-if(test -x `{which nvim}){
-	EDITOR=`{which nvim}
-	fn vi{nvim $*}
-	fn view{nvim -R $*}
+if(test -x `{which vim}){
+	EDITOR=`{which vim}
+	fn vi{vim $*}
+	fn view{vim -R $*}
 }
 if not EDITOR=/usr/bin/vi
 BASH_SILENCE_DEPRECATION_WARNING=1

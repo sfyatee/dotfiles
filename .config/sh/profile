@@ -9,8 +9,8 @@ PLAN9=/usr/local/plan9
 PATH=.:$BIN:$HOME/go/bin:$PATH:$PLAN9/bin
 
 # personal variables
-if [ -x "$(command -v nvim)" ]; then
-	EDITOR=$(command -v nvim)
+if [ -x "$(command -v vim)" ]; then
+	EDITOR=$(command -v vim)
 else
 	EDITOR=/usr/bin/vi
 fi
