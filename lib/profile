@@ -84,9 +84,6 @@ fn cd {
 awd
 
 # os specific settings
-if(! ~ $os *bsd)
-	BROWSER=google-chrome
-	
 if(~ $os darwin || ~ $os *bsd){
 	NPROC=`{sysctl -n hw.ncpu}
 	stty status '^T'

@@ -55,10 +55,6 @@ if [ "$termprog" ] || [ "$winid" ]; then
 fi
 
 # os specific settings
-if [ "$OS" != "*bsd" ]; then
-	BROWSER=google-chrome
-fi
-
 if [ "$OS" = "darwin" ] || [ "$OS" = "*bsd" ]; then
 	NPROC=$(sysctl -n hw.ncpu)
 	stty status '^T'
