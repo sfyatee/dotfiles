@@ -1,0 +1,122 @@
+#!/bin/rc
+umask 022
+
+# plan9 rc shell settings
+os=`{uname | tr '[:upper:]' '[:lower:]'}
+arch=`{uname -m}
+path=(/sbin /usr/sbin /bin /usr/bin /usr/X11R6/bin /usr/local/sbin /usr/local/bin)
+BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
+PLAN9=/usr/local/plan9
+path=(. $BIN $home/go/bin $path $PLAN9/bin)
+
+# personal variables
+if(test -x `{which nvim}){
+	EDITOR=`{which nvim}
+	fn vi{nvim $*}
+	fn view{nvim -R $*}
+}
+if not EDITOR=/usr/bin/vi
+BASH_SILENCE_DEPRECATION_WARNING=1
+BROWSER=firefox
+CARGO_HOME=$home/.local/share/cargo
+CUDA_CACHE_PATH=$home/.cache/nv
+GOT_AUTHOR=('Demian Garcia <dag@demians.org>')
+GOTELEMETRY=off
+GOTOOLCHAIN=local
+GS_FONTPATH=$PLAN9/postscript/font
+HISTFILE=/dev/null
+HISTSIZE=500
+LESS=-i
+LESSHISTFILE=/dev/null
+MAKEFLAGS=-j$NPROC
+NAMESPACE=/tmp/ns.$USER.:0
+NO_COLOR=1
+PYTHON_HISTORY=/dev/null
+RIPGREP_CONFIG_PATH=$home/.config/rg/config
+RUSTUP_HOME=$home/.local/share/rustup
+
+# prepare path enviornment
+path=($CARGO_HOME/bin $path)
+
+# plan9 settings
+rm -rf $NAMESPACE; mkdir $NAMESPACE
+font=/mnt/font/LucidaGrande/11a/font
+font1=/mnt/font/Hack-Regular/11a/font
+nine=➈
+fn '%'{ if(! ~ $#* 0) $* }
+secstore=demians.org
+
+# things to make life easy
+fn acme{builtin acme -a -f $font -F $font1 $*}
+fn calc{perl -e 'while(<>){print eval, "\n\n"}'}
+fn cp{builtin cp -i $*}
+fn edwood{builtin edwood -a -f $font -F $font1 $*}
+fn hg{chg $*}
+fn lc{builtin lc -F $*}
+fn ll{builtin ls -AFl $*}
+fn ls{builtin ls -AF $*}
+fn m{make}
+fn mv{builtin mv -i $*}
+fn ph{ps auwwx | head $*}
+fn sam{builtin sam -a $*}
+
+# for use in 9term and acme's win
+if(~ $termprog 9term || ~ $termprog win){
+	EDITOR=editinacme
+	GH_PROMPT_DISABLED=1
+	PAGER=nobs
+	fn git{builtin git --no-pager $*}
+	fn hg{chg --pager=no $*}
+	fn jj{builtin jj --no-pager $*}
+}
+if not fn ivy{ivy-prompt}
+
+# update window label
+fn cd {
+	# builtin cd $1 && flag i && awd
+	# is not sufficient when running in a subshell
+	# that is rc -e (like mk uses!)
+	if(builtin cd $1){
+		if(flag i) awd || status=''
+		status=''
+	}
+}
+awd
+
+# os specific settings
+if(! ~ $os *bsd)
+	BROWSER=google-chrome
+	
+if(~ $os darwin || ~ $os *bsd){
+	NPROC=`{sysctl -n hw.ncpu}
+	stty status '^T'
+}
+
+if(~ $os linux){
+	NPROC=`{nproc}
+	fn ls{builtin ls -AFv $*}
+	fn pQm{pacman -Qm}
+	fn ph{ps auwwx | sort -rk 3,3 | head}
+	fn rcctl{systemctl $*}
+}
+if not fn gm{gmake $*}
+
+if(~ $os openbsd){
+	cdpath=(. /usr/ports /usr/ports/mystuff)
+	fn cvs{opencvs $*}
+	fn mpldc{make port-lib-depends-check}
+	fn mup{make update-patches}
+	fn mupl{make update-plist $*}
+	fn pclean{make clean='package plist'}
+	fn rsync{openrsync $*}
+}
+
+ulimit -c 0
+
+# making sure these are running
+fn felloff{
+	9p stat plumb >[2]/dev/null >[1=2] || plumber
+}
+
+if(test -d $PLAN9)
+	felloff
