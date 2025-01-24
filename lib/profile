@@ -84,6 +84,11 @@ fn cd {
 awd
 
 # os specific settings
+if(~ $os darwin){
+	font=/mnt/font/LucidaGrande/13a/font
+	font1=/mnt/font/Hack-Regular/13a/font
+}
+
 if(~ $os darwin || ~ $os *bsd){
 	NPROC=`{sysctl -n hw.ncpu}
 	stty status '^T'
