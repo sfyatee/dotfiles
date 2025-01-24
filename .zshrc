@@ -55,11 +55,9 @@ if [[ "$TERM" == "dumb" ]]; then
 fi
 
 # 3rd party extensions
-if command -v fzf &>/dev/null; then
+if command -v fzf >/dev/null 2>&1; then
   source <(fzf --zsh)
 fi
-
-if command -v jj &>/dev/null; then
+if command -v jj >/dev/null 2>&1; then
   source <(COMPLETE=zsh jj)
 fi
-
