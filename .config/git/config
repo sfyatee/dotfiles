@@ -1,0 +1,44 @@
+[user]
+	name = Demian Garcia
+	email = dag@demians.org
+[github]
+	login = sfyatee
+[color]
+	ui = never
+[alias]
+	ba = revert
+	bl = blame
+	ci = commit
+	cl = clone --bare
+	co = worktree add
+	di = diff
+	fe = fetch
+	he = rebase -i
+	mg = merge
+	pa = apply
+	rb = rebase
+	sb = submodule update --init --recursive
+	se = push
+	st = status -s
+	ug = restore
+	up = checkout
+	rv = reset --hard
+[commit]
+	verbose = yes
+[init]
+	defaultBranch = master
+[pull]
+	autostash = true
+	rebase = true
+[rebase]
+	autosquash = true
+[gc]
+	reflogExpire = never
+	writeCommitGraph = true
+[rerere]
+	enabled = true
+	autoUpdate = true
+[sendemail]
+	annotate = yes
+[format]
+	thread = shallow
