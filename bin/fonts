@@ -1,3 +1,0 @@
-#!/bin/sh
-
-fc-list | sed 's,:.*,,' | sort -u
