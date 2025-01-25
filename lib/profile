@@ -39,7 +39,6 @@ RUSTUP_HOME=$home/.local/share/rustup
 path=($CARGO_HOME/bin $path)
 
 # plan9 settings
-rm -rf $NAMESPACE; mkdir $NAMESPACE
 font=/mnt/font/LucidaGrande/11a/font
 font1=/mnt/font/Hack-Regular/11a/font
 nine=➈
@@ -117,6 +116,7 @@ ulimit -c 0
 
 # making sure these are running
 fn felloff{
+	mkdir -p $NAMESPACE
 	9p stat plumb >[2]/dev/null >[1=2] || plumber
 }
 

@@ -36,7 +36,6 @@ RUSTUP_HOME=$HOME/.local/share/rustup
 PATH=$CARGO_HOME/bin:$PATH
 
 # plan9
-rm -rf $NAMESPACE; mkdir $NAMESPACE
 font=/mnt/font/LucidaGrande/11a/font
 font1=/mnt/font/Hack-Regular/11a/font
 home=$HOME

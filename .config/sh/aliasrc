@@ -70,6 +70,7 @@ fi
 
 # making sure these are running
 felloff() {
+	mkdir -p $NAMESPACE
 	9p stat plumb 2>/dev/null 1>&2 || plumber
 }
 
