@@ -85,7 +85,6 @@ awd
 
 # os specific settings
 if(~ $os darwin){
-	SHELL_SESSIONS_DISABLE=1
 	font=/mnt/font/LucidaGrande/13a/font
 	font1=/mnt/font/Hack-Regular/13a/font
 }

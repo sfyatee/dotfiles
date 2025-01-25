@@ -56,7 +56,6 @@ fi
 
 # os specific settings
 if [ "$OS" = "darwin" ]; then
-	SHELL_SESSIONS_DISABLE=1
 	font=/mnt/font/LucidaGrande/13a/font
 	font1=/mnt/font/Hack-Regular/13a/font
 fi
@@ -105,7 +104,6 @@ export \
 	PYTHON_HISTORY\
 	RIPGREP_CONFIG_PATH\
 	RUSTUP_HOME\
-	SHELL_SESSIONS_DISABLE\
 	font\
 	font1\
 	home\
