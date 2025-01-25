@@ -1,0 +1,6 @@
+#!/usr/bin/env rc
+
+stats -lmisce 
+if(test -r $home/acme.dump)
+	acme -a -l $home/acme.dump $*
+if not acme -a $*

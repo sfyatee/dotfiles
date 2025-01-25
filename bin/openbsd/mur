@@ -1,0 +1,18 @@
+#!/bin/sh
+
+set -eu
+
+PORT="$(make show=PKGNAME)"
+
+mv -v crates.inc crates.old
+touch crates.inc
+make makesum
+make modcargo-gen-crates > /tmp/${PORT}.crates.inc
+grep ^MODCARGO /tmp/${PORT}.crates.inc > crates.inc
+make clean
+make makesum
+make modcargo-gen-crates-licenses > /tmp/${PORT}.license.inc
+grep ^MODCARGO /tmp/${PORT}.license.inc > crates.inc
+rm crates.old
+make clean
+make && make package
