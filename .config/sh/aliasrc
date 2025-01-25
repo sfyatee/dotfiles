@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ -x "$(command -v nvim)" ]; then
+if [ -x "$(command -v vim)" ]; then
 	alias vi="vim"
 	alias view="vim -R"
 fi
