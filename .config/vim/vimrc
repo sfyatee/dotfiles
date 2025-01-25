@@ -1,0 +1,36 @@
+" vim config
+" demian garcia <dag@demians.org>
+
+" defaults for everything
+set backspace=indent,eol,start
+set encoding=utf-8
+set hidden
+set ignorecase
+set incsearch
+set laststatus=2
+set modelines=5
+set nocompatible
+set nofoldenable
+set nohlsearch
+set nostartofline
+set ruler
+set scrolloff=10
+set shiftwidth=4
+set showcmd
+set showmatch
+set showmode
+set smartcase
+set smarttab
+set spelllang=en_us
+set tabstop=4
+set timeoutlen=0
+set wildmode=longest,list,full
+
+" make buffer windows easier to navigate
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" control+n and +p for next and previous buffers, but only in normal mode
+nmap <C-n> :bn<CR>
+nmap <C-p> :bp<CR>
