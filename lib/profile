@@ -100,7 +100,6 @@ if(~ $os linux){
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn rcctl{systemctl $*}
 }
-if not fn gm{gmake $*}
 
 if(~ $os openbsd){
 	cdpath=(. /usr/ports /usr/ports/mystuff)

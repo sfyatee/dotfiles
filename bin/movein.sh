@@ -106,7 +106,6 @@ OpenBSD)
 		gawk \
 		gdb \
 		gitlab-cli \
-		gmake \
 		go-fonts \
 		got \
 		hack-fonts \

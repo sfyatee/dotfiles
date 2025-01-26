@@ -40,9 +40,6 @@ if [ "$(uname)" = "Linux" ]; then
 		pQm="pacman -Qm"\
 		ph="ps auwwx | sort -rk 3,3 | head"\
 		rcctl="systemctl"
-else
-	alias \
-		gm="gmake"
 fi
 
 if [ "$(uname)" = "OpenBSD" ]; then
