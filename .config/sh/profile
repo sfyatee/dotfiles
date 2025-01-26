@@ -55,8 +55,9 @@ fi
 
 # os specific settings
 if [ "$OS" = "darwin" ]; then
-	font=/mnt/font/LucidaGrande/13a/font
-	font1=/mnt/font/Hack-Regular/13a/font
+	PATH=/usr/local/go/bin:$PATH
+	font=/mnt/font/LucidaGrande/14a/font
+	font1=/mnt/font/Hack-Regular/14a/font
 fi
 
 if [ "$OS" = "darwin" ] || [ "$OS" = "*bsd" ]; then
