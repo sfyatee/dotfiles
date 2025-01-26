@@ -1,0 +1,22 @@
+bar:
+  location: bottom
+  # height: 26
+  background: 000000FF
+  font: monospace:size=13
+  # spacing: 5
+  # margin: 7
+
+  left:
+    - niri-workspaces:
+        content:
+          map:
+            default:
+              string: {text: "| {id}"}
+            conditions:
+              active: {string: {text: "-> {id}"}}
+              ~empty: {string: {text: "@ {id}"}}
+  right:
+    - clock:
+        date-format: "%Y/%m/%d %a"
+        content:
+          - string: {text: "{date} {time}"}
