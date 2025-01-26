@@ -16,8 +16,8 @@ blender \
 cmake \
 curl \
 darktable \
+firefox \
 foot \
-fzf \
 git \
 github-cli \
 go \
@@ -93,7 +93,6 @@ Linux)
 		comlink \
 		drawterm-9front-wl-git \
 		gameoftrees \
-		google-chrome \
 		knfmt \
 		minivmac \
 		ttf-apple-emoji \
@@ -104,7 +103,6 @@ Linux)
 OpenBSD)
 	doas pkg_add $PKGS \
 		drawterm \
-		firefox \
 		gawk \
 		gdb \
 		gitlab-cli \
