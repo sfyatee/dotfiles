@@ -28,6 +28,7 @@ set wildmode=longest,list,full
 
 " minor color config
 syntax on
+colorscheme note
 
 " make buffer windows easier to navigate
 map <C-h> <C-w>h
