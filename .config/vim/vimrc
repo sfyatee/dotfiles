@@ -39,7 +39,7 @@ endif
 " init vim-plug (run "vim +PlugInstall +qall" after modifying)
 " these require apostrophes instead of quotes
 call plug#begin()
-Plug 'weakish/rcshell.vim'
+Plug 'vim-scripts/rcshell.vim'
 call plug#end()
 
 " make buffer windows easier to navigate
