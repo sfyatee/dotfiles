@@ -28,7 +28,7 @@ hi Identifier		cterm=underline		ctermfg=NONE
 hi Ignore		cterm=bold		ctermfg=NONE
 hi IncSearch		cterm=reverse		ctermfg=NONE
 hi LineNr		cterm=NONE		ctermfg=248
-hi MatchParen		cterm=bold		ctermfg=none	ctermbg=185
+hi MatchParen		cterm=bold		ctermfg=none	ctermbg=NONE
 hi ModeMsg		cterm=bold		ctermfg=NONE
 hi MoreMsg		cterm=bold		ctermfg=NONE
 hi NonText		cterm=bold		ctermfg=NONE
@@ -47,7 +47,7 @@ hi StatusLine		cterm=bold,reverse	ctermfg=NONE
 hi StatusLineNC		cterm=reverse		ctermfg=NONE
 hi TabLine		cterm=reverse		ctermfg=NONE	ctermbg=NONE
 hi Title		cterm=bold		ctermfg=NONE
-" hi Todo			cterm=bold,standout	ctermfg=185	ctermbg=0
+hi Todo			cterm=bold,standout	ctermfg=244	ctermbg=0
 hi Type			cterm=bold		ctermfg=NONE
 hi Underlined		cterm=underline		ctermfg=NONE
 hi VertSplit		cterm=reverse		ctermfg=NONE
