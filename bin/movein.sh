@@ -1,7 +1,8 @@
 #!/bin/sh
 # simple setup script for Linux/OpenBSD
 
-export OS=$(uname)
+export OS=`uname`
+export RUSTUP_HOME=$HOME/.local/share/rustup
 
 rm -f ~/.cshrc \
 	~/.login \
@@ -35,11 +36,9 @@ mercurial \
 meson \
 mpv \
 notmuch \
-racket-minimal \
 restic \
 ripgrep \
 rust-analyzer \
-shellcheck \
 spin \
 sshfs \
 swaybg \
@@ -110,7 +109,6 @@ OpenBSD)
 		got \
 		hack-fonts \
 		hare \
-		hsetroot \
 		knfmt \
 		libreoffice \
 		minivmac \
@@ -118,7 +116,6 @@ OpenBSD)
 		qemu \
 		repology \
 		rust \
-		sway \
 		xbanish \
 		xnotify
 	;;
@@ -138,6 +135,10 @@ Linux)
 	systemctl --user enable --now {fnott,foot-server,gammastep,yambar}.service
 	;;
 esac
+
+if [ "$OS" = "Darwin" ]; then
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
 
 u() {
 	go install 9fans.net/go/acme/Watch@master
