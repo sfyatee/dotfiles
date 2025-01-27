@@ -32,7 +32,6 @@ lilypond \
 llvm \
 lynx \
 mblaze \
-mercurial \
 meson \
 mpv \
 notmuch \
@@ -135,7 +134,7 @@ Linux)
 	;;
 esac
 
-if [ "$OS" = "Darwin" ]; then
+if [ "$OS" = "Darwin" ] && [ ! -d $RUSTUP_HOME ]; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
