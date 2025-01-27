@@ -14,13 +14,13 @@ case $# in
 	sys=$1
 	;;
 0)
-	sys=${sysname:-$(uname -n)}
+	sys=${sysname:-$(uname -n |sed 's/\..*//')}
 	;;
 *)
 	usage
 esac
 
-p="$(pwd)"
+p="`pwd`"
 case "$p" in
 */)
 	label $p-$sys
