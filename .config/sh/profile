@@ -1,16 +1,16 @@
 #!/bin/sh
 
 # paths
-OS=$(uname | tr '[:upper:]' '[:lower:]')
-ARCH=$(uname -m)
+OS=`uname | tr '[:upper:]' '[:lower:]'`
+ARCH=`uname -m`
 PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/sbin:/usr/local/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 PLAN9=/usr/local/plan9
 PATH=.:$BIN:$HOME/go/bin:$PATH:$PLAN9/bin
 
 # personal variables
-if [ -x "$(command -v vim)" ]; then
-	EDITOR=$(command -v vim)
+if [ -x "`command -v vim`" ]; then
+	EDITOR=`command -v vim`
 else
 	EDITOR=/usr/bin/vi
 fi
@@ -61,12 +61,12 @@ if [ "$OS" = "darwin" ]; then
 fi
 
 if [ "$OS" = "darwin" ] || [ "$OS" = "*bsd" ]; then
-	NPROC=$(sysctl -n hw.ncpu)
+	NPROC=`sysctl -n hw.ncpu`
 	stty status '^T'
 fi
 
 if [ "$OS" = "linux" ]; then
-	NPROC=$(nproc)
+	NPROC=`nproc`
 fi
 
 # use $NPROC jobs
