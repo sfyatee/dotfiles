@@ -61,8 +61,10 @@ fn sam{builtin sam -a $*}
 
 # for use in 9term and acme's win
 if(~ $termprog 9term || ~ $termprog win){
-	if(test -x `{which 9})
-		fn ls{9 ls $*}
+	if(test -x `{which 9}){
+		fn ll{9 ls -l $*}
+		fn ls{9 ls -F $*}
+	}
 	EDITOR=editinacme
 	GH_PROMPT_DISABLED=1
 	PAGER=nobs

@@ -26,7 +26,8 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	}
 	awd
 	if [ -x "$(command -v 9)" ]; then
-		alias ls="9 ls"
+		alias ll="9 ls -l"
+		alias ls="9 ls -F"
 	fi
 	alias \
 		cd="_cd"\
