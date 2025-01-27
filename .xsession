@@ -1,0 +1,34 @@
+#!/bin/sh
+
+if [ -f ~/.xsession.local ]; then
+	. ~/.xsession.local
+fi
+
+cleanup() {
+	echo "cleaning up"
+	pkill ssh-agent-card-prompt dbus-daemon redshift picom
+	pkill -f "ruby.*sdorfehs-bar"
+	rm -f ~/.Xauthority
+	rm -f ~/audacious.core
+	rm -rf ~/.local/share/Trash
+}
+trap cleanup INT TERM QUIT
+
+if [ X`uname -s` = X"Linux" ]; then
+	MACHINE="`cat /sys/devices/virtual/dmi/id/sys_vendor` `cat /sys/devices/virtual/dmi/id/product_name`"
+else
+	MACHINE="`sysctl -n hw.vendor` `sysctl -n hw.product`"
+fi
+
+export LANG=en_US.UTF-8
+
+# better two-finger touchpad scrolling
+export MOZ_USE_XINPUT2=1
+# opengl acceleration
+export MOZ_ACCELERATED=1
+# force webrender to enable
+export MOZ_WEBRENDER=1
+
+xbanish &
+tpadnav &
+xdimmer -kn -t 10 -s 1 -K &

@@ -114,7 +114,9 @@ OpenBSD)
 		repology \
 		rust \
 		syncterm \
+		tpadnav \
 		xbanish \
+		xdimmer \
 		xnotify
 	;;
 esac
