@@ -78,8 +78,7 @@ Linux)
 		sequoia-sq \
 		steam \
 		tmux \
-		ttf-hack \
-		wayvnc
+		ttf-hack
 	if ! command -v paru >/dev/null 2>&1; then
 		cd /tmp || exit 1
 		if [ ! -d paru ]; then
@@ -89,7 +88,6 @@ Linux)
 		makepkg -fsi --noconfirm
 	fi
 	paru -S --needed --noconfirm \
-		comlink \
 		drawterm-9front-wl-git \
 		gameoftrees \
 		knfmt \
@@ -116,6 +114,7 @@ OpenBSD)
 		qemu \
 		repology \
 		rust \
+		syncterm \
 		xbanish \
 		xnotify
 	;;
