@@ -5,21 +5,6 @@ if [ -x "$(command -v vim)" ]; then
 	alias view="vim -R"
 fi
 
-# for use in 9term and acme's win
-if [ "$termprog" ] || [ "$winid" ]; then
-	_cd() {
-		\cd "$@" && awd
-	}
-	awd
-	alias \
-		cd="_cd"\
-		git="git --no-pager"\
-		hg="chg --pager=no"\
-		jj="jj --no-pager"
-else
-	alias ivy=ivy-prompt
-fi
-
 # nice things to have
 alias \
 	acme="acme -a -f $font -F $font1"\
@@ -33,6 +18,24 @@ alias \
 	mv="mv -i"\
 	ph="ps auwwx | head"\
 	sam="sam -a"
+
+# for use in 9term and acme's win
+if [ "$termprog" ] || [ "$winid" ]; then
+	_cd() {
+		\cd "$@" && awd
+	}
+	awd
+	if [ -x "$(command -v 9)" ]; then
+		alias ls="9 ls"
+	fi
+	alias \
+		cd="_cd"\
+		git="git --no-pager"\
+		hg="chg --pager=no"\
+		jj="jj --no-pager"
+else
+	alias ivy=ivy-prompt
+fi
 
 if [ "$(uname)" = "Linux" ]; then
 	alias \
