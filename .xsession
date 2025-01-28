@@ -15,8 +15,6 @@ cleanup() {
 trap cleanup INT TERM QUIT
 
 if [ X`uname -s` = X"Linux" ]; then
-	MACHINE="`cat /sys/devices/virtual/dmi/id/sys_vendor` `cat /sys/devices/virtual/dmi/id/product_name`"
-else
 	MACHINE="`sysctl -n hw.vendor` `sysctl -n hw.product`"
 fi
 
