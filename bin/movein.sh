@@ -19,6 +19,7 @@ curl \
 darktable \
 firefox \
 foot \
+gimp \
 git \
 github-cli \
 go \
@@ -109,6 +110,7 @@ OpenBSD)
 		knfmt \
 		libreoffice \
 		minivmac \
+		plan9port \
 		prusaslicer \
 		qemu \
 		repology \

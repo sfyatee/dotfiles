@@ -32,3 +32,15 @@ export MOZ_WEBRENDER=1
 xbanish &
 tpadnav &
 xdimmer -kn -t 10 -s 1 -K &
+
+if [ -x /usr/local/bin/progman ]; then
+	/usr/local/bin/progman
+elif [ -x /usr/local/plan9/bin/rio ]; then
+	/usr/local/plan9/bin/rio
+elif [ -x /usr/X11R6/bin/fvwm ]; then
+	/usr/X11R6/bin/fvwm
+else
+	/usr/X11R6/bin/xterm
+fi
+
+cleanup
