@@ -14,7 +14,7 @@ cleanup() {
 }
 trap cleanup INT TERM QUIT
 
-if [ X`uname -s` = X"Linux" ]; then
+if [ X`uname -s` != X"Linux" ]; then
 	MACHINE="`sysctl -n hw.vendor` `sysctl -n hw.product`"
 fi
 
