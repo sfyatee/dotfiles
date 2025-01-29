@@ -34,3 +34,5 @@
 	annotate = yes
 [format]
 	thread = shallow
+[diff]
+	algorithm = patience

@@ -14,6 +14,7 @@ alias \
 	lc="lc -F"\
 	ll="ls -AlF"\
 	ls="ls -AF"\
+	ltr="ls -AlFtr"\
 	m="make"\
 	mv="mv -i"\
 	ph="ps auwwx | head"\
@@ -26,8 +27,10 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	}
 	awd
 	if [ -x "`command -v 9`" ]; then
-		alias ll="9 ls -l"
-		alias ls="9 ls -F"
+		alias \
+			ll="9 ls -l"\
+			ls="9 ls -F"\
+			ltr="9 ls -lFtr"
 	fi
 	alias \
 		cd="_cd"\

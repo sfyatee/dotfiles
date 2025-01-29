@@ -54,6 +54,7 @@ fn hg{chg $*}
 fn lc{builtin lc -F $*}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
+fn ltr{builtin ls -AlFtr $*}
 fn m{make}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
@@ -64,6 +65,7 @@ if(~ $termprog 9term || ~ $termprog win){
 	if(test -x `{which 9}){
 		fn ll{9 ls -l $*}
 		fn ls{9 ls -F $*}
+		fn ltr{9 ls -lFtr $*}
 	}
 	EDITOR=editinacme
 	GH_PROMPT_DISABLED=1
