@@ -20,6 +20,8 @@ fi
 
 export LANG=en_US.UTF-8
 
+xrdb ~/.config/X11/Xresources
+
 # better two-finger touchpad scrolling
 export MOZ_USE_XINPUT2=1
 # opengl acceleration

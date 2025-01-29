@@ -6,23 +6,15 @@
 [color]
 	ui = never
 [alias]
-	ba = revert
-	bl = blame
+	br = branch
 	ci = commit
-	cl = clone --bare
-	co = worktree add
+	cl = clone
+	co = checkout
+	cy = cherry-pick
 	di = diff
-	fe = fetch
-	he = rebase -i
-	mg = merge
-	pa = apply
-	rb = rebase
-	sb = submodule update --init --recursive
 	se = push
 	st = status -s
-	ug = restore
-	up = checkout
-	rv = reset --hard
+	sw = switch
 [commit]
 	verbose = yes
 [init]
