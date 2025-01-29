@@ -101,7 +101,6 @@ OpenBSD)
 	doas pkg_add $PKGS \
 		drawterm \
 		gawk \
-		gdb \
 		gitlab-cli \
 		go-fonts \
 		got \
