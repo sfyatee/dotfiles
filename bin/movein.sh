@@ -41,7 +41,6 @@ ripgrep \
 rust-analyzer \
 spin \
 sshfs \
-swaybg \
 swayidle \
 syncthing \
 tailscale \
