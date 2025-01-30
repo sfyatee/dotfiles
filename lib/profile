@@ -100,6 +100,7 @@ if(~ $os darwin){
 	path=(/usr/local/go/bin $path)
 	font=/mnt/font/LucidaGrande/14a/font
 	font1=/mnt/font/Hack-Regular/14a/font
+	fn rcctl{launchctl $*}
 }
 
 if(~ $os darwin || ~ $os *bsd){
