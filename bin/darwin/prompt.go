@@ -37,6 +37,9 @@ func main() {
 	if strings.HasPrefix(cwd, home) {
 		cwd = "~" + cwd[len(home):]
 	}
+	if strings.HasSuffix(host, ".local") {
+		host = strings.TrimSuffix(host, ".local")
+	}
 	uptime := uptime()
 	fmt.Printf("[%d:%02d:%02d] %s ", int64(uptime.Hours()),
 		int64(uptime.Minutes())%60, int64(uptime.Seconds())%60,
