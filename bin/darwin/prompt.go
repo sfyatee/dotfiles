@@ -37,6 +37,9 @@ func main() {
 	if strings.HasPrefix(cwd, home) {
 		cwd = "~" + cwd[len(home):]
 	}
+	if strings.HasSuffix(host, ".home") {
+		host = strings.TrimSuffix(host, ".home")
+	}
 	if strings.HasSuffix(host, ".local") {
 		host = strings.TrimSuffix(host, ".local")
 	}
