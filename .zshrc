@@ -25,7 +25,7 @@ zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
 # prompt configuration
-PROMPT="%m:%~%(!.#.%%) " # use '`prompt` %% '
+PROMPT='`prompt` %% ' # ls ~/bin/$OS/prompt.go
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 

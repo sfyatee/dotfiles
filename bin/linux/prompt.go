@@ -11,7 +11,7 @@ import (
 func main() {
 	cwd, _ := os.Getwd()
 	host, _ := os.Hostname()
-	home := os.Getenv("HOME")
+	home, _ := os.UserHomeDir()
 	var parts []string
 	if strings.HasPrefix(cwd, home) {
 		cwd = "~" + cwd[len(home):]

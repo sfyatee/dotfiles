@@ -36,3 +36,5 @@
 	thread = shallow
 [diff]
 	algorithm = patience
+[safe]
+	directory = /usr/local/plan9
