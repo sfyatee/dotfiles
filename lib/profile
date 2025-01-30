@@ -60,6 +60,13 @@ fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 fn sam{builtin sam -a $*}
 
+# muon/samu setup if available
+if(test -x `{which muon}){
+	fn msn{builtin muon $*}
+	fn samu{builtin muon samu $*}
+}
+if not fn msn{builtin meson $*}
+
 # for use in 9term and acme's win
 if(~ $termprog 9term || ~ $termprog win){
 	if(test -x `{which 9}){
