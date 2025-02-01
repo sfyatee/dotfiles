@@ -76,7 +76,6 @@ if(~ $termprog 9term || ~ $termprog win){
 	fn hg{chg --pager=no $*}
 	fn jj{builtin jj --no-pager $*}
 }
-if not fn ivy{ivy-prompt}
 
 # update window label
 fn cd {

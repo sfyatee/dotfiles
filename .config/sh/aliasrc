@@ -39,8 +39,6 @@ if [ "$termprog" ] || [ "$winid" ]; then
 		git="git --no-pager"\
 		hg="chg --pager=no"\
 		jj="jj --no-pager"
-else
-	alias ivy=ivy-prompt
 fi
 
 if [ "`uname`" = "Darwin" ]; then

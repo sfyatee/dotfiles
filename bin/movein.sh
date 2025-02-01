@@ -144,7 +144,6 @@ u() {
 	go install 9fans.net/go/acme/Watch@master
 	go install 9fans.net/go/acme/editinacme@master
 	go install github.com/anacrolix/torrent/cmd/...@latest
-	go install github.com/fzipp/ivy-prompt@latest
 	go install github.com/rjkroege/edwood/cmd/win@master
 	go install golang.org/x/tools/cmd/bisect@master
 	go install robpike.io/ivy@master
