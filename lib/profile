@@ -69,11 +69,6 @@ if not fn msn{builtin meson $*}
 
 # for use in 9term and acme's win
 if(~ $termprog 9term || ~ $termprog win){
-	if(test -x `{which 9}){
-		fn ll{9 ls -l $*}
-		fn ls{9 ls -F $*}
-		fn ltr{9 ls -lFtr $*}
-	}
 	EDITOR=editinacme
 	GH_PROMPT_DISABLED=1
 	PAGER=nobs

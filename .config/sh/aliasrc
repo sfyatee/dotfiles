@@ -34,12 +34,6 @@ if [ "$termprog" ] || [ "$winid" ]; then
 		\cd "$@" && awd
 	}
 	awd
-	if [ -x "`command -v 9`" ]; then
-		alias \
-			ll="9 ls -l"\
-			ls="9 ls -F"\
-			ltr="9 ls -lFtr"
-	fi
 	alias \
 		cd="_cd"\
 		git="git --no-pager"\
