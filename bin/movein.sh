@@ -17,6 +17,7 @@ blender \
 cmake \
 curl \
 darktable \
+dunst \
 firefox \
 foot \
 gimp \
@@ -60,8 +61,6 @@ Linux)
 		blueman \
 		clang \
 		fastfetch \
-		fnott \
-		fuzzel \
 		gammastep \
 		gcc-m2 \
 		glab \
@@ -72,9 +71,9 @@ Linux)
 		pacman-contrib \
 		prusa-slicer \
 		qemu-full \
+		rofi-wayland \
 		rsync \
 		rustup \
-		sequoia-sq \
 		steam \
 		tmux \
 		ttf-hack
@@ -111,6 +110,7 @@ OpenBSD)
 		prusaslicer \
 		qemu \
 		repology \
+		rofi \
 		rust \
 		rxvt-unicode -everything \
 		syncterm \
