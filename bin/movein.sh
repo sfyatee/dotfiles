@@ -118,7 +118,6 @@ OpenBSD)
 		xbanish \
 		xdimmer \
 		xfe \
-		xnotify \
 		xosd
 	;;
 esac
