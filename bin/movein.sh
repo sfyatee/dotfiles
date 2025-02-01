@@ -108,7 +108,6 @@ OpenBSD)
 		knfmt \
 		libreoffice \
 		minivmac \
-		plan9port \
 		prusaslicer \
 		qemu \
 		repology \
@@ -117,6 +116,7 @@ OpenBSD)
 		tpadnav \
 		xbanish \
 		xdimmer \
+		xfe \
 		xnotify
 	;;
 esac
