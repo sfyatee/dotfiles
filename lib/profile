@@ -34,6 +34,7 @@ NO_COLOR=1
 PYTHON_HISTORY=/dev/null
 RIPGREP_CONFIG_PATH=$home/.config/rg/config
 RUSTUP_HOME=$home/.local/share/rustup
+XDG_CONFIG_HOME=$home/.config
 
 # prepare path enviornment
 path=($CARGO_HOME/bin $path)
@@ -92,6 +93,7 @@ awd
 # os specific settings
 if(~ $os darwin){
 	path=(/usr/local/go/bin $path)
+	JJ_CONFIG=$home/.config/jj/config.toml
 	font=/mnt/font/LucidaGrande/14a/font
 	font1=/mnt/font/Hack-Regular/14a/font
 	fn rcctl{launchctl $*}

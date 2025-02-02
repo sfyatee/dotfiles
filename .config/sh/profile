@@ -31,6 +31,7 @@ NO_COLOR=1
 PYTHON_HISTORY=/dev/null
 RIPGREP_CONFIG_PATH=$HOME/.config/rg/config
 RUSTUP_HOME=$HOME/.local/share/rustup
+XDG_CONFIG_HOME=$HOME/.config
 
 # prepare path enviornment
 PATH=$CARGO_HOME/bin:$PATH
@@ -56,6 +57,7 @@ fi
 # os specific settings
 if [ "$OS" = "darwin" ]; then
 	PATH=/usr/local/go/bin:$PATH
+	JJ_CONFIG=$HOME/.config/jj/config.toml
 	font=/mnt/font/LucidaGrande/14a/font
 	font1=/mnt/font/Hack-Regular/14a/font
 fi
@@ -91,6 +93,7 @@ export \
 	GOTOOLCHAIN\
 	GS_FONTPATH\
 	HISTSIZE\
+	JJ_CONFIG\
 	LESS\
 	LESSHISTFILE\
 	MAKEFLAGS\
@@ -104,6 +107,7 @@ export \
 	PYTHON_HISTORY\
 	RIPGREP_CONFIG_PATH\
 	RUSTUP_HOME\
+	XDG_CONFIG_HOME\
 	font\
 	font1\
 	home\
