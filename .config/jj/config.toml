@@ -2,6 +2,9 @@
 name = "demian garcia"
 email = "dag@demians.org"
 
+[diff]
+format = "git"
+
 [aliases]
 accuse = ["file", "annotate"]
 di = ["diff"]
