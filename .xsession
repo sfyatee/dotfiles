@@ -20,8 +20,6 @@ fi
 
 export LANG=en_US.UTF-8
 
-xrdb ~/.config/X11/Xresources
-
 # better two-finger touchpad scrolling
 export MOZ_USE_XINPUT2=1
 # opengl acceleration
@@ -29,9 +27,21 @@ export MOZ_ACCELERATED=1
 # force webrender to enable
 export MOZ_WEBRENDER=1
 
+xrdb ~/.config/X11/Xresources
+
+# notification daemon
+XNOTIFY_FIFO="$HOME/.cache/xnotify$DISPLAY.fifo"
+export XNOTIFY_FIFO
+rm -f $XNOTIFY_FIFO
+mkfifo $XNOTIFY_FIFO
+xnotify 0<>$XNOTIFY_FIFO
+
 xbanish &
 tpadnav &
 xdimmer -kn -t 10 -s 1 -K &
+
+# run after any icc profile loading
+redshift -l 34.10:-118.60 -t 5000:3500 -m randr &
 
 if [ -x /usr/local/bin/progman ]; then
 	/usr/local/bin/progman
