@@ -1,0 +1,7 @@
+[user]
+name = "demian garcia"
+email = "dag@demians.org"
+
+[aliases]
+accuse = ["file", "annotate"]
+di = ["diff"]
