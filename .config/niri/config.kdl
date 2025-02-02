@@ -23,8 +23,8 @@ input {
     touchpad {
         // off
         tap
-        // dwt
-        // dwtp
+        dwt
+        dwtp
         natural-scroll
         // accel-speed 0.2
         // accel-profile "flat"
