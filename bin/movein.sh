@@ -117,6 +117,7 @@ OpenBSD)
 		tpadnav \
 		xbanish \
 		xdimmer \
+		xdotool \
 		xfe \
 		xnotify \
 		xosd
