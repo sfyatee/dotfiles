@@ -58,6 +58,7 @@ Linux)
 		fastfetch \
 		fnott \
 		fuzzel \
+		fyi \
 		gammastep \
 		gcc-m2 \
 		glab \
@@ -85,7 +86,6 @@ Linux)
 	fi
 	paru -S --needed --noconfirm \
 		drawterm-9front-wl-git \
-		gameoftrees \
 		knfmt \
 		minivmac \
 		ttf-apple-emoji \
@@ -134,7 +134,7 @@ fi
 case "$OS" in
 Linux)
 	systemctl enable --now {mandoc,paccache}.timer
-	systemctl --user enable --now {fnott,foot-server,gammastep,yambar}.service
+	systemctl --user enable --now {foot-server,gammastep,xwayland-satellite}.service
 	;;
 esac
 u() {
