@@ -1,16 +1,12 @@
 #!/bin/sh
 # simple setup script for Linux/OpenBSD
 
-export OS=`uname`
-export RUSTUP_HOME=$HOME/.local/share/rustup
-
 rm -f ~/.cshrc \
 	~/.login \
 	~/.mailrc \
 	~/.profile \
 	~/.Xdefaults \
 	~/.cvsrc
-
 export PKGS=" \
 aerc \
 blender \
@@ -53,7 +49,7 @@ yt-dlp \
 zig \
 zsh \
 "
-
+export OS=`uname`
 case "$OS" in
 Linux)
 	sudo pacman -S --needed --noconfirm $PKGS \
@@ -123,26 +119,23 @@ OpenBSD)
 		xosd
 	;;
 esac
-
-if [ ! -d ~/.git ]; then
-	cd ~
-	git init
-	git remote add origin https://github.com/sfyatee/dotfiles
-	git fetch
-	git checkout -f master
+export RUSTUP_HOME=$HOME/.local/share/rustup
+if [ "$OS" = "Darwin" ] && [ ! -d $RUSTUP_HOME ]; then
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
-
+if [ ! -d ~/.jj ]; then
+	cd ~
+	jj git init
+	jj git remote add origin https://github.com/sfyatee/dotfiles
+	jj git fetch
+	jj new master@origin
+fi
 case "$OS" in
 Linux)
 	systemctl enable --now {mandoc,paccache}.timer
 	systemctl --user enable --now {fnott,foot-server,gammastep,yambar}.service
 	;;
 esac
-
-if [ "$OS" = "Darwin" ] && [ ! -d $RUSTUP_HOME ]; then
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-fi
-
 u() {
 	go install 9fans.net/go/acme/Watch@master
 	go install 9fans.net/go/acme/editinacme@master
