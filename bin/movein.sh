@@ -73,7 +73,8 @@ Linux)
 		sequoia-sq \
 		steam \
 		tmux \
-		ttf-hack
+		ttf-hack \
+  		xwayland-satellite
 	if ! command -v paru >/dev/null 2>&1; then
 		cd /tmp || exit 1
 		if [ ! -d paru ]; then
