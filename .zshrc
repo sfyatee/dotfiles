@@ -53,3 +53,7 @@ if [[ "$TERM" == "dumb" ]]; then
 	PROMPT=": %(?..{%?} )%m; "
 	RPROMPT=""
 fi
+
+if [[ -x `command -v jj` ]]; then
+	source <(COMPLETE=zsh jj)
+fi
