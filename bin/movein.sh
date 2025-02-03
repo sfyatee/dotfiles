@@ -109,7 +109,7 @@ OpenBSD)
 		qemu \
 		repology \
 		rust \
-		rxvt-unicode -everything \
+		rxvt-unicode \
 		syncterm \
 		tpadnav \
 		xbanish \
