@@ -196,7 +196,7 @@ layout {
     }
 
     // You can enable drop shadows for windows.
-    shadow {
+    /-shadow {
         // Uncomment the next line to enable shadows.
         // on
 
@@ -558,7 +558,7 @@ binds {
     //
     // The allow-inhibiting=false property can be applied to other binds as well,
     // which ensures niri always processes them, even when an inhibitor is active.
-    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
