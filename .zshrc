@@ -18,6 +18,20 @@ __git_other_files() {
 	fi
 }
 
+# osc7
+function osc7() {
+    emulate -L zsh # also sets localoptions for us
+    setopt extendedglob
+    local LC_ALL=C
+    printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+}
+function osc71() {
+	(( ZSH_SUBSHELL )) || osc7
+}
+# register the function so it is called at each prompt.
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd osc71
+
 # completion files: use xdg dirs
 autoload -Uz compinit	# sinful completion
 [ -d "$HOME/.cache"/zsh ] || mkdir -p "$HOME/.cache"/zsh
