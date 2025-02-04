@@ -25,8 +25,8 @@ set viminfo=
 set wildmode=longest,list,full
 
 " minor color config
-colorscheme jcs
 syntax on
+colorscheme jcs
 
 " install vim-plug if not found
 if empty(glob('~/.config/vim/autoload/plug.vim'))
