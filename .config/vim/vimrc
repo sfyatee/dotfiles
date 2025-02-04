@@ -28,6 +28,11 @@ set wildmode=longest,list,full
 syntax on
 colorscheme jcs
 
+" is this needed?
+if has('linux')
+	set notermguicolors
+endif
+
 " install vim-plug if not found
 if empty(glob('~/.config/vim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
