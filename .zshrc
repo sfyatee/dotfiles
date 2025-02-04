@@ -26,15 +26,15 @@ compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
 # osc7 hook
 autoload -Uz add-zsh-hook
-function pwd7() {
+function _osc7() {
     emulate -L zsh # also sets localoptions for us
     setopt extendedglob
     local LC_ALL=C
     printf '\e]7;file://%s%s\e\' $HOST \
 		${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
 }
-function chpwd7() { (( ZSH_SUBSHELL )) || pwd7 }
-add-zsh-hook -Uz chpwd chpwd7
+function osc7() { (( ZSH_SUBSHELL )) || _osc7 }
+add-zsh-hook -Uz chpwd osc7
 
 # prompt configuration
 PROMPT='`prompt` %% ' # ls ~/bin/$OS/prompt.go
@@ -54,8 +54,8 @@ if [[ "$TERM" == "dumb" ]]; then
 	unsetopt zle
 	unsetopt promptcr
 	unsetopt promptsubst
-	if whence -w chpwd7 >/dev/null; then
-		unfunction chpwd7
+	if whence -w osc7 >/dev/null; then
+		unfunction osc7
 	fi
 	if whence -w precmd >/dev/null; then
 		unfunction precmd
