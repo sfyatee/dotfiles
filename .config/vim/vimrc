@@ -24,10 +24,6 @@ set timeoutlen=0
 set viminfo=
 set wildmode=longest,list,full
 
-" minor color config
-syntax on
-colorscheme note
-
 " install vim-plug if not found
 if empty(glob('~/.config/vim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
@@ -39,6 +35,8 @@ endif
 call plug#begin()
 Plug 'vim-scripts/rcshell.vim'
 call plug#end()
+
+syntax off
 
 " make buffer windows easier to navigate
 map <C-h> <C-w>h
