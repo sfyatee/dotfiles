@@ -27,10 +27,10 @@ compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 # osc7 hook
 autoload -Uz add-zsh-hook
 function _osc7() {
-    emulate -L zsh # also sets localoptions for us
-    setopt extendedglob
-    local LC_ALL=C
-    printf '\e]7;file://%s%s\e\' $HOST \
+	emulate -L zsh # also sets localoptions for us
+	setopt extendedglob
+	local LC_ALL=C
+	printf '\e]7;file://%s%s\e\' $HOST \
 		${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
 }
 function osc7() { (( ZSH_SUBSHELL )) || _osc7 }

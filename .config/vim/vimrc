@@ -30,7 +30,7 @@ colorscheme jcs
 
 " is this needed?
 if has('linux')
-	set notermguicolors
+  set notermguicolors
 endif
 
 " install vim-plug if not found
