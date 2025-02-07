@@ -89,7 +89,6 @@ if(~ $os darwin){
 	JJ_CONFIG=$home/.config/jj/config.toml
 	font=/mnt/font/LucidaGrande/14a/font
 	font1=/mnt/font/Hack-Regular/14a/font
-	fn rcctl{launchctl $*}
 }
 
 if(~ $os darwin || ~ $os *bsd){
@@ -102,7 +101,6 @@ if(~ $os linux){
 	fn ls{builtin ls -AFv $*}
 	fn pQm{pacman -Qm}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
-	fn rcctl{systemctl $*}
 }
 
 if(~ $os openbsd){
