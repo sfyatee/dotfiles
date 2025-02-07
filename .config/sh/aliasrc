@@ -37,7 +37,7 @@ if [ "`uname`" = "Linux" ]; then
 	alias \
 		ls="ls -AFv"\
 		pQm="pacman -Qm"\
-		ph="ps auwwx | sort -rk 3,3 | head"\
+		ph="ps auwwx | sort -rk 3,3 | head"
 fi
 
 if [ "`uname`" = "OpenBSD" ]; then
