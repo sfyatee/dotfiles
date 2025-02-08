@@ -33,7 +33,7 @@ _osc7() {
 	printf '\e]7;file://%s%s\e\' $HOST \
 		${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
 }
-osc7() { (( ZSH_SUBSHELL )) || _osc7 }
+osc7(){(( ZSH_SUBSHELL ))||_osc7}
 add-zsh-hook -Uz chpwd osc7
 
 # prompt configuration
@@ -54,9 +54,7 @@ if [[ "$TERM" == "dumb" ]]; then
 	unsetopt zle
 	unsetopt promptcr
 	unsetopt promptsubst
-	if whence -w osc7 >/dev/null; then
-		unfunction osc7
-	fi
+	unfunction osc7
 	if whence -w precmd >/dev/null; then
 		unfunction precmd
 	fi
