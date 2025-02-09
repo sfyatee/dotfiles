@@ -2,7 +2,7 @@ bar:
   location: bottom
   height: 26
   background: 000000FF
-  font: monospace:size=13
+  font: Microsoft Sans Serif:size=14:weight=bold
   # spacing: 5
   # margin: 7
 

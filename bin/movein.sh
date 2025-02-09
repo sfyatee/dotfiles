@@ -36,7 +36,6 @@ restic \
 ripgrep \
 rust-analyzer \
 spin \
-sshfs \
 swayidle \
 syncthing \
 tailscale \
@@ -72,6 +71,7 @@ Linux)
 		rsync \
 		rustup \
 		sequoia-sq \
+		sshfs \
 		steam \
 		tmux \
 		ttf-hack \
@@ -110,6 +110,7 @@ OpenBSD)
 		repology \
 		rust \
 		rxvt-unicode \
+		sshfs-fuse \
 		syncterm \
 		tpadnav \
 		xbanish \
