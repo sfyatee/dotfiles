@@ -1,9 +1,0 @@
-#!/bin/sh
-
-if [ `uname -s` = "Darwin" ]; then
-	/usr/bin/pbcopy
-elif [ `uname -s` = "Linux" ]; then 
-	wl-copy --primary -t TEXT
-else
-	xclip
-fi
