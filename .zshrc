@@ -49,7 +49,7 @@ g() {
     --exclude-dir .bzr --exclude-dir .git --exclude-dir .hg --exclude-dir .svn \
     --exclude-dir CVS  --exclude-dir RCS --exclude-dir _darcs \
     --exclude-dir _build \
-    --line-buffered -r -P ${${@:#+*}:?regexp missing}
+    --line-buffered -r ${${@:#+*}:?regexp missing}
 }
 
 # plan9 settings
