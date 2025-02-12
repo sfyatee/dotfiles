@@ -33,7 +33,6 @@ meson \
 mpv \
 notmuch \
 restic \
-ripgrep \
 rust-analyzer \
 spin \
 swayidle \
