@@ -29,7 +29,6 @@ LESSHISTFILE=/dev/null
 NAMESPACE=/tmp/ns.$USER.:0
 NO_COLOR=1
 PYTHON_HISTORY=/dev/null
-RIPGREP_CONFIG_PATH=$HOME/.config/rg/config
 RUSTUP_HOME=$HOME/.local/share/rustup
 XDG_CONFIG_HOME=$HOME/.config
 
