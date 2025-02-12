@@ -41,17 +41,6 @@ PROMPT='`prompt` %% ' # ls ~/bin/$OS/prompt.go
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
-# g  +leah+
-g() {
-  LC_ALL=C grep \
-    ${${(M)@:#+*}:s/+/--include=*./} \
-    --exclude "*~" --exclude "*.o" --exclude "tags" \
-    --exclude-dir .bzr --exclude-dir .git --exclude-dir .hg --exclude-dir .svn \
-    --exclude-dir CVS  --exclude-dir RCS --exclude-dir _darcs \
-    --exclude-dir _build \
-    --line-buffered -r ${${@:#+*}:?regexp missing}
-}
-
 # plan9 settings
 bindkey -e		# emacs binds
 setopt globdots	# hidden files in completion
