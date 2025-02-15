@@ -1,2 +1,4 @@
-image=~/.local/share/backgrounds/plan9bunnywhite.jpg
+color=000000
+no-unlock-indicator
+image=~/.local/share/backgrounds/plan9bunnyblack.jpg
 scaling=fit
