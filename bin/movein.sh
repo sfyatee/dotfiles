@@ -36,6 +36,7 @@ restic \
 rust-analyzer \
 spin \
 swayidle \
+swaylock \
 syncthing \
 tailscale \
 typst \
@@ -63,6 +64,7 @@ Linux)
 		libreoffice-fresh \
 		mandoc \
 		niri \
+		nyxt \
 		openbsd-netcat \
 		pacman-contrib \
 		prusa-slicer \
