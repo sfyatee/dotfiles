@@ -33,6 +33,7 @@ NAMESPACE=/tmp/ns.$USER.:0
 NO_COLOR=1
 PYTHON_HISTORY=/dev/null
 RUSTUP_HOME=$home/.local/share/rustup
+W3M_DIR=$home/.local/state/w3m
 XDG_CONFIG_HOME=$home/.config
 
 # prepare path enviornment
