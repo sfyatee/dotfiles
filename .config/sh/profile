@@ -39,7 +39,7 @@ PATH=$CARGO_HOME/bin:$PATH
 font=/mnt/font/LucidaGrande/11a/font
 font1=/mnt/font/Hack-Regular/11a/font
 home=$HOME
-secstore=demians.org
+secstore=localhost
 user=$USER
 
 # emulate rc shell

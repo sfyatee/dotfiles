@@ -43,7 +43,7 @@ font=/mnt/font/LucidaGrande/11a/font
 font1=/mnt/font/Hack-Regular/11a/font
 nine=➈
 fn '%'{ if(! ~ $#* 0) $* }
-secstore=demians.org
+secstore=localhost
 
 # things to make life easy
 fn acme{builtin acme -a -f $font -F $font1 $*}
