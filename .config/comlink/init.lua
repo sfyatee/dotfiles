@@ -1,7 +1,7 @@
 local comlink = require("comlink")
 
 local config = {
-	server = "",
+	server = "chat.sfyatee.com",
 	user = "sfyatee",
 	nick = "sfyatee",
 	password = "",
