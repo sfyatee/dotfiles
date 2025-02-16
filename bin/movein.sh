@@ -27,7 +27,6 @@ jq \
 jujutsu \
 lilypond \
 llvm \
-lynx \
 mblaze \
 meson \
 mpv \
@@ -76,6 +75,7 @@ Linux)
 		steam \
 		tmux \
 		ttf-hack \
+		wayvnc \
   		xwayland-satellite
 	if ! command -v paru >/dev/null 2>&1; then
 		cd /tmp || exit 1
@@ -86,12 +86,15 @@ Linux)
 		makepkg -fsi --noconfirm
 	fi
 	paru -S --needed --noconfirm \
+		comlink-git \
 		drawterm-9front-wl-git \
 		knfmt \
 		minivmac \
+		#tlsclient-git \
 		ttf-apple-emoji \
 		ttf-mac-fonts \
 		ttf-ms-fonts \
+		w3m-rkta-git \
 		yambar-git
 	;;
 OpenBSD)
@@ -114,6 +117,7 @@ OpenBSD)
 		sshfs-fuse \
 		syncterm \
 		tpadnav \
+		w3m \
 		xbanish \
 		xdimmer \
 		xdotool \
