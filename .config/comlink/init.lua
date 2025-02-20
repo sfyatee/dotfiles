@@ -8,8 +8,10 @@ local config = {
 	real_name = "demian garcia",
 }
 
--- Pass the server config to connect. Connect to as many servers as you need
+-- server config to connect
 comlink.connect(config)
 
--- Bind a key to an action
+-- binds
 comlink.bind("ctrl+c", "quit")
+comlink.bind("ctrl+n", "next-channel")
+comlink.bind("ctrl+p", "prev-channel")
