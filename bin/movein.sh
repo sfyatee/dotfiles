@@ -56,7 +56,6 @@ Linux)
 		fastfetch \
 		fnott \
 		fuzzel \
-		fyi \
 		gammastep \
 		gcc-m2 \
 		glab \
