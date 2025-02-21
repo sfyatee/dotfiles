@@ -139,7 +139,7 @@ fi
 case "$OS" in
 Linux)
 	systemctl enable --now {mandoc,paccache}.timer
-	systemctl --user enable --now {foot-server,gammastep,xwayland-satellite}.service
+	systemctl --user enable --now {foot-server,gammastep,syncthing,xwayland-satellite}.service
 	;;
 esac
 u() {
@@ -149,6 +149,4 @@ u() {
 	go install github.com/rjkroege/edwood/cmd/win@master
 	go install golang.org/x/tools/cmd/bisect@master
 	go install robpike.io/ivy@master
-	go install upspin.io/cmd/{upspin,cacheserver,upspin-audit,upspinfs}@latest
-	rustup update
 }
