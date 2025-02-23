@@ -62,7 +62,6 @@ Linux)
 		libreoffice-fresh \
 		mandoc \
 		niri \
-		nyxt \
 		openbsd-netcat \
 		pacman-contrib \
 		prusa-slicer \
