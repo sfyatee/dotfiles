@@ -77,4 +77,9 @@
 	    (bg-paren-match unspecified) ;paren match
 	    (fg-paren-match yellow-intense)))
   (set-face-attribute
-   'variable-pitch nil))
+   'variable-pitch nil
+   :family "Lucida Grande"
+   :height 1.0))
+
+;; got
+(use-package vc-got :ensure t)
