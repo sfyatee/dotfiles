@@ -44,42 +44,36 @@
   (elpaca-use-package-mode))
 
 ;; theme
-(use-package modus-themes
-  :ensure t
-  :config
-  (load-theme 'modus-operandi-tinted t)
-  (enable-theme 'modus-operandi-tinted)
-  (setopt modus-themes-common-palette-overrides
-	  '((builtin fg-main) ;code mappings
-	    (comment fg-dim)
-	    (constant fg-main)
-	    (docmarkup fg-main)
-	    (docstring fg-main)
-	    (fnname fg-main)
-	    (keyword fg-main)
-	    (preprocessor fg-main)
-	    (rx-backslash fg-main)
-	    (rx-construct fg-main)
-	    (string fg-main)
-	    (type fg-main)
-	    (variable fg-main)
-	    (fg-heading-0 fg-main)
-	    (fg-heading-1 fg-main)
-	    (fg-heading-2 fg-main)
-	    (fg-heading-3 fg-main)
-	    (fg-heading-4 fg-main)
-	    (fg-heading-5 fg-main)
-	    (fg-heading-6 fg-main)
-	    (fg-heading-7 fg-main)
-	    (fg-heading-8 fg-main)
-	    (fg-link fg-main) ;link mappings
-	    (underline-link fg-main)
-	    (bg-paren-match unspecified) ;paren match
-	    (fg-paren-match yellow-intense)))
-  (set-face-attribute
-   'variable-pitch nil
-   :family "Lucida Grande"
-   :height 1.0))
+(load-theme 'modus-operandi-tinted t)
+(enable-theme 'modus-operandi-tinted)
+(setopt modus-themes-common-palette-overrides
+	'((builtin fg-main) ;code mappings
+	  (comment fg-dim)
+	  (constant fg-main)
+	  (docmarkup fg-main)
+	  (docstring fg-main)
+	  (fnname fg-main)
+	  (keyword fg-main)
+	  (preprocessor fg-main)
+	  (rx-backslash fg-main)
+	  (rx-construct fg-main)
+	  (string fg-main)
+	  (type fg-main)
+	  (variable fg-main)
+	  (fg-heading-0 fg-main)
+	  (fg-heading-1 fg-main)
+	  (fg-heading-2 fg-main)
+	  (fg-heading-3 fg-main)
+	  (fg-heading-4 fg-main)
+	  (fg-heading-5 fg-main)
+	  (fg-heading-6 fg-main)
+	  (fg-heading-7 fg-main)
+	  (fg-heading-8 fg-main)
+	  (fg-link fg-main) ;link mappings
+	  (underline-link fg-main)
+	  (bg-paren-match unspecified) ;paren match
+	  (fg-paren-match yellow-intense)))
+(set-face-attribute 'default nil :family "Lucida Grande" :height 1)
 
 ;; got
 (use-package vc-got :ensure t)
