@@ -77,4 +77,4 @@
 	    (bg-paren-match unspecified) ;paren match
 	    (fg-paren-match yellow-intense)))
   (set-face-attribute
-	'variable-pitch nil))
+   'variable-pitch nil))
