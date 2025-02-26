@@ -83,7 +83,7 @@ awd
 
 # os specific settings
 if(~ $os darwin){
-	path=(/Applications/Emacs.app/Contents/MacOS/bin /usr/local/go/bin $path)
+	path=(/usr/local/go/bin $path)
 	JJ_CONFIG=$home/.config/jj/config.toml
 	font=/mnt/font/LucidaGrande/14a/font
 	font1=/mnt/font/Hack-Regular/14a/font
