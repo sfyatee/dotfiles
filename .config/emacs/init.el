@@ -92,7 +92,7 @@
 	gnus-use-dribble-file nil;t
 	gnus-always-read-dribble-file nil;t
 	gnus-select-method '(nnnil "")
-	gnus-secondary-select-methods '((nnatom "https://research.swtch.com/feed.atom"))))
+	gnus-secondary-select-methods '((nnatom "research.swtch.com/feed.atom"))))
 
 ;; got
 (use-package vc-got :ensure t)

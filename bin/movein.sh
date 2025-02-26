@@ -52,6 +52,7 @@ Linux)
 	sudo pacman -S --needed --noconfirm $PKGS \
 		blueman \
 		clang \
+		emacs-wayland \
 		fastfetch \
 		fnott \
 		fuzzel \
