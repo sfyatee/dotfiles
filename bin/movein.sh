@@ -40,7 +40,6 @@ syncthing \
 tailscale \
 typst \
 unrar \
-vim \
 wev \
 wpa_supplicant \
 yt-dlp \
@@ -84,7 +83,6 @@ Linux)
 		makepkg -fsi --noconfirm
 	fi
 	paru -S --needed --noconfirm \
-		comlink-git \
 		drawterm-9front-wl-git \
 		knfmt \
 		minivmac \
@@ -111,7 +109,6 @@ OpenBSD)
 		qemu \
 		repology \
 		rust \
-		rxvt-unicode \
 		sshfs-fuse \
 		syncterm \
 		tpadnav \
@@ -138,7 +135,7 @@ fi
 case "$OS" in
 Linux)
 	systemctl enable --now {mandoc,paccache}.timer
-	systemctl --user enable --now {foot-server,gammastep,syncthing,xwayland-satellite}.service
+	systemctl --user enable --now {emacs,gammastep,syncthing,xwayland-satellite}.service
 	;;
 esac
 u() {

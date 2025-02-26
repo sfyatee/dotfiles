@@ -83,5 +83,16 @@
   (setq erc-server "irc.oftc.net"
 	erc-nick "sfyatee"))
 
+;; gnus
+(use-package gnus
+  :ensure nil
+  :config
+  (setq gnus-asynchronous t
+	gnus-use-cache t
+	gnus-use-dribble-file nil;t
+	gnus-always-read-dribble-file nil;t
+	gnus-select-method '(nnnil "")
+	gnus-secondary-select-methods '((nnatom "https://research.swtch.com/feed.atom"))))
+
 ;; got
 (use-package vc-got :ensure t)
