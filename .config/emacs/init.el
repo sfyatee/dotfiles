@@ -75,5 +75,13 @@
 	  (fg-paren-match yellow-intense)))
 (set-face-attribute 'default nil :family "Lucida Grande" :height 1)
 
+;; irc
+(use-package erc
+  :ensure nil
+  :config
+  (add-to-list 'erc-modules 'notifications)
+  (setq erc-server "irc.oftc.net"
+	erc-nick "sfyatee"))
+
 ;; got
 (use-package vc-got :ensure t)
