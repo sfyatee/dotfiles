@@ -10,12 +10,10 @@ PLAN9=/usr/local/plan9
 path=(. $BIN $home/go/bin $path $PLAN9/bin)
 
 # personal variables
-if(test -x `{which vim}){
-	EDITOR=`{which vim}
-	fn vi{vim $*}
-	fn view{vim -R $*}
+if(test -x `{which emacsclient}){
+	EDITOR=`{which emacsclient}
 }
-if not EDITOR=/usr/bin/vi
+if not EDITOR=/usr/bin/mg
 BASH_SILENCE_DEPRECATION_WARNING=1
 BROWSER=firefox
 CARGO_HOME=$home/.local/share/cargo
@@ -85,7 +83,7 @@ awd
 
 # os specific settings
 if(~ $os darwin){
-	path=(/usr/local/go/bin $path)
+	path=(/Applications/Emacs.app/Contents/MacOS/bin /usr/local/go/bin $path)
 	JJ_CONFIG=$home/.config/jj/config.toml
 	font=/mnt/font/LucidaGrande/14a/font
 	font1=/mnt/font/Hack-Regular/14a/font
