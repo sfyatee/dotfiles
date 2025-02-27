@@ -8,7 +8,6 @@ rm -f ~/.cshrc \
 	~/.Xdefaults \
 	~/.cvsrc
 export PKGS=" \
-aerc \
 blender \
 cmake \
 curl \
@@ -84,26 +83,21 @@ Linux)
 		makepkg -fsi --noconfirm
 	fi
 	paru -S --needed --noconfirm \
-		drawterm-9front-wl-git \
-		knfmt \
+		chicago95-theme \
 		minivmac \
-		#tlsclient-git \
 		ttf-apple-emoji \
 		ttf-mac-fonts \
 		ttf-ms-fonts \
-		w3m-rkta-git \
 		yambar-git
 	;;
 OpenBSD)
 	doas pkg_add $PKGS \
-		drawterm \
 		gawk \
 		gitlab-cli \
 		go-fonts \
 		got \
 		hack-fonts \
 		hare \
-		knfmt \
 		libreoffice \
 		minivmac \
 		prusaslicer \
@@ -113,7 +107,6 @@ OpenBSD)
 		sshfs-fuse \
 		syncterm \
 		tpadnav \
-		w3m \
 		xbanish \
 		xdimmer \
 		xdotool \

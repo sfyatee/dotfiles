@@ -73,7 +73,6 @@
 	  (underline-link fg-main)
 	  (bg-paren-match unspecified) ;paren match
 	  (fg-paren-match yellow-intense)))
-(set-face-attribute 'default nil :family "Lucida Grande" :height 1)
 
 ;; irc
 (use-package erc
@@ -96,3 +95,6 @@
 
 ;; got
 (use-package vc-got :ensure t)
+
+;; vc
+(add-hook 'log-edit-mode-hook (lambda () (setq display-fill-column-indicator-column 69) (display-fill-column-indicator-mode 1)))

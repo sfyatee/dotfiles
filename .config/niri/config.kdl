@@ -185,7 +185,7 @@ layout {
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        // off
+        off
 
         width 5
         active-color "#859900"
@@ -250,10 +250,11 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "footclient" "aerc"
+// spawn-at-startup "emacsclient"
 
 environment {
     _JAVA_AWT_WM_NONREPARENTING "1"
+    EDITOR "emacsclient"
     MOZ_ENABLE_WAYLAND "1"
     QT_QPA_PLATFORM "wayland"
 }
