@@ -108,7 +108,12 @@
 (use-package eglot
   :ensure nil
   :hook ((go-ts-mode . eglot-ensure)
-	 (rust-ts-mode . eglot-ensure)))
+	 (rust-ts-mode . eglot-ensure))
+  :config
+  (add-hook 'before-save-hook
+	    (lambda()
+	      (call-interactively 'eglot-code-action-organize-imports))
+	    nil t))
 
 ;; irc
 (use-package erc
