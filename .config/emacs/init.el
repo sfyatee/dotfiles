@@ -80,12 +80,12 @@
  '(font-lock-string-face ((t (:underline t)))))
 
 ;; treesit
-;; (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))
 (setq treesit-language-source-alist
    '((go "https://github.com/tree-sitter/tree-sitter-go")
      (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
      (python "https://github.com/tree-sitter/tree-sitter-python")
      (rust "https://github.com/tree-sitter/tree-sitter-rust")))
+;; (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))
 
 (use-package treesit
   :ensure nil
@@ -98,11 +98,17 @@
   (add-to-list 'auto-mode-alist '("/go\\.mod\\'" . go-mod-ts-mode))
   (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode)))
 
+;; computers... make darwin-only?
+(use-package exec-path-from-shell
+  :ensure t
+  :init
+  (exec-path-from-shell-initialize))
+
 ;; lsp
 (use-package eglot
   :ensure nil
-  :hook ((go-mode . eglot-ensure)
-	 (rust-mode . eglot-ensure)))
+  :hook ((go-ts-mode . eglot-ensure)
+	 (rust-ts-mode . eglot-ensure)))
 
 ;; irc
 (use-package erc
