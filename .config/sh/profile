@@ -30,11 +30,10 @@ NAMESPACE=/tmp/ns.$USER.:0
 NO_COLOR=1
 PYTHON_HISTORY=/dev/null
 RUSTUP_HOME=$HOME/.local/share/rustup
-W3M_DIR=$HOME/.local/state/w3m
 XDG_CONFIG_HOME=$HOME/.config
 
 # prepare path enviornment
-PATH=$CARGO_HOME/bin:$PATH
+PATH=$CARGO_HOME/bin:$PATH:$PLAN9/bin/upas
 
 # plan9
 font=/mnt/font/LucidaGrande/11a/font

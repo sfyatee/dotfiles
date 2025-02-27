@@ -73,6 +73,28 @@
 	  (underline-link fg-main)
 	  (bg-paren-match unspecified) ;paren match
 	  (fg-paren-match yellow-intense)))
+(custom-set-faces
+ '(font-lock-string-face ((t (:underline t)))))
+
+(setq treesit-language-source-alist
+   '((go "https://github.com/tree-sitter/tree-sitter-go")
+     (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
+     (python "https://github.com/tree-sitter/tree-sitter-python")))
+;; (mapc #'treesit-install-language-grammar (mapcar #'car treesit-language-source-alist))
+
+(use-package treesit
+  :ensure nil
+  :preface
+  (dolist (mapping '((go-mode . go-ts-mode)))
+    (add-to-list 'major-mode-remap-alist mapping))
+  :init
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+  (add-to-list 'auto-mode-alist '("/go\\.mod\\'" . go-mod-ts-mode)))
+
+;; lsp
+(use-package eglot
+  :ensure nil
+  :hook ((go-ts-mode . eglot-ensure)))
 
 ;; irc
 (use-package erc
@@ -97,5 +119,9 @@
 (use-package vc-got :ensure t)
 
 ;; vc
-(add-hook 'log-edit-mode-hook (lambda () (setq fill-column 68) (auto-fill-mode 1)))
-(add-hook 'log-edit-mode-hook (lambda () (setq display-fill-column-indicator-column 69) (display-fill-column-indicator-mode 1)))
+(add-hook 'log-edit-mode-hook
+	  (lambda () (setq fill-column 68)
+	    (auto-fill-mode 1)))
+(add-hook 'log-edit-mode-hook
+	  (lambda () (setq display-fill-column-indicator-column 69)
+	    (display-fill-column-indicator-mode 1)))
