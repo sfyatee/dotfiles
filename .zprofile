@@ -9,11 +9,11 @@ typeset -U path PATH
 # 09jan2018  +leah+
 # 11aug2021  +leah+  -P to not follow symlinks, useful for Nix
 pathadd() {
-    setopt LOCAL_OPTIONS EXTENDED_GLOB
-    if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
-    path=( ${^${@[1,$@[(i)--]-1]}:|path}(N-/)
-	   $path
-	   ${^${@[$@[(i)--]+1,-1]}:|path}(N-/) )
+  setopt LOCAL_OPTIONS EXTENDED_GLOB
+  if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
+  path=( ${^${@[1,$@[(i)--]-1]}:|path}(N-/)
+         $path
+         ${^${@[$@[(i)--]+1,-1]}:|path}(N-/) )
 }
 
 # world
@@ -55,6 +55,7 @@ pathadd -- /usr/{s,}bin /{s,}bin
 pathadd /usr/local/{s,}bin
 pathadd -- /usr/games /usr/games/bin
 pathadd -- $PLAN9/bin $PLAN9/bin/upas
+pathadd $CARGO_HOME/bin ~/go/bin
 pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
 
 # override $NAMESPACE; intro(4)
@@ -75,24 +76,24 @@ set +o vi
 
 # os specificities
 if [ "$OS" = "darwin" ]; then
-    export PATH=/usr/local/go/bin:$PATH
-    export JJ_CONFIG=$HOME/.config/jj/config.toml
+  export PATH=/usr/local/go/bin:$PATH
+  export JJ_CONFIG=$HOME/.config/jj/config.toml
 fi
 
 if [ "$OS" = "darwin" ] || [ "$OS" = "*bsd" ]; then
-    export NPROC=`sysctl -n hw.ncpu`
-    stty status '^T'
+  export NPROC=`sysctl -n hw.ncpu`
+  stty status '^T'
 fi
 
 if [ "$OS" = "linux" ]; then
-    export NPROC=`nproc`
+  export NPROC=`nproc`
 fi
 
 # use $NPROC jobs
 export MAKEFLAGS=-j$NPROC
 
 if [ "$OS" = "openbsd" ]; then
-    export CDPATH=.:/usr/ports:/usr/ports/mystuff
+  export CDPATH=.:/usr/ports:/usr/ports/mystuff
 fi
 
 ulimit -c 0	# don't litter

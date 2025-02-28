@@ -13,11 +13,11 @@ compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 # osc7 hook
 autoload -Uz add-zsh-hook
 _osc7() {
-    emulate -L zsh # also sets localoptions for us
-    setopt extendedglob
-    local LC_ALL=C
-    printf '\e]7;file://%s%s\e\' $HOST \
-	   ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+  emulate -L zsh # also sets localoptions for us
+  setopt extendedglob
+  local LC_ALL=C
+  printf '\e]7;file://%s%s\e\' $HOST \
+	 ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
 }
 osc7(){(( ZSH_SUBSHELL ))||_osc7}
 add-zsh-hook -Uz chpwd osc7
@@ -52,80 +52,63 @@ alias sam="sam -a"
 
 # for use in 9term and acme's win
 if [ "$termprog" ] || [ "$winid" ]; then
-    # plumb files instead of starting new editor
-    export EDITOR=editinacme
+  # plumb files instead of starting new editor
+  export EDITOR=editinacme
 
-    # get rid of backspace characters in Unix man output
-    export PAGER=nobs
+  # get rid of backspace characters in Unix man output
+  export PAGER=nobs
 
-    # disable prompting
-    export GH_PROMPT_DISABLED=1
+  # disable prompting
+  export GH_PROMPT_DISABLED=1
 
-    # sets the current window label using awd (see label(1))
-    awd
-    chpwd() { awd }
+  # sets the current window label using awd (see label(1))
+  awd
+  chpwd() { awd }
     
-    alias git="git --no-pager"
-    alias hg="chg --pager=no"
-    alias jj="jj --no-pager"
+  alias git="git --no-pager"
+  alias hg="chg --pager=no"
+  alias jj="jj --no-pager"
 fi
 	     
-if [ "`uname`" = "Linux" ]; then
-    alias ls="ls -AFv"
+case "$OS" in
+  linux)
+    alias ls="ls -Afv"
     alias pQm="pacman -Qm"
     alias ph="ps auwwx | sort -rk 3,3 | head"
-fi
-
-if [ "`uname`" = "OpenBSD" ]; then
-    # check shared libs version
-    cshlib() {
-	local cnt=0
-	local f
-		
-	for f in `make show=SHARED_LIBS`; do
-	    [ "`(cnt++ % 2)`" -eq 1 ] && continue
-	    echo '===>' "$f"
-	    /usr/src/lib/check_sym /usr/local/lib/lib"$f".so* \
-				   "`make show=WRKINST`"/usr/local/lib/lib"$f".so*
-	done
-    }
-
+    ;;
+  openbsd)
     alias cvs="opencvs"
     alias mpldc="make port-lib-depends-check"
     alias mup="make update-patches"
     alias mupl="make update-plist"
     alias pclean='make clean="package plist"'
     alias rsync="openrsync"
-fi
+esac
 
 # no fancy zsh prompt when using dumb terminals
 if [[ "$TERM" == "dumb" ]]; then
-    unsetopt zle
-    unsetopt promptcr
-    unsetopt promptsubst
-    unfunction osc7
-    if whence -w precmd >/dev/null; then
-	unfunction precmd
-    fi
-    if whence -w preexec >/dev/null; then
-	unfunction preexec
-    fi
-    # set prompt so middle-clicking whole line reruns line's command
-    # show last exit code if non-zero
-    PROMPT=": %(?..{%?} )%m; "
-    RPROMPT=""
+  unsetopt zle
+  unsetopt promptcr
+  unsetopt promptsubst
+  unfunction osc7
+  unfunction precmd
+  unfunction preexec
+  # set prompt so middle-clicking whole line reruns line's command
+  # show last exit code if non-zero
+  PROMPT=": %(?..{%?} )%m; "
+  RPROMPT=""
 fi
 
 if [[ -x `command -v jj` ]]; then
-    source <(COMPLETE=zsh jj)
+  source <(COMPLETE=zsh jj)
 fi
 
 # making sure these are running
 felloff() {
-    mkdir -p $NAMESPACE
-    9p stat plumb 2>/dev/null 1>&2 || plumber
+  mkdir -p $NAMESPACE
+  9p stat plumb 2>/dev/null 1>&2 || plumber
 }
 
 if [ -d "$PLAN9" ]; then
-    felloff
+  felloff
 fi
