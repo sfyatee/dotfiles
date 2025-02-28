@@ -134,6 +134,9 @@
 	gnus-select-method '(nnnil "")
 	gnus-secondary-select-methods '((nnatom "research.swtch.com/feed.atom"))))
 
+;; sq
+(use-package sq :ensure t)
+
 ;; got
 (use-package vc-got :ensure t)
 

@@ -2,17 +2,7 @@
 umask 022
 
 # speed things up
-if [[ ! -o interactive ]]; then
-	return
-fi
-
-# insane that they haven't fixed this...
-__git_other_files() {
-	if [[ "$PWD" = "$HOME" ]]; then
-		local -a expl
-		_wanted files expl 'other file' _files
-	fi
-}
+if [[ ! -o interactive ]]; then return; fi
 
 # completion files: use xdg dirs
 autoload -Uz compinit	# sinful completion
@@ -23,11 +13,11 @@ compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 # osc7 hook
 autoload -Uz add-zsh-hook
 _osc7() {
-	emulate -L zsh # also sets localoptions for us
-	setopt extendedglob
-	local LC_ALL=C
-	printf '\e]7;file://%s%s\e\' $HOST \
-		${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+    emulate -L zsh # also sets localoptions for us
+    setopt extendedglob
+    local LC_ALL=C
+    printf '\e]7;file://%s%s\e\' $HOST \
+	   ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
 }
 osc7(){(( ZSH_SUBSHELL ))||_osc7}
 add-zsh-hook -Uz chpwd osc7
@@ -38,7 +28,8 @@ precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
 # plan9 settings
-bindkey -e		# emacs binds
+bindkey -e	# emacs binds
+unset HISTFILE	# no
 setopt globdots	# hidden files in completion
 setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
@@ -46,91 +37,95 @@ setopt promptsubst	# allows function in PROMPT
 setopt rcquotes	# plan9-like quoting
 
 # nice things to have
-alias \
-	acme="acme -a -f $font -F $font1"\
-	cp="cp -i"\
-	edwood="edwood -a -f $font -F $font1"\
-	hg="chg"\
-	lc="lc -F"\
-	ll="ls -AlF"\
-	ls="ls -AF"\
-	ltr="ls -AlFtr"\
-	m="make"\
-	mv="mv -i"\
-	ph="ps auwwx | head"\
-	sam="sam -a"
+alias acme="acme -a -f $font -F $font1"
+alias cp="cp -i"
+alias edwood="edwood -a -f $font -F $font1"
+alias hg="chg"
+alias lc="lc -F"
+alias ll="ls -AlF"
+alias ls="ls -AF"
+alias ltr="ls -AlFtr"
+alias m="make"
+alias mv="mv -i"
+alias ph="ps auwwx | head"
+alias sam="sam -a"
 
 # for use in 9term and acme's win
 if [ "$termprog" ] || [ "$winid" ]; then
-	_cd() {
-		\cd "$@" && awd
-	}
-	awd
-	alias \
-		cd="_cd"\
-		git="git --no-pager"\
-		hg="chg --pager=no"\
-		jj="jj --no-pager"
-fi
+    # plumb files instead of starting new editor
+    export EDITOR=editinacme
 
+    # get rid of backspace characters in Unix man output
+    export PAGER=nobs
+
+    # disable prompting
+    export GH_PROMPT_DISABLED=1
+
+    # sets the current window label using awd (see label(1))
+    awd
+    chpwd() { awd }
+    
+    alias git="git --no-pager"
+    alias hg="chg --pager=no"
+    alias jj="jj --no-pager"
+fi
+	     
 if [ "`uname`" = "Linux" ]; then
-	alias \
-		ls="ls -AFv"\
-		pQm="pacman -Qm"\
-		ph="ps auwwx | sort -rk 3,3 | head"
+    alias ls="ls -AFv"
+    alias pQm="pacman -Qm"
+    alias ph="ps auwwx | sort -rk 3,3 | head"
 fi
 
 if [ "`uname`" = "OpenBSD" ]; then
-	# check shared libs version
-	cshlib() {
-		local cnt=0
-		local f
+    # check shared libs version
+    cshlib() {
+	local cnt=0
+	local f
+		
+	for f in `make show=SHARED_LIBS`; do
+	    [ "`(cnt++ % 2)`" -eq 1 ] && continue
+	    echo '===>' "$f"
+	    /usr/src/lib/check_sym /usr/local/lib/lib"$f".so* \
+				   "`make show=WRKINST`"/usr/local/lib/lib"$f".so*
+	done
+    }
 
-		for f in `make show=SHARED_LIBS`; do
-			[ "`(cnt++ % 2)`" -eq 1 ] && continue
-			echo '===>' "$f"
-			/usr/src/lib/check_sym /usr/local/lib/lib"$f".so* \
-				"`make show=WRKINST`"/usr/local/lib/lib"$f".so*
-		done
-	}
-
-	alias \
-		cvs="opencvs"\
-		mpldc="make port-lib-depends-check"\
-		mup="make update-patches"\
-		mupl="make update-plist"\
-		pclean='make clean="package plist"'\
-		rsync="openrsync"
-fi
-
-# making sure these are running
-felloff() {
-	mkdir -p $NAMESPACE
-	9p stat plumb 2>/dev/null 1>&2 || plumber
-}
-
-if [ -d "$PLAN9" ]; then
-	felloff
+    alias cvs="opencvs"
+    alias mpldc="make port-lib-depends-check"
+    alias mup="make update-patches"
+    alias mupl="make update-plist"
+    alias pclean='make clean="package plist"'
+    alias rsync="openrsync"
 fi
 
 # no fancy zsh prompt when using dumb terminals
 if [[ "$TERM" == "dumb" ]]; then
-	unsetopt zle
-	unsetopt promptcr
-	unsetopt promptsubst
-	unfunction osc7
-	if whence -w precmd >/dev/null; then
-		unfunction precmd
-	fi
-	if whence -w preexec >/dev/null; then
-		unfunction preexec
-	fi
-	# set prompt so middle-clicking whole line reruns line's command
-	# show last exit code if non-zero
-	PROMPT=": %(?..{%?} )%m; "
-	RPROMPT=""
+    unsetopt zle
+    unsetopt promptcr
+    unsetopt promptsubst
+    unfunction osc7
+    if whence -w precmd >/dev/null; then
+	unfunction precmd
+    fi
+    if whence -w preexec >/dev/null; then
+	unfunction preexec
+    fi
+    # set prompt so middle-clicking whole line reruns line's command
+    # show last exit code if non-zero
+    PROMPT=": %(?..{%?} )%m; "
+    RPROMPT=""
 fi
 
 if [[ -x `command -v jj` ]]; then
-	source <(COMPLETE=zsh jj)
+    source <(COMPLETE=zsh jj)
+fi
+
+# making sure these are running
+felloff() {
+    mkdir -p $NAMESPACE
+    9p stat plumb 2>/dev/null 1>&2 || plumber
+}
+
+if [ -d "$PLAN9" ]; then
+    felloff
 fi

@@ -26,7 +26,6 @@ jq \
 jujutsu \
 lilypond \
 llvm \
-mblaze \
 meson \
 mpv \
 notmuch \
