@@ -1,47 +1,65 @@
 #!/bin/sh
 
+export PATH
+typeset -U path PATH
+
+# pathadd [-P] [PATHS] [-- APPEND_PATHS] - prepend/append PATHS to path
+# 08jan2018  +leah+
+# 09jan2018  +leah+
+# 11aug2021  +leah+  -P to not follow symlinks, useful for Nix
+pathadd() {
+  setopt LOCAL_OPTIONS EXTENDED_GLOB
+  if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
+  path=( ${^${@[1,$@[(i)--]-1]}:|path}(N-/)
+         $path
+         ${^${@[$@[(i)--]+1,-1]}:|path}(N-/) )
+}
+
 # paths
-OS=`uname | tr '[:upper:]' '[:lower:]'`
-ARCH=`uname -m`
-PATH=/sbin:/usr/sbin:/bin:/usr/bin:/usr/X11R6/bin:/usr/local/sbin:/usr/local/bin
-BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
-PLAN9=/usr/local/plan9
-PATH=.:$BIN:$HOME/go/bin:$PATH:$PLAN9/bin
+export OS=`uname | tr '[:upper:]' '[:lower:]'`
+export PLAN9=/usr/local/plan9
+
+[[ -o login ]] && path=()
+pathadd -- /usr/{s,}bin /{s,}bin
+pathadd /usr/local/{s,}bin
+pathadd -- /usr/games /usr/games/bin
+pathadd -- $PLAN9/bin $PLAN9/bin/upas
+pathadd ~/bin
 
 # personal variables
 if [ -x "`command -v emacsclient`" ]; then
-	EDITOR="emacsclient"
+	export EDITOR="emacsclient"
 else
-	EDITOR=/usr/bin/mg
+	export EDITOR=/usr/bin/mg
 fi
-BASH_SILENCE_DEPRECATION_WARNING=1
-BROWSER=firefox
-CARGO_HOME=$HOME/.local/share/cargo
-CUDA_CACHE_PATH=$HOME/.cache/nv
-GOT_AUTHOR="demian garcia <d@sfyatee.com>"
-GOTELEMETRY=off
-GOTOOLCHAIN=local
-GS_FONTPATH=$PLAN9/postscript/font
-HISTFILE=/dev/null
-HISTSIZE=500
-LESS="-i"
-LESSHISTFILE=/dev/null
-NAMESPACE=/tmp/ns.$USER.:0
-NO_COLOR=1
-PYTHON_HISTORY=/dev/null
-RUSTUP_HOME=$HOME/.local/share/rustup
-SHELL_SESSIONS_DISABLE=1 # Apple Terminal
-XDG_CONFIG_HOME=$HOME/.config
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export BROWSER=firefox
+export CARGO_HOME=$HOME/.local/share/cargo
+export CUDA_CACHE_PATH=$HOME/.cache/nv
+export GOT_AUTHOR="demian garcia <d@sfyatee.com>"
+export GOTELEMETRY=off
+export GOTOOLCHAIN=local
+export GS_FONTPATH=$PLAN9/postscript/font
+export HISTFILE=/dev/null
+export HISTSIZE=500
+export LESS=-i
+export LESSHISTFILE=/dev/null
+export NAMESPACE=/tmp/ns.$USER.:0
+export NO_COLOR=1
+export PYTHON_HISTORY=/dev/null
+export RUSTUP_HOME=$HOME/.local/share/rustup
+export SHELL_SESSIONS_DISABLE=1 # Apple Terminal
+export XDG_CONFIG_HOME=$HOME/.config
 
 # prepare path enviornment
-PATH=$CARGO_HOME/bin:$PATH:$PLAN9/bin/upas
+export PATH=$CARGO_HOME/bin:$PATH:$PLAN9/bin/upas
 
 # plan9
-font=/mnt/font/LucidaGrande/11a/font
-font1=/mnt/font/Hack-Regular/11a/font
-home=$HOME
-secstore=localhost
-user=$USER
+export font=/mnt/font/LucidaGrande/11a/font
+export font1=/mnt/font/Hack-Regular/11a/font
+export home=$HOME
+export secstore=localhost
+export user=$USER
 
 # emulate rc shell
 set -a	# autoexport
@@ -49,21 +67,21 @@ set +o vi	# turn it off
 
 # for use in 9term and acme's win
 if [ "$termprog" ] || [ "$winid" ]; then
-	EDITOR=editinacme
-	GH_PROMPT_DISABLED=1
-	PAGER=nobs
+	export EDITOR=editinacme
+	export GH_PROMPT_DISABLED=1
+	export PAGER=nobs
 fi
 
 # os specific settings
 if [ "$OS" = "darwin" ]; then
-	PATH=/usr/local/go/bin:$PATH
-	JJ_CONFIG=$HOME/.config/jj/config.toml
-	font=/mnt/font/LucidaGrande/14a/font
-	font1=/mnt/font/Hack-Regular/14a/font
+	export PATH=/usr/local/go/bin:$PATH
+	export JJ_CONFIG=$HOME/.config/jj/config.toml
+	export font=/mnt/font/LucidaGrande/14a/font
+	export font1=/mnt/font/Hack-Regular/14a/font
 fi
 
 if [ "$OS" = "darwin" ] || [ "$OS" = "*bsd" ]; then
-	NPROC=`sysctl -n hw.ncpu`
+	export NPROC=`sysctl -n hw.ncpu`
 	stty status '^T'
 fi
 
@@ -79,38 +97,3 @@ if [ "$OS" = "openbsd" ]; then
 fi
 
 ulimit -c 0	# don't litter
-
-export \
-	ARCH\
-	BASH_SILENCE_DEPRECATION_WARNING\
-	BROWSER\
-	CARGO_HOME\
-	CUDA_CACHE_PATH\
-	EDITOR\
-	GH_PROMPT_DISABLED\
-	GOT_AUTHOR\
-	GOTELEMETRY\
-	GOTOOLCHAIN\
-	GS_FONTPATH\
-	HISTSIZE\
-	JJ_CONFIG\
-	LESS\
-	LESSHISTFILE\
-	MAKEFLAGS\
-	NAMESPACE\
-	NO_COLOR\
-	NPROC\
-	OS\
-	PAGER\
-	PATH\
-	PLAN9\
-	PYTHON_HISTORY\
-	RIPGREP_CONFIG_PATH\
-	RUSTUP_HOME\
-	W3M_DIR\
-	XDG_CONFIG_HOME\
-	font\
-	font1\
-	home\
-	user\
-	secstore\
