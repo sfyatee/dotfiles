@@ -20,7 +20,6 @@ unset HISTFILE	# no
 setopt globdots	# hidden files in completion
 setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
-setopt promptsubst	# allows function in PROMPT
 setopt rcquotes	# plan9-like quoting
 
 # nice things to have
@@ -33,6 +32,7 @@ alias ll="ls -AlF"
 alias ls="ls -AF"
 alias ltr="ls -AlFtr"
 alias m="make"
+alias mg="mg -n"
 alias mv="mv -i"
 alias ph="ps auwwx | head"
 alias sam="sam -a"
@@ -45,6 +45,7 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	# disable prompting
 	export GH_PROMPT_DISABLED=1
 
+	# turn off zsh line editing
 	setopt nozle
 
 	alias git="git --no-pager"

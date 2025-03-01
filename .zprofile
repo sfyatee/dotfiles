@@ -22,7 +22,7 @@ export PLAN9=/usr/local/plan9
 # browser used by web(1) and thus plumber
 export BROWSER=firefox
 
-# openbsd's gameoftrees
+# got(1)
 export GOT_AUTHOR="demian garcia <d@sfyatee.com>"
 
 # opts
