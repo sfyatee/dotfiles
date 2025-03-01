@@ -1,0 +1,3 @@
+#!/bin/sh
+
+mg -u ~/.config/mg/mg "$@"

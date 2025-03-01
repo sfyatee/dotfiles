@@ -1,0 +1,12 @@
+meta-key-mode
+
+backup-to-home-directory
+
+define-key compile "n" next-line
+define-key compile "p" previous-line
+define-key compile "q" delete-window
+
+global-set-key "\^cm" compile
+global-set-key "\eg\eg" goto-line
+
+auto-execute *.[ch] c-mode

@@ -10,14 +10,11 @@ PLAN9=/usr/local/plan9
 path=(. $BIN $home/go/bin $path $PLAN9/bin)
 
 # personal variables
-if(test -x `{which emacsclient}){
-	EDITOR=`{which emacsclient}
-}
-if not EDITOR=/usr/bin/mg
 BASH_SILENCE_DEPRECATION_WARNING=1
 BROWSER=firefox
 CARGO_HOME=$home/.local/share/cargo
 CUDA_CACHE_PATH=$home/.cache/nv
+EDITOR=/usr/bin/mg
 GOT_AUTHOR=('demian garcia <d@sfyatee.com>')
 GOTELEMETRY=off
 GOTOOLCHAIN=local

@@ -11,9 +11,7 @@ typeset -U path PATH
 pathadd() {
 	setopt LOCAL_OPTIONS EXTENDED_GLOB
 	if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
-	path=( ${^${@[1,$@[(i)--]-1]}:|path}(N-/)
-		$path
-		${^${@[$@[(i)--]+1,-1]}:|path}(N-/) )
+	path=( ${^${@[1,$@[(i)--]-1]}:|path}(N-/) $path ${^${@[$@[(i)--]+1,-1]}:|path}(N-/) )
 }
 
 # world
@@ -94,7 +92,7 @@ export MAKEFLAGS=-j$NPROC
 export SAMUFLAGS=-j$NPROC
 
 if [ "$OS" = "openbsd" ]; then
-  export CDPATH=.:/usr/ports:/usr/ports/mystuff
+	export CDPATH=.:/usr/ports:/usr/ports/mystuff
 fi
 
 ulimit -c 0	# don't litter
