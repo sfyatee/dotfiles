@@ -27,7 +27,7 @@ export GOT_AUTHOR="demian garcia <d@sfyatee.com>"
 
 # opts
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export EDITOR=/usr/bin/mg
+export EDITOR='/usr/bin/mg -n'
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
 export HOMEBREW_NO_ANALYTICS=1
@@ -45,10 +45,12 @@ export GS_FONTPATH=$PLAN9/postscript/font
 # xdg
 export CARGO_HOME=$HOME/.local/share/cargo
 export CUDA_CACHE_PATH=$HOME/.cache/nv
+export JJ_CONFIG=$HOME/.config/jj/config.toml # for Apple
 export RUSTUP_HOME=$HOME/.local/share/rustup
 
 # path
 [[ -o login ]] && path=()
+pathadd /usr/local/go/bin
 pathadd -- /usr/{s,}bin /{s,}bin
 pathadd /usr/local/{s,}bin
 pathadd -- /usr/games /usr/games/bin
@@ -56,7 +58,7 @@ pathadd -- $PLAN9/bin $PLAN9/bin/upas
 pathadd $CARGO_HOME/bin ~/go/bin
 pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
 
-# override $NAMESPACE; intro(4)
+# override $NAMESPACE; X is not running
 export NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
@@ -73,19 +75,14 @@ set -a
 set +o vi
 
 # os specificities
-if [ "$OS" = "darwin" ]; then
-	export PATH=/usr/local/go/bin:$PATH
-	export JJ_CONFIG=$HOME/.config/jj/config.toml
-fi
-
-if [ "$OS" = "darwin" ] || [ "$OS" = "*bsd" ]; then
+case "$OS" in
+darwin|*bsd)
 	export NPROC=`sysctl -n hw.ncpu`
 	stty status '^T'
-fi
-
-if [ "$OS" = "linux" ]; then
+	;;
+linux)
 	export NPROC=`nproc`
-fi
+esac
 
 # use $NPROC jobs
 export MAKEFLAGS=-j$NPROC
