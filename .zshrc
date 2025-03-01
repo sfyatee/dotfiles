@@ -57,18 +57,18 @@ if [ "$termprog" ] || [ "$winid" ]; then
 fi
 
 case "$OS" in
-	linux)
-		alias ls="ls -Afv"
-		alias pQm="pacman -Qm"
-		alias ph="ps auwwx | sort -rk 3,3 | head"
-		;;
-	openbsd)
-		alias cvs="opencvs"
-		alias mpldc="make port-lib-depends-check"
-		alias mup="make update-patches"
-		alias mupl="make update-plist"
-		alias pclean='make clean="package plist"'
-		alias rsync="openrsync"
+linux)
+	alias ls="ls -Afv"
+	alias pQm="pacman -Qm"
+	alias ph="ps auwwx | sort -rk 3,3 | head"
+	;;
+openbsd)
+	alias cvs="opencvs"
+	alias mpldc="make port-lib-depends-check"
+	alias mup="make update-patches"
+	alias mupl="make update-plist"
+	alias pclean='make clean="package plist"'
+	alias rsync="openrsync"
 esac
 
 # no fancy zsh prompt when using dumb terminals

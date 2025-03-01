@@ -9,11 +9,11 @@ typeset -U path PATH
 # 09jan2018  +leah+
 # 11aug2021  +leah+  -P to not follow symlinks, useful for Nix
 pathadd() {
-  setopt LOCAL_OPTIONS EXTENDED_GLOB
-  if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
-  path=( ${^${@[1,$@[(i)--]-1]}:|path}(N-/)
-         $path
-         ${^${@[$@[(i)--]+1,-1]}:|path}(N-/) )
+	setopt LOCAL_OPTIONS EXTENDED_GLOB
+	if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
+	path=( ${^${@[1,$@[(i)--]-1]}:|path}(N-/)
+		$path
+		${^${@[$@[(i)--]+1,-1]}:|path}(N-/) )
 }
 
 # world
@@ -71,26 +71,27 @@ export secstore=localhost
 export user=$USER
 
 # emulate rc shell
-set -a	
+set -a
 set +o vi
 
 # os specificities
 if [ "$OS" = "darwin" ]; then
-  export PATH=/usr/local/go/bin:$PATH
-  export JJ_CONFIG=$HOME/.config/jj/config.toml
+	export PATH=/usr/local/go/bin:$PATH
+	export JJ_CONFIG=$HOME/.config/jj/config.toml
 fi
 
 if [ "$OS" = "darwin" ] || [ "$OS" = "*bsd" ]; then
-  export NPROC=`sysctl -n hw.ncpu`
-  stty status '^T'
+	export NPROC=`sysctl -n hw.ncpu`
+	stty status '^T'
 fi
 
 if [ "$OS" = "linux" ]; then
-  export NPROC=`nproc`
+	export NPROC=`nproc`
 fi
 
 # use $NPROC jobs
 export MAKEFLAGS=-j$NPROC
+export SAMUFLAGS=-j$NPROC
 
 if [ "$OS" = "openbsd" ]; then
   export CDPATH=.:/usr/ports:/usr/ports/mystuff
