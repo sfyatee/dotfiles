@@ -45,6 +45,13 @@
   ;; enable use-package :ensure support for elpaca.
   (elpaca-use-package-mode))
 
+;; emacs
+(use-package emacs
+  :demand t
+  :custom
+  (x-stretch-cursor t)
+)
+
 ;; theme
 (load-theme 'modus-operandi-tinted t)
 (enable-theme 'modus-operandi-tinted)

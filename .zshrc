@@ -43,7 +43,7 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	export EDITOR=editinacme
 
 	# turn off line editing
-	setopt nozle
+	unsetopt zle
 
 	# prompting
 	export GH_PROMPT_DISABLED=1
@@ -77,7 +77,7 @@ if [[ "$TERM" == "dumb" ]]; then
 	# get rid of backspace characters in Unix man output
 	export PAGER=nobs
 
-	setopt nopromptcr
+	unsetopt promptcr
 	unfunction precmd
 	unfunction preexec
 	# set prompt so middle-clicking whole line reruns line's command

@@ -82,14 +82,13 @@ darwin|*bsd)
 	;;
 linux)
 	export NPROC=`nproc`
+	;;
+openbsd)
+	export CDPATH=.:/usr/ports:/usr/ports/mystuff
 esac
 
 # use $NPROC jobs
 export MAKEFLAGS=-j$NPROC
 export SAMUFLAGS=-j$NPROC
-
-if [ "$OS" = "openbsd" ]; then
-	export CDPATH=.:/usr/ports:/usr/ports/mystuff
-fi
 
 ulimit -c 0	# don't litter
