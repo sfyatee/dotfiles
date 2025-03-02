@@ -71,9 +71,12 @@ fn sam{builtin sam -a $*}
 
 # for use in 9term and acme's win
 if(~ $termprog 9term || ~ $termprog win){
+	# plumb files instead of starting new editor
 	EDITOR=editinacme
+
+	# prompting
 	GH_PROMPT_DISABLED=1
-	PAGER=nobs
+
 	fn git{builtin git --no-pager $*}
 	fn hg{chg --pager=no $*}
 	fn jj{builtin jj --no-pager $*}
@@ -111,6 +114,11 @@ case openbsd
 	fn mupl{make update-plist $*}
 	fn pclean{make clean='package plist'}
 	fn rsync{openrsync $*}
+}
+
+if(~ $TERM dumb){
+	# get rid of backspace characters in Unix man output
+	PAGER=nobs
 }
 
 # use $NPROC jobs

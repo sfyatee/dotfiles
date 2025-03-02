@@ -42,19 +42,19 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
 	export EDITOR=editinacme
 
-	# disable prompting
-	export GH_PROMPT_DISABLED=1
-
-	# turn off zsh line editing
+	# turn off line editing
 	setopt nozle
+
+	# prompting
+	export GH_PROMPT_DISABLED=1
 
 	alias git="git --no-pager"
 	alias hg="chg --pager=no"
 	alias jj="jj --no-pager"
 
 	# sets the current window label using awd (see label(1))
-	awd
 	chpwd() { awd }
+	awd
 fi
 
 case "$OS" in
