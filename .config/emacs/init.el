@@ -81,7 +81,9 @@
 
 ;; treesit
 (setq treesit-language-source-alist
-   '((go "https://github.com/tree-sitter/tree-sitter-go")
+   '((c "https://github.com/tree-sitter/tree-sitter-c")
+     (cpp "https://github.com/tree-sitter/tree-sitter-cpp")
+     (go "https://github.com/tree-sitter/tree-sitter-go")
      (gomod "https://github.com/camdencheek/tree-sitter-go-mod")
      (python "https://github.com/tree-sitter/tree-sitter-python")
      (rust "https://github.com/tree-sitter/tree-sitter-rust")))
@@ -90,9 +92,10 @@
 (use-package treesit
   :ensure nil
   :preface
-  (dolist (mapping '((go-mode . go-ts-mode)
-		     (rust-mode . rust-ts-mode)))
-    (add-to-list 'major-mode-remap-alist mapping))
+  (dolist (mapping '((c-mode . c-ts-mode)
+		     (c++-mode . c++-ts-mode)
+		     (python-mode . python-ts-mode)))
+  (add-to-list 'major-mode-remap-alist mapping))
   :init
   (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
   (add-to-list 'auto-mode-alist '("/go\\.mod\\'" . go-mod-ts-mode))
