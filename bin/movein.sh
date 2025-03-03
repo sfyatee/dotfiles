@@ -29,6 +29,7 @@ llvm \
 meson \
 mpv \
 notmuch \
+racket-minimal \
 restic \
 rust-analyzer \
 spin \
@@ -59,6 +60,7 @@ Linux)
 		glab \
 		libreoffice-fresh \
 		mandoc \
+		mg \
 		niri \
 		openbsd-netcat \
 		pacman-contrib \
@@ -83,6 +85,7 @@ Linux)
 	fi
 	paru -S --needed --noconfirm \
 		chicago95-theme \
+		gameoftrees \
 		minivmac \
 		ttf-apple-emoji \
 		ttf-mac-fonts \

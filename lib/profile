@@ -48,7 +48,7 @@ NAMESPACE=/tmp/ns.$USER.:0
 font=/mnt/font/LucidaGrande/11a/font
 font1=/mnt/font/Hack-Regular/11a/font
 
-# equivalent variables for rc(1)
+# 9
 nine=➈
 fn '%'{ if(! ~ $#* 0) $* }
 secstore=localhost

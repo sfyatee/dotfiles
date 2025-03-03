@@ -56,6 +56,7 @@ pathadd /usr/local/{s,}bin
 pathadd -- /usr/games /usr/games/bin
 pathadd -- $PLAN9/bin $PLAN9/bin/upas
 pathadd $CARGO_HOME/bin ~/go/bin
+pathadd ~/.local/bin
 pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
 
 # override $NAMESPACE; X is not running
