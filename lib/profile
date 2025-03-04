@@ -74,7 +74,7 @@ if(~ $termprog 9term || ~ $termprog win){
 	# plumb files instead of starting new editor
 	EDITOR=editinacme
 
-	# prompting
+	# paging
 	GH_PROMPT_DISABLED=1
 
 	fn git{builtin git --no-pager $*}

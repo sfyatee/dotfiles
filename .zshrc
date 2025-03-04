@@ -14,6 +14,9 @@ compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
+# ^C https://www.zsh.org/mla/users/2011/msg00089.html
+TRAPINT() { print -n -u2 '^C'; return $((128+$1)) }
+
 # plan9 settings
 bindkey -e	# emacs binds
 unset HISTFILE	# no
@@ -42,10 +45,10 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
 	export EDITOR=editinacme
 
-	# turn off line editing
+	# no line editing
 	unsetopt zle
 
-	# prompting
+	# paging
 	export GH_PROMPT_DISABLED=1
 
 	alias git="git --no-pager"
@@ -59,7 +62,7 @@ fi
 
 case "$OS" in
 linux)
-	alias ls="ls -Afv"
+	alias ls="ls -AFv"
 	alias pQm="pacman -Qm"
 	alias ph="ps auwwx | sort -rk 3,3 | head"
 	;;

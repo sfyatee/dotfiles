@@ -12,6 +12,7 @@ blender \
 cmake \
 curl \
 darktable \
+dunst \
 firefox \
 foot \
 gimp \
@@ -26,6 +27,7 @@ jq \
 jujutsu \
 lilypond \
 llvm \
+mblaze \
 meson \
 mpv \
 notmuch \
@@ -51,9 +53,8 @@ Linux)
 	sudo pacman -S --needed --noconfirm $PKGS \
 		blueman \
 		clang \
-		emacs-wayland \
+		devtools \
 		fastfetch \
-		fnott \
 		fuzzel \
 		gammastep \
 		gcc-m2 \
@@ -84,7 +85,7 @@ Linux)
 		makepkg -fsi --noconfirm
 	fi
 	paru -S --needed --noconfirm \
-		chicago95-theme \
+		comlink-git \
 		gameoftrees \
 		minivmac \
 		ttf-apple-emoji \
@@ -113,7 +114,6 @@ OpenBSD)
 		xdimmer \
 		xdotool \
 		xfe \
-		xnotify \
 		xosd
 	;;
 esac
@@ -131,7 +131,7 @@ fi
 case "$OS" in
 Linux)
 	systemctl enable --now {mandoc,paccache}.timer
-	systemctl --user enable --now {emacs,gammastep,syncthing,xwayland-satellite}.service
+	systemctl --user enable --now {foot-server,gammastep,syncthing,xwayland-satellite}.service
 	;;
 esac
 u() {

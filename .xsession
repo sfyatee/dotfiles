@@ -29,13 +29,6 @@ export MOZ_WEBRENDER=1
 
 xrdb ~/.config/X11/Xresources
 
-# notification daemon
-XNOTIFY_FIFO="$HOME/.cache/xnotify$DISPLAY.fifo"
-export XNOTIFY_FIFO
-rm -f $XNOTIFY_FIFO
-mkfifo $XNOTIFY_FIFO
-xnotify 0<>$XNOTIFY_FIFO
-
 xbanish &
 tpadnav &
 xdimmer -kn -t 10 -s 1 -K &
