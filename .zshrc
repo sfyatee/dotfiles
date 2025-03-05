@@ -4,6 +4,17 @@ umask 022
 # speed things up
 if [[ ! -o interactive ]]; then return; fi
 
+# plan9 settings
+unset HISTFILE	# no
+setopt globdots	# hidden files in completion
+setopt listtypes	# ls -F in completion
+setopt noclobber	# prevent accidents
+setopt rcquotes	# plan9-like quoting
+
+# this needs to run before compinit installs keybindings.
+# 12mar2013  +chris+
+bindkey -e	# emacs binds
+
 # completion files: use xdg dirs
 autoload -Uz compinit	# sinful completion
 [ -d "$HOME/.cache"/zsh ] || mkdir -p "$HOME/.cache"/zsh
@@ -26,14 +37,6 @@ add-zsh-hook -Uz chpwd osc7
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
-# plan9 settings
-bindkey -e	# emacs binds
-unset HISTFILE	# no
-setopt globdots	# hidden files in completion
-setopt listtypes	# ls -F in completion
-setopt noclobber	# prevent accidents
-setopt rcquotes	# plan9-like quoting
-
 # nice things to have
 alias acme="acme -a -f $font -F $font1"
 alias cp="cp -i"
@@ -53,17 +56,12 @@ alias sam="sam -a"
 if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
 	export EDITOR=editinacme
-
-	# no line editing
-	unsetopt zle
-
-	# paging/prompting
-	export GH_PROMPT_DISABLED=1
-
+	# disable
+	unsetopt zle	# zsh line editor
+	# no paging
 	alias git="git --no-pager"
 	alias hg="chg --pager=no"
 	alias jj="jj --no-pager"
-
 	# sets the current window label using awd (see label(1))
 	chpwd() { awd }
 	awd
@@ -88,10 +86,9 @@ esac
 if [[ "$TERM" == "dumb" ]]; then
 	# get rid of backspace characters in Unix man output
 	export PAGER=nobs
-
+	# disable
 	unsetopt promptcr
-	unfunction precmd
-	unfunction preexec
+	unfunction osc7 precmd preexec
 	# set prompt so middle-clicking whole line reruns line's command
 	# show last exit code if non-zero
 	PROMPT=": %(?..{%?} )%m; "
@@ -108,6 +105,4 @@ felloff() {
 	9p stat plumb 2>/dev/null 1>&2 || plumber
 }
 
-if [ -d "$PLAN9" ]; then
-	felloff
-fi
+if [ -d "$PLAN9" ]; then felloff; fi

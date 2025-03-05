@@ -73,10 +73,7 @@ fn sam{builtin sam -a $*}
 if(~ $termprog 9term || ~ $termprog win){
 	# plumb files instead of starting new editor
 	EDITOR=editinacme
-
-	# paging/prompting
-	GH_PROMPT_DISABLED=1
-
+	# no paging
 	fn git{builtin git --no-pager $*}
 	fn hg{chg --pager=no $*}
 	fn jj{builtin jj --no-pager $*}
