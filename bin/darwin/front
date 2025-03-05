@@ -1,0 +1,8 @@
+#!/bin/sh
+
+qemu-system-aarch64 -M virt-2.12,accel=hvf,gic-version=3 \
+		-cpu host -m 4G -smp 4 \
+		-bios u-boot.bin \
+		-drive file=9front.arm64.qcow2,if=none,id=disk \
+		-device virtio-blk-pci-non-transitional,drive=disk \
+		-serial stdio
