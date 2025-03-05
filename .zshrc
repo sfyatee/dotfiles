@@ -10,12 +10,21 @@ autoload -Uz compinit	# sinful completion
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
+# osc7
+autoload -Uz add-zsh-hook
+_osc7() {
+	emulate -L zsh # also sets localoptions for us
+	setopt extendedglob
+	local LC_ALL=C
+	printf '\e]7;file://%s%s\e\' $HOST \
+		${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+}
+osc7(){(( ZSH_SUBSHELL ))||_osc7}
+add-zsh-hook -Uz chpwd osc7
+
 # prompt configuration
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
-
-# ^C https://www.zsh.org/mla/users/2011/msg00089.html
-TRAPINT() { print -n -u2 '^C'; return $((128+$1)) }
 
 # plan9 settings
 bindkey -e	# emacs binds
@@ -48,7 +57,7 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	# no line editing
 	unsetopt zle
 
-	# paging
+	# paging/prompting
 	export GH_PROMPT_DISABLED=1
 
 	alias git="git --no-pager"
