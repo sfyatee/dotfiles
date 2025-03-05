@@ -38,6 +38,7 @@ export NO_COLOR=1
 export POWERSHELL_TELEMETRY_OPTOUT=1
 export PYTHON_HISTORY=/dev/null
 export SHELL_SESSIONS_DISABLE=1 # Apple Terminal
+export XDG_CONFIG_HOME=$HOME/.config # for Apple
 
 # let gs find the plan9port document fonts
 export GS_FONTPATH=$PLAN9/postscript/font
@@ -45,12 +46,11 @@ export GS_FONTPATH=$PLAN9/postscript/font
 # xdg
 export CARGO_HOME=$HOME/.local/share/cargo
 export CUDA_CACHE_PATH=$HOME/.cache/nv
-export JJ_CONFIG=$HOME/.config/jj/config.toml # for Apple
+export JJ_CONFIG=$XDG_CONFIG_HOME/jj/config.toml # for Apple
 export RUSTUP_HOME=$HOME/.local/share/rustup
 
 # path
 [[ -o login ]] && path=()
-pathadd /usr/local/go/bin
 pathadd -- /usr/{s,}bin /{s,}bin
 pathadd /usr/local/{s,}bin
 pathadd -- /usr/games /usr/games/bin
@@ -80,6 +80,7 @@ case "$OS" in
 darwin|*bsd)
 	export NPROC=`sysctl -n hw.ncpu`
 	stty status '^T'
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 	;;
 linux)
 	export NPROC=`nproc`

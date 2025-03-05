@@ -8,6 +8,7 @@ rm -f ~/.cshrc \
 	~/.Xdefaults \
 	~/.cvsrc
 export PKGS=" \
+aerc \
 blender \
 cmake \
 curl \
@@ -129,6 +130,9 @@ if [ ! -d ~/.jj ]; then
 	jj new master@origin
 fi
 case "$OS" in
+Darwin)
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	;;
 Linux)
 	systemctl enable --now {mandoc,paccache}.timer
 	systemctl --user enable --now {foot-server,gammastep,syncthing,xwayland-satellite}.service

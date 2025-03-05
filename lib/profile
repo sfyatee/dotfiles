@@ -28,6 +28,7 @@ LESS=-i
 LESSHISTFILE=/dev/null
 NO_COLOR=1
 PYTHON_HISTORY=/dev/null
+XDG_CONFIG_HOME=$home/.config # for Apple
 
 # let gs find the plan9port document fonts
 GS_FONTPATH=$PLAN9/postscript/font
@@ -35,8 +36,8 @@ GS_FONTPATH=$PLAN9/postscript/font
 # xdg
 CARGO_HOME=$home/.local/share/cargo
 CUDA_CACHE_PATH=$home/.cache/nv
+JJ_CONFIG=$XDG_CONFIG_HOME/jj/config.toml # for Apple
 RUSTUP_HOME=$home/.local/share/rustup
-JJ_CONFIG=$home/.config/jj/config.toml # for Apple
 
 # path
 path=($CARGO_HOME/bin $path $PLAN9/bin/upas)

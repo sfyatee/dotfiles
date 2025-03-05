@@ -1,0 +1,7 @@
+brew "go"
+brew "gh"
+brew "jj"
+brew "qemu"
+brew "racket"
+brew "rustup"
+brew "u-boot-tools"
