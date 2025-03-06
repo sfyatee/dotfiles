@@ -1,12 +1,15 @@
 #!/bin/sh
 # simple setup script for Linux/OpenBSD
 
+export OS=`uname`
+
 rm -f ~/.cshrc \
 	~/.login \
 	~/.mailrc \
 	~/.profile \
 	~/.Xdefaults \
 	~/.cvsrc
+
 export PKGS=" \
 aerc \
 blender \
@@ -48,7 +51,7 @@ yt-dlp \
 zig \
 zsh \
 "
-export OS=`uname`
+
 case "$OS" in
 Linux)
 	sudo pacman -S --needed --noconfirm $PKGS \
@@ -118,17 +121,15 @@ OpenBSD)
 		xosd
 	;;
 esac
-export RUSTUP_HOME=$HOME/.local/share/rustup
-if [ "$OS" = "Darwin" ] && [ ! -d $RUSTUP_HOME ]; then
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-fi
-if [ ! -d ~/.jj ]; then
+
+if [ ! -d ~/.git ]; then
 	cd ~
-	jj git init
-	jj git remote add origin https://github.com/sfyatee/dotfiles
-	jj git fetch
-	jj new master@origin
+	git init
+	git remote add origin https://github.com/sfyatee/dotfiles
+	git fetch
+	git checkout -f master
 fi
+
 case "$OS" in
 Darwin)
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -138,6 +139,7 @@ Linux)
 	systemctl --user enable --now {foot-server,gammastep,syncthing,xwayland-satellite}.service
 	;;
 esac
+
 u() {
 	go install 9fans.net/go/acme/Watch@master
 	go install 9fans.net/go/acme/editinacme@master
