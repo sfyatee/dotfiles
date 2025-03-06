@@ -36,6 +36,7 @@ xdimmer -kn -t 10 -s 1 -K &
 # run after any icc profile loading
 redshift -l 34.10:-118.60 -t 5000:3500 -m randr &
 
+# finally, run the window manager and block
 if [ -x /usr/local/bin/progman ]; then
 	/usr/local/bin/progman
 elif [ -x /usr/local/plan9/bin/rio ]; then
