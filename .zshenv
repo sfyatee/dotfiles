@@ -9,7 +9,7 @@ typeset -U path PATH
 # 09jan2018  +leah+
 # 11aug2021  +leah+  -P to not follow symlinks, useful for Nix
 pathadd() {
-	setopt LOCAL_OPTIONS EXTENDED_GLOB
+	setopt localoptions extendedglob
 	if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
 	path=(${^${@[1,$@[(i)--]-1]}:|path}(N-/) $path ${^${@[$@[(i)--]+1,-1]}:|path}(N-/))
 }
