@@ -1,4 +1,5 @@
 brew "fastfetch"
+brew "gcc"
 brew "go"
 brew "gopls"
 brew "gh"

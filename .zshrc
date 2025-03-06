@@ -67,6 +67,34 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	awd
 fi
 
+# up [|N|@|pat] -- go up 1, N or until basename matches pat many directories
+#   just output directory when not used interactively, e.g. in backticks
+# 06sep2013  +chris+
+# 11oct2017  +leah+  add completion
+# 13jul2021  +leah+  add @ for git root
+# 12oct2023  +leah+  fix @ when in git root already
+up() {
+	local op=print
+	[[ -t 1 ]] && op=cd
+	case "$1" in
+	'') up 1;;
+	-*|+*) $op ~$1;;
+	<->) $op $(printf '../%.0s' {1..$1});;
+	@) local cdup; cdup=./$(git rev-parse --show-cdup) && $op $cdup;;
+	*) local -a seg; seg=(${(s:/:)PWD%/*})
+	local n=${(j:/:)seg[1,(I)$1*]}
+	if [[ -n $n ]]; then
+		$op /$n
+	else
+		print -u2 up: could not find prefix $1 in $PWD
+		return 1
+	fi
+	esac
+}
+_up() { (( $#words > 2 )) || compadd -V segments -- ${(Oas:/:)PWD} }
+compdef _up up
+alias @='up @'
+
 case "$OS" in
 linux)
 	alias ls="ls -AFv"
