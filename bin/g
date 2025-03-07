@@ -1,6 +1,16 @@
 #!/bin/zsh
 
-# g  +leah+
+# g -- call grep recursively with useful defaults
+# 02oct2011  +chris+
+# 10jan2012  +chris+  take an directory as possible last argument
+# 28nov2012  +chris+  use grep -r
+# 15dec2013  +chris+  use LC_ALL=C for speed and UTF-8 segfaults with -P
+# 13may2015  +chris+  use directory only when more than two arguments
+# 22feb2016  +chris+  line-buffered to quicker pipes
+# 14aug2016  +chris+  same for git-grep
+# 27sep2016  +chris+  '+ext' to expand to --include=*.ext
+# 16nov2020  +leah+  use --cached by default
+# 25jan2022  +leah+  override GIT_PAGER=less for gg so -O works nicely
 g() {
 	LC_ALL=C grep \
 	${${(M)@:#+*}:s/+/--include=*./} \
