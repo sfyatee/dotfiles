@@ -104,6 +104,7 @@ case linux
 	fn ls{builtin ls -AFv $*}
 	fn pQm{pacman -Qm}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
+	fn rcctl{systemctl $*}
 case openbsd
 	cdpath=(. /usr/ports /usr/ports/mystuff)
 	fn cvs{opencvs $*}
@@ -131,5 +132,4 @@ fn felloff{
 	9p stat plumb >[2]/dev/null >[1=2] || plumber
 }
 
-if(test -d $PLAN9)
-	felloff
+if(test -d $PLAN9) felloff

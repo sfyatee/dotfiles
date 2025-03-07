@@ -1,3 +1,9 @@
 #!/bin/zsh
 
+# d -- use g to find a definition (start of line, Go, Ocaml, Ruby, Rust)
+# 07apr2014  +chris+
+# 13may2015  +chris+
+# 21jan2017  +leah+  ignore binary
+# 10feb2018  +leah+  fix #define, better output
+# 15aug2019  +leah+  revert output
 g -IH '^(#define|func|let|let rec|class|module|def|fn)[[:space:]]+' "$@"

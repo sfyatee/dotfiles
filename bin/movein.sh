@@ -92,6 +92,7 @@ Linux)
 		comlink-git \
 		gameoftrees \
 		minivmac \
+		tmux-mem-cpu-load \
 		ttf-apple-emoji \
 		ttf-mac-fonts \
 		ttf-ms-fonts \
@@ -113,6 +114,7 @@ OpenBSD)
 		rust \
 		sshfs-fuse \
 		syncterm \
+		tmux-mem-cpu-load \
 		tpadnav \
 		xbanish \
 		xdimmer \
