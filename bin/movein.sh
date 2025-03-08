@@ -63,7 +63,7 @@ fi
 case "$OS" in
 Linux)
 	sudo pacman -S --needed --noconfirm $PKGS
-	sudo pacman -S --needed - < ~/bin/linux/prog
+	sudo pacman -S --needed - < ~/bin/linux/prog.txt
 	if ! command -v paru >/dev/null 2>&1; then
 		cd /tmp || exit 1
 		if [ ! -d paru ]; then
@@ -84,7 +84,7 @@ Linux)
 	;;
 OpenBSD)
 	doas pkg_add $PKGS
-	doas pkg_add -l ~/bin/openbsd/prog
+	doas pkg_add -l ~/bin/openbsd/prog.txt
 	;;
 esac
 
