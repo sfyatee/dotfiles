@@ -8,7 +8,6 @@ gcc-m2
 glab
 libreoffice-fresh
 mandoc
-mg
 openbsd-netcat
 pacman-contrib
 prusa-slicer
