@@ -52,34 +52,18 @@ zig \
 zsh \
 "
 
+if [ ! -d ~/.git ]; then
+        cd ~
+        git init
+        git remote add origin https://github.com/sfyatee/dotfiles
+        git fetch
+        git checkout -f master
+fi
+
 case "$OS" in
 Linux)
-	sudo pacman -S --needed --noconfirm $PKGS \
-		blueman \
-		clang \
-		devtools \
-		fastfetch \
-		fuzzel \
-		gammastep \
-		gcc-m2 \
-		glab \
-		libreoffice-fresh \
-		mandoc \
-		mg \
-		niri \
-		openbsd-netcat \
-		pacman-contrib \
-		prusa-slicer \
-		qemu-full \
-		rsync \
-		rustup \
-		sequoia-sq \
-		sshfs \
-		steam \
-		tmux \
-		ttf-hack \
-		wayvnc \
-  		xwayland-satellite
+	sudo pacman -S --needed --noconfirm $PKGS
+	sudo pacman -S --needed - < ~/bin/linux/prog
 	if ! command -v paru >/dev/null 2>&1; then
 		cd /tmp || exit 1
 		if [ ! -d paru ]; then
@@ -99,38 +83,10 @@ Linux)
 		yambar-git
 	;;
 OpenBSD)
-	doas pkg_add $PKGS \
-		gawk \
-		gitlab-cli \
-		go-fonts \
-		got \
-		hack-fonts \
-		hare \
-		libreoffice \
-		minivmac \
-		prusaslicer \
-		qemu \
-		repology \
-		rust \
-		sshfs-fuse \
-		syncterm \
-		tmux-mem-cpu-load \
-		tpadnav \
-		xbanish \
-		xdimmer \
-		xdotool \
-		xfe \
-		xosd
+	doas pkg_add $PKGS
+	doas pkg_add -l ~/bin/openbsd/prog
 	;;
 esac
-
-if [ ! -d ~/.git ]; then
-	cd ~
-	git init
-	git remote add origin https://github.com/sfyatee/dotfiles
-	git fetch
-	git checkout -f master
-fi
 
 case "$OS" in
 Darwin)
