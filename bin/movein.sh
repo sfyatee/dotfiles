@@ -34,6 +34,7 @@ llvm \
 mblaze \
 meson \
 mpv \
+niri \
 notmuch \
 racket-minimal \
 restic \

@@ -9,7 +9,6 @@ glab
 libreoffice-fresh
 mandoc
 mg
-niri
 openbsd-netcat
 pacman-contrib
 prusa-slicer
