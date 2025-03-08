@@ -17,7 +17,6 @@ GOT_AUTHOR=('demian garcia <d@sfyatee.com>')
 
 # opts
 DOTNET_CLI_TELEMETRY_OPTOUT=1
-EDITOR=/usr/bin/mg
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 HISTFILE=/dev/null
@@ -97,6 +96,9 @@ if(~ $os darwin) {path=(/usr/local/go/bin $path)}
 
 switch($os){
 case darwin *bsd
+	# i want vis(1) editor
+	EDITOR`{which vise}
+	fn vi{vise $*}
 	NPROC=`{sysctl -n hw.ncpu}
 	stty status '^T'
 case linux

@@ -46,6 +46,7 @@ syncthing \
 tailscale \
 typst \
 unrar \
+vis \
 wev \
 wpa_supplicant \
 yt-dlp \

@@ -96,6 +96,15 @@ compdef _up up
 alias @='up @'
 
 case "$OS" in
+darwin|*bsd)
+        # i want vis(1) editor
+        if [ -x "`which vise`" ]; then
+                alias vi="vise"
+                export EDITOR=`which vise`
+        else
+                export EDITOR=/usr/bin/vi
+        fi
+	;;
 linux)
 	alias ls="ls -AFv"
 	alias pQm="pacman -Qm"
