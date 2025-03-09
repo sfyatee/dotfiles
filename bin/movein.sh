@@ -65,7 +65,7 @@ fi
 case "$OS" in
 Linux)
 	sudo pacman -S --needed --noconfirm $PKGS
-	sudo pacman -S --needed - < ~/bin/linux/prog.txt
+	sudo pacman -S --needed --noconfirm - < ~/bin/linux/prog.txt
 	if ! command -v paru >/dev/null 2>&1; then
 		cd /tmp || exit 1
 		if [ ! -d paru ]; then
