@@ -69,6 +69,9 @@ fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 fn sam{builtin sam -a $*}
 
+# use vis(1) editor
+if (! ~ $EDITOR '') EDITOR=/usr/bin/vi
+
 # for use in 9term and acme's win
 if(~ $termprog 9term || ~ $termprog win){
 	# plumb files instead of starting new editor
@@ -92,13 +95,8 @@ fn cd {
 awd
 
 # os specificities
-if(~ $os darwin) {path=(/usr/local/go/bin $path)}
-
 switch($os){
 case darwin *bsd
-	# i want vis(1) editor
-	EDITOR`{which vise}
-	fn vi{vise $*}
 	NPROC=`{sysctl -n hw.ncpu}
 	stty status '^T'
 case linux

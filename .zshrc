@@ -52,6 +52,17 @@ alias mv="mv -i"
 alias ph="ps auwwx | head"
 alias sam="sam -a"
 
+# use vis(1) editor
+for e in vise vis; do
+	if command -v "$e" >/dev/null 2>&1; then
+		alias vi="$e"
+		export EDITOR="$(command -v "$e")"
+		break
+	fi
+done
+
+: "${EDITOR:=/usr/bin/vi}"
+
 # for use in 9term and acme's win
 if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
@@ -96,15 +107,6 @@ compdef _up up
 alias @='up @'
 
 case "$OS" in
-darwin|*bsd)
-        # i want vis(1) editor
-        if [ -x "`which vise`" ]; then
-                alias vi="vise"
-                export EDITOR=`which vise`
-        else
-                export EDITOR=/usr/bin/vi
-        fi
-	;;
 linux)
 	alias ls="ls -AFv"
 	alias pQm="pacman -Qm"

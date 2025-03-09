@@ -27,7 +27,6 @@ export GOT_AUTHOR="demian garcia <d@sfyatee.com>"
 
 # opts
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export EDITOR='/usr/bin/mg -n'
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
 export HOMEBREW_NO_ANALYTICS=1
