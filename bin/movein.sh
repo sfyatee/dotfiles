@@ -35,6 +35,7 @@ lynx \
 mblaze \
 meson \
 mpv \
+neovim \
 niri \
 notmuch \
 racket-minimal \
@@ -47,7 +48,6 @@ syncthing \
 tailscale \
 typst \
 unrar \
-vis \
 wev \
 wpa_supplicant \
 yt-dlp \

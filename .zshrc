@@ -52,16 +52,14 @@ alias mv="mv -i"
 alias ph="ps auwwx | head"
 alias sam="sam -a"
 
-# use vis(1) editor
-for e in vise vis; do
-	if command -v "$e" >/dev/null 2>&1; then
-		alias vi="$e"
-		export EDITOR="$(command -v "$e")"
-		break
-	fi
-done
-
-: "${EDITOR:=/usr/bin/vi}"
+# when i say vi i mean nvim (if it's installed)
+if [ -x "`which nvim`" ]; then
+	alias vi="nvim"
+	alias view="nvim -R"
+	export EDITOR=`which nvim`
+else
+	export EDITOR=/usr/bin/vi
+fi
 
 # for use in 9term and acme's win
 if [ "$termprog" ] || [ "$winid" ]; then
