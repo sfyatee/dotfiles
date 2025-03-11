@@ -67,7 +67,16 @@ end
 -- XXX
 vim.opt.termguicolors = false
 
+-- all source code gets wrapped at <80 and auto-indented
+au("FileType",{pattern={"arduino","asm","c","cpp","go","java","javascript","php","html","make","objc","perl"},command="setl cc=81",})
+
 -- ruby and lua have soft tabs
-au("FileType", { pattern = { "ruby", "eruby", "lua" }, command = "setlocal ts=2 sw=2 tw=79 et sts=2 autoindent colorcolumn=81",})
-au("FileType", { pattern = "ruby", command = "setlocal commentstring=#\\ %s",})
-au("FileType", { pattern = "yaml", command = "setlocal ts=2 sw=2 et colorcolumn=81",})
+au("FileType",{pattern={"ruby","eruby","lua"},command="setl ts=2 sw=2 tw=79 et sts=2 autoindent cc=81",})
+au("FileType",{pattern="ruby",command="setl commentstring=#\\ %s",})
+au("FileType",{pattern="yaml",command="setl ts=2 sw=2 et cc=81",})
+
+-- makefiles and c have tabstops at 8 for portability
+au("FileType",{pattern={"arduino","asm","make","c","cpp"},command="setl ts=8 sw=8",})
+
+-- email and commit messages - expand tabs, wrap at 68 for future quoting, enable spelling
+au("FileType",{pattern={"cvs","gitcommit","mail"},command="setl tw=68 et spell cc=69",})
