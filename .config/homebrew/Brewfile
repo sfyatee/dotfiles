@@ -1,3 +1,4 @@
+# brew "comlink"
 brew "fastfetch"
 brew "gcc"
 brew "go"

@@ -31,6 +31,7 @@ jq \
 jujutsu \
 lilypond \
 llvm \
+lynx \
 mblaze \
 meson \
 mpv \
