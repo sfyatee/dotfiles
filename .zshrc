@@ -145,3 +145,6 @@ felloff() {
 }
 
 if [ -d "$PLAN9" ]; then felloff; fi
+
+# site local config
+[[ -e ~/.zshrc.local ]] && . ~/.zshrc.local || :
