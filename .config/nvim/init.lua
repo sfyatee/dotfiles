@@ -25,7 +25,8 @@ vim.g.maplocalleader = "\\"
 require("lazy").setup({
   spec = {
     -- add your plugins here
-    'martineausimon/nvim-lilypond-suite'
+    'martineausimon/nvim-lilypond-suite',
+    'neovim/nvim-lspconfig'
   },
   -- configure any other settings here. see the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -34,7 +35,7 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
--- vim opts
+-- vimscript equivalents
 local au = vim.api.nvim_create_autocmd
 
 local function map(mode, lhs, rhs, opts)
