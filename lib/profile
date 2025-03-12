@@ -22,7 +22,6 @@ GOTOOLCHAIN=local
 HISTFILE=/dev/null
 HISTSIZE=500
 HOMEBREW_NO_ANALYTICS=1
-LANG=en_US.UTF-8
 LESS=-i
 LESSHISTFILE=/dev/null
 NO_COLOR=1
@@ -40,6 +39,12 @@ RUSTUP_HOME=$home/.local/share/rustup
 
 # path
 path=($CARGO_HOME/bin $path $PLAN9/bin/upas)
+
+# UNIX means english and 24h clock. but do use UTF-8! and sort like a machine
+LANG=en_US.UTF-8
+LC_CTYPE=$LANG
+LC_COLLATE=C
+LC_TIME=C
 
 # override $NAMESPACE; X is not running
 NAMESPACE=/tmp/ns.$USER.:0

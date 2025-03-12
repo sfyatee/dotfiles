@@ -30,7 +30,6 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
 export HOMEBREW_NO_ANALYTICS=1
-export LANG=en_US.UTF-8
 export LESS=-i
 export LESSHISTFILE=/dev/null
 export NO_COLOR=1
@@ -57,6 +56,12 @@ pathadd -- $PLAN9/bin $PLAN9/bin/upas
 pathadd $CARGO_HOME/bin ~/go/bin
 pathadd ~/.local/bin
 pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
+
+# UNIX means english and 24h clock. but do use UTF-8! and sort like a machine
+export LANG=en_US.UTF-8
+export LC_CTYPE=$LANG
+export LC_COLLATE=C
+export LC_TIME=C
 
 # override $NAMESPACE; X is not running
 export NAMESPACE=/tmp/ns.$USER.:0
@@ -95,3 +100,6 @@ export MAKEFLAGS=-j$NPROC
 export SAMUFLAGS=-j$NPROC
 
 ulimit -c 0	# don't litter
+
+# site local config
+[[ -e ~/.zshenv.local ]] && . ~/.zshenv.local || :

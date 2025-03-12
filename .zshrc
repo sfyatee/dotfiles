@@ -104,6 +104,7 @@ _up() { (( $#words > 2 )) || compadd -V segments -- ${(Oas:/:)PWD} }
 compdef _up up
 alias @='up @'
 
+# os specificities
 case "$OS" in
 linux)
 	alias ls="ls -AFv"
