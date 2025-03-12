@@ -83,7 +83,7 @@ set +o vi
 case "$OS" in
 darwin)
 	eval "$(/opt/homebrew/bin/brew shellenv)"
-	;;
+	;&
 darwin|*bsd)
 	export NPROC=`sysctl -n hw.ncpu`
 	stty status '^T'
