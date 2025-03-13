@@ -26,7 +26,8 @@ require("lazy").setup({
   spec = {
     -- add your plugins here
     'martineausimon/nvim-lilypond-suite',
-    'neovim/nvim-lspconfig'
+    'neovim/nvim-lspconfig',
+    'weakish/rcshell.vim'
   },
   -- configure any other settings here. see the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -65,11 +66,14 @@ local function nmapp(lhs, rhs, opts)
   vim.api.nvim_set_keymap('n', lhs, rhs, options)
 end
 
--- XXX
+-- no truecolor
 vim.opt.termguicolors = false
 
 -- all source code gets wrapped at <80 and auto-indented
-au("FileType",{pattern={"arduino","asm","c","cpp","go","java","javascript","php","html","make","objc","perl"},command="setl cc=81",})
+au("FileType",{
+  pattern={"arduino","asm","c","cpp","go","java","javascript","php","html","make","objc","perl"},
+  command="setl cc=81",
+})
 
 -- ruby and lua have soft tabs
 au("FileType",{pattern={"ruby","eruby","lua"},command="setl ts=2 sw=2 tw=79 et sts=2 autoindent cc=81",})
@@ -81,3 +85,15 @@ au("FileType",{pattern={"arduino","asm","make","c","cpp"},command="setl ts=8 sw=
 
 -- email and commit messages - expand tabs, wrap at 68 for future quoting, enable spelling
 au("FileType",{pattern={"cvs","gitcommit","mail"},command="setl tw=68 et spell cc=69",})
+
+-- rc shell
+au({"BufRead","BufNewFile"},{pattern="*.rc",command="set filetype=rcshell"})
+
+au("BufReadPost",{pattern = "*", -- fix rc shebang
+  callback = function()
+    local first_line = vim.api.nvim_buf_get_lines(0, 0, 1, false)[1] or ""
+    if first_line:match("^#!%s*/usr/bin/env%s+rc") or first_line:match("^#!%s*/.*/rc") then
+      vim.bo.syntax = "rcshell"
+    end
+  end,
+})
