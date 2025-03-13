@@ -1,6 +1,0 @@
-#!/usr/bin/env rc
-
-stats -W 100x100@0,0 -lmisce 
-if(test -r $home/acme.dump)
-	acme -a -l $home/acme.dump &
-if not acme -a &

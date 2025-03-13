@@ -8,6 +8,7 @@ libreoffice
 minivmac
 prusaslicer
 qemu
+redshift
 repology
 rust
 sshfs-fuse
