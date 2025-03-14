@@ -187,7 +187,7 @@ layout {
         // If you enable the border, you probably want to disable the focus ring.
         // off
 
-        width 5
+        width 6
         active-color "#859900"
         inactive-color "black"
 
@@ -220,7 +220,7 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 1
+        softness 0
 
         // Spread expands the shadow.
         spread 0
@@ -229,7 +229,7 @@ layout {
         offset x=10 y=10
 
         // You can also change the shadow color and opacity.
-        color "#0009"
+        color "#000000ff"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -286,6 +286,18 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
+}
+
+// Add a shadow for fuzzel.
+layer-rule {
+    match namespace="^launcher$"
+    
+    shadow {
+        on
+    }
+
+    // Fuzzel defaults to 10 px rounded corners.
+    geometry-corner-radius 10
 }
 
 // Window rules let you adjust behavior for individual windows.
