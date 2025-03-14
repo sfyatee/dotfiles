@@ -13,6 +13,5 @@ local config = {
 comlink.connect(config)
 
 -- binds
-comlink.bind("ctrl+c", "quit")
 comlink.bind("ctrl+n", "next-channel")
 comlink.bind("ctrl+p", "prev-channel")

@@ -76,7 +76,7 @@ au("FileType",{
 })
 
 -- ruby and lua have soft tabs
-au("FileType",{pattern={"ruby","eruby","lua"},command="setl ts=2 sw=2 tw=79 et sts=2 autoindent cc=81",})
+au("FileType",{pattern={"ruby","eruby","lua"},command="setl ts=2 sw=2 tw=79 et sts=2 ai cc=81",})
 au("FileType",{pattern="ruby",command="setl commentstring=#\\ %s",})
 au("FileType",{pattern="yaml",command="setl ts=2 sw=2 et cc=81",})
 

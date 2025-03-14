@@ -1,3 +1,4 @@
+# cli
 # brew "comlink"
 brew "fastfetch"
 brew "gcc"
@@ -24,10 +25,11 @@ brew "typst"
 brew "u-boot-tools"
 brew "yt-dlp"
 brew "zig"
-
+# gui
 cask "blender"
 cask "firefox"
 cask "font-go"
 cask "font-hack"
+cask "ghostty"
 cask "obs"
 cask "syncthing"
