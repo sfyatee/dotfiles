@@ -8,15 +8,8 @@ libreoffice
 minivmac
 prusaslicer
 qemu
-redshift
 repology
 rust
 sshfs-fuse
 syncterm
 tmux-mem-cpu-load
-tpadnav
-xbanish
-xdimmer
-xdotool
-xfe
-xosd
