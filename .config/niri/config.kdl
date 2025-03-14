@@ -288,6 +288,15 @@ animations {
     // slowdown 3.0
 }
 
+// Add a shadow for yambar.
+layer-rule {
+    match namespace="^panel"
+
+    shadow {
+        on
+    }
+}
+
 // Add a shadow for fuzzel.
 layer-rule {
     match namespace="^launcher$"
@@ -576,7 +585,7 @@ binds {
     //
     // The allow-inhibiting=false property can be applied to other binds as well,
     // which ensures niri always processes them, even when an inhibitor is active.
-    // Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }

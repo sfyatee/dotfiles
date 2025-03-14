@@ -2,10 +2,11 @@ bar:
   height: 24
   location: top
   background: FFF8E1FF
-  margin: 6
+  margin: 14
   border:
     width: 6
     color: 000000FF
+    margin: 24
   font: Microsoft Sans Serif:size=14:weight=bold
   foreground: 000000FF
 
