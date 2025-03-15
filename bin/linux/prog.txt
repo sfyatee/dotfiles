@@ -2,8 +2,6 @@ blueman
 clang
 devtools
 fastfetch
-fuzzel
-gammastep
 gcc-m2
 glab
 libreoffice-fresh

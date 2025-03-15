@@ -16,9 +16,10 @@ blender \
 cmake \
 curl \
 darktable \
-dunst \
 firefox \
+fnott \
 foot \
+fuzzel \
 gimp \
 git \
 github-cli \
@@ -32,7 +33,6 @@ jujutsu \
 lilypond \
 llvm \
 lynx \
-mblaze \
 meson \
 mpv \
 neovim \
@@ -49,6 +49,7 @@ tailscale \
 typst \
 unrar \
 wev \
+wlsunset \
 wpa_supplicant \
 yt-dlp \
 zig \
