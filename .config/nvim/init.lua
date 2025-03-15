@@ -70,6 +70,9 @@ end
 vim.opt.termguicolors = false
 
 vim.api.nvim_set_hl(0, "Constant", { underline = true })
+vim.api.nvim_set_hl(0, 'String', { link = 'Constant' })
+vim.api.nvim_set_hl(0, 'Function', { link = 'Identifier' })
+vim.api.nvim_set_hl(0, "Identifier", { underline = true })
 vim.api.nvim_set_hl(0, "PreProc", { underline = true })
 vim.api.nvim_set_hl(0, "Type", { bold = true })
 
