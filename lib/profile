@@ -13,7 +13,7 @@ path=(. $BIN $home/go/bin $path $PLAN9/bin)
 BROWSER=firefox
 
 # got(1)
-GOT_AUTHOR=('demian garcia <d@sfyatee.com>')
+GOT_AUTHOR=('demian garcia <dag@sfyatee.com>')
 
 # opts
 DOTNET_CLI_TELEMETRY_OPTOUT=1
@@ -101,9 +101,6 @@ awd
 
 # os specificities
 switch($os){
-case darwin *bsd
-	NPROC=`{sysctl -n hw.ncpu}
-	stty status '^T'
 case linux
 	NPROC=`{nproc}
 	fn ls{builtin ls -AFv $*}
@@ -118,6 +115,11 @@ case openbsd
 	fn mupl{make update-plist $*}
 	fn pclean{make clean='package plist'}
 	fn rsync{openrsync $*}
+}
+
+if(! ~ $os linux){
+	NPROC=`{sysctl -n hw.ncpu}
+	stty status '^T'
 }
 
 if(~ $TERM dumb){

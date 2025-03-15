@@ -66,8 +66,12 @@ local function nmapp(lhs, rhs, opts)
   vim.api.nvim_set_keymap('n', lhs, rhs, options)
 end
 
--- no truecolor
+-- minor color config
 vim.opt.termguicolors = false
+
+vim.api.nvim_set_hl(0, "Constant", { underline = true })
+vim.api.nvim_set_hl(0, "PreProc", { underline = true })
+vim.api.nvim_set_hl(0, "Type", { bold = true })
 
 -- all source code gets wrapped at <80 and auto-indented
 au("FileType",{

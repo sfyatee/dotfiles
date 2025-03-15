@@ -23,7 +23,7 @@ export PLAN9=/usr/local/plan9
 export BROWSER=firefox
 
 # got(1)
-export GOT_AUTHOR="demian garcia <d@sfyatee.com>"
+export GOT_AUTHOR="demian garcia <dag@sfyatee.com>"
 
 # opts
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
@@ -83,10 +83,6 @@ set +o vi
 case "$OS" in
 darwin)
 	eval "$(/opt/homebrew/bin/brew shellenv)"
-	;&
-darwin|*bsd)
-	export NPROC=`sysctl -n hw.ncpu`
-	stty status '^T'
 	;;
 linux)
 	export NPROC=`nproc`
@@ -94,6 +90,11 @@ linux)
 openbsd)
 	export CDPATH=.:/usr/ports:/usr/ports/mystuff
 esac
+
+if [ "$OS" != "linux" ]; then
+	export NPROC=`sysctl -n hw.ncpu`
+	stty status '^T'
+fi
 
 # use $NPROC jobs
 export MAKEFLAGS=-j$NPROC
