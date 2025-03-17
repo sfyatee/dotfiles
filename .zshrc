@@ -134,10 +134,6 @@ if [[ "$TERM" == "dumb" ]]; then
 	RPROMPT=""
 fi
 
-if [[ -x `command -v jj` ]]; then
-	source <(COMPLETE=zsh jj)
-fi
-
 # making sure these are running
 felloff() {
 	mkdir -p $NAMESPACE

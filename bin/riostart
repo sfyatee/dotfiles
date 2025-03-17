@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# run after any icc profile loading
+wlsunset -l 34 -L -118 -T 5000 -t 3500

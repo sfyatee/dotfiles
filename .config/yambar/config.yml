@@ -21,6 +21,5 @@ bar:
               ~empty: {string: {text: "@ {id}"}}
   right:
     - clock:
-        date-format: "%Y/%m/%d %a"
         content:
-          - string: {text: "{date} {time}"}
+          - string: {text: "{time}"}

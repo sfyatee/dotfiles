@@ -37,7 +37,6 @@ meson \
 mpv \
 neovim \
 niri \
-notmuch \
 racket-minimal \
 restic \
 rust-analyzer \
