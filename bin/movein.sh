@@ -97,7 +97,7 @@ Darwin)
 	;;
 Linux)
 	systemctl enable --now {mandoc,paccache}.timer
-	systemctl --user enable --now {foot-server,gammastep,syncthing,xwayland-satellite}.service
+	systemctl --user enable --now {fnott,foot-server,syncthing,xwayland-satellite}.service
 	;;
 esac
 
