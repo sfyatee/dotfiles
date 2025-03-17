@@ -104,6 +104,10 @@ _up() { (( $#words > 2 )) || compadd -V segments -- ${(Oas:/:)PWD} }
 compdef _up up
 alias @='up @'
 
+# revpatch - reverse a patch
+# 24may2020  +leah+
+revpatch() { interdiff -q $1 /dev/null }
+
 # os specificities
 case "$OS" in
 linux)

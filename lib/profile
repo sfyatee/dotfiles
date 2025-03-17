@@ -99,6 +99,10 @@ fn cd {
 }
 awd
 
+# revpatch - reverse a patch
+# 24may2020  +leah+
+fn revpatch { interdiff -q $1 /dev/null }
+
 # os specificities
 switch($os){
 case linux

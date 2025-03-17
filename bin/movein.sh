@@ -28,6 +28,7 @@ gopls \
 go-tools \
 graphviz \
 imagemagick \
+patchutils \
 jq \
 jujutsu \
 lilypond \
