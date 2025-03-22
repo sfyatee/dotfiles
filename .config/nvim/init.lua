@@ -21,6 +21,10 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.mousescroll = "ver:1,hor:6"
+
 -- setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -106,3 +110,6 @@ au("BufReadPost",{pattern = "*", -- fix rc shebang
     end
   end,
 })
+
+-- lsp
+local lspconfig = require('lspconfig')

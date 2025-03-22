@@ -14,12 +14,11 @@ export PKGS=" \
 aerc \
 blender \
 cmake \
+`#comlink` \
 curl \
 darktable \
 firefox \
-fnott \
 foot \
-fuzzel \
 gimp \
 git \
 github-cli \
@@ -37,9 +36,7 @@ lynx \
 meson \
 mpv \
 neovim \
-niri \
 racket-minimal \
-restic \
 rust-analyzer \
 spin \
 swayidle \
@@ -49,10 +46,8 @@ tailscale \
 typst \
 unrar \
 wev \
-wlsunset \
 wpa_supplicant \
 yt-dlp \
-zig \
 zsh \
 "
 
@@ -66,8 +61,13 @@ fi
 
 case "$OS" in
 Linux)
-	sudo pacman -S --needed --noconfirm $PKGS
-	sudo pacman -S --needed --noconfirm - < ~/bin/linux/prog.txt
+	# main $PKGS
+	sudo pacman -S --needed --noconfirm $PKGS blueman clang devtools \
+	    fastfetch fnott fuzzel gcc-m2 glab libreoffice-fresh mandoc niri openbsd-netcat \
+	    pacman-contrib prusa-slicer qemu-full rsync rustup sequoia-sq \
+	    sshfs steam tmux ttf-hack wayvnc wlsunset xwayland-satellite
+
+	# aur helper
 	if ! command -v paru >/dev/null 2>&1; then
 		cd /tmp || exit 1
 		if [ ! -d paru ]; then
@@ -76,19 +76,16 @@ Linux)
 		cd paru || exit 1
 		makepkg -fsi --noconfirm
 	fi
-	paru -S --needed --noconfirm \
-		comlink-git \
-		gameoftrees \
-		minivmac \
-		tmux-mem-cpu-load \
-		ttf-apple-emoji \
-		ttf-mac-fonts \
-		ttf-ms-fonts \
-		yambar-git
+
+	# aur $PKGS
+	paru -S --needed --noconfirm gameoftrees minivmac tmux-mem-cpu-load \
+	    ttf-{apple-emoji,mac-fonts,ms-fonts} yambar-git zig-nightly-bin
 	;;
 OpenBSD)
-	doas pkg_add $PKGS
-	doas pkg_add -l ~/bin/openbsd/prog.txt
+	# main $PKGS
+	doas pkg_add $PKGS gawk gitlab-cli go-fonts got hack-fonts hare \
+	    libreoffice minivmac prusaslicer qemu repology rust sshfs-fuse \
+	    syncterm tmux-mem-cpu-load zig
 	;;
 esac
 
