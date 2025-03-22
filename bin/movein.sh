@@ -67,9 +67,9 @@ case "$OS" in
 Linux)
 	# main $PKGS
 	sudo pacman -S --needed --noconfirm $PKGS blueman clang devtools \
-	    fastfetch fnott fuzzel gcc-m2 glab libreoffice-fresh mandoc niri openbsd-netcat \
-	    pacman-contrib prusa-slicer qemu-full rsync rustup sequoia-sq \
-	    sshfs steam tmux ttf-hack wayvnc wlsunset xwayland-satellite
+		fastfetch fnott fuzzel gcc-m2 glab libreoffice-fresh mandoc niri openbsd-netcat \
+		pacman-contrib prusa-slicer qemu-full rsync rustup sequoia-sq \
+		sshfs steam tmux ttf-hack wayvnc wlsunset xwayland-satellite
 
 	# aur helper
 	if ! command -v paru >/dev/null 2>&1; then
@@ -83,13 +83,13 @@ Linux)
 
 	# aur $PKGS
 	paru -S --needed --noconfirm gameoftrees minivmac tmux-mem-cpu-load \
-	    ttf-{apple-emoji,mac-fonts,ms-fonts} yambar-git zig-nightly-bin
+		ttf-{apple-emoji,mac-fonts,ms-fonts} yambar-git zig-nightly-bin
 	;;
 OpenBSD)
 	# main $PKGS
 	doas pkg_add $PKGS gawk gitlab-cli go-fonts got hack-fonts hare \
-	    libreoffice minivmac prusaslicer qemu repology rust sshfs-fuse \
-	    syncterm tmux-mem-cpu-load zig
+		libreoffice minivmac prusaslicer qemu repology rust sshfs-fuse \
+		syncterm tmux-mem-cpu-load zig
 	;;
 esac
 
