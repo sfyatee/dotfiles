@@ -18,7 +18,9 @@ cmake \
 curl \
 darktable \
 firefox \
+`#fnott` \
 foot \
+`#fuzzel` \
 gimp \
 git \
 github-cli \
@@ -36,6 +38,7 @@ lynx \
 meson \
 mpv \
 neovim \
+`#niri` \
 racket-minimal \
 rust-analyzer \
 spin \
@@ -46,6 +49,7 @@ tailscale \
 typst \
 unrar \
 wev \
+`#wlsunset` \
 wpa_supplicant \
 yt-dlp \
 zsh \
