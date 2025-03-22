@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# see ./g
+# see also: ./g
 gg() {
 	local p=$argv[-1] o=
 	(( ARGC > 1 )) && { git rev-parse -q --verify $p >/dev/null || [ -d $p ] } &&

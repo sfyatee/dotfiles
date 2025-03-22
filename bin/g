@@ -10,7 +10,7 @@
 # 14aug2016  +chris+  same for git-grep
 # 27sep2016  +chris+  '+ext' to expand to --include=*.ext
 # 16nov2020  +leah+  use --cached by default
-# 25jan2022  +leah+  override GIT_PAGER=less for gg so -O works nicely
+# 25jan2022  +leah+  override GIT_PAGER=less for ./gg so -O works nicely
 g() {
 	LC_ALL=C grep \
 	${${(M)@:#+*}:s/+/--include=*./} \
