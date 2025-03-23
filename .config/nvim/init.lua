@@ -56,6 +56,7 @@ end
 local function nmap(lhs, rhs, opts)
   map('n', lhs, rhs, opts)
 end
+vim.api.nvim_set_hl(0, 'Function', { link = 'Identifier' })
 local function tmap(lhs, rhs, opts)
   map('t', lhs, rhs, opts)
 end
@@ -71,16 +72,7 @@ local function nmapp(lhs, rhs, opts)
 end
 
 -- minor color config
-vim.opt.termguicolors = false
-
--- overwrite
-vim.api.nvim_set_hl(0, "Constant", { underline = true })
-vim.api.nvim_set_hl(0, "Identifier", { underline = true })
-vim.api.nvim_set_hl(0, "PreProc", { underline = true })
-vim.api.nvim_set_hl(0, "Type", { bold = true })
--- link groups
-vim.api.nvim_set_hl(0, 'String', { link = 'Constant' })
-vim.api.nvim_set_hl(0, 'Function', { link = 'Identifier' })
+vim.cmd.colorscheme("everforest")
 
 -- all source code gets wrapped at <80 and auto-indented
 au("FileType",{
