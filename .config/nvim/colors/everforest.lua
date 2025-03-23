@@ -214,7 +214,7 @@ hi('@lsp.type.variable',      { link = 'Identifier' })
 
 if vim.o.background == 'light' then
   -- Default colors only used with a light background.
-  hi('ColorColumn',      { bg = 'LightRed',                             ctermbg = 'LightRed' })
+  hi('ColorColumn',      { bg = '#eae4ca',                              ctermbg = 'LightRed' })
   hi('CursorColumn',     { bg = 'Grey90',                               ctermbg = 'LightGrey' })
   hi('CursorLine',       { bg = 'Grey90',                               cterm = { underline = true } })
   hi('CursorLineNr',     { fg = 'Brown', bold = true,                   ctermfg = 'Brown', cterm = { underline = true } })
@@ -241,12 +241,12 @@ if vim.o.background == 'light' then
   hi('StatusLineTerm',   { fg = 'White', bg = 'DarkGreen', bold = true, ctermfg = 'White', ctermbg = 'DarkGreen', cterm = { bold = true } })
   hi('StatusLineTermNC', { fg = 'White', bg = 'DarkGreen',              ctermfg = 'White', ctermbg = 'DarkGreen' })
   hi('TabLine',          { bg = 'LightGrey', underline = true,          ctermfg = 'Black', ctermbg = 'LightGrey', cterm = { underline = true } })
-  hi('Title',            { fg = 'Magenta', bold = true,                 ctermfg = 'DarkMagenta' })
+  hi('Title',            { fg = draw.Text, bold = true,                 ctermfg = 'DarkMagenta' })
   hi('Visual',           { fg = 'Black', bg = 'LightGrey',              ctermfg = 'Black', ctermbg = 'Grey' })
   hi('WarningMsg',       { fg = 'Red',                                  ctermfg = 'DarkRed' })
   hi('Comment',          { fg = draw.Grey,                              ctermfg = 'DarkBlue' })
   hi('Constant',         { fg = draw.Text, underline = true,            ctermfg = 'DarkRed' })
-  hi('Special',          { fg = '#6a5acd',                              ctermfg = 'DarkMagenta' })
+  hi('Special',          { fg = draw.Text, bold = true,                 ctermfg = 'DarkMagenta' })
   hi('Identifier',       { fg = draw.Text, underline = true,            ctermfg = 'DarkCyan' })
   hi('Statement',        { fg = draw.Text, bold = true,                 ctermfg = 'Brown' })
   hi('PreProc',          { fg = draw.Text, underline = true,            ctermfg = 'DarkMagenta' })

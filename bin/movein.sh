@@ -48,6 +48,7 @@ syncthing \
 tailscale \
 typst \
 unrar \
+`#wayvnc` \
 wev \
 `#wlsunset` \
 wpa_supplicant \
