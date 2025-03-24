@@ -9,6 +9,9 @@ vim.cmd.highlight('clear')
 vim.g.colors_name = 'everforest'
 
 local draw = {
+  BRed   = '#f4dbd0',
+  BGreen = '#e5e6c5',
+  BBlue  = '#e1e7dd',
   Text   = '#5c6a72',
   Grey   = '#a6b0a0',
   Grey1  = '#939f91',
@@ -105,6 +108,10 @@ hi('SpecialChar',    { link = 'Special' })
 hi('Delimiter',      { link = 'Special' })
 hi('SpecialComment', { link = 'Special' })
 hi('Debug',          { link = 'Special' })
+
+vim.cmd [[highlight def link diffChanged DiffChange]]
+vim.cmd [[highlight def link diffAdded DiffAdd]]
+vim.cmd [[highlight def link diffRemoved DiffDelete]]
 
 hi('DiagnosticError',            { fg = 'Red',                          ctermfg = 1 })
 hi('DiagnosticWarn',             { fg = 'Orange',                       ctermfg = 3 })
@@ -219,9 +226,9 @@ if vim.o.background == 'light' then
   hi('CursorColumn',     { bg = '#eae4ca',                              ctermbg = 'LightGrey' })
   hi('CursorLine',       { bg = '#eae4ca',                              cterm = { underline = true } })
   hi('CursorLineNr',     { fg = draw.Grey2, bold = true,                ctermfg = 'Brown', cterm = { underline = true } })
-  hi('DiffAdd',          { bg = 'LightBlue',                            ctermbg = 'LightBlue' })
-  hi('DiffChange',       { bg = 'LightMagenta',                         ctermbg = 'LightMagenta' })
-  hi('DiffDelete',       { fg = 'Blue', bg = 'LightCyan', bold = true,  ctermfg = 'Blue', ctermbg = 'LightCyan' })
+  hi('DiffAdd',          { bg = draw.BGreen,                            ctermbg = 'LightBlue' })
+  hi('DiffChange',       { bg = draw.BBlue,                             ctermbg = 'LightMagenta' })
+  hi('DiffDelete',       { bg = draw.BRed, bold = true,                 ctermfg = 'Blue', ctermbg = 'LightCyan' })
   hi('Directory',        { fg = 'Blue',                                 ctermfg = 'DarkBlue' })
   hi('FoldColumn',       { fg = 'DarkBlue', bg = 'Grey',                ctermfg = 'DarkBlue', ctermbg = 'Grey' })
   hi('Folded',           { fg = 'DarkBlue', bg = 'LightGrey',           ctermfg = 'DarkBlue', ctermbg = 'Grey' })
