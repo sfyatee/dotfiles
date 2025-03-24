@@ -1,10 +1,9 @@
 -- Name:         everforest
 -- Description:  Comfortable & Pleasant Color Scheme for Vim
--- Author:       Bram Moolenaar <Bram@vim.org>
+-- Author:       Sainnhe Park
 -- Maintainer:   Me
 -- Website:      https://github.com/sainnhe/everforest
 -- License:      MIT
--- Last Updated: 2023 Aug 10
 
 vim.cmd.highlight('clear')
 vim.g.colors_name = 'everforest'
