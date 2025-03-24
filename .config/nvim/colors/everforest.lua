@@ -9,8 +9,10 @@ vim.cmd.highlight('clear')
 vim.g.colors_name = 'everforest'
 
 local draw = {
-  Text  = '#5C6A72',
-  Grey  = '#939f91'
+  Text   = '#5c6a72',
+  Grey   = '#a6b0a0',
+  Grey1  = '#939f91',
+  Grey2  = '#829181'
 }
 
 local hi = function(name, val)
@@ -216,14 +218,14 @@ if vim.o.background == 'light' then
   hi('ColorColumn',      { bg = '#eae4ca',                              ctermbg = 'LightRed' })
   hi('CursorColumn',     { bg = '#eae4ca',                              ctermbg = 'LightGrey' })
   hi('CursorLine',       { bg = '#eae4ca',                              cterm = { underline = true } })
-  hi('CursorLineNr',     { fg = 'Brown', bold = true,                   ctermfg = 'Brown', cterm = { underline = true } })
+  hi('CursorLineNr',     { fg = draw.Grey2, bold = true,                ctermfg = 'Brown', cterm = { underline = true } })
   hi('DiffAdd',          { bg = 'LightBlue',                            ctermbg = 'LightBlue' })
   hi('DiffChange',       { bg = 'LightMagenta',                         ctermbg = 'LightMagenta' })
   hi('DiffDelete',       { fg = 'Blue', bg = 'LightCyan', bold = true,  ctermfg = 'Blue', ctermbg = 'LightCyan' })
   hi('Directory',        { fg = 'Blue',                                 ctermfg = 'DarkBlue' })
   hi('FoldColumn',       { fg = 'DarkBlue', bg = 'Grey',                ctermfg = 'DarkBlue', ctermbg = 'Grey' })
   hi('Folded',           { fg = 'DarkBlue', bg = 'LightGrey',           ctermfg = 'DarkBlue', ctermbg = 'Grey' })
-  hi('LineNr',           { fg = 'Brown',                                ctermfg = 'Brown' })
+  hi('LineNr',           { fg = draw.Grey,                              ctermfg = 'Brown' })
   hi('MatchParen',       { bg = '#d8d3ba',                              ctermbg = 'Cyan' })
   hi('MoreMsg',          { fg = 'SeaGreen', bold = true,                ctermfg = 'DarkGreen' })
   hi('Pmenu',            { bg = 'LightMagenta',                         ctermfg = 'Black', ctermbg = 'LightMagenta' })
@@ -243,7 +245,7 @@ if vim.o.background == 'light' then
   hi('Title',            { fg = draw.Text, bold = true,                 cterm = { bold = true } })
   hi('Visual',           { fg = 'Black', bg = 'LightGrey',              ctermfg = 'Black', ctermbg = 'Grey' })
   hi('WarningMsg',       { fg = 'Red',                                  ctermfg = 'DarkRed' })
-  hi('Comment',          { fg = draw.Grey,                              ctermfg = 'DarkGrey' })
+  hi('Comment',          { fg = draw.Grey1,                             ctermfg = 'DarkGrey' })
   hi('Constant',         { fg = draw.Text, underline = true,            cterm = { underline = true } })
   hi('Special',          { fg = draw.Text, bold = true,                 cterm = { bold = true }  })
   hi('Identifier',       { fg = draw.Text, underline = true,            cterm = { underline = true } })
