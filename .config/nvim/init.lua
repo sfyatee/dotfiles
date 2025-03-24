@@ -30,6 +30,7 @@ vim.opt.mousescroll = "ver:1,hor:6"
 require("lazy").setup({
   spec = {
     -- add your plugins here
+    'imsnif/kdl.vim',
     'martineausimon/nvim-lilypond-suite',
     'neovim/nvim-lspconfig',
     'weakish/rcshell.vim'

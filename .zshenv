@@ -50,6 +50,7 @@ export RUSTUP_HOME=$HOME/.local/share/rustup
 # path
 [[ -o login ]] && path=()
 pathadd -- /usr/{s,}bin /{s,}bin
+pathadd -- /usr/X11R{6,7}/bin
 pathadd /usr/local/{s,}bin
 pathadd -- /usr/games /usr/games/bin
 pathadd -- $PLAN9/bin $PLAN9/bin/upas

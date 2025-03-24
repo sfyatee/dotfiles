@@ -56,14 +56,6 @@ yt-dlp \
 zsh \
 "
 
-if [ ! -d ~/.git ]; then
-        cd ~
-        git init
-        git remote add origin https://github.com/sfyatee/dotfiles
-        git fetch
-        git checkout -f master
-fi
-
 case "$OS" in
 Linux)
 	# main $PKGS
@@ -93,6 +85,15 @@ OpenBSD)
 		syncterm tmux-mem-cpu-load zig
 	;;
 esac
+
+# dotfiles
+if [ ! -d ~/.git ]; then
+        cd ~
+        git init
+        git remote add origin https://github.com/sfyatee/dotfiles
+        git fetch
+        git checkout -f master
+fi
 
 case "$OS" in
 Darwin)

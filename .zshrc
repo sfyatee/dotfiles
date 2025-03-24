@@ -21,16 +21,24 @@ autoload -Uz compinit	# sinful completion
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
-# osc7
+# OSC 7
 autoload -Uz add-zsh-hook
 _osc7() {
 	emulate -L zsh # also sets localoptions for us
 	setopt extendedglob
-	local LC_ALL=C
-	printf '\e]7;file://%s%s\e\' $HOST \
-		${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+	local LC_ALL p
+
+	LC_ALL=C
+	p=$(printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}})
+	# 9front's plumber + vt
+	if [[ -n "$TMUX" ]]; then
+		# required to pass OSC 7 message to vt explicitely
+		printf $p > $(tmux display-message -p '#{client_tty}')
+	else
+		printf $p
+	fi
 }
-osc7(){(( ZSH_SUBSHELL ))||_osc7}
+osc7(){((ZSH_SUBSHELL))||_osc7}
 add-zsh-hook -Uz chpwd osc7
 
 # prompt configuration
@@ -65,6 +73,8 @@ fi
 if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
 	export EDITOR=editinacme
+	# get rid of backspace characters in Unix man output
+	export PAGER=nobs
 	# disable
 	unsetopt zle	# zsh line editor
 	# no paging
@@ -127,8 +137,6 @@ esac
 
 # no fancy zsh prompt when using dumb terminals
 if [[ "$TERM" == "dumb" ]]; then
-	# get rid of backspace characters in Unix man output
-	export PAGER=nobs
 	# disable
 	unsetopt promptcr	# carriage return before prompt in zle
 	unfunction osc7 precmd preexec

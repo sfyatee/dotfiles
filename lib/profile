@@ -74,13 +74,17 @@ fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 fn sam{builtin sam -a $*}
 
-# use vis(1) editor
-if (! ~ $EDITOR '') EDITOR=/usr/bin/vi
+# when i say vi i mean nvim (if it's installed)
+fn vi{nvim $*}
+fn view{nvim -R $*}
+EDITOR=nvim
 
 # for use in 9term and acme's win
 if(~ $termprog 9term || ~ $termprog win){
 	# plumb files instead of starting new editor
 	EDITOR=editinacme
+	# get rid of backspace characters in Unix man output
+	PAGER=nobs
 	# no paging
 	fn git{builtin git --no-pager $*}
 	fn hg{chg --pager=no $*}
@@ -124,11 +128,6 @@ case openbsd
 if(! ~ $os linux){
 	NPROC=`{sysctl -n hw.ncpu}
 	stty status '^T'
-}
-
-if(~ $TERM dumb){
-	# get rid of backspace characters in Unix man output
-	PAGER=nobs
 }
 
 # use $NPROC jobs
