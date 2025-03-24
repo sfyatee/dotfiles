@@ -21,6 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
+vim.opt.cursorline = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.mousescroll = "ver:1,hor:6"
