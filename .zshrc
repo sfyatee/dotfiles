@@ -69,7 +69,7 @@ else
 	export EDITOR=/usr/bin/vi
 fi
 
-# for use in 9term and acme's win
+# 9term and acme's win
 if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
 	export EDITOR=editinacme
@@ -135,7 +135,7 @@ openbsd)
 	alias rsync="openrsync"
 esac
 
-# no fancy zsh prompt when using dumb terminals
+# no fancy zsh prompt in dumb terminals
 if [[ "$TERM" == "dumb" ]]; then
 	# disable
 	unsetopt promptcr	# carriage return before prompt in zle

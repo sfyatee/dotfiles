@@ -79,7 +79,7 @@ fn vi{nvim $*}
 fn view{nvim -R $*}
 EDITOR=nvim
 
-# for use in 9term and acme's win
+# 9term and acme's win
 if(~ $termprog 9term || ~ $termprog win){
 	# plumb files instead of starting new editor
 	EDITOR=editinacme
