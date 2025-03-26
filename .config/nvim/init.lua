@@ -30,6 +30,7 @@ vim.opt.mousescroll = "ver:1,hor:6"
 require("lazy").setup({
   spec = {
     -- add your plugins here
+    'ibhagwan/fzf-lua',
     'imsnif/kdl.vim',
     'martineausimon/nvim-lilypond-suite',
     'neovim/nvim-lspconfig',
@@ -107,3 +108,9 @@ au("BufReadPost",{pattern = "*", -- fix rc shebang
 
 -- lsp
 local lspconfig = require('lspconfig')
+lspconfig.gopls.setup{}
+nmap('gD', function() require('fzf-lua').lsp_definitions { jump1 = false } end, 'Peek definition')
+nmap('gd', function() require('fzf-lua').lsp_definitions { jump1 = true } end, 'Go to definition')
+nmap('<C-k>', vim.lsp.buf.signature_help, opts)
+nmap('<space>D', '<cmd>FzfLua lsp_typedefs<cr>', 'Go to type definition')
+nmap('gr', '<cmd>FzfLua lsp_references<cr>', 'vim.lsp.buf.references()')

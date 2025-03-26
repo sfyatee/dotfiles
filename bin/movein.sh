@@ -21,6 +21,7 @@ firefox \
 `#fnott` \
 foot \
 `#fuzzel` \
+fzf \
 gimp \
 git \
 github-cli \

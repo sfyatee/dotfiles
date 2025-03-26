@@ -1,6 +1,7 @@
 # cli
 # brew "comlink"
 brew "fastfetch"
+brew "fzf"
 brew "gcc"
 brew "go"
 brew "gopls"
