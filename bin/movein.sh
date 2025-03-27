@@ -40,6 +40,7 @@ meson \
 mpv \
 neovim \
 `#niri` \
+`#obs-studio` \
 racket-minimal \
 rust-analyzer \
 spin \
@@ -57,13 +58,15 @@ yt-dlp \
 zsh \
 "
 
+# install $PKGS
 case "$OS" in
 Linux)
 	# main $PKGS
 	sudo pacman -S --needed --noconfirm $PKGS blueman clang devtools \
-		fastfetch fnott fuzzel gcc-m2 glab libreoffice-fresh mandoc niri openbsd-netcat \
-		pacman-contrib prusa-slicer qemu-full rsync rustup sequoia-sq \
-		sshfs steam tmux ttf-hack wayvnc wlsunset xwayland-satellite
+		fastfetch fnott fuzzel gcc-m2 glab libreoffice-fresh mandoc \
+		niri obs-studio openbsd-netcat pacman-contrib prusa-slicer \
+		qemu-full rsync rustup sequoia-sq sshfs steam tmux ttf-hack \
+		wayvnc wlsunset xwayland-satellite
 
 	# aur helper
 	if ! command -v paru >/dev/null 2>&1; then
@@ -103,6 +106,11 @@ Darwin)
 Linux)
 	systemctl enable --now {mandoc,paccache}.timer
 	systemctl --user enable --now {fnott,foot-server,syncthing,xwayland-satellite}.service
+	;;
+OpenBSD)
+	# /usr/src is writable by wsrc group
+	# user mod -G wsrc $USER
+	# rcctl {syncthing}
 	;;
 esac
 
