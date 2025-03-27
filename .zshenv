@@ -17,6 +17,7 @@ pathadd() {
 # world
 export OS=`uname | tr '[:upper:]' '[:lower:]'`
 export ARCH=`uname -m`
+export BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 export PLAN9=/usr/local/plan9
 
 # browser used by web(1) and thus plumber
@@ -55,8 +56,7 @@ pathadd /usr/local/{s,}bin
 pathadd -- /usr/games /usr/games/bin
 pathadd -- $PLAN9/bin $PLAN9/bin/upas
 pathadd $CARGO_HOME/bin ~/go/bin
-pathadd ~/.local/bin
-pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
+pathadd $BIN ~/.local/bin
 
 # UNIX means english and 24h clock. but do use UTF-8! and sort like a machine
 export LANG=en_US.UTF-8
