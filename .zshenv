@@ -18,6 +18,7 @@ pathadd() {
 export OS=`uname | tr '[:upper:]' '[:lower:]'`
 export ARCH=`uname -m`
 export PLAN9=/usr/local/plan9
+export CVS_RSH=/usr/bin/ssh # {Open,Net}BSD
 
 # browser used by web(1) and thus plumber
 export BROWSER=firefox

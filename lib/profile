@@ -7,7 +7,7 @@ arch=`{uname -m}
 path=(/usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin /usr/X11R6/bin)
 BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
-path=(. $BIN $home/go/bin $path $PLAN9/bin)
+CVS_RSH=/usr/bin/ssh # {Open,Net}BSD
 
 # browser used by web(1) and thus plumber
 BROWSER=firefox
@@ -38,7 +38,7 @@ JJ_CONFIG=$XDG_CONFIG_HOME/jj/config.toml # for Apple
 RUSTUP_HOME=$home/.local/share/rustup
 
 # path
-path=($CARGO_HOME/bin $path $PLAN9/bin/upas)
+path=(. $BIN $home/go/bin $CARGO_HOME/bin $path $PLAN9/bin $PLAN9/bin/upas)
 
 # UNIX means english and 24h clock. but do use UTF-8! and sort like a machine
 LANG=en_US.UTF-8
