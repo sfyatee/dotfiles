@@ -41,6 +41,7 @@ mpv \
 neovim \
 `#niri` \
 `#obs-studio` \
+`#prismlauncher` \
 racket-minimal \
 rust-analyzer \
 spin \
@@ -64,9 +65,9 @@ Linux)
 	# main $PKGS
 	sudo pacman -S --needed --noconfirm $PKGS blueman clang devtools \
 		fastfetch fnott fuzzel gcc-m2 glab libreoffice-fresh mandoc \
-		niri obs-studio openbsd-netcat pacman-contrib prusa-slicer \
-		qemu-full rsync rustup sequoia-sq sshfs steam tmux ttf-hack \
-		wayvnc wlsunset xwayland-satellite
+		niri obs-studio openbsd-netcat pacman-contrib prismlauncher \
+		prusa-slicer qemu-full rsync rustup sequoia-sq sshfs steam \
+		tmux ttf-hack wayvnc wlsunset xwayland-satellite
 
 	# aur helper
 	if ! command -v paru >/dev/null 2>&1; then
