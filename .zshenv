@@ -49,12 +49,14 @@ export RUSTUP_HOME=$HOME/.local/share/rustup
 
 # path
 [[ -o login ]] && path=()
+pathadd -P ~/.nix-profile/bin
 pathadd -- /usr/{s,}bin /{s,}bin
-pathadd -- /usr/X11R{6,7}/bin
 pathadd /usr/local/{s,}bin
 pathadd -- /usr/games /usr/games/bin
+pathadd -P -- /nix/var/nix/profiles/default/bin
+pathadd -P /run/wrappers/bin
 pathadd -- $PLAN9/bin $PLAN9/bin/upas
-pathadd $CARGO_HOME/bin ~/go/bin
+pathadd ~/go/bin $CARGO_HOME/bin
 pathadd ~/.local/bin
 pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
 
