@@ -5,7 +5,7 @@ set -e
 
 # configure
 FELLOFF=$HOME/vm
-FLAGS='-m 4G -smp 4 -drive file=$FELLOFF/*'
+FLAGS='-m 4G -smp 4 -drive file=$FELLOFF/*,media=disk,if=virtio,index=0'
 OS=`uname`
 
 createimg(){
