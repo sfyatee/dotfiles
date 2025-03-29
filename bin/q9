@@ -13,3 +13,8 @@ installqcow2(){
 qcow2(){
 	exec qemu-system-x86_64 $FLAGS 
 }
+case "$1" in
+-qcow2new)
+	createimg
+	;;
+esac
