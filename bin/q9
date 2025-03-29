@@ -1,20 +1,24 @@
 #!/bin/sh
-# Fri Apr 27 14:11:29 EDT 2018
 # See: http://fqa.9front.org/fqa3.html#3.3.1.4.2
+
+set -e
+
+# configure
 FELLOFF=$HOME/vm
-FLAGS='-m 4G -smp 4 -drive file=9front.qcow2'
+FLAGS='-m 4G -smp 4 -drive file=$FELLOFF/9front.qcow2'
 OS=`uname`
-createimg(){
-	exec qemu-img create -f qcow2 -F qcow2 $FELLOFF/9front.qcow2 64G
-}
+
+createimg(){ qemu-img create -f qcow2 -F qcow2 $FELLOFF/9front.qcow2 64G }
+case "$1" in
+-qcow2new)
+	createimg
+	;;
+esac
+
 installqcow2(){
 	exec qemu-system-x86_64 $FLAGS
 }
 qcow2(){
 	exec qemu-system-x86_64 $FLAGS 
 }
-case "$1" in
--qcow2new)
-	createimg
-	;;
-esac
+
