@@ -1,3 +1,6 @@
 [user]
 name = "demian garcia"
 email = "dag@demians.org"
+
+[diff]
+format = "git"
