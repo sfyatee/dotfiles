@@ -4,9 +4,9 @@
 set -e
 
 # configure
-FELLOFF=$HOME/vm
-FLAGS='-m 4G -smp 4 -drive file=$FELLOFF/*,media=disk,if=virtio,index=0'
-OS=`uname`
+export FELLOFF=$HOME/vm
+export FLAGS='-m 4G -smp 4 '
+export OS=`uname`
 
 createimg(){
 	qemu-img create -f qcow2 $FELLOFF/* 64G
@@ -20,6 +20,4 @@ case "$1" in
 	;;
 esac
 
-qcow2(){
-	qemu-system-x86_64 $FLAGS 
-}
+qemu-system-x86_64 $FLAGS -drive file=$FELLOFF/9front.amd64.qcow2,media=disk,if=virtio,index=0
