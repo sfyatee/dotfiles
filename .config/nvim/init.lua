@@ -94,7 +94,10 @@ au("FileType",{pattern={"arduino","asm","make","c","cpp"},command="setl ts=8 sw=
 -- email and commit messages - expand tabs, wrap at 68 for future quoting, enable spelling
 au("FileType",{pattern={"cvs","gitcommit","mail"},command="setl tw=68 et spell cc=69",})
 
--- rc shell
+-- markdown files get hard tabs, wrapped at 79 and spell checking
+au("FileType",{pattern="markdown",command="setl tw=79 spell cc=81",})
+
+-- add/recognize rc shell
 au({"BufRead","BufNewFile"},{pattern="*.rc",command="set filetype=rcshell"})
 
 au("BufReadPost",{pattern = "*", -- fix rc shebang

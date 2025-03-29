@@ -122,4 +122,5 @@ u() {
 	go install github.com/rjkroege/edwood/cmd/win@master
 	go install golang.org/x/tools/cmd/bisect@master
 	go install robpike.io/ivy@master
+	go install rsc.io/rf@master
 }
