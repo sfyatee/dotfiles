@@ -14,6 +14,9 @@ installqcow2(){
 		-drive if=none,id=vd1,file=9front.iso \
 		-device scsi-cd,drive=vd1,bootindex=0
 }
+boot(){
+	qemu-system-x86_64 $FLAGS
+}
 case "$1" in
 -qcow2new)
 	createimg
@@ -21,6 +24,6 @@ case "$1" in
 -install)
 	installqcow2
 	;;
-	# qemu-system-x86_64 $FLAGS
+	# boot
 	# ;;
 esac
