@@ -14,7 +14,11 @@ installqcow2(){
 		-device scsi-cd,drive=vd1,bootindex=0
 }
 boot(){
-	qemu-system-x86_64 $FLAGS
+	qemu-system-x86_64 -m 4G -smp 4 \
+		-nic user,model=virtio,mac=00:20:91:37:33:77 \
+		-device virtio-scsi-pci,id=scsi \
+		-drive if=none,id=vd0,file=9front.amd64.qcow2 \
+		-device scsi-hd,drive=vd0 \
 }
 case "$1" in
 -qcow2new)
