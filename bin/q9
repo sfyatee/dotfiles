@@ -12,7 +12,7 @@ createimg(){
 }
 installqcow2(){
 	qemu-system-x86_64 $FLAGS \
-		-drive if=none,id=vd1,file=9front.iso \
+		-drive if=none,id=vd1,file=9front.amd64.iso \
 		-device scsi-cd,drive=vd1,bootindex=0
 }
 boot(){
