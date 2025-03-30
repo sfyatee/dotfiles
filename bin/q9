@@ -18,7 +18,7 @@ boot(){
 		-nic user,model=virtio,mac=00:20:91:37:33:77 \
 		-device virtio-scsi-pci,id=scsi \
 		-drive if=none,id=vd0,file=9front.amd64.qcow2 \
-		-device scsi-hd,drive=vd0 \
+		-device scsi-hd,drive=vd0
 }
 case "$1" in
 -qcow2new)
