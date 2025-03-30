@@ -1,17 +1,15 @@
 #!/bin/sh
 # See: http://fqa.9front.org/fqa3.html#3.3.1.4.2
 
-export FLAGS='-m 4G -smp 4 \
-	-nic user,model=virtio,mac=00:20:91:37:33:77 \
-	-device virtio-scsi-pci,id=scsi \
-	-drive if=none,id=vd0,file=9front.amd64.qcow2 \
-	-device scsi-hd,drive=vd0'
-
 createimg(){ 
 	qemu-img create -f qcow2 9front.amd64.qcow2 64G
 }
 installqcow2(){
-	qemu-system-x86_64 $FLAGS \
+	qemu-system-x86_64 -m 4G -smp 4 \
+		-nic user,model=virtio,mac=00:20:91:37:33:77 \
+		-device virtio-scsi-pci,id=scsi \
+		-drive if=none,id=vd0,file=9front.amd64.qcow2 \
+		-device scsi-hd,drive=vd0 \
 		-drive if=none,id=vd1,file=9front.amd64.iso \
 		-device scsi-cd,drive=vd1,bootindex=0
 }
