@@ -55,6 +55,7 @@ unrar \
 wev \
 `#wlsunset` \
 wpa_supplicant \
+`#xwayland-satellite` \
 yt-dlp \
 zsh \
 "
@@ -106,7 +107,8 @@ Darwin)
 	;;
 Linux)
 	systemctl enable --now {mandoc,paccache}.timer
-	systemctl --user enable --now {fnott,foot-server,syncthing,xwayland-satellite}.service
+	systemctl --user enable --now {fnott,foot-server}.service
+	systemctl --user enable --now {syncthing}.service
 	;;
 OpenBSD)
 	# /usr/src is writable by wsrc group
