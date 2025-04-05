@@ -81,12 +81,13 @@ Linux)
 	fi
 
 	# aur $PKGS
-	paru -S --needed --noconfirm gameoftrees minivmac tmux-mem-cpu-load \
-		ttf-{apple-emoji,mac-fonts,ms-fonts} yambar-git zig-nightly-bin
+	paru -S --needed --noconfirm gameoftrees knfmt minivmac \
+		tmux-mem-cpu-load ttf-{apple-emoji,mac-fonts,ms-fonts} \
+		yambar-git zig-nightly-bin
 	;;
 OpenBSD)
 	# main $PKGS
-	doas pkg_add $PKGS gawk gitlab-cli go-fonts got hack-fonts hare \
+	doas pkg_add $PKGS gawk gitlab-cli go-fonts got hack-fonts hare knfmt\
 		libreoffice minivmac prusaslicer qemu repology rust sshfs-fuse \
 		syncterm tmux-mem-cpu-load zig
 	;;
