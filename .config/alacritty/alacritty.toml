@@ -1,0 +1,11 @@
+general.import = [
+"~/.config/alacritty/themes/itojun.toml"
+]
+
+[window]
+padding = { x = 16, y = 16 }
+dynamic_padding = true
+decorations = "Buttonless"
+
+[font]
+normal = { family = "Space Mono" }
