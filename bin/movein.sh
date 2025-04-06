@@ -16,7 +16,6 @@ blender \
 cmake \
 `#comlink` \
 curl \
-darktable \
 firefox \
 `#fnott` \
 foot \
@@ -114,7 +113,7 @@ Linux)
 OpenBSD)
 	# /usr/src is writable by wsrc group
 	# user mod -G wsrc $USER
-	# rcctl {syncthing}
+	# rcctl enable {syncthing}
 	;;
 esac
 
