@@ -52,6 +52,7 @@ export RUSTUP_HOME=$HOME/.local/share/rustup
 [[ -o login ]] && path=()
 pathadd -P ~/.nix-profile/bin
 pathadd -- /usr/{s,}bin /{s,}bin
+pathadd -- /usr/X11R{6,7}/bin /usr/pkg/{s,}bin
 pathadd /usr/local/{s,}bin
 pathadd -- /usr/games /usr/games/bin
 pathadd -P -- /nix/var/nix/profiles/default/bin
