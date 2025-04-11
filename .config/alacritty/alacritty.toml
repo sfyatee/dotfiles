@@ -1,5 +1,5 @@
 general.import = [
-"~/.config/alacritty/themes/itojun.toml"
+"~/.config/alacritty/themes/material-amber.toml"
 ]
 
 [window]

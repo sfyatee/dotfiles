@@ -1,0 +1,25 @@
+# Material Amber
+# Based on material.io guidelines with Amber 50 background
+[colors.primary]
+background = '#fff8e1'
+foreground = '#21201d'
+
+[colors.normal]
+black   = '#21201d'
+red     = '#cd4340'
+green   = '#498d49'
+yellow  = '#fab32d'
+blue    = '#3378c4'
+magenta = '#b83269'
+cyan    = '#21929a'
+white   = '#ffd7d7'
+
+[colors.bright]
+black   = '#d5cdb6'
+red     = '#cc1729'
+green   = '#428b00'
+yellow  = '#a78300'
+blue    = '#006dce'
+magenta = '#c44392'
+cyan    = '#00978a'
+white   = '#3a4d53'
