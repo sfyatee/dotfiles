@@ -1,9 +1,8 @@
 {
 	"audio_config": { "audio": "pipewire" },	
-	"archinstall-language": "English",
 	"bootloader": "Systemd-boot",
+	"uki": true,
 	"custom-command": [
-		"systemctl enable --now {mandoc,paccache}.timer",
 		"systemctl --user enable --now {fnott,foot-server}.service",
 		"systemctl --user enable --now {syncthing}.service"
 	],
@@ -46,5 +45,6 @@
 		"wev",
 		"wlsunset",
 		"xwayland-satellite"
-	]
+	],
+	"services": "mandoc", "paccache"
 }
