@@ -18,7 +18,6 @@ pathadd() {
 export OS=`uname | tr '[:upper:]' '[:lower:]'`
 export ARCH=`uname -m`
 export PLAN9=/usr/local/plan9
-export CVS_RSH=/usr/bin/ssh # {Open,Net}BSD
 
 # browser used by web(1) and thus plumber
 export BROWSER=firefox
@@ -50,13 +49,9 @@ export RUSTUP_HOME=$HOME/.local/share/rustup
 
 # path
 [[ -o login ]] && path=()
-pathadd -P ~/.nix-profile/bin
 pathadd -- /usr/{s,}bin /{s,}bin
 pathadd -- /usr/X11R{6,7}/bin /usr/pkg/{s,}bin
 pathadd /usr/local/{s,}bin
-pathadd -- /usr/games /usr/games/bin
-pathadd -P -- /nix/var/nix/profiles/default/bin
-pathadd -P /run/wrappers/bin
 pathadd -- $PLAN9/bin $PLAN9/bin/upas
 pathadd ~/go/bin $CARGO_HOME/bin
 pathadd ~/.local/bin
@@ -68,7 +63,7 @@ export LC_CTYPE=$LANG
 export LC_COLLATE=C
 export LC_TIME=C
 
-# override $NAMESPACE; X is not running
+# override $NAMESPACE; X is no more
 export NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
