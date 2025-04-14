@@ -1,0 +1,50 @@
+{
+	"audio_config": { "audio": "pipewire" },	
+	"archinstall-language": "English",
+	"bootloader": "Systemd-boot",
+	"custom-command": [
+		"systemctl enable --now {mandoc,paccache}.timer",
+		"systemctl --user enable --now {fnott,foot-server}.service",
+		"systemctl --user enable --now {syncthing}.service"
+	],
+	"locale_config": {
+		"kb_layout": "us",
+		"sys_enc": "UTF-8",
+		"sys_lang": "en_US"
+	},
+	"packages": [
+		"blender",
+		"firefox",
+		"fnott",
+		"foot",
+		"gcc-m2",
+		"github-cli",
+		"glab",
+		"go",
+		"go-tools",
+		"gopls",
+		"graphviz",
+		"jujutsu",
+		"libreoffice-fresh",
+		"lilypond",
+		"mandoc",
+		"obs-studio",
+		"openbsd-netcat",
+		"pacman-contrib",
+		"prismlauncher",
+		"prusa-slicer",
+		"rustup",
+		"sequoia-sq",
+		"sshfs",
+		"steam",
+		"syncthing", 
+		"tailscale",
+		"tmux",
+		"ttf-hack",
+		"typst",
+		"wayvnc",
+		"wev",
+		"wlsunset",
+		"xwayland-satellite"
+	]
+}
