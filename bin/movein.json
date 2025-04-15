@@ -16,6 +16,7 @@
 		"firefox",
 		"fnott",
 		"foot",
+		"fzf",
 		"gcc-m2",
 		"github-cli",
 		"glab",
@@ -46,5 +47,5 @@
 		"wlsunset",
 		"xwayland-satellite"
 	],
-	"services": "mandoc", "paccache"
+	"services": "mandoc", "paccache", "tailscale"
 }
