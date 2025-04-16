@@ -10,6 +10,7 @@
 		"fnott",
 		"foot",
 		"fzf",
+		"gammastep",
 		"gcc-m2",
 		"github-cli",
 		"glab",
@@ -39,14 +40,13 @@
 		"typst",
 		"wayvnc",
 		"wev",
-		"wlsunset",
 		"xwayland-satellite"
 	],
 	"profile_config":
 	"custom-command": [
 		"cd /tmp; git clone https://aur.archlinux.org/paru.git; cd paru; makepkg -si",
 		"paru -S --noconfirm gameoftrees knfmt minivmac ttf-{apple-emoji,mac-fonts,ms-fonts}",
-		"systemctl --user enable --now {fnott,foot-server,syncthing}.service"
+		"systemctl --user enable --now {fnott,foot-server,gammastep,syncthing}.service"
 	],
 	"services": "mandoc", "paccache", "tailscale"
 }
