@@ -29,6 +29,7 @@
 		"prusa-slicer",
 		"qemu-full",
 		"racket",
+		"ruff",
 		"rustup",
 		"sequoia-sq",
 		"sshfs",
