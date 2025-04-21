@@ -81,9 +81,6 @@ set +o vi
 
 # os specificities
 case "$OS" in
-darwin)
-	eval "$(/opt/homebrew/bin/brew shellenv)"
-	;;
 linux)
 	export NPROC=`nproc`
 	;;

@@ -48,6 +48,7 @@ preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 # nice things to have
 alias acme="acme -a -f $font -F $font1"
 alias cp="cp -i"
+alias e="emacs -nw"
 alias edwood="edwood -a -f $font -F $font1"
 alias hg="chg"
 alias lc="lc -F"
