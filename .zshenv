@@ -19,32 +19,11 @@ export OS=`uname | tr '[:upper:]' '[:lower:]'`
 export ARCH=`uname -m`
 export PLAN9=/usr/local/plan9
 
-# browser used by web(1) and thus plumber
-export BROWSER=firefox
-
-# got(1)
-export GOT_AUTHOR="demian garcia <dag@sfyatee.com>"
-
-# opts
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export GOTELEMETRY=off
-export GOTOOLCHAIN=local
-export HOMEBREW_NO_ANALYTICS=1
-export LESS=-i
-export LESSHISTFILE=/dev/null
-export NO_COLOR=1
-export POWERSHELL_TELEMETRY_OPTOUT=1
-export PYTHON_HISTORY=/dev/null
-export SHELL_SESSIONS_DISABLE=1 # Apple Terminal
 export XDG_CONFIG_HOME=$HOME/.config # for Apple
-
-# let gs find the plan9port document fonts
-export GS_FONTPATH=$PLAN9/postscript/font
 
 # xdg
 export CARGO_HOME=$HOME/.local/share/cargo
 export CUDA_CACHE_PATH=$HOME/.cache/nv
-export JJ_CONFIG=$XDG_CONFIG_HOME/jj/config.toml # for Apple
 export RUSTUP_HOME=$HOME/.local/share/rustup
 
 # path
@@ -57,11 +36,33 @@ pathadd ~/go/bin $CARGO_HOME/bin
 pathadd ~/.local/bin
 pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
 
+# browser used by web(1) and thus plumber
+export BROWSER=firefox
+
+# gameoftrees
+export GOT_AUTHOR="demian garcia <dag@sfyatee.com>"
+
+# let gs find the plan9port document fonts
+export GS_FONTPATH=$PLAN9/postscript/font
+
 # UNIX means english and 24h clock. but do use UTF-8! and sort like a machine
 export LANG=en_US.UTF-8
 export LC_CTYPE=$LANG
 export LC_COLLATE=C
 export LC_TIME=C
+
+# misc.
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export GOTELEMETRY=off
+export GOTOOLCHAIN=local
+export HOMEBREW_NO_ANALYTICS=1
+export JJ_CONFIG=$XDG_CONFIG_HOME/jj/config.toml # for Apple
+export LESS=-i
+export LESSHISTFILE=/dev/null
+export NO_COLOR=1
+export POWERSHELL_TELEMETRY_OPTOUT=1
+export PYTHON_HISTORY=/dev/null
+export SHELL_SESSIONS_DISABLE=1 # Apple Terminal
 
 # override $NAMESPACE; X is no more
 export NAMESPACE=/tmp/ns.$USER.:0
