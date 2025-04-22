@@ -77,7 +77,7 @@ export secstore=localhost
 export user=$USER
 
 # add dot to path
-export PATH=.:$PATH
+export PATH=$PATH:.
 
 # emulate rc shell
 set -a
