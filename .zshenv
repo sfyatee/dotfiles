@@ -76,6 +76,9 @@ export home=$HOME
 export secstore=localhost
 export user=$USER
 
+# add dot to path
+export PATH=.:$PATH
+
 # emulate rc shell
 set -a
 set +o vi
