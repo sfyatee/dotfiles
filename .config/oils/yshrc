@@ -1,6 +1,6 @@
 # world
 setglobal OS=$(uname | tr '[:upper:]' '[:lower:]')
-setglobal ARCH=$(uname -m | sed 's;i.86;x86;')
+setglobal ARCH=$(uname -m | sed 's/x86_64/amd64/')
 setglobal PLAN9='/usr/local/plan9'
 
 # browser used by web(1) and thus plumber
