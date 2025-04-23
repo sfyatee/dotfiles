@@ -1,3 +1,5 @@
+umask 022
+
 # world
 setglobal OS=$(uname | tr '[:upper:]' '[:lower:]')
 setglobal ARCH=$(uname -m | sed 's/x86_64/amd64/')
@@ -16,9 +18,23 @@ setglobal GS_FONTPATH='$PLAN9/postscript/font'
 setglobal font='/mnt/font/LucidaGrande/11a/font'
 setglobal font1='/mnt/font/Hack-Regular/11a/font'
 
-# emulate rc shell
-set +o vi
 set -o emacs
+
+# aliases
+proc lc { $PLAN9/bin/lc -F }
+proc ll { /bin/ls -AFl }
+proc ls { /bin/ls -AF }
+proc ltr { /bin/ls -AlFtr }
+proc m { make }
+
+# ➈
+#if termprog {
+#	EDITOR=editinacme
+#	PAGER=nobs
+#	proc git { git --no-pager }
+#	proc hg { chg --pager=no }
+#	proc jj { jj --no-pager }
+# }
 
 # os specificities
 setglobal NPROC=$(sysctl -n hw.ncpu)
