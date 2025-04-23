@@ -1,0 +1,25 @@
+# world
+setglobal OS=$(uname | tr '[:upper:]' '[:lower:]')
+setglobal ARCH=$(uname -m | sed 's;i.86;x86;')
+setglobal PLAN9='/usr/local/plan9'
+
+# browser used by web(1) and thus plumber
+setglobal BROWSER='firefox'
+
+# got(1)
+setglobal GOT_AUTHOR='demian garcia <dag@sfyatee.com>'
+
+# let gs find the plan9port document fonts
+setglobal GS_FONTPATH='$PLAN9/postscript/font'
+
+# default font for Plan 9 programs
+setglobal font='/mnt/font/LucidaGrande/11a/font'
+setglobal font1='/mnt/font/Hack-Regular/11a/font'
+
+# emulate rc shell
+set +o vi
+set -o emacs
+
+# os specificities
+setglobal NPROC=$(sysctl -n hw.ncpu)
+stty status '^T'
