@@ -16,7 +16,7 @@ pathadd() {
 
 # world
 export OS=`uname | tr '[:upper:]' '[:lower:]'`
-export ARCH=`uname -m`
+export ARCH=`uname -m | sed 's/x86_64/amd64/'`
 export PLAN9=/usr/local/plan9
 
 export XDG_CONFIG_HOME=$HOME/.config # for Apple
@@ -86,7 +86,7 @@ set +o vi
 # os specificities
 case "$OS" in
 linux)
-	export NPROC=`nproc`
+	export NPROC=$(nproc)
 	;;
 openbsd)
 	export CDPATH=.:/usr/ports:/usr/ports/mystuff
