@@ -15,13 +15,13 @@ pathadd() {
 }
 
 # world
-export OS=`uname | tr '[:upper:]' '[:lower:]'`
-export ARCH=`uname -m | sed 's/x86_64/amd64/'`
+export OS=$(uname | tr '[:upper:]' '[:lower:]')
+export ARCH=$(uname -m | sed 's/x86_64/amd64/')
 export PLAN9=/usr/local/plan9
 
-export XDG_CONFIG_HOME=$HOME/.config # for Apple
-
-# xdg
+# XDG
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_CONFIG_HOME=$HOME/.config
 export CARGO_HOME=$HOME/.local/share/cargo
 
 # path
