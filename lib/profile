@@ -59,7 +59,7 @@ secstore=localhost
 fn acme{builtin acme -a -f $font -F $font1 $*}
 fn calc{perl -e 'while(<>){print eval, "\n\n"}'}
 fn cp{builtin cp -i $*}
-fn e{builtin emacsclient $*}
+fn e{builtin emacsclient -nw $*}
 fn edwood{builtin edwood -a -f $font -F $font1 $*}
 fn hg{chg $*}
 fn lc{builtin lc -F $*}
@@ -110,6 +110,7 @@ switch($os){
 case linux
 	NPROC=`{nproc}
 	fn ls{builtin ls -AFv $*}
+	fn orphrem{sudo pacman -R `{pacman -Qdtq}}
 	fn pQm{pacman -Qm}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn rcctl{systemctl $*}
