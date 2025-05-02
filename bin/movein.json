@@ -37,6 +37,7 @@
 		"syncthing",
 		"tailscale",
 		"tmux",
+		"tree-sitter-c",
 		"tree-sitter-lua",
 		"tree-sitter-rust",
 		"ttf-hack",

@@ -53,7 +53,8 @@
 (load-theme 'modus-operandi-tinted t)
 (enable-theme 'modus-operandi-tinted)
 (setopt modus-themes-common-palette-overrides
-	'((builtin fg-main) ;code mappings
+	'((bg-main "#eae5ce")
+	  (builtin fg-main) ;code mappings
 	  (comment fg-dim)
 	  (constant fg-main)
 	  (docmarkup fg-main)
@@ -82,6 +83,13 @@
 (custom-set-faces
  '(font-lock-keyword-face ((t (:weight bold))))
  '(font-lock-string-face ((t (:underline t)))))
+
+(use-package treesit
+  :ensure nil
+  :init
+  (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+  (add-to-list 'auto-mode-alist '("/go\\.mod\\'" . go-mod-ts-mode))
+  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-ts-mode)))
 
 ;; lsp
 (use-package eglot
