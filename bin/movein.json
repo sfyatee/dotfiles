@@ -50,7 +50,7 @@
 		"cd /tmp; git clone https://aur.archlinux.org/paru.git; cd paru; makepkg -si",
 		"paru -S --noconfirm drawterm-9front-wl-git gameoftrees knfmt minivmac",
 		"paru -S --noconfirm pacman-mandoc-update-hook ttf-{apple-emoji,mac-fonts,ms-fonts}",
-		"systemctl --user enable --now {fnott,foot-server,gammastep,syncthing}.service"
+		"systemctl --user enable --now {fnott,gammastep,syncthing}.service"
 	],
 	"services": "mandoc", "paccache", "tailscale"
 }
