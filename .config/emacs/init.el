@@ -1,3 +1,4 @@
+;; elpaca
 (defvar elpaca-installer-version 0.11)
 (defvar elpaca-directory (expand-file-name "elpaca/" user-emacs-directory))
 (defvar elpaca-builds-directory (expand-file-name "builds/" elpaca-directory))
@@ -36,6 +37,70 @@
     (let ((load-source-file-function nil)) (load "./elpaca-autoloads"))))
 (add-hook 'after-init-hook #'elpaca-process-queues)
 (elpaca `(,@elpaca-order))
+
+;; install use-package support
+(elpaca elpaca-use-package
+  ;; enable use-package :ensure support for elpaca.
+  (elpaca-use-package-mode))
+
+;; emacs
+(use-package emacs
+  :demand t
+  :custom
+  (x-stretch-cursor t))
+
+;; theme
+(load-theme 'modus-operandi-tinted t)
+(enable-theme 'modus-operandi-tinted)
+(setopt modus-themes-common-palette-overrides
+	'((builtin fg-main) ;code mappings
+	  (comment fg-dim)
+	  (constant fg-main)
+	  (docmarkup fg-main)
+	  (docstring fg-main)
+	  (fnname fg-main)
+	  (keyword fg-main)
+	  (preprocessor fg-main)
+	  (rx-backslash fg-main)
+	  (rx-construct fg-main)
+	  (string fg-main)
+	  (type fg-main)
+	  (variable fg-main)
+	  (fg-heading-0 fg-main)
+	  (fg-heading-1 fg-main)
+	  (fg-heading-2 fg-main)
+	  (fg-heading-3 fg-main)
+	  (fg-heading-4 fg-main)
+	  (fg-heading-5 fg-main)
+	  (fg-heading-6 fg-main)
+	  (fg-heading-7 fg-main)
+	  (fg-heading-8 fg-main)
+	  (fg-link fg-main) ;link mappings
+	  (underline-link fg-main)
+	  (bg-paren-match unspecified) ;paren match
+	  (fg-paren-match yellow-intense)))
+(custom-set-faces
+ '(font-lock-keyword-face ((t (:weight bold))))
+ '(font-lock-string-face ((t (:underline t)))))
+
+;; lsp
+(use-package eglot
+  :ensure nil
+  :hook ((go-ts-mode . eglot-ensure)
+	 (rust-ts-mode . eglot-ensure))
+  :config
+  (add-hook 'before-save-hook
+	    (lambda()
+	      (call-interactively 'eglot-code-action-organize-imports))
+	    nil t))
+
+;; irc
+(use-package erc
+  :ensure nil
+  :config
+  (add-to-list 'erc-modules 'notifications)
+  (setq erc-server "irc.oftc.net"
+	erc-nick "sfyatee"))
 
 ;; sq
 (use-package sq :ensure t)
