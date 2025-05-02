@@ -6,9 +6,9 @@
 	"packages": [
 		"clang",
 		"blender",
+		"emacs",
 		"firefox",
 		"fnott",
-		"foot",
 		"fzf",
 		"gammastep",
 		"gcc-m2",
