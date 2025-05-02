@@ -53,7 +53,8 @@
 (load-theme 'modus-operandi-tinted t)
 (enable-theme 'modus-operandi-tinted)
 (setopt modus-themes-common-palette-overrides
-	'((bg-main "#eae5ce")
+	'((bg-main "#f3ead3")
+	  (fg-dim "#939f91")
 	  (builtin fg-main) ;code mappings
 	  (comment fg-dim)
 	  (constant fg-main)
