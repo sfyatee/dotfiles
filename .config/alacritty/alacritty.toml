@@ -1,0 +1,6 @@
+general.import = [
+"~/.config/alacritty/themes/electrophoretic.toml"
+]
+
+[font]
+normal = { family = "Space Mono" }
