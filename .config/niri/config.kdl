@@ -250,8 +250,6 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "footclient" "aerc"
-spawn-at-startup "footclient" "comlink"
 
 environment {
     _JAVA_AWT_WM_NONREPARENTING "1"

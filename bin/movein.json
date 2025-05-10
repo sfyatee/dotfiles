@@ -4,8 +4,9 @@
 	"uki": true,
 	"kernels": [ "linux" ],
 	"packages": [
-		"clang",
 		"blender",
+		"clang",
+		"dolphin-emu",
 		"emacs",
 		"firefox",
 		"fnott",
@@ -31,6 +32,7 @@
 		"racket",
 		"ruff",
 		"rustup",
+		"sbcl",
 		"sequoia-sq",
 		"sshfs",
 		"steam",
