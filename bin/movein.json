@@ -6,11 +6,13 @@
 	"packages": [
 		"blender",
 		"clang",
+		"darktable",
 		"dolphin-emu",
 		"emacs-wayland",
 		"firefox",
 		"gammastep",
 		"gcc-m2",
+		"gimp",
 		"github-cli",
 		"glab",
 		"go",
