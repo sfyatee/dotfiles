@@ -250,6 +250,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
+spawn-at-startup "nyxt"
 
 environment {
     _JAVA_AWT_WM_NONREPARENTING "1"
