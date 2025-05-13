@@ -59,7 +59,6 @@ secstore=localhost
 fn acme{builtin acme -a -f $font -F $font1 $*}
 fn calc{perl -e 'while(<>){print eval, "\n\n"}'}
 fn cp{builtin cp -i $*}
-fn e{builtin emacsclient -nw $*}
 fn edwood{builtin edwood -a -f $font -F $font1 $*}
 fn hg{chg $*}
 fn lc{builtin lc -F $*}
