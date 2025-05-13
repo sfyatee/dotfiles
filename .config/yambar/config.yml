@@ -1,14 +1,10 @@
 bar:
   height: 24
-  location: top
-  background: FFF8E1FF
+  location: bottom
+  background: 000000ff
   margin: 14
-  border:
-    width: 6
-    color: 000000FF
-    margin: 24
-  font: Microsoft Sans Serif:size=14:weight=bold
-  foreground: 000000FF
+  font: Lucida Grande:size=14:weight=bold
+  foreground: ffffffff
 
   left:
     - niri-workspaces:
