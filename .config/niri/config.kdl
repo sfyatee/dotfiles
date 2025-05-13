@@ -188,7 +188,7 @@ layout {
         // off
 
         width 6
-        active-color "#859900"
+        active-color "#55aaaa"
         inactive-color "black"
 
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
@@ -198,7 +198,7 @@ layout {
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        on
+        // on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
@@ -286,27 +286,6 @@ animations {
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
     // slowdown 3.0
-}
-
-// Add a shadow for yambar.
-layer-rule {
-    match namespace="^panel"
-
-    shadow {
-        on
-    }
-}
-
-// Add a shadow for fuzzel.
-layer-rule {
-    match namespace="^launcher$"
-    
-    shadow {
-        on
-    }
-
-    // Fuzzel defaults to 10 px rounded corners.
-    geometry-corner-radius 10
 }
 
 // Window rules let you adjust behavior for individual windows.
