@@ -1,5 +1,5 @@
 (defvar *web-buffer-modes*
-  '(:emacs-mode
+  '(:vi-normal-mode
     :blocker-mode :force-https-mode
     :reduce-tracking-mode
     :user-script-mode :bookmarklets-mode)
@@ -22,3 +22,7 @@ loads."
   `(define-nyxt-user-system-and-load ,(gensym "NYXT-USER/")
      :depends-on (,system) ,@(when file
                                `(:components (,file)))))
+
+(define-configuration :web-buffer
+  "Basic modes setup for web-buffer."
+  ((default-modes `(,@*web-buffer-modes* ,@%slot-value%))))
