@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ $# -eq 0 ]; then
+	cat > /tmp/xhlink
+	link=$(cat /tmp/xhlink)
+else
+	link="$*"
+fi
+
+printf '<a href="%s">' "$link"
+if [ $# -eq 0 ]; then
+	cat /tmp/xhlink
+else
+	cat
+fi
+printf '</a>'
+rm -f /tmp/xhlink

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+printf '<strong>'
+cat
+printf '</strong>'
