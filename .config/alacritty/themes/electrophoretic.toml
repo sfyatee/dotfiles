@@ -6,8 +6,8 @@
 # author: Eugen Rahaian <eugen@rah.ro>
 
 [colors.primary]
-background= '#ffffff'
-foreground= '#000000'
+background=	'#ffffff'
+foreground=	'#000000'
 
 # The colors are sorted based on their luminance, so we can more easily assign
 # them a gray level.
@@ -15,20 +15,20 @@ foreground= '#000000'
 [colors.normal]
 black=	'#ffffff'
 blue=	'#616161'
-red=   '#515151'
-magenta=   '#414141'
-green=   '#313131'
-cyan=   '#212121'
-yellow=   '#111111'
-white=   '#000000'
+red=	'#515151'
+magenta=	'#414141'
+green=	'#313131'
+cyan=	'#212121'
+yellow=	'#111111'
+white=	'#000000'
 # Here, we also stay away from the white background by reusing the dark gray levels
 # from above, with small variations
 [colors.bright]
-black=    '#818181'
-blue=    '#717171'
-red=    '#616161'
-magenta=    '#515151'
-green=    '#414141'
-cyan=    '#313131'
-yellow=    '#212121'
-white=    '#111111'
+black=	'#818181'
+blue=	'#717171'
+red=	'#616161'
+magenta=	'#515151'
+green=	'#414141'
+cyan=	'#313131'
+yellow=	'#212121'
+white=	'#111111'
