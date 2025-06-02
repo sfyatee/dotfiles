@@ -48,7 +48,7 @@ NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
 font=/mnt/font/LucidaGrande/11a/font
-font1=/mnt/font/Hack-Regular/11a/font
+font1=/mnt/font/LucidaGrandeMonoDK/11a/font
 
 # 9
 nine=➈

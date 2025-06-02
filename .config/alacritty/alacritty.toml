@@ -3,5 +3,4 @@ general.import = [
 ]
 
 [font]
-# normal = { family = "Lucida Grande Mono DK" }
-normal = { family = "Space Mono" }
+normal = { family = "Lucida Grande Mono DK" }
