@@ -1,6 +1,0 @@
-general.import = [
-"~/.config/alacritty/themes/electrophoretic.toml"
-]
-
-[font]
-normal = { family = "Lucida Grande Mono DK" }
