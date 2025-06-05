@@ -188,7 +188,7 @@ layout {
         // off
 
         width 6
-        active-color "#55aaaa"
+        active-color "black"
         inactive-color "black"
 
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
@@ -250,7 +250,6 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 // spawn-at-startup "alacritty" "-e" "fish"
-spawn-at-startup "nyxt"
 
 environment {
     _JAVA_AWT_WM_NONREPARENTING "1"
@@ -353,6 +352,7 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "ghostty"; }
+    // Mod+Return { spawn "footclient"; }
     Mod+Space { spawn "fuzzel"; }
     Super+Alt+L { spawn "swaylock"; }
 
