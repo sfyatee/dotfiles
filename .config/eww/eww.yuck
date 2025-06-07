@@ -1,0 +1,40 @@
+(defwidget bar []
+  (centerbox :orientation "v"
+             :halign "center"
+    (box :class "segment-top"
+         :valign "start"
+         :orientation "v"
+      (tags))
+    (box :class "segment-center"
+         :valign "center"
+         :orientation "v"
+      (time)
+      (date))
+    (box :class "segment-bottom"
+         :valign "end"
+         :orientation "v"
+      (brightness)
+      (volume)
+      (current-tag))))
+
+(defwidget time []
+  (box :class "time"
+       :orientation "v"
+    hour min type))
+
+(defwidget date []
+  (box :class "date"
+       :orientation "v"
+    year month day))
+
+(defwidget brightness []
+  (button :class "icon"
+          :orientation "v"
+    (circular-progress :value brightness-level
+                       :thickness 3)))
+
+(defwidget volume []
+  (button :class "icon"
+          :orientation "v"
+    (circular-progress :value volume-level
+                       :thickness 3)))
