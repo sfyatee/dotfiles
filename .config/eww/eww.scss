@@ -1,0 +1,48 @@
+* {
+  all: unset;
+}
+
+window {
+  font-family: "Liga SFMono Nerd Font";
+  font-size: 13px;
+  background-color: rgba(0,0,0,0);
+  color: $base04;
+  & > * {
+    margin: 0px 0px 12px 12px;
+  }
+}
+
+.tags {
+  margin-top: 9px;
+}
+
+.active {
+  color: $base06;
+  padding: 6px 9px 6px 6px;
+  border-left: 3px solid $base0C;
+}
+
+.time {
+  color: $base06;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.date {
+  margin-top: 6px;
+}
+
+.icon {
+  background-color: $base00;
+  padding: 9px;
+  margin: 4.5px 0px;
+  border-radius: 3px;
+}
+
+.current-tag {
+  color: $base00;
+  background-color: $base0E;
+  padding: 9px;
+  margin: 4.5px 0px;
+  border-radius: 3px;
+}
