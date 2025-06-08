@@ -12,10 +12,7 @@
       (date))
     (box :class "segment-bottom"
          :valign "end"
-         :orientation "v"
-      (brightness)
-      (volume)
-      (current-tag))))
+         :orientation "v")))
 
 (defwidget time []
   (box :class "time"
@@ -26,34 +23,3 @@
   (box :class "date"
        :orientation "v"
     year month day))
-
-(defwidget brightness []
-  (button :class "icon"
-          :orientation "v"
-    (circular-progress :value brightness-level
-                       :thickness 3)))
-
-(defwidget volume []
-  (button :class "icon"
-          :orientation "v"
-    (circular-progress :value volume-level
-                       :thickness 3)))
-
-(defwidget current-tag []
-  (button :class "current-tag"
-          :orientation "v"
-          :onclick "kickoff & disown"
-    "''${active-tag}"))
-
-(defvar active-tag "1")
-(defpoll hour :interval "1m" "date +%I")
-(defpoll min  :interval "1m" "date +%M")
-(defpoll type :interval "1m" "date +%p")
-
-(defpoll day   :interval "10m" "date +%d")
-(defpoll month :interval "1h"  "date +%m")
-(defpoll year  :interval "1h"  "date +%y")
-
-;; this is updated by the helper script
-(defvar brightness-level 66)
-(defvar volume-level 33)
