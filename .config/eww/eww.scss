@@ -19,7 +19,8 @@ window {
 .active {
   color: #ffffff;
   padding: 6px 9px 6px 6px;
-  border-left: 3px solid $base0C;
+  ;; fix
+  border-left: 3px solid #ff7eb6;
 }
 
 .time {
@@ -41,7 +42,8 @@ window {
 
 .current-tag {
   color: rgba(13,13,13,0.87);
-  background-color: $base0E;
+  ;; fix
+  background-color: #be95ff;
   padding: 9px;
   margin: 4.5px 0px;
   border-radius: 3px;
