@@ -6,7 +6,7 @@ window {
   font-family: monospace;
   font-size: 13px;
   background-color: rgba(0,0,0,0);
-  color: $base04;
+  color: #dde1e6;
   & > * {
     margin: 0px 0px 12px 12px;
   }
@@ -17,13 +17,13 @@ window {
 }
 
 .active {
-  color: $base06;
+  color: #ffffff;
   padding: 6px 9px 6px 6px;
   border-left: 3px solid $base0C;
 }
 
 .time {
-  color: $base06;
+  color: #ffffff;
   font-weight: bold;
   margin-bottom: 6px;
 }
