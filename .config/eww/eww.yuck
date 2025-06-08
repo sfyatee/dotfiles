@@ -26,3 +26,7 @@
 
 (defpoll hour :interval "1m" "date +%I")
 (defpoll min  :interval "1m" "date +%M")
+
+(defpoll day   :interval "10m" "date +%d")
+(defpoll month :interval "1h"  "date +%m")
+(defpoll year  :interval "1h"  "date +%y")
