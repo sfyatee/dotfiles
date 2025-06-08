@@ -3,7 +3,7 @@
 }
 
 window {
-  font-family: "Liga SFMono Nerd Font";
+  font-family: monospace;
   font-size: 13px;
   background-color: rgba(0,0,0,0);
   color: $base04;
@@ -33,14 +33,14 @@ window {
 }
 
 .icon {
-  background-color: $base00;
+  background-color: rgba(13,13,13,0.87);
   padding: 9px;
   margin: 4.5px 0px;
   border-radius: 3px;
 }
 
 .current-tag {
-  color: $base00;
+  color: rgba(13,13,13,0.87);
   background-color: $base0E;
   padding: 9px;
   margin: 4.5px 0px;
