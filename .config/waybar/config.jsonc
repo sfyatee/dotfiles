@@ -1,0 +1,72 @@
+// vim: ft=jsonc
+{
+    "layer": "top",
+    "position": "left",
+    "spacing": 0, // Gaps between modules
+    "modules-left": [
+        "network",
+        "niri/workspaces"
+    ],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "battery", "tray"],
+    "custom/logout": {
+        "",
+        "tooltip": false,
+        "on-click": "niri msg action quit"
+    },
+    "niri/window": {
+        // "format": "{app_id}",
+        "separate-outputs": true,
+        "icon": true,
+        "icon-size": 16,
+    },
+    "niri/language": {
+        "format": "{shortDescription}",
+        // "format-en": ":)",
+        // "format-ru": ":P",
+    },
+    "wlr/taskbar": {
+        // "all-outputs": true,
+        // "format": "{icon} {title} {short_state}",
+        "format": "{icon}",
+        "tooltip-format": "{title} | {app_id}",
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "on-click-right": "fullscreen"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        // "format": "{:%e %B %H:%M}"
+        "format": "{:%e\n%m\n\n<b>%H\n%M</b>}"
+    },
+    "cpu": {
+        "format": "{usage}",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}"
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}",
+        "format-charging": "{capacity}",
+        "format-plugged": "{capacity}",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "",
+        "format- ",
+    }
+}
+disconnected": "default": "format": "
