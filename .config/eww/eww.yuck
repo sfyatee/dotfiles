@@ -23,3 +23,6 @@
   (box :class "date"
        :orientation "v"
     year month day))
+
+(defpoll hour :interval "1m" "date +%I")
+(defpoll min  :interval "1m" "date +%M")
