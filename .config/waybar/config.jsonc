@@ -10,7 +10,6 @@
     "modules-center": ["clock"],
     "modules-right": ["cpu", "memory", "battery", "tray"],
     "custom/logout": {
-        "",
         "tooltip": false,
         "on-click": "niri msg action quit"
     },
@@ -66,7 +65,6 @@
         "format-ethernet": "",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "",
-        "format- ",
     }
 }
 disconnected": "default": "format": "
