@@ -188,7 +188,7 @@ layout {
         // off
 
         width 6
-        active-color "lightcoral"
+        active-color "#55aaaa"
         inactive-color "black"
 
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
