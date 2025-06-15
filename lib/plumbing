@@ -1,0 +1,22 @@
+# to update: cat $HOME/lib/plumbing | 9p write plumb/rules
+
+# ocaml
+# https://discuss.ocaml.org/t/acme-plumbing-rules-for-ocaml/10467
+# example: in file "foo/bar.ml", line 155, characters 30-62
+type	is	text
+data	matches	'.*[Ff]ile "([^"]+)", line ([0-9]+), characters ([0-9]+)-([0-9]+).*'$nl'?'
+arg	isfile	$1
+data	set	$file
+attr	add	addr=$2-#0+#$3,$2-#0+#$4
+plumb	to	edit
+plumb	client	$editor
+
+# example: File "tests/dune", line 2, characters 7-22:
+type	is	text
+data	matches	'.*[Ff]ile "([^"]+)", lines ([0-9]+)-([0-9]+).*'$nl'?'
+arg	isfile	$1
+data	set	$file
+attr	add	addr=$2,$3
+plumb	to	edit
+plumb	client	$editor
+
