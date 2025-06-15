@@ -1,12 +1,5 @@
 # to update: cat $HOME/lib/plumbing | 9p write plumb/rules
 
-# rfc
-# XXX: make this smarter
-type is text
-data matches 'rfc:([0-9]+)'
-plumb to web
-plumb start web http://www.rfc-editor.org/rfc/rfc$1.txt
-
 # libre office - s[xt][cdigmw], doc, xls, ppt
 data matches '[a-zA-Z¡-￿0-9_\-./@]+'
 data matches '([a-zA-Z¡-￿0-9_\-./@]+)\.([Ss][XxTt][CcDdIiGgMmWw]|[Dd][Oo][Cc]|[Xx][Ll][Ss]|[Pp][Pp][Tt])'
