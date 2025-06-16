@@ -52,6 +52,7 @@ data set        $file
 attr add        addr=$2
 plumb to edit
 plumb client $editor
+
 # libre office - s[xt][cdigmw], doc, xls, ppt
 data matches '[a-zA-Z¡-￿0-9_\-./@]+'
 data matches '([a-zA-Z¡-￿0-9_\-./@]+)\.([Pp][Pp][Tt][Xx]?|[Dd][Oo][Cc][Xx]?|[Xx][Ll][Ss][Xx]?|[Ss][Xx][Dd])'
