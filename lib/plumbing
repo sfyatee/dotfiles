@@ -5,7 +5,7 @@ editor = acme
 # ocaml error messages; thanks droyo
 # duplicates are for dune's _build
 type is text
-data matches '.*[Ff]ile "([.a-zA-Z¡-<U+FFFF>0-9_/\-]*[a-zA-Z¡-<U+FFFF>0-9_/\-])", line ([0-9]+), characters ([0-9]+)-([0-9]+).*'$nl'?'
+data matches '.*[Ff]ile "([.a-zA-Z¡-￿0-9_/\-]*[a-zA-Z¡-￿0-9_/\-])", line ([0-9]+), characters ([0-9]+)-([0-9]+).*'$nl'?'
 arg isfile      $1
 data set        $file
 attr add        addr=$2-#0+#$3,$2-#0+#$4
@@ -13,7 +13,7 @@ plumb to edit
 plumb client $editor
 
 type is text
-data matches '.*[Ff]ile "([.a-zA-Z¡-<U+FFFF>0-9_/\-]*[a-zA-Z¡-<U+FFFF>0-9_/\-])", line ([0-9]+), characters ([0-9]+)-([0-9]+).*'$nl'?'
+data matches '.*[Ff]ile "([.a-zA-Z¡-￿0-9_/\-]*[a-zA-Z¡-￿0-9_/\-])", line ([0-9]+), characters ([0-9]+)-([0-9]+).*'$nl'?'
 arg isfile      _build/default/$1
 data set        $file
 attr add        addr=$2-#0+#$3,$2-#0+#$4
@@ -21,7 +21,7 @@ plumb to edit
 plumb client $editor
 
 type is text
-data matches '.*[Ff]ile "([.a-zA-Z¡-<U+FFFF>0-9_/\-]*[a-zA-Z¡-<U+FFFF>0-9_/\-])", lines ([0-9]+)-([0-9]+), characters ([0-9]+)-([0-9]+).*'$nl'?'
+data matches '.*[Ff]ile "([.a-zA-Z¡-￿0-9_/\-]*[a-zA-Z¡-￿0-9_/\-])", lines ([0-9]+)-([0-9]+), characters ([0-9]+)-([0-9]+).*'$nl'?'
 arg isfile      $1
 data set        $file
 attr add        addr=$2-#0+#$4,$3-#0+#$5
@@ -29,7 +29,7 @@ plumb to edit
 plumb client $editor
 
 type is text
-data matches '.*[Ff]ile "([.a-zA-Z¡-<U+FFFF>0-9_/\-]*[a-zA-Z¡-<U+FFFF>0-9_/\-])", line ([0-9]+).*'$nl'?'
+data matches '.*[Ff]ile "([.a-zA-Z¡-￿0-9_/\-]*[a-zA-Z¡-￿0-9_/\-])", line ([0-9]+).*'$nl'?'
 arg isfile      $1
 data set        $file
 attr add        addr=$2
@@ -38,7 +38,7 @@ plumb client $editor
 
 # dune: look there if we haven't found the file yet.
 type is text
-data matches '.*[Ff]ile "([.a-zA-Z¡-<U+FFFF>0-9_/\-]*[a-zA-Z¡-<U+FFFF>0-9_/\-])", lines ([0-9]+)-([0-9]+), characters ([0-9]+)-([0-9]+).*'$nl'?'
+data matches '.*[Ff]ile "([.a-zA-Z¡-￿0-9_/\-]*[a-zA-Z¡-￿0-9_/\-])", lines ([0-9]+)-([0-9]+), characters ([0-9]+)-([0-9]+).*'$nl'?'
 arg isfile      _build/default/$1
 data set        $file
 attr add        addr=$2-#0+#$4,$3-#0+#$5
@@ -46,7 +46,7 @@ plumb to edit
 plumb client $editor
 
 type is text
-data matches '.*[Ff]ile "([.a-zA-Z¡-<U+FFFF>0-9_/\-]*[a-zA-Z¡-<U+FFFF>0-9_/\-])", line ([0-9]+).*'$nl'?'
+data matches '.*[Ff]ile "([.a-zA-Z¡-￿0-9_/\-]*[a-zA-Z¡-￿0-9_/\-])", line ([0-9]+).*'$nl'?'
 arg isfile      _build/default/$1
 data set        $file
 attr add        addr=$2
