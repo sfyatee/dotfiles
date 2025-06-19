@@ -96,7 +96,7 @@ input {
 }
 
 output "HDMI-A-1" {
-    background-color "#b7d3e0"
+    background-color "CadetBlue"
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -188,7 +188,7 @@ layout {
         // off
 
         width 6
-        active-color "#55aaaa"
+        // active-color "black"
         inactive-color "black"
 
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
