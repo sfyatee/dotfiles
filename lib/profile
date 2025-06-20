@@ -48,7 +48,7 @@ NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
 font=/mnt/font/LucidaGrande/11a/font
-font1=/mnt/font/LucidaGrandeMonoDK/11a/font
+font2=/mnt/font/LucidaGrandeMonoDK/11a/font
 
 # 9
 nine=➈
@@ -56,10 +56,10 @@ fn '%'{ if(! ~ $#* 0) $* }
 secstore=localhost
 
 # things to make life easy
-fn acme{builtin acme -a -f $font -F $font1 $*}
+fn acme{builtin acme -a -f $font -F $font2 $*}
 fn calc{perl -e 'while(<>){print eval, "\n\n"}'}
 fn cp{builtin cp -i $*}
-fn edwood{builtin edwood -a -f $font -F $font1 $*}
+fn edwood{builtin edwood -a -f $font -F $font2 $*}
 fn hg{chg $*}
 fn lc{builtin lc -F $*}
 fn ll{builtin ls -AFl $*}

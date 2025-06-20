@@ -69,7 +69,7 @@ export NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
 export font=/mnt/font/LucidaGrande/11a/font
-export font1=/mnt/font/LucidaGrandeMonoDK/11a/font
+export font2=/mnt/font/LucidaGrandeMonoDK/11a/font
 
 # equivalent variables for rc(1)
 export home=$HOME
