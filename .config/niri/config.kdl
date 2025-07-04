@@ -338,6 +338,12 @@ window-rule {
     clip-to-geometry true
 }
 
+// Notifications like fnott and mako to be blocked out.
+layer-rule {
+    match namespace="^notifications$"
+    block-out-from "screencast"
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
