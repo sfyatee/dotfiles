@@ -102,6 +102,10 @@ input {
     position x=1280 y=0
 }
 
+output "HDMI-A-1" {
+    background-color "ffd7ff"
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
