@@ -289,9 +289,6 @@ cursor {
     hide-when-typing
 }
 
-// The front fell off!
-spawn-at-startup "drawterm"
-
 // Animation settings.
 // The wiki explains how to configure individual animations:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Animations
