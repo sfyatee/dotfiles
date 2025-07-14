@@ -103,7 +103,7 @@ input {
 }
 
 output "HDMI-A-1" {
-    background-color "ffd7ff"
+    background-color "b7d3e0"
 }
 
 // Settings that influence how windows are positioned and sized.
