@@ -285,9 +285,18 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
 
+hotkey-overlay {
+    skip-at-startup
+}
+
+// Need to find a way to disable this for all children of Steam sessions.
 cursor {
     hide-when-typing
 }
+
+// The essentials for the modern human.
+spawn-at-startup "swaybg" "-m" "fit" "-i" "$HOME/.local/share/backgrounds/leaf.png"
+spawn-at-startup "acme"
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
