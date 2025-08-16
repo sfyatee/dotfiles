@@ -1,19 +1,13 @@
 * {
-/*    font-family: monospace, Symbola; */
+    font-family: sans-serif;
+    font-weight: bold;
     font-size: 14px;
     font-feature-settings: "tnum";
 }
 
 window#waybar {
-    background: transparent;
-    background-color: black;
-    border-left: 1px solid #6c7086;
-    /* background-color: black; */
-    /* border-bottom: 2px solid rgba(147, 153, 178, 0.5); */
-    /* border: 1px solid rgba(166, 173, 200, 1.0); */
-    color: #ffffff;
-    /* transition-property: background-color; */
-    /* transition-duration: .5s; */
+    background-color: #ffffd7;
+    border: 6px solid black;
 }
 
 window#waybar > box {
