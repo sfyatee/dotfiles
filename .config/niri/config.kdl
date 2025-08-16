@@ -198,7 +198,7 @@ layout {
         // off
 
         width 6
-        active-color "dimgrey"
+        active-color "black"
         inactive-color "black"
 
         // Color of the border around windows that request your attention.
@@ -355,6 +355,21 @@ window-rule {
 layer-rule {
     match namespace="^notifications$"
     block-out-from "screencast"
+}
+
+// Dim windows. Thank you so much visualglitch91 on Matrix.
+window-rule {
+    match is-focused=false
+    opacity 0.4
+
+    shadow {
+	    on
+	    inactive-color "#1D1D1FEB"
+	    spread 0
+	    softness 0
+	    offset x=0 y=0
+	    draw-behind-window true
+    }
 }
 
 binds {
