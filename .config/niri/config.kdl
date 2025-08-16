@@ -103,7 +103,7 @@ input {
 }
 
 output "HDMI-A-1" {
-    background-color "EACD76"
+    background-color "b7d3e0"
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -296,7 +296,6 @@ cursor {
 
 // The essentials for the modern human.
 spawn-at-startup "swaybg" "-m" "fit" "-i" "$HOME/.local/share/backgrounds/leaf.png"
-spawn-at-startup "acme"
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
@@ -357,18 +356,18 @@ layer-rule {
     block-out-from "screencast"
 }
 
-// Dim windows. Thank you so much visualglitch91 on Matrix.
+// Dim inactive windows. Thank you so much visualglitch91 on Matrix.
 window-rule {
     match is-focused=false
     opacity 0.4
 
     shadow {
-	    on
-	    inactive-color "#1D1D1FEB"
-	    spread 0
-	    softness 0
-	    offset x=0 y=0
-	    draw-behind-window true
+        on
+        inactive-color "#1D1D1FEB"
+        spread 0
+        softness 0
+        offset x=0 y=0
+        draw-behind-window true
     }
 }
 
