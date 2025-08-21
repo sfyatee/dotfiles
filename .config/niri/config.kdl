@@ -295,7 +295,7 @@ cursor {
 }
 
 // The essentials for the modern human.
-spawn-at-startup "swaybg" "-m" "fit" "-i" "$HOME/.local/share/backgrounds/leaf.png"
+spawn-at-startup "swaybg" "-m" "fit" "-i" "~/.local/share/backgrounds/leaf.png"
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
