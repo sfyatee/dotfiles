@@ -350,6 +350,13 @@ window-rule {
     clip-to-geometry true
 }
 
+// Don't leak!
+window-rule {
+    match app-id="^discord$"
+    match app-id=r#"^.*\.Mumble$"#
+    block-out-from "screencast"
+}
+
 // Notifications like fnott and mako to be blocked out.
 layer-rule {
     match namespace="^notifications$"
