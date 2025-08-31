@@ -2,5 +2,5 @@
 name = "demian garcia"
 email = "dag@sfyatee.com"
 
-[diff]
-format = "git"
+[ui]
+diff-formatter = ":git"
