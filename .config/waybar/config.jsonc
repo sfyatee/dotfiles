@@ -11,10 +11,6 @@
     "modules-left": [
         "niri/window"
     ],
-    // TODO
-    "modules-center": [
-        "sway/window"
-    ],
     "modules-right": [
         "pipewire",
         "network",
@@ -62,12 +58,34 @@
       }
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    }
+        // Force the wifi interface so we can bounce it on click
+        "interface": "wlan0",
+
+        // Poll fairly often so signal/labels react quickly
+        "interval": 5,
+
+	// Ethernet up -> "eth"
+	"format-ethernet": "eth",
+
+	// Wi-Fi connected -> plain "wifi" (we color this via CSS below)
+	// Also expose % and dBm in the tooltip for debugging/visibility
+	"format-wifi": "wifi",
+	"tooltip-format-wifi": "{essid}  {signalStrength}%  ({signaldBm} dBm)",
+
+	// Linked but no IP (still up but not connected)
+	"format-linked": "wifi",
+
+	// When rfkill blocks wifi, show the disabled state
+	"rfkill": true,
+	"format-disabled": "wifi",
+
+	// When the displayed interface is disconnected, hide the module
+	"format-disconnected": "",
+
+	// Left-click: bounce the interface (choose ONE of the two lines)
+	// If you use doas + ifconfig (like your script), use this:
+	"on-click": "sh -c 'doas ifconfig wlan0 down; doas ifconfig wlan0 up'"
+	// If you use NetworkManager instead, comment the line above and use:
+	// "on-click": "sh -c \"nmcli radio wifi off; sleep 0.5; nmcli radio wifi on\""
+	}
 }
