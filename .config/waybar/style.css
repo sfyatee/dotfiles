@@ -1,13 +1,13 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-family: Kermit, Symbola, sans-serif;
+    font-size: 14px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
+    background-color: #ffffd7;
+    border: 6px solid black;
+    color: #444444;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -114,7 +114,7 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
+    color: black;
 }
 
 #battery {
