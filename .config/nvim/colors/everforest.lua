@@ -222,9 +222,9 @@ hi('@lsp.type.variable',      { link = 'Identifier' })
 
 if vim.o.background == 'light' then
   -- Default colors only used with a light background.
-  hi('ColorColumn',      { bg = '#eae4ca',                              ctermbg = 'LightRed' })
-  hi('CursorColumn',     { bg = '#eae4ca',                              ctermbg = 'LightGrey' })
-  hi('CursorLine',       { bg = '#eae4ca',                              cterm = { underline = true } })
+  hi('ColorColumn',      { bg = '#f6f9ce',                              ctermbg = 'LightRed' })
+  hi('CursorColumn',     { bg = '#f6f9ce',                              ctermbg = 'LightGrey' })
+  hi('CursorLine',       { bg = '#f6f9ce',                              cterm = { underline = true } })
   hi('CursorLineNr',     { fg = draw.Grey2, bold = true,                ctermfg = 'Brown', cterm = { underline = true } })
   hi('DiffAdd',          { bg = draw.BGreen,                            ctermbg = 'LightBlue' })
   hi('DiffChange',       { bg = draw.BBlue,                             ctermbg = 'LightMagenta' })
