@@ -61,10 +61,10 @@ alias ph="ps auwwx | head"
 alias sam="sam -a"
 
 # when i say vi i mean nvim (if it's installed)
-if [ -x "`which vim`" ]; then
-	alias vi="vim"
-	alias view="vim -R"
-	export EDITOR=`which vim`
+if [ -x "`which nvim`" ]; then
+	alias vi="nvim"
+	alias view="nvim -R"
+	export EDITOR=`which nvim`
 else
 	export EDITOR=/usr/bin/vi
 fi
