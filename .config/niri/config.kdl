@@ -633,6 +633,7 @@ binds {
 
     // Taken from MacOS. Useful for keyboards without physical PrintSrc.
     Mod+Shift+3 { screenshot-screen; }
+    Mod+Shift+4 { screenshot; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
