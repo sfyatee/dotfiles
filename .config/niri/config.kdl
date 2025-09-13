@@ -270,7 +270,6 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 
-
 // Spawn services as needed.
 spawn-at-startup "sh" "-c" "~/bin/riostart"
 
@@ -298,8 +297,8 @@ cursor {
     hide-when-typing
 }
 
-// The essentials for the modern human.
-spawn-at-startup "swaybg" "-m" "fit" "-i" "~/.local/share/backgrounds/leaf.png"
+// I AM A CORPORATE DRONE
+spawn-at-startup "footclient" "aerc"
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
