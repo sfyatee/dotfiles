@@ -41,9 +41,9 @@ comlink.add_command("shrug", function()
 end)
 
 local conn = comlink.connect({
-	server = "sfyatee.com",
+	server = "irc.libera.chat",
 	nick = "sfyatee",
-	password = run_command_and_trim('opcache read "op://Private/76plh4kdmgqqvru6x3w4okrty4/password"'),
+	password = "",
 	real_name = "demian garcia",
 	tls = true,
 })

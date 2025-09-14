@@ -297,8 +297,16 @@ cursor {
     hide-when-typing
 }
 
-// I AM A CORPORATE DRONE
+// I AM A CORPORATE DRONE!
 spawn-at-startup "footclient" "aerc"
+spawn-at-startup "footclient" "comlink"
+spawn-at-startup "tauon"
+
+// "IDE"
+window-rule {
+    match app-id="Code"
+    open-fullscreen true
+}
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
