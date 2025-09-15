@@ -271,7 +271,7 @@ layout {
 spawn-at-startup "waybar"
 
 // Spawn services as needed.
-spawn-at-startup "sh" "-c" "~/bin/riostart"
+spawn-sh-at-startup "~/bin/riostart"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -301,12 +301,6 @@ cursor {
 spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
 spawn-at-startup "tauon"
-
-// "IDE"
-window-rule {
-    match app-id="Code"
-    open-fullscreen true
-}
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
@@ -361,7 +355,7 @@ window-rule {
     clip-to-geometry true
 }
 
-// Don't leak!
+// Do not leak!
 window-rule {
     match app-id="^discord$"
     match app-id=r#"^.*\.Mumble$"#
