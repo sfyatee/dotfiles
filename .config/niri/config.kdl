@@ -301,6 +301,7 @@ cursor {
 spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
 spawn-at-startup "tauon"
+spawn-at-startup "code"
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
