@@ -102,8 +102,14 @@ input {
     position x=1280 y=0
 }
 
+// Set default background color.
 output "HDMI-A-1" {
     background-color "a3ccbd"
+}
+
+// Make the backdrop light.
+overview {
+    backdrop-color "a3ccbd"
 }
 
 // Settings that influence how windows are positioned and sized.
