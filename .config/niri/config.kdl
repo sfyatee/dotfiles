@@ -292,12 +292,11 @@ hotkey-overlay {
     skip-at-startup
 }
 
-// Need to find a way to disable this for all children of Steam sessions.
 cursor {
     hide-when-typing
 }
 
-// I AM A CORPORATE DRONE!
+// I am a corporate drone!
 spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
 spawn-at-startup "tauon"
@@ -327,6 +326,13 @@ window-rule {
     default-column-width {}
 }
 
+// Make fuzzel silly.
+layer-rule {
+    match namespace="^launcher$"
+    baba-is-float true
+    geometry-corner-radius 12
+}
+
 // Open the Firefox picture-in-picture player as floating by default.
 window-rule {
     // This app-id regular expression will work for both:
@@ -338,9 +344,11 @@ window-rule {
 
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
-/-window-rule {
+window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match at-startup=true app-id=r#"^discord"#
+    match app-id=r#"^.*\.Mumble$"#
 
     block-out-from "screen-capture"
 
@@ -355,20 +363,13 @@ window-rule {
     clip-to-geometry true
 }
 
-// Do not leak!
-window-rule {
-    match app-id="^discord$"
-    match app-id=r#"^.*\.Mumble$"#
-    block-out-from "screencast"
-}
-
-// Notifications like fnott and mako to be blocked out.
+// Block out notifications.
 layer-rule {
     match namespace="^notifications$"
     block-out-from "screencast"
 }
 
-// Dim inactive windows. Thank you so much visualglitch91 on Matrix.
+// Dim inactive windows. Credit: visualglitch91 @ Matrix.
 window-rule {
     match is-focused=false
     opacity 0.4
