@@ -1,3 +1,5 @@
+theme = "sfyatee"
+
 [editor]
 cursorline = true
 gutters = ["diagnostics", "spacer", "diff"]
