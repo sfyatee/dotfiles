@@ -8,10 +8,11 @@ typeset -U path PATH
 # 08jan2018  +leah+
 # 09jan2018  +leah+
 # 11aug2021  +leah+  -P to not follow symlinks, useful for Nix
+# 24aug2025  +fe!n+  arithmetic with $(( ... ))
 pathadd() {
 	setopt localoptions extendedglob
 	if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
-	path=(${^${@[1,$@[(i)--]-1]}:|path}(N-/) $path ${^${@[$@[(i)--]+1,-1]}:|path}(N-/))
+	path=(${^${@[1,$(($@[(i)--]-1))]}:|path}(N-/) $path ${^${@[$(($@[(i)--]+1)),-1]}:|path}(N-/))
 }
 
 # world
