@@ -2,4 +2,7 @@ theme = "sfyatee"
 
 [editor]
 cursorline = true
-gutters = ["diagnostics", "spacer", "diff"]
+gutters = []
+end-of-line-diagnostics = "hint"
+[editor.inline-diagnostics]
+cursor-line = "warning" # show warnings and errors on the cursorline inline
