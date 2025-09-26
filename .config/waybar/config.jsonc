@@ -1,13 +1,10 @@
-// -*- mode: jsonc -*-
 {
-    "reload_style_on_change": true,
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 40, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    "margin": 24,
     "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "reload_style_on_change": true,
+    "include": [
+        "~/.config/waybar/modules.json"
+    ],
     "modules-left": [
         "niri/window"
     ],
@@ -18,11 +15,6 @@
         "battery#bat2",
         "clock"
     ],
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
-    },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
