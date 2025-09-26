@@ -14,7 +14,7 @@
 "constant.builtin.boolean" = "purple"
 "constant.numeric" = "#393939"
 "constant.character.escape" = "green"
-"string" = "aqua"
+"string" = "grey2" # include "grey2" (c)
 "string.regexp" = "green"
 "string.special" = "yellow"
 "comment" = { fg = "grey0", modifiers = ["italic"] }
@@ -22,7 +22,7 @@
 "variable.builtin" = "black" # LANG (sh)
 "variable.parameter" = "black" # c // devdraw.c line 26
 "variable.other.member" = "black" # screenimage // devdraw.c line 26
-"label" = "orange"
+"label" = "#0d0b07" # goto "thiscolor"
 "punctuation" = "purple" # doesn't seem to do anything
 "punctuation.delimiter" = "#393939" # pointer (c)
 "punctuation.bracket" = "grey0" # [[
