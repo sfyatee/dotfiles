@@ -8,11 +8,11 @@
 # Email: sainnhe@gmail.com
 # License: MIT License
 
-"type" = { fg = "#0d0b07", modifiers = ["italic"] }
+"type" = { fg = "#0d0b07", modifiers = ["italic"] } # void (c)
 "constant" = "fg"
 "constant.builtin" = { fg = "purple", modifiers = ["italic"] }
 "constant.builtin.boolean" = "purple"
-"constant.numeric" = "purple"
+"constant.numeric" = "#393939"
 "constant.character.escape" = "green"
 "string" = "aqua"
 "string.regexp" = "green"
@@ -24,14 +24,15 @@
 "variable.other.member" = "black" # screenimage // devdraw.c line 26
 "label" = "orange"
 "punctuation" = "purple" # doesn't seem to do anything
-"punctuation.delimiter" = "grey1"
-"punctuation.bracket" = "grey2" # [[
+"punctuation.delimiter" = "#393939" # pointer (c)
+"punctuation.bracket" = "grey0" # [[
 "punctuation.special" = { fg = "fg", modifiers = ["italic"] } # $1, $HOME, the 'dollar sign'
 "keyword" = "grey1" # export (sh)
-"keyword.operator" = "orange"
+"keyword.control" = "grey2" # for, if, while
+"keyword.operator" = "red"
 "keyword.directive" = "purple"
-"keyword.storage" = "grey2" # static (c)
-"operator" = "orange"
+"keyword.storage" = "grey1" # static (c)
+"operator" = "#393939" # ==
 "function" = { fg = "black", modifiers = ["bold"] }
 "function.macro" = "green"
 "tag" = "orange"
