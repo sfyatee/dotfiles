@@ -2,7 +2,6 @@
 [[language]]
 name = "c"
 indent = { tab-width = 8, unit = "" }
-
 [[language]]
 name = "make"
 indent = { tab-width = 8, unit = "" }
@@ -10,4 +9,7 @@ indent = { tab-width = 8, unit = "" }
 # email and commit messages
 [[language]]
 name = "git-commit"
+rulers = [69]
+[[language]]
+name = "mail"
 rulers = [69]
