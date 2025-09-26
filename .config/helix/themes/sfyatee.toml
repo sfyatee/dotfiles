@@ -30,7 +30,7 @@
 "keyword" = "grey1" # export (sh)
 "keyword.control" = "grey2" # for, if, while
 "keyword.operator" = "red"
-"keyword.directive" = "purple"
+"keyword.directive" = "grey2" # include (c)
 "keyword.storage" = "grey1" # static (c)
 "operator" = "#393939" # ==
 "function" = { fg = "black", modifiers = ["bold"] }
