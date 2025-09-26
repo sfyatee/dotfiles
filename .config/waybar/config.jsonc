@@ -1,6 +1,5 @@
 {
-    "height": 40, // Waybar height (to be removed for auto height)
-    "spacing": 4, // Gaps between modules (4px)
+    "layer": "top",
     "reload_style_on_change": true,
     "include": [
         "~/.config/waybar/modules.json"
@@ -38,37 +37,17 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
-    "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
-    },
     "network": {
-        // Poll fairly often so signal/labels react quickly
         "interval": 5,
-
-	// Ethernet up -> "eth"
-	"format-ethernet": "eth",
-
-	// Wi-Fi connected -> plain "wifi" (we color this via CSS below)
-	// Also expose % and dBm in the tooltip for debugging/visibility
-	"format-wifi": "wifi",
-	"tooltip-format-wifi": "{essid}  {signalStrength}%  ({signaldBm} dBm)",
-
-	// Linked but no IP (still up but not connected)
-	"format-linked": "wifi",
-
-	// When rfkill blocks wifi, show the disabled state
-	"rfkill": true,
-	"format-disabled": "wifi",
-
-	// If you use NetworkManager instead, comment the line above and use:
-	// "on-click": "sh -c \"nmcli radio wifi off; sleep 0.5; nmcli radio wifi on\""
-	}
+        "format-ethernet": "eth",
+    	  "format-wifi": "wifi",
+        "tooltip-format-wifi": "{essid}  {signalStrength}%  ({signaldBm} dBm)",
+        // Linked but no IP (still up but not connected)
+        "format-linked": "wifi",
+        // When rfkill blocks wifi, show the disabled state
+        "rfkill": true,
+        "format-disabled": "wifi",
+        // If you use NetworkManager instead, comment the line above and use:
+        // // "on-click": "sh -c \"nmcli radio wifi off; sleep 0.5; nmcli radio wifi on\""
+    }
 }
