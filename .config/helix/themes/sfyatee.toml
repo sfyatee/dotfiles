@@ -8,7 +8,7 @@
 # Email: sainnhe@gmail.com
 # License: MIT License
 
-"type" = "yellow"
+"type" = { fg = "#0d0b07", modifiers = ["italic"] }
 "constant" = "fg"
 "constant.builtin" = { fg = "purple", modifiers = ["italic"] }
 "constant.builtin.boolean" = "purple"
@@ -17,22 +17,22 @@
 "string" = "aqua"
 "string.regexp" = "green"
 "string.special" = "yellow"
-"comment" = { fg = "grey1", modifiers = ["italic"] }
-"variable" = "fg"
-"variable.builtin" = { fg = "purple", modifiers = ["italic"] }
-"variable.parameter" = "fg"
-"variable.other.member" = "blue"
+"comment" = { fg = "grey0", modifiers = ["italic"] }
+"variable" = "black" # font= (sh)
+"variable.builtin" = "black" # LANG (sh)
+"variable.parameter" = "black" # c // devdraw.c line 26
+"variable.other.member" = "black" # screenimage // devdraw.c line 26
 "label" = "orange"
-"punctuation" = "grey2"
+"punctuation" = "purple" # doesn't seem to do anything
 "punctuation.delimiter" = "grey1"
-"punctuation.bracket" = "fg"
-"punctuation.special" = "blue"
-"keyword" = "red"
+"punctuation.bracket" = "grey2" # [[
+"punctuation.special" = { fg = "fg", modifiers = ["italic"] } # $1, $HOME, the 'dollar sign'
+"keyword" = "grey1" # export (sh)
 "keyword.operator" = "orange"
 "keyword.directive" = "purple"
-"keyword.storage" = "red"
+"keyword.storage" = "grey2" # static (c)
 "operator" = "orange"
-"function" = "green"
+"function" = { fg = "black", modifiers = ["bold"] }
 "function.macro" = "green"
 "tag" = "orange"
 "namespace" = { fg = "yellow", modifiers = ["italic"] }
@@ -116,19 +116,20 @@
 "diagnostic.deprecated" = { modifiers = ["crossed_out"] }
 
 [palette]
-bg_dim = "#efebd4"
+bg_dim = "#e5dfc5"
 bg0 = "#ffffd7"
 bg1 = "#f6f9ce"
-bg2 = "#efebd4"
-bg3 = "#e6e2cc"
-bg4 = "#e0dcc7"
-bg5 = "#bdc3af"
-bg_red = "#fbe3da"
-bg_visual = "#eaedc8"
-bg_yellow = "#faedcd"
-bg_green = "#f0f1d2"
-bg_blue = "#e9f0e9"
+bg2 = "#e5dfc5"
+bg3 = "#ddd8be"
+bg4 = "#d8d3ba"
+bg5 = "#b9c0ab"
+bg_red = "#fadbd0"
+bg_visual = "#e1e4bd"
+bg_yellow = "#f1e4c5"
+bg_green = "#e5e6c5"
+bg_blue = "#e1e7dd"
 
+black = "#000000"
 fg = "#5c6a72"
 red = "#f85552"
 orange = "#f57d26"
