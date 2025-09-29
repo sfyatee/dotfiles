@@ -61,7 +61,7 @@
 "markup.raw.block" = "aqua"
 
 "diff.plus" = "green"
-"diff.delta" = "blue"
+"diff.delta" = { fg = "fg", modifiers = ["bold"] } # branch name in commit
 "diff.minus" = "red"
 
 "ui.background" = { bg = "bg0" }
@@ -73,7 +73,7 @@
 "ui.cursor.primary" = { fg = "bg0", bg = "fg" }
 "ui.cursorline.primary" = { bg = "bg1" }
 "ui.cursorline.secondary" = { bg = "bg2" }
-"ui.selection" = { bg = "bg3" }
+"ui.selection" = { bg = "bg_visual" }
 "ui.linenr" = "grey0"
 "ui.linenr.selected" = "grey2"
 "ui.statusline" = { fg = "grey2", bg = "bg3" }
@@ -141,3 +141,5 @@ grey2 = "#5c6a72"
 statusline1 = "#93b259"
 statusline2 = "#708089"
 statusline3 = "#e66868"
+
+bg_visual = "#e1e4bd"
