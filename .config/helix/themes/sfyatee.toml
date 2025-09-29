@@ -76,7 +76,7 @@
 "ui.selection" = { bg = "bg_visual" }
 "ui.linenr" = "grey0"
 "ui.linenr.selected" = "grey2"
-"ui.statusline" = { fg = "grey2", bg = "bg3" }
+"ui.statusline" = { fg = "grey2", bg = "bg1" }
 "ui.statusline.inactive" = { fg = "grey0", bg = "bg1" }
 "ui.statusline.normal" = { fg = "bg0", bg = "statusline1", modifiers = [
   "bold",
