@@ -1,3 +1,5 @@
+theme = 'nord_light'
+
 [editor]
 cursorline = true
 gutters = []
