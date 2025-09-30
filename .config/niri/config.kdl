@@ -104,7 +104,7 @@ input {
 
 // Set default background color.
 output "HDMI-A-1" {
-    background-color "a3ccbd"
+    background-color "7fccbd"
 }
 
 // Make the backdrop light.
