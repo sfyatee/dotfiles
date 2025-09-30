@@ -1,6 +1,7 @@
 {
     "layer": "top",
     "reload_style_on_change": true,
+    "position": "bottom",
     "include": [
         "~/.config/waybar/modules.json"
     ],
