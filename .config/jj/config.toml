@@ -4,3 +4,4 @@ email = "dag@sfyatee.com"
 
 [ui]
 diff-formatter = ":git"
+merge-editor = "vscode"
