@@ -43,8 +43,7 @@
         (:br)
         (format nil "RAM: ~,2f/~f GB" (mem-used) (fceiling (mem-total)))
         (:br)
-        ;; doesn't work on m1
-        ;; (format nil "CPU: ~a" (machine-version))
-        "CPU: (8) @ 2.064GHz"
+        ;; might still not work on m1
+        (format nil "CPU: ~a" (machine-version))
         (:br)
         (local-time:format-timestring nil (local-time:now) :format local-time:+rfc-1123-format+))))))
