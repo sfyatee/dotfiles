@@ -308,6 +308,7 @@ spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
 spawn-at-startup "tauon"
 spawn-at-startup "code"
+spawn-at-startup "nyxt"
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
@@ -327,7 +328,7 @@ animations {
 // ⑨
 window-rule {
     match app-id="^Code"
-    match app-id="^acme"
+    match title="acme"
     open-maximized true
 }
 
