@@ -279,6 +279,19 @@ spawn-at-startup "waybar"
 // Spawn services as needed.
 spawn-sh-at-startup "~/bin/riostart"
 
+// I am a corporate drone!
+spawn-at-startup "footclient" "aerc"
+spawn-at-startup "footclient" "comlink"
+spawn-at-startup "tauon"
+
+// A worker a worker worker.
+window-rule {
+    match app-id="tauonmb"
+    match title="aerc"
+    match title="comlink"
+    match at-startup=true
+}
+
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
@@ -302,13 +315,6 @@ hotkey-overlay {
 cursor {
     hide-when-typing
 }
-
-// I am a corporate drone!
-spawn-at-startup "footclient" "aerc"
-spawn-at-startup "footclient" "comlink"
-spawn-at-startup "tauon"
-spawn-at-startup "code"
-spawn-at-startup "nyxt"
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
