@@ -307,6 +307,7 @@ cursor {
 spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
 spawn-at-startup "tauon"
+spawn-at-startup "code"
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
@@ -322,6 +323,12 @@ animations {
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+
+// ⑨
+window-rule {
+    match app-id="^code"
+    open-maximized true
+}
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
