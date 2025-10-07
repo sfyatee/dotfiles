@@ -327,6 +327,7 @@ animations {
 // ⑨
 window-rule {
     match app-id="^Code"
+    match app-id="^acme"
     open-maximized true
 }
 
