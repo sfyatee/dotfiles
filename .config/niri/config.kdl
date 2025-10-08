@@ -348,10 +348,9 @@ window-rule {
     default-column-width {}
 }
 
-// Make fuzzel silly.
+// Add rounded corners to fuzzel.
 layer-rule {
     match namespace="^launcher$"
-    baba-is-float true
     geometry-corner-radius 12
 }
 
@@ -362,6 +361,14 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+
+// Je suis un artiste!
+window-rule {
+    match app-id="^blender$"
+    match app-id="^gimp"
+    default-column-width { fixed 1200; }
+    open-maximized true
 }
 
 // Don't give focus to the GIMP startup splash screen.
