@@ -383,8 +383,9 @@ window-rule {
 window-rule {
     match app-id=r#"^org\.keepassxc\.KeePassXC$"#
     match app-id=r#"^org\.gnome\.World\.Secrets$"#
-    match at-startup=true app-id=r#"^discord"#
-    match app-id=r#"^.*\.Mumble$"#
+    match app-id=r#"^org\.telegram\.desktop$"#
+    match app-id=r#"^info\.mumble\.Mumble$"#
+    match app-id=r#"^discord"#
 
     block-out-from "screen-capture"
 
