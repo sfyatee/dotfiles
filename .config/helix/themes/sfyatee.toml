@@ -119,7 +119,7 @@
 [palette]
 bg_dim = "#e5dfc5"
 bg0 = "#ffffea"
-bg1 = "#f6f9ce"
+bg1 = "#f9fbdf"
 bg2 = "#e5dfc5"
 bg3 = "#ddd8be"
 bg4 = "#d8d3ba"
@@ -142,4 +142,4 @@ statusline1 = "#93b259"
 statusline2 = "#708089"
 statusline3 = "#e66868"
 
-bg_visual = "#e1e4bd"
+bg_visual = "#f0f2d4"
