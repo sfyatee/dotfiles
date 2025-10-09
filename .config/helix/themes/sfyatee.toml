@@ -118,7 +118,7 @@
 
 [palette]
 bg_dim = "#e5dfc5"
-bg0 = "#ffffd7"
+bg0 = "#ffffea"
 bg1 = "#f6f9ce"
 bg2 = "#e5dfc5"
 bg3 = "#ddd8be"

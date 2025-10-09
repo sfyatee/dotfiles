@@ -5,7 +5,7 @@
 # text and the white background.
 # author: Eugen Rahaian <eugen@rah.ro>
 
-background=	#ffffd7
+background=	#ffffea
 foreground=	#2e3440
 
 # The colors are sorted based on their luminance, so we can more easily assign
