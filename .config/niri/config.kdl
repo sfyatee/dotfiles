@@ -283,6 +283,7 @@ spawn-sh-at-startup "~/bin/riostart"
 spawn-at-startup "ghostty" "aerc"
 spawn-at-startup "ghostty" "comlink"
 spawn-at-startup "tauon"
+spawn-at-startup "acme"
 
 // A worker a worker worker.
 window-rule {
