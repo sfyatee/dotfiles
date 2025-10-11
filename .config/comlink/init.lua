@@ -42,7 +42,7 @@ end)
 
 local conn = comlink.connect({
 	server = "irc.libera.chat",
-	-- server = "sfyatee.com",
+	-- server = "chat.sf.yatee.net",
 	nick = "sfyatee",
 	password = "",
 	real_name = "demian garcia",
