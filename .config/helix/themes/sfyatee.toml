@@ -1,4 +1,26 @@
+"attribute" = { fg = "purple", modifiers = ["italic"] }
+"keyword" = "grey1" # export (sh)
+"keyword.control" = "grey2" # for, if, while
+"keyword.operator" = "red"
+"keyword.directive" = "grey2" # -- preprocessor comments (#if in C)
+"keyword.storage" = "grey1" # static (c)
+"namespace" = { fg = "yellow", modifiers = ["italic"] }
+"punctuation" = "purple" # doesn't seem to do anything
+"punctuation.delimiter" = "#393939" # pointer (c)
+"punctuation.bracket" = "grey0" # [[
+"punctuation.special" = { fg = "fg", modifiers = ["italic"] } # $1, $HOME, the 'dollar sign'
+"operator" = "#393939" # ==
+"special" = "blue"
+"variable" = "DBlack" # font= (sh)
+"variable.builtin" = "DBlack" # LANG (sh)
+"variable.parameter" = "DBlack" # c // devdraw.c line 26
+"variable.other.member" = "DBlack" # screenimage // devdraw.c line 26
 "type" = { fg = "#0d0b07", modifiers = ["italic"] } # void (c)
+"constructor" = "green"
+"function" = { fg = "DBlack", modifiers = ["bold"] }
+"function.macro" = "green"
+"tag" = "orange"
+"comment" = { fg = "grey0", modifiers = ["italic"] }
 "constant" = "fg"
 "constant.builtin" = { fg = "purple", modifiers = ["italic"] }
 "constant.builtin.boolean" = "purple"
@@ -7,30 +29,8 @@
 "string" = "grey2" # include "grey2" (c)
 "string.regexp" = "DDarkgreen"
 "string.special" = "yellow"
-"comment" = { fg = "grey0", modifiers = ["italic"] }
-"variable" = "DBlack" # font= (sh)
-"variable.builtin" = "DBlack" # LANG (sh)
-"variable.parameter" = "DBlack" # c // devdraw.c line 26
-"variable.other.member" = "DBlack" # screenimage // devdraw.c line 26
 "label" = "#0d0b07" # goto "thiscolor"
-"punctuation" = "purple" # doesn't seem to do anything
-"punctuation.delimiter" = "#393939" # pointer (c)
-"punctuation.bracket" = "grey0" # [[
-"punctuation.special" = { fg = "fg", modifiers = ["italic"] } # $1, $HOME, the 'dollar sign'
-"keyword" = "grey1" # export (sh)
-"keyword.control" = "grey2" # for, if, while
-"keyword.operator" = "red"
-"keyword.directive" = "grey2" # include (c)
-"keyword.storage" = "grey1" # static (c)
-"operator" = "#393939" # ==
-"function" = { fg = "DBlack", modifiers = ["bold"] }
-"function.macro" = "green"
-"tag" = "orange"
-"namespace" = { fg = "yellow", modifiers = ["italic"] }
-"attribute" = { fg = "purple", modifiers = ["italic"] }
-"constructor" = "green"
 "module" = "yellow"
-"special" = "blue"
 
 "markup.heading.marker" = "grey1"
 "markup.heading.1" = { fg = "red", modifiers = ["bold"] }
@@ -54,6 +54,9 @@
 "diff.minus" = "red"
 "diff.delta" = { fg = "fg", modifiers = ["bold"] } # branch name in commit
 
+# TODO: differentiate doc comment
+# concat (ERROR) @error.syntax and "MISSING ;" selectors for errors
+ 
 "ui.background" = { bg = "#ffffea" }
 "ui.background.separator" = "grey0"
 "ui.linenr" = "grey0"
