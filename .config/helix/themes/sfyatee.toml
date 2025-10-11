@@ -75,12 +75,12 @@
 "ui.statusline.select" = { fg = "DBlack", bg = "#72dec2", modifiers = ["bold"] }
 "ui.popup" = { fg = "DBlack", bg = "#eaebd2" }
 "ui.picker.header" = { modifiers = ["bold", "underlined"] }
-"ui.window" = { fg = "bg4", bg = "bg_dim" }
+"ui.window" = { fg = "bg4", bg = "purple" }
 "ui.help" = { fg = "fg", bg = "bg2" }
 "ui.text" = { fg = "DBlack" }
 "ui.text.directory" = { fg = "#887777" }
 "ui.text.focus" = "fg"
-"ui.virtual.ruler" = { bg = "bg1" }
+"ui.virtual.ruler" = { bg = "#f6f9e1" }
 "ui.virtual.whitespace" = { fg = "bg4" }
 "ui.virtual.inlay-hint" = { fg = "grey0" }
 "ui.virtual.wrap" = { fg = "grey0" }
@@ -112,8 +112,6 @@
 "hint" = "green"
 
 [palette]
-bg_dim = "#e5dfc5"
-bg1 = "#f6f9e1"
 bg2 = "#e5dfc5"
 bg3 = "#ddd8be"
 bg4 = "#d8d3ba"
