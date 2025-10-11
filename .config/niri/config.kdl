@@ -283,15 +283,16 @@ spawn-sh-at-startup "~/bin/riostart"
 spawn-at-startup "ghostty" "aerc"
 spawn-at-startup "ghostty" "comlink"
 spawn-at-startup "tauon"
-spawn-at-startup "acme"
 
-// A worker a worker worker.
+// ☭ 
 window-rule {
     match app-id="tauonmb"
     match title="aerc"
     match title="comlink"
     match at-startup=true
 }
+
+spawn-at-startup "acme"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
