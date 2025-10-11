@@ -53,7 +53,7 @@
 "markup.bold" = { modifiers = ["bold"] }
 "markup.italic" = { modifiers = ["italic"] }
 "markup.strikethrough" = { modifiers = ["crossed_out"] }
-"markup.link.url" = { fg = "blue", underline = { style = "line" } }
+"markup.link.url" = { fg = "#a3ccbd", underline = { style = "line" } }
 "markup.link.label" = "orange"
 "markup.link.text" = "purple"
 "markup.quote" = "grey1"
@@ -133,6 +133,3 @@ purple = "#df69ba"
 grey0 = "#939f91"
 grey1 = "#829181"
 grey2 = "#5c6a72"
-statusline1 = "#93b259"
-statusline2 = "#708089"
-statusline3 = "#e66868"
