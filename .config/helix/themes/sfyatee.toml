@@ -15,7 +15,7 @@
 "constant.numeric" = "#393939"
 "constant.character.escape" = "green"
 "string" = "grey2" # include "grey2" (c)
-"string.regexp" = "green"
+"string.regexp" = "DDarkgreen"
 "string.special" = "yellow"
 "comment" = { fg = "grey0", modifiers = ["italic"] }
 "variable" = "black" # font= (sh)
