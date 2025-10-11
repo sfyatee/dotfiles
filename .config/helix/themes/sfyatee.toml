@@ -73,30 +73,29 @@
 "ui.statusline.normal" = { fg = "DBlack", bg = "#f6f9e1", modifiers = ["bold"] }
 "ui.statusline.insert" = { fg = "DBlack", bg = "#93b259", modifiers = ["bold"] }
 "ui.statusline.select" = { fg = "DBlack", bg = "#72dec2", modifiers = ["bold"] }
-"ui.popup" = { fg = "grey2", bg = "bg2" }
+"ui.popup" = { fg = "DBlack", bg = "bg2" }
 "ui.picker.header" = { modifiers = ["bold", "underlined"] }
 "ui.window" = { fg = "bg4", bg = "bg_dim" }
 "ui.help" = { fg = "fg", bg = "bg2" }
-"ui.text" = "fg"
-"ui.text.directory" = { fg = "green" }
+"ui.text" = { fg = "DBlack" }
+"ui.text.directory" = { fg = "#887777" }
 "ui.text.focus" = "fg"
 "ui.virtual.ruler" = { bg = "bg1" }
 "ui.virtual.whitespace" = { fg = "bg4" }
 "ui.virtual.indent-guide" = { fg = "bg4" }
 "ui.virtual.inlay-hint" = { fg = "grey0" }
 "ui.virtual.wrap" = { fg = "grey0" }
-
 "ui.selection" = { bg = "#72dec2" }
 # TODO: namespace ui.cursor as ui.selection.cursor?
-"ui.cursor.select" = { fg = "DBlack", bg = "blue" }
-"ui.cursor.insert" = { fg = "DBlack", bg = "DBlack" }
-"ui.cursor.primary" = { fg = "DBlack", bg = "fg" }
+"ui.cursor.select" = { bg = "DBlack" }
+"ui.cursor.insert" = { bg = "DBlack" }
+"ui.cursor.primary.select" = { bg = "DBlack" }
+"ui.cursor.primary.insert" = { bg = "DBlack" }
 "ui.cursor.match" = { bg = "DBlack", modifiers = ["bold"] }
 "ui.cursor" = { fg = "DBlack", bg = "DBlack" }
 "ui.cursorline.primary" = { bg = "#f6f9e1" }
-"ui.cursorline.secondary" = { bg = "bg2" }
 "ui.menu" = { fg = "fg", bg = "bg3" }
-"ui.menu.selected" = { fg = "bg0", bg = "green" }
+# "ui.menu.selected" = { fg = "bg0", #fcfdf6" }
 
 "diagnostic.hint" = { underline = { color = "green", style = "curl" } }
 "diagnostic.info" = { underline = { color = "blue", style = "curl" } }
@@ -105,10 +104,10 @@
 "diagnostic.unnecessary" = { modifiers = ["dim"] }
 "diagnostic.deprecated" = { modifiers = ["crossed_out"] }
 
-"hint" = "green"
-"info" = "blue"
 "warning" = "yellow"
 "error" = "red"
+"info" = { fg = "DWhite", bg = "DDarkgreen", modifiers = ["bold"] }
+"hint" = "green"
 
 [palette]
 bg_dim = "#e5dfc5"
@@ -121,6 +120,7 @@ bg5 = "#b9c0ab"
 
 DBlack = "#000000"
 DWhite = "#ffffff"
+DDarkgreen = "#5f8700"
 
 black = "#000000"
 fg = "#5c6a72"
