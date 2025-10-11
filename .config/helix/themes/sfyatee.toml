@@ -85,7 +85,7 @@
 # TODO: namespace ui.cursor as ui.selection.cursor?
 "ui.cursor.select" = { bg = "DBlack" }
 "ui.cursor.insert" = { bg = "DBlack" }
-"ui.cursor.primary.select" = { bg = "DBlack" }
+"ui.cursor.primary.select" = { fg = "#72dec2", bg = "DBlack" }
 "ui.cursor.primary.insert" = { fg = "DBlack", bg = "#c6c6c6" }
 "ui.cursor.match" = { bg = "DBlack", modifiers = ["bold"] }
 "ui.cursor" = { fg = "#ffffea", bg = "DBlack" }
@@ -106,7 +106,6 @@
 "hint" = "green"
 
 [palette]
-bg2 = "#e5dfc5"
 bg4 = "#d8d3ba"
 
 DBlack = "#000000"
