@@ -30,6 +30,7 @@ export CARGO_HOME=$HOME/.local/share/cargo
 pathadd -- /usr/{s,}bin /{s,}bin
 pathadd -- /usr/X11R{6,7}/bin /usr/pkg/{s,}bin
 pathadd /usr/local/{s,}bin
+pathadd -- /usr/games /usr/games/bin
 pathadd -- $PLAN9/bin $PLAN9/bin/upas
 pathadd ~/go/bin $CARGO_HOME/bin
 pathadd ~/.local/bin
