@@ -20,9 +20,9 @@
 "function" = { fg = "DBlack", modifiers = ["bold"] }
 "function.macro" = "green"
 "tag" = "orange"
-"comment" = { fg = "grey0", modifiers = ["italic"] }
+"comment" = "grey0"
 "constant" = "fg"
-"constant.builtin" = { fg = "#393939" }
+"constant.builtin" = "#393939"
 "constant.builtin.boolean" = "purple"
 "constant.numeric" = "#393939"
 "constant.character.escape" = "green"
@@ -50,8 +50,8 @@
 "markup.raw.inline" = "green"
 "markup.raw.block" = "aqua"
 
-"diff.plus" = "green"
-"diff.minus" = "red"
+"diff.plus" = "DDarkgreen"
+"diff.minus" = "#887777"
 "diff.delta" = { fg = "fg", modifiers = ["bold"] } # branch name in commit
 
 # TODO: differentiate doc comment
