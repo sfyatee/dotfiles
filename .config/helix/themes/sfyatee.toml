@@ -29,7 +29,8 @@
 "string" = "grey2" # include "grey2" (c)
 "string.regexp" = "DDarkgreen"
 "string.special" = "yellow"
-"label" = "#0d0b07" # goto "thiscolor"
+# used for lifetimes
+"label" = "#0d0b07"
 "module" = "yellow"
 
 "markup.heading.marker" = "grey1"
