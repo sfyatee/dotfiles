@@ -3,6 +3,7 @@ theme = 'sfyatee'
 [editor]
 cursorline = true
 gutters = []
+color-modes = true
 end-of-line-diagnostics = "hint"
 [editor.inline-diagnostics]
 cursor-line = "warning"

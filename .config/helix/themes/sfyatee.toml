@@ -64,8 +64,7 @@
 "diff.delta" = { fg = "fg", modifiers = ["bold"] } # branch name in commit
 "diff.minus" = "red"
 
-"ui.background" = { bg = "bg0" }
-"ui.background.separator" = "grey0"
+"ui.selection" = { bg = "#72dec2" }
 "ui.cursor" = { fg = "bg1", bg = "grey2" }
 "ui.cursor.insert" = { fg = "bg0", bg = "grey1" }
 "ui.cursor.select" = { fg = "bg0", bg = "blue" }
@@ -73,18 +72,17 @@
 "ui.cursor.primary" = { fg = "bg0", bg = "fg" }
 "ui.cursorline.primary" = { bg = "bg1" }
 "ui.cursorline.secondary" = { bg = "bg2" }
-"ui.selection" = { bg = "bg_visual" }
+
+"ui.background" = { bg = "bg0" }
+"ui.background.separator" = "grey0"
 "ui.linenr" = "grey0"
 "ui.linenr.selected" = "grey2"
-"ui.statusline" = { fg = "grey2", bg = "bg1" }
-"ui.statusline.inactive" = { fg = "grey0", bg = "bg1" }
-"ui.statusline.normal" = { fg = "bg0", bg = "statusline1", modifiers = [
-  "bold",
-] }
-"ui.statusline.insert" = { fg = "bg0", bg = "statusline2", modifiers = [
-  "bold",
-] }
-"ui.statusline.select" = { fg = "bg0", bg = "blue", modifiers = ["bold"] }
+"ui.statusline" = { fg = "#887777", bg = "bg1" }
+"ui.statusline.inactive" = { fg = "#ff00dd", bg = "bg1" }
+"ui.statusline.normal" = { fg = "DBlack", bg = "bg1", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "DBlack", bg = "statusline1", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "DBlack", bg = "#72dec2", modifiers = ["bold"] }
+
 "ui.bufferline" = { fg = "grey2", bg = "bg3" }
 "ui.bufferline.active" = { fg = "bg0", bg = "statusline1", modifiers = [
   "bold",
@@ -125,6 +123,7 @@ bg3 = "#ddd8be"
 bg4 = "#d8d3ba"
 bg5 = "#b9c0ab"
 
+DBlack = "#000000"
 black = "#000000"
 fg = "#5c6a72"
 red = "#f85552"
@@ -141,5 +140,3 @@ grey2 = "#5c6a72"
 statusline1 = "#93b259"
 statusline2 = "#708089"
 statusline3 = "#e66868"
-
-bg_visual = "#f0f2d4"
