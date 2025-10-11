@@ -6,7 +6,7 @@
 # author: Eugen Rahaian <eugen@rah.ro>
 
 background=	#ffffea
-foreground=	#2e3440
+foreground=	#000000
 
 # The colors are sorted based on their luminance, so we can more easily assign
 # them a gray level.
