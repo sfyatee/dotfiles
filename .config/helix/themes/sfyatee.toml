@@ -56,7 +56,7 @@
 
 # TODO: differentiate doc comment
 # concat (ERROR) @error.syntax and "MISSING ;" selectors for errors
- 
+
 "ui.background" = { bg = "#ffffea" }
 "ui.background.separator" = "grey0"
 "ui.linenr" = "grey0"
@@ -108,7 +108,6 @@
 bg2 = "#e5dfc5"
 bg3 = "#ddd8be"
 bg4 = "#d8d3ba"
-bg5 = "#b9c0ab"
 
 DBlack = "#000000"
 DWhite = "#ffffff"
