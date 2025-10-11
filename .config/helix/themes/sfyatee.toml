@@ -7,7 +7,7 @@
 "namespace" = { fg = "#0d0b07" }
 "punctuation" = "purple" # doesn't seem to do anything
 "punctuation.delimiter" = "#393939" # pointer (c)
-"punctuation.bracket" = "grey0" # [[
+"punctuation.bracket" = "#939f91" # [[
 "punctuation.special" = { fg = "fg", modifiers = ["italic"] } # $1, $HOME, the 'dollar sign'
 "operator" = "#393939" # ==
 "special" = "blue"
@@ -20,7 +20,7 @@
 "function" = { fg = "DBlack", modifiers = ["bold"] }
 "function.macro" = "green"
 "tag" = "orange"
-"comment" = "grey0"
+"comment" = "#939f91"
 "constant" = "fg"
 "constant.builtin" = "#393939"
 "constant.builtin.boolean" = "purple"
@@ -58,8 +58,8 @@
 # concat (ERROR) @error.syntax and "MISSING ;" selectors for errors
 
 "ui.background" = { bg = "#ffffea" }
-"ui.background.separator" = "grey0"
-"ui.linenr" = "grey0"
+"ui.background.separator" = "#939f91"
+"ui.linenr" = "#939f91"
 "ui.linenr.selected" = "grey2"
 "ui.statusline" = { fg = "#887777", bg = "#f6f9e1" }
 # "ui.statusline.inactive" = { fg = "#ff00dd", bg = "bg1" }
@@ -75,8 +75,8 @@
 "ui.text.directory" = { fg = "#887777" }
 "ui.virtual.ruler" = { bg = "#f6f9e1" }
 "ui.virtual.whitespace" = { fg = "bg4" }
-"ui.virtual.inlay-hint" = { fg = "grey0" }
-"ui.virtual.wrap" = { fg = "grey0" }
+"ui.virtual.inlay-hint" = { fg = "#939f91" }
+"ui.virtual.wrap" = { fg = "#939f91" }
 
 "ui.virtual.indent-guide" = { fg = "bg4" }
 
@@ -120,6 +120,5 @@ blue = "#3a94c5"
 aqua = "#35a77c"
 purple = "#df69ba"
 
-grey0 = "#939f91"
 grey1 = "#829181"
 grey2 = "#5c6a72"
