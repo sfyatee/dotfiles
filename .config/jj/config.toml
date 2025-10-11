@@ -2,6 +2,15 @@
 name = "demian garcia"
 email = "dag@sfyatee.com"
 
+[merge-tools.filemerge]
+program = "open"
+edit-args = ["-a", "FileMerge", "-n", "-W", "--args",
+             "-left", "$left", "-right", "$right",
+             "-merge", "$output"]
+merge-args = ["-a", "FileMerge", "-n", "-W", "--args",
+              "-left", "$left", "-right", "$right",
+              "-ancestor", "$base", "-merge", "$output",]
+
 [ui]
 diff-formatter = ":git"
 merge-editor = "vscode"
