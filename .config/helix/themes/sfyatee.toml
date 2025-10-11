@@ -22,7 +22,7 @@
 "tag" = "orange"
 "comment" = { fg = "grey0", modifiers = ["italic"] }
 "constant" = "fg"
-"constant.builtin" = { fg = "purple", modifiers = ["italic"] }
+"constant.builtin" = { fg = "#393939" }
 "constant.builtin.boolean" = "purple"
 "constant.numeric" = "#393939"
 "constant.character.escape" = "green"
