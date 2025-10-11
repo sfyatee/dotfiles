@@ -4,7 +4,7 @@
 "keyword.operator" = "red"
 "keyword.directive" = "grey2" # -- preprocessor comments (#if in C)
 "keyword.storage" = "grey1" # static (c)
-"namespace" = { fg = "yellow", modifiers = ["italic"] }
+"namespace" = { fg = "#0d0b07" }
 "punctuation" = "purple" # doesn't seem to do anything
 "punctuation.delimiter" = "#393939" # pointer (c)
 "punctuation.bracket" = "grey0" # [[
@@ -31,7 +31,6 @@
 "string.special" = "yellow"
 # used for lifetimes
 "label" = "#0d0b07"
-"module" = "yellow"
 
 "markup.heading.marker" = "grey1"
 "markup.heading.1" = { fg = "red", modifiers = ["bold"] }
