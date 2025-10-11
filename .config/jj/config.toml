@@ -2,6 +2,19 @@
 name = "demian garcia"
 email = "dag@sfyatee.com"
 
+[ui]
+diff-formatter = ":git"
+merge-editor = "vscode"
+
+[aliases]
+# create a pull request using `gh` for closest_bookmark(@)
+pr = ["util", "exec", "--", "sh", "-c", """
+  gh pr create --head $(
+    jj log -r 'closest_bookmark(@)' -T 'bookmarks'
+      --no-graph | cut -d ' ' -f 1
+)
+"""]
+
 [merge-tools.filemerge]
 program = "open"
 edit-args = ["-a", "FileMerge", "-n", "-W", "--args",
@@ -11,6 +24,3 @@ merge-args = ["-a", "FileMerge", "-n", "-W", "--args",
               "-left", "$left", "-right", "$right",
               "-ancestor", "$base", "-merge", "$output",]
 
-[ui]
-diff-formatter = ":git"
-merge-editor = "vscode"
