@@ -50,8 +50,8 @@
 "markup.raw.inline" = "green"
 "markup.raw.block" = "aqua"
 
-"diff.plus" = "DDarkgreen"
-"diff.minus" = "#887777"
+"diff.plus" = { fg = "grey2", modifiers = ["bold"] }
+"diff.minus" = "grey1"
 "diff.delta" = { fg = "fg", modifiers = ["bold"] } # branch name in commit
 
 # TODO: differentiate doc comment
