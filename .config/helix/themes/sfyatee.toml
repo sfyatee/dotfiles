@@ -1,13 +1,3 @@
-# Everforest (Light Medium)
-# Authors: CptPotato, WindSoilder, basbebe
-
-# Original Author:
-# URL: https://github.com/sainnhe/everforest
-# Filename: colors/everforest.vim
-# Author: sainnhe
-# Email: sainnhe@gmail.com
-# License: MIT License
-
 "type" = { fg = "#0d0b07", modifiers = ["italic"] } # void (c)
 "constant" = "fg"
 "constant.builtin" = { fg = "purple", modifiers = ["italic"] }
