@@ -25,9 +25,9 @@ end
 fmt.setup({})
 watcher.setup({
 	channels = {
-		"#comlink",
-		"#ghostty",
-		"#vaxis",
+		"#archlinux-pacman",
+		"#cat-v",
+		"#wayland",
 	},
 })
 
@@ -42,6 +42,7 @@ end)
 
 local conn = comlink.connect({
 	server = "irc.libera.chat",
+	-- server = "sfyatee.com",
 	nick = "sfyatee",
 	password = "",
 	real_name = "demian garcia",
@@ -66,9 +67,9 @@ comlink.add_command("screenshot", function()
 		return
 	end
 	local handle =
-		io.popen("grimshot --notify save anything - | curl --silent -F'file=@-;type=image/png' https://0x0.st")
+		io.popen("niri msg action screenshot - | curl -s -F'file=@-;type=image/png' https://0x0.st")
 	if not handle then
-		comlink.log("Failed to execute grimshot or curl")
+		comlink.log("Failed to execute niri's screenshot ui or curl")
 		return
 	end
 	local success, err = pcall(function()
