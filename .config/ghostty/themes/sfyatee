@@ -29,3 +29,7 @@ palette = 10=#414141
 palette = 14=#313131
 palette = 11=#212121
 palette = 15=#111111
+
+selection-background= #72dec2
+selection-foreground= #000000
+
