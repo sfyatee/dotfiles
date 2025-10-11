@@ -124,6 +124,8 @@ bg4 = "#d8d3ba"
 bg5 = "#b9c0ab"
 
 DBlack = "#000000"
+DWhite = "#ffffff"
+
 black = "#000000"
 fg = "#5c6a72"
 red = "#f85552"
