@@ -77,9 +77,9 @@
 "ui.background.separator" = "grey0"
 "ui.linenr" = "grey0"
 "ui.linenr.selected" = "grey2"
-"ui.statusline" = { fg = "#887777", bg = "bg1" }
-"ui.statusline.inactive" = { fg = "#ff00dd", bg = "bg1" }
-"ui.statusline.normal" = { fg = "DBlack", bg = "bg1", modifiers = ["bold"] }
+"ui.statusline" = { fg = "#887777", bg = "#f6f9e1" }
+# "ui.statusline.inactive" = { fg = "#ff00dd", bg = "bg1" }
+"ui.statusline.normal" = { fg = "DBlack", bg = "#f6f9e1", modifiers = ["bold"] }
 "ui.statusline.insert" = { fg = "DBlack", bg = "statusline1", modifiers = ["bold"] }
 "ui.statusline.select" = { fg = "DBlack", bg = "#72dec2", modifiers = ["bold"] }
 
