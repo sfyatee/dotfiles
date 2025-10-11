@@ -61,8 +61,8 @@
 "markup.raw.block" = "aqua"
 
 "diff.plus" = "green"
-"diff.delta" = { fg = "fg", modifiers = ["bold"] } # branch name in commit
 "diff.minus" = "red"
+"diff.delta" = { fg = "fg", modifiers = ["bold"] } # branch name in commit
 
 "ui.background" = { bg = "#ffffea" }
 "ui.background.separator" = "grey0"
