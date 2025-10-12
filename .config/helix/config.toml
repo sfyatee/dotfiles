@@ -6,5 +6,8 @@ gutters = []
 color-modes = true
 end-of-line-diagnostics = "hint"
 
+[editor.cursor-shape]
+select = "underline"
+
 [editor.inline-diagnostics]
 cursor-line = "warning"
