@@ -280,8 +280,8 @@ spawn-at-startup "waybar"
 spawn-sh-at-startup "~/bin/riostart"
 
 // I am a corporate drone!
-spawn-at-startup "ghostty" "aerc"
-spawn-at-startup "ghostty" "comlink"
+spawn-at-startup "footclient" "aerc"
+spawn-at-startup "footclient" "comlink"
 spawn-at-startup "tauon"
 
 // ☭ 
@@ -442,7 +442,7 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "ghostty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "footclient"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
