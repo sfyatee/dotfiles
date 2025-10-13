@@ -92,7 +92,7 @@ linux)
 	export NPROC=$(nproc)
 	;;
 openbsd)
-	export CDPATH=.:/usr/ports:/usr/ports/mystuff
+	export cdpath=(. /usr/ports /usr/ports/mystuff)
 esac
 
 if [ "$OS" != "linux" ]; then
