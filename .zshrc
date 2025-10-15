@@ -9,6 +9,7 @@ unset HISTFILE	# no
 setopt globdots	# hidden files in completion
 setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
+setopt promptsubst	# makes `prompt` work
 setopt rcquotes	# plan9-like quoting
 
 # this needs to run before compinit installs keybindings.
@@ -42,6 +43,7 @@ osc7(){((ZSH_SUBSHELL))||_osc7}
 add-zsh-hook -Uz chpwd osc7
 
 # prompt configuration
+prompt='$(prompt) %# '
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
