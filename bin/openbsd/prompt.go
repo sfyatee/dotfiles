@@ -9,11 +9,11 @@ import (
 	"unsafe"
 )
 
-func uptime() time.Duration {
+func boottime() (time.Time, error) {
 	var boottime syscall.Timeval
 	mib := []int32{1, 21} // CTL_KERN, KERN_BOOTTIME
 	size := unsafe.Sizeof(boottime)
-	_, _, err := syscall.Syscall6(
+	_, _, errno := syscall.Syscall6(
 		syscall.SYS___SYSCTL,
 		uintptr(unsafe.Pointer(&mib[0])),
 		uintptr(len(mib)),
@@ -22,18 +22,76 @@ func uptime() time.Duration {
 		0,
 		0,
 	)
-	if err != 0 {
-		fmt.Println("Error getting uptime:", err)
-		return 0
+	if errno != 0 {
+		return time.Time{}, errno
 	}
-	return time.Since(time.Unix(boottime.Sec, int64(boottime.Usec)*1000))
+	return time.Unix(int64(boottime.Sec), int64(boottime.Usec)*1000), nil
+}
+
+func diffYMDHMS(start, end time.Time) (years, months, days, hours, minutes, seconds int) {
+	if end.Before(start) {
+		start, end = end, start
+	}
+
+	for !start.AddDate(years+1, 0, 0).After(end) {
+		years++
+	}
+	start = start.AddDate(years, 0, 0)
+	for !start.AddDate(0, months+1, 0).After(end) {
+		months++
+	}
+	start = start.AddDate(0, months, 0)
+	for !start.AddDate(0, 0, days+1).After(end) {
+		days++
+	}
+	start = start.AddDate(0, 0, days)
+
+	// Remaining time
+	rem := end.Sub(start)
+	hours = int(rem / time.Hour)
+	rem -= time.Duration(hours) * time.Hour
+	minutes = int(rem / time.Minute)
+	rem -= time.Duration(minutes) * time.Minute
+	seconds = int(rem / time.Second)
+
+	if hours >= 24 {
+		addDays := hours / 24
+		days += addDays
+		hours = hours % 24
+	}
+	return
+}
+
+// Format uptime as colon-separated values.
+// Example outputs:
+//
+//	04:05:06             → hours:minutes:seconds (< 1d)
+//	6:20:59:41           → days:hours:minutes:seconds
+//	2:6:20:59:41         → months:days:hours:minutes:seconds
+//	1:2:6:20:59:41       → years:months:days:hours:minutes:seconds
+func formatSpan(y, mo, d, h, mi, s int) string {
+	vals := []int{y, mo, d, h, mi, s}
+	start := 0
+	for start < len(vals)-3 && vals[start] == 0 {
+		start++
+	}
+
+	var parts []string
+	for i := start; i < len(vals); i++ {
+		if i < 3 { // Y/M/D — no zero padding
+			parts = append(parts, fmt.Sprintf("%d", vals[i]))
+		} else { // H/M/S — zero padded
+			parts = append(parts, fmt.Sprintf("%02d", vals[i]))
+		}
+	}
+	return strings.Join(parts, ":")
 }
 
 func main() {
 	cwd, _ := os.Getwd()
 	host, _ := os.Hostname()
 	home, _ := os.UserHomeDir()
-	var parts []string
+
 	if strings.HasPrefix(cwd, home) {
 		cwd = "~" + cwd[len(home):]
 	}
@@ -43,12 +101,18 @@ func main() {
 	if strings.HasSuffix(host, ".local") {
 		host = strings.TrimSuffix(host, ".local")
 	}
-	uptime := uptime()
-	fmt.Printf("[%d:%02d:%02d] %s ", int64(uptime.Hours()),
-		int64(uptime.Minutes())%60, int64(uptime.Seconds())%60,
-		host)
 
-	parts = strings.Split(cwd, "/")
+	bt, err := boottime()
+	if err != nil {
+		fmt.Println("Error getting uptime:", err)
+		return
+	}
+
+	now := time.Now()
+	y, mo, d, h, mi, s := diffYMDHMS(bt, now)
+	fmt.Printf("[%s] %s ", formatSpan(y, mo, d, h, mi, s), host)
+
+	parts := strings.Split(cwd, "/")
 	for i, part := range parts {
 		if i == len(parts)-1 {
 			fmt.Printf("%s", part)
@@ -60,4 +124,5 @@ func main() {
 			}
 		}
 	}
+	fmt.Println()
 }
