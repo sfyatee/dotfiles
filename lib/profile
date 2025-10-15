@@ -9,7 +9,7 @@ BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
 
 # browser used by web(1) and thus plumber
-BROWSER=firefox
+BROWSER=zen-browser
 
 # gameoftrees
 GOT_AUTHOR=('demian garcia <dag@sfyatee.com>')

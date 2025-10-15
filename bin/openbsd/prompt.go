@@ -1,3 +1,5 @@
+//go:build !linux
+
 package main
 
 import (
@@ -62,13 +64,9 @@ func diffYMDHMS(start, end time.Time) (years, months, days, hours, minutes, seco
 	return
 }
 
-// Format uptime as colon-separated values.
-// Example outputs:
-//
-//	04:05:06             → hours:minutes:seconds (< 1d)
-//	6:20:59:41           → days:hours:minutes:seconds
-//	2:6:20:59:41         → months:days:hours:minutes:seconds
-//	1:2:6:20:59:41       → years:months:days:hours:minutes:seconds
+// days:       6:20:59:41
+// months:     2:6:20:59:41
+// years:      1:2:6:20:59:41
 func formatSpan(y, mo, d, h, mi, s int) string {
 	vals := []int{y, mo, d, h, mi, s}
 	start := 0
@@ -102,11 +100,7 @@ func main() {
 		host = strings.TrimSuffix(host, ".local")
 	}
 
-	bt, err := boottime()
-	if err != nil {
-		fmt.Println("Error getting uptime:", err)
-		return
-	}
+	bt, _ := boottime()
 
 	now := time.Now()
 	y, mo, d, h, mi, s := diffYMDHMS(bt, now)
