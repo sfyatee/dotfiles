@@ -37,7 +37,7 @@ pathadd ~/.local/bin
 pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
 
 # browser used by web(1) and thus plumber
-export BROWSER=firefox
+export BROWSER=zen-browser
 
 # gameoftrees
 export GOT_AUTHOR="demian garcia <dag@sfyatee.com>"
