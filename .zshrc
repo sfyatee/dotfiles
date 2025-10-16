@@ -156,5 +156,10 @@ felloff() {
 
 if [ -d "$PLAN9" ]; then felloff; fi
 
+# helix bindings
+if [[ -d ~/.local/share/zsh-helix-mode ]]; then
+	source ~/.local/share/zsh-helix-mode/zsh-helix-mode.plugin.zsh
+fi
+
 # site local config
 [[ -e ~/.zshrc.local ]] && . ~/.zshrc.local || :
