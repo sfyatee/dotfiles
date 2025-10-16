@@ -88,7 +88,6 @@ set +o vi
 # os specificities
 case "$OS" in
 linux)
-	export BROWSER=nyxt
 	export NPROC=$(nproc)
 	;;
 openbsd)
