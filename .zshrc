@@ -9,7 +9,7 @@ unset HISTFILE	# no
 setopt globdots	# hidden files in completion
 setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
-setopt promptsubst	# makes `prompt` work
+setopt promptsubst	# make `prompt` work
 setopt rcquotes	# plan9-like quoting
 
 # this needs to run before compinit installs keybindings.
@@ -27,16 +27,14 @@ autoload -Uz add-zsh-hook
 _osc7() {
 	emulate -L zsh # also sets localoptions for us
 	setopt extendedglob
-	local LC_ALL p
-
-	LC_ALL=C
-	p=$(printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}})
+	local LC_ALL=C
+	local p=$(printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}})
 	# 9front's plumber + vt
 	if [[ -n "$TMUX" ]]; then
 		# required to pass OSC 7 message to vt explicitely
-		printf $p > $(tmux display-message -p '#{client_tty}')
+		print -nr -- "$p" > $(tmux display-message -p '#{client_tty}')
 	else
-		printf $p
+		print -nr -- "$p"
 	fi
 }
 osc7(){((ZSH_SUBSHELL))||_osc7}
@@ -144,8 +142,11 @@ if [[ "$TERM" == "dumb" ]]; then
 	unfunction osc7 precmd preexec
 	# set prompt so middle-clicking whole line reruns line's command
 	# show last exit code if non-zero
-	PROMPT=": %(?..{%?} )%m; "
+	prompt=": %(?..{%?} )%m; "
 	RPROMPT=""
+else
+	# helix bindings
+	source ~/.local/share/zsh-helix-mode/zsh-helix-mode.plugin.zsh 2>/dev/null
 fi
 
 # making sure these are running
@@ -155,9 +156,6 @@ felloff() {
 }
 
 if [ -d "$PLAN9" ]; then felloff; fi
-
-# helix bindings
-source ~/.local/share/zsh-helix-mode/zsh-helix-mode.plugin.zsh 2>/dev/null
 
 # site local config
 [[ -e ~/.zshrc.local ]] && . ~/.zshrc.local || :
