@@ -32,7 +32,7 @@ osc7() {
 	# 9front's plumber + vt
 	if [[ -n "$TMUX" ]]; then
 		# required to pass OSC 7 message to vt explicitely
-		print -nr -- "$p" > $(tmux display-message -p '#{client_tty}')
+		print -nr -- "$p" >`tmux display-message -p '#{client_tty}'`
 	else
 		print -nr -- "$p"
 	fi
