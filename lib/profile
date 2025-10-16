@@ -72,9 +72,9 @@ fn ph{ps auwwx | head $*}
 fn sam{builtin sam -a $*}
 
 # when i say vi i mean nvim (if it's installed)
-fn vi{nvim $*}
-fn view{nvim -R $*}
-EDITOR=nvim
+fn vi{hx $*}
+fn view{hx $*}
+EDITOR=hx
 
 # 9term and acme's win
 if(~ $termprog 9term || ~ $termprog win){
