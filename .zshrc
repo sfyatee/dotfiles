@@ -24,7 +24,7 @@ compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
 # OSC 7
 autoload -Uz add-zsh-hook
-_osc7() {
+osc7() {
 	emulate -L zsh # also sets localoptions for us
 	setopt extendedglob
 	local LC_ALL=C
@@ -37,8 +37,8 @@ _osc7() {
 		print -nr -- "$p"
 	fi
 }
-osc7(){((ZSH_SUBSHELL))||_osc7}
-add-zsh-hook -Uz chpwd osc7
+_osc7(){((ZSH_SUBSHELL))||osc7}
+add-zsh-hook -Uz chpwd _osc7
 
 # prompt configuration
 prompt='$(prompt) %# '
