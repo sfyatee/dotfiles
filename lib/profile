@@ -54,6 +54,7 @@ font2=/mnt/font/LucidaGrandeMonoDK/11a/font
 nine=➈
 fn '%'{ if(! ~ $#* 0) $* }
 secstore=localhost
+prompt='% '
 
 # things to make life easy
 fn acme{builtin acme -a -f $font -F $font2 $*}
