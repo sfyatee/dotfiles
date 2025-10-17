@@ -12,7 +12,8 @@ typeset -U path PATH
 pathadd() {
 	setopt localoptions extendedglob
 	if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
-	path=(${^${@[1,$(($@[(i)--]-1))]}:|path}(N-/) $path ${^${@[$(($@[(i)--]+1)),-1]}:|path}(N-/))
+	path=(${^${@[1,$(($@[(i)--]-1))]}:|path}(N-/)
+	    $path ${^${@[$(($@[(i)--]+1)),-1]}:|path}(N-/))
 }
 
 # world

@@ -28,7 +28,8 @@ osc7() {
 	emulate -L zsh # also sets localoptions for us
 	setopt extendedglob
 	local LC_ALL=C p
-	p=`printf '\e]7;file://%s%s\e\' $HOST ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}`
+	p=`printf '\e]7;file://%s%s\e\' $HOST \
+	    ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}`
 	# 9front's plumber + vt
 	if [[ -n "$TMUX" ]]; then
 		# required to pass OSC 7 message to vt explicitely
