@@ -144,9 +144,6 @@ if [[ "$TERM" == "dumb" ]]; then
 	# show last exit code if non-zero
 	prompt=": %(?..{%?} )%m; "
 	RPROMPT=""
-else
-	# helix bindings
-	source ~/.local/share/zsh-helix-mode/zsh-helix-mode.plugin.zsh 2>/dev/null
 fi
 
 # making sure these are running
