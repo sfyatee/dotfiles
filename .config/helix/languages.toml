@@ -1,3 +1,40 @@
+# all source code gets wrapped at <80 and auto-indented
+[[language]]
+name = "go"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 79
+rulers = [81]
+[[language]]
+name = "java"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 79
+rulers = [81]
+[[language]]
+name = "javascript"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 79
+rulers = [81]
+[[language]]
+name = "java"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 79
+rulers = [81]
+[[language]]
+name = "php"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 79
+rulers = [81]
+[[language]]
+name = "html"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 79
+rulers = [81]
+[[language]]
+name = "perl"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 79
+rulers = [81]
+
 # makefiles and c have tabstops at 8 for portability
 [[language]]
 name = "c"
