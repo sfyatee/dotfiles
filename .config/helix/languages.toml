@@ -20,7 +20,7 @@ name = "bash"
 indent = { tab-width = 8, unit = "" }
 rulers = [81]
 
-# email and commit messages
+# email and commit messages - expand tabs, wrap at 68 for future quoting, enable spelling
 [[language]]
 name = "git-commit"
 rulers = [69]
