@@ -23,7 +23,7 @@
 "comment" = "#939f91"
 "constant" = "fg"
 "constant.builtin" = "#393939"
-"constant.builtin.boolean" = "purple"
+"constant.builtin.boolean" = "#0d0b07"
 "constant.numeric" = "#393939"
 "constant.character.escape" = "green"
 "string" = "grey2" # include "grey2" (c)
