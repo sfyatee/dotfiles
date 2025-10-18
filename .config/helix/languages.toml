@@ -23,9 +23,13 @@ rulers = [81]
 # email and commit messages - expand tabs, wrap at 68 for future quoting, enable spelling
 [[language]]
 name = "git-commit"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 68
 rulers = [69]
 [[language]]
 name = "mail"
+soft-wrap = { enable = true, wrap-at-text-width = true }
+text-width = 68
 rulers = [69]
 
 # markdown files get hard tabs, wrapped at 79 and spell checking
