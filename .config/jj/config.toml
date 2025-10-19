@@ -4,7 +4,7 @@ email = "dag@sfyatee.com"
 
 [ui]
 diff-formatter = ":git"
-merge-editor = "vscode"
+merge-editor = "mergiraf"
 
 [aliases]
 # create a pull request using `gh` for closest_bookmark(@)
