@@ -290,7 +290,7 @@ window-rule {
 }
 
 // A future forgotten.
-spawn-at-startup "acme"
+spawn-sh-at-startup "acme"
 
 // The front is now!
 window-rule {
