@@ -284,14 +284,6 @@ spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
 spawn-at-startup "tauon"
 
-// ☭ 
-window-rule {
-    match app-id="tauonmb"
-    match title="aerc"
-    match title="comlink"
-    match at-startup=true
-}
-
 spawn-at-startup "acme"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -314,7 +306,9 @@ hotkey-overlay {
     skip-at-startup
 }
 
+// The front fell off...
 cursor {
+    xcursor-theme "plan9"
     hide-when-typing
 }
 
