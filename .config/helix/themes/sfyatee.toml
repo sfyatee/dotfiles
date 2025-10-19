@@ -1,4 +1,4 @@
-"attribute" = { fg = "purple", modifiers = ["italic"] }
+"attribute" = { fg = "#393939", modifiers = ["italic"] }
 "keyword" = "grey1" # export (sh)
 "keyword.control" = "grey2" # for, if, while
 "keyword.operator" = "red"

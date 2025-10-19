@@ -279,12 +279,24 @@ spawn-at-startup "waybar"
 // Spawn services as needed.
 spawn-sh-at-startup "~/bin/riostart"
 
-// I am a corporate drone!
+// A busy bee.
 spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
 spawn-at-startup "tauon"
 
+// Drowning in the sea.
+window-rule {
+    
+}
+
+// A future forgotten.
 spawn-at-startup "acme"
+
+// The front is now!
+window-rule {
+    match title="acme"
+    open-maximized true
+}
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -326,13 +338,6 @@ animations {
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
-
-// ⑨
-window-rule {
-    match app-id="^Code"
-    match title="acme"
-    open-maximized true
-}
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
