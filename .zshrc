@@ -147,13 +147,5 @@ if [[ "$TERM" == "dumb" ]]; then
 	RPROMPT=""
 fi
 
-# making sure these are running
-felloff() {
-	mkdir -p $NAMESPACE
-	9p stat plumb 2>/dev/null 1>&2 || plumber
-}
-
-if [ -d "$PLAN9" ]; then felloff; fi
-
 # site local config
 [[ -e ~/.zshrc.local ]] && . ~/.zshrc.local || :
