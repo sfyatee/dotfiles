@@ -290,11 +290,13 @@ window-rule {
 }
 
 // A future forgotten.
-spawn-sh-at-startup "acme"
+spawn-at-startup "acme"
+spawn-at-startup "zed"
 
 // The front is now!
 window-rule {
     match title="acme"
+    match title="zed"
     open-maximized true
 }
 
@@ -361,6 +363,7 @@ window-rule {
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
     open-floating true
 }
 
