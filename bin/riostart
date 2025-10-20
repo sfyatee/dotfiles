@@ -1,9 +1,16 @@
 #!/bin/sh
 
-if [ `uanme` != Linux ]; then
-	foot -s
-fi
+# making sure these are running
+felloff() {
+	mkdir -p $NAMESPACE
+	9p stat plumb 2>/dev/null 1>&2 || plumber
+}
 
 wlsunset -l 34 -L -118.6 -T 5000 -t 3500
-
 swaybg -m center -i ~/.local/share/backgrounds/grendel.png
+
+if [ `uanme` != Linux ]; then
+	foot -s
+	if [ -d "$PLAN9" ]; then felloff; fi
+fi
+
