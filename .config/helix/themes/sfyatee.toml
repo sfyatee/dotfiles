@@ -28,7 +28,7 @@
 "constant.character.escape" = "green"
 "string" = "grey2" # include "grey2" (c)
 "string.regexp" = "DDarkgreen"
-"string.special" = "yellow"
+"string.special" = "#393939"
 # used for lifetimes
 "label" = "#0d0b07"
 
