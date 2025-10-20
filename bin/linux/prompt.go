@@ -51,9 +51,6 @@ func calctime(start, end time.Time) (years, months, days, hours, minutes, second
 	return
 }
 
-// days:       6:20:59:41
-// months:     2:6:20:59:41
-// years:      1:2:6:20:59:41
 func fmtprompt(y, mo, d, h, mi, s int) string {
 	vals := []int{y, mo, d, h, mi, s}
 	start := 0

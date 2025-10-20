@@ -30,7 +30,7 @@ func boottime() (time.Time, error) {
 	return time.Unix(int64(boottime.Sec), int64(boottime.Usec)*1000), nil
 }
 
-func diffYMDHMS(start, end time.Time) (years, months, days, hours, minutes, seconds int) {
+func calcdate(start, end time.Time) (years, months, days, hours, minutes, seconds int) {
 	if end.Before(start) {
 		start, end = end, start
 	}
@@ -48,7 +48,6 @@ func diffYMDHMS(start, end time.Time) (years, months, days, hours, minutes, seco
 	}
 	start = start.AddDate(0, 0, days)
 
-	// Remaining time
 	rem := end.Sub(start)
 	hours = int(rem / time.Hour)
 	rem -= time.Duration(hours) * time.Hour
@@ -64,9 +63,6 @@ func diffYMDHMS(start, end time.Time) (years, months, days, hours, minutes, seco
 	return
 }
 
-// days:       6:20:59:41
-// months:     2:6:20:59:41
-// years:      1:2:6:20:59:41
 func formatSpan(y, mo, d, h, mi, s int) string {
 	vals := []int{y, mo, d, h, mi, s}
 	start := 0
@@ -76,9 +72,9 @@ func formatSpan(y, mo, d, h, mi, s int) string {
 
 	var parts []string
 	for i := start; i < len(vals); i++ {
-		if i < 3 { // Y/M/D — no zero padding
+		if i < 3 {
 			parts = append(parts, fmt.Sprintf("%d", vals[i]))
-		} else { // H/M/S — zero padded
+		} else {
 			parts = append(parts, fmt.Sprintf("%02d", vals[i]))
 		}
 	}
@@ -103,7 +99,7 @@ func main() {
 	bt, _ := boottime()
 
 	now := time.Now()
-	y, mo, d, h, mi, s := diffYMDHMS(bt, now)
+	y, mo, d, h, mi, s := calcdate(bt, now)
 	fmt.Printf("[%s] %s ", formatSpan(y, mo, d, h, mi, s), host)
 
 	parts := strings.Split(cwd, "/")
