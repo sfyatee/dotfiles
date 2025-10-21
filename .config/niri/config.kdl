@@ -291,12 +291,10 @@ window-rule {
 
 // A future forgotten.
 spawn-at-startup "acme"
-spawn-at-startup "zed"
 
 // The front is now!
 window-rule {
     match title="acme"
-    match title="zed"
     open-maximized true
 }
 
