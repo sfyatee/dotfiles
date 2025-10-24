@@ -21,6 +21,13 @@
       "enabled": true
     }
   },
+  "toolbar": {
+    "breadcrumbs": false,
+    "quick_actions": false,
+    "selections_menu": false,
+    "agent_review": false,
+    "code_actions": false
+  },
   "project_panel": {
     "entry_spacing": "standard",
     "file_icons": false,
@@ -29,12 +36,10 @@
       "show": "never"
     }
   },
-  "toolbar": {
-    "breadcrumbs": false,
-    "quick_actions": false,
-    "selections_menu": false,
-    "agent_review": false,
-    "code_actions": false
+  "outline_panel": {
+    "indent_guides": {
+      "show": "never"
+    }
   },
   "git": {
     "inline_blame": {
