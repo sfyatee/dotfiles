@@ -16,17 +16,25 @@
   "terminal": {
     "font_size": 12.0
   },
+  "diagnostics": {
+    "inline": {
+      "enabled": true
+    }
+  },
+  "project_panel": {
+    "entry_spacing": "standard",
+    "file_icons": false,
+    "folder_icons": false,
+    "indent_guides": {
+      "show": "never"
+    }
+  },
   "toolbar": {
     "breadcrumbs": false,
     "quick_actions": false,
     "selections_menu": false,
     "agent_review": false,
     "code_actions": false
-  },
-  "diagnostics": {
-    "inline": {
-      "enabled": true
-    }
   },
   "git": {
     "inline_blame": {
