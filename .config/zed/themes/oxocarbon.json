@@ -82,7 +82,7 @@
           {
             "cursor": "#ffffffff",
             "background": "#ffffffff",
-            "selection": "#52525290"
+            "selection": "#72dec290"
           }
         ],
         "syntax": {
@@ -213,6 +213,6 @@
         "panel.focused_border": "#6f6f6f"
       },
       "$schema": "https://zed.dev/schema/themes/v0.2.0.json"
-    },
+    }
   ]
 }
