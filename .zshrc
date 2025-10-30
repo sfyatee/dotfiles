@@ -140,7 +140,7 @@ esac
 if [[ "$TERM" == "dumb" ]]; then
 	# disable
 	unsetopt promptcr	# carriage return before prompt in zle
-	unfunction osc7 precmd preexec
+	unfunction _osc7 precmd preexec
 	# set prompt so middle-clicking whole line reruns line's command
 	# show last exit code if non-zero
 	prompt=": %(?..{%?} )%m; "
