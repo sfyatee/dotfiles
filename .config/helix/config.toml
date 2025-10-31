@@ -1,4 +1,4 @@
-theme = 'OLED'
+theme = 'PRINT'
 
 [editor]
 cursorline = true
