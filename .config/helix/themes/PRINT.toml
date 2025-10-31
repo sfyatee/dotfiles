@@ -1,26 +1,26 @@
 "attribute" = { fg = "#393939", modifiers = ["italic"] }
-"keyword" = "grey1" # export (sh)
-"keyword.control" = "grey2" # for, if, while
-"keyword.operator" = "red"
-"keyword.directive" = "grey2" # -- preprocessor comments (#if in C)
+"keyword" = "#575757"
+# "keyword.control" = "grey2" # for, if, while
+"keyword.operator" = "#393939"
+"keyword.directive" = "#575757"
 "keyword.storage" = "grey1" # static (c)
 "namespace" = { fg = "#0d0b07" }
-"punctuation" = "purple" # doesn't seem to do anything
+"punctuation" = "#0d0b07"
 "punctuation.delimiter" = "#393939" # pointer (c)
 "punctuation.bracket" = "#939f91" # [[
 "punctuation.special" = { fg = "fg", modifiers = ["italic"] } # $1, $HOME, the 'dollar sign'
 "operator" = "#393939" # ==
 "special" = "blue"
-"variable" = "DBlack" # font= (sh)
+"variable" = "#000000"
 "variable.builtin" = "DBlack" # LANG (sh)
-"variable.parameter" = "DBlack" # c // devdraw.c line 26
-"variable.other.member" = "DBlack" # screenimage // devdraw.c line 26
+"variable.parameter" = "#0d0b07"
+"variable.other.member" = "#575757"
 "type" = { fg = "#0d0b07", modifiers = ["italic"] } # void (c)
 "constructor" = "green"
-"function" = { fg = "DBlack", modifiers = ["bold"] }
+"function" = { fg = "#000000", modifiers = ["bold"] }
 "function.macro" = "green"
 "tag" = "orange"
-"comment" = "#939f91"
+"comment" = "#909090"
 "constant" = "fg"
 "constant.builtin" = "#393939"
 "constant.builtin.boolean" = "#0d0b07"
@@ -33,15 +33,9 @@
 "label" = "#0d0b07"
 
 "markup.heading.marker" = "grey1"
-"markup.heading.1" = { fg = "red", modifiers = ["bold"] }
-"markup.heading.2" = { fg = "orange", modifiers = ["bold"] }
-"markup.heading.3" = { fg = "yellow", modifiers = ["bold"] }
-"markup.heading.4" = { fg = "green", modifiers = ["bold"] }
-"markup.heading.5" = { fg = "blue", modifiers = ["bold"] }
-"markup.heading.6" = { fg = "purple", modifiers = ["bold"] }
 "markup.list" = "red"
-"markup.bold" = { modifiers = ["bold"] }
-"markup.italic" = { modifiers = ["italic"] }
+"markup.bold" = { fg = "#000000", modifiers = ["bold"] }
+"markup.italic" = { fg = "#0d0b07", modifiers = ["italic"] }
 "markup.strikethrough" = { modifiers = ["crossed_out"] }
 "markup.link.url" = { fg = "#44aa99", underline = { style = "line" } }
 "markup.link.label" = "orange"

@@ -1,0 +1,114 @@
+attribute = "#f2f4f8"
+keyword = "#a8a8a8"
+"keyword.operator" = "#c6c6c6"
+"keyword.directive" = "#a8a8a8"
+namespace = "#ffffff"
+punctuation = "#f2f4f8"
+"punctuation.delimiter" = "#c6c6c6"
+operator = "#c6c6c6"
+special = "honey"
+"variable.other.member" = "#a8a8a8"
+variable = "#ffffff"
+# variable = "almond" # TODO: metavariables only
+"variable.parameter" = { fg = "#f2f4f8", modifiers = ["italic"] }
+# "variable.builtin" = "mint"
+type = "white"
+"type.builtin" = "white" # TODO: distinguish?
+constructor = "lilac"
+function = { fg = "#ffffff", modifiers = ["bold"] }
+"function.macro" = "lilac"
+"function.builtin" = "white"
+tag = "almond"
+comment = "#6f6f6f"
+constant = "#c6c6c6"
+"constant.builtin" = "white"
+string = "#a8a8a8"
+"constant.numeric" = "#c6c6c6"
+"constant.character.escape" = "#c6c6c6"
+# used for lifetimes
+label = "#ffffff"
+# tabstop = { modifiers = ["italic"], bg = "bossanova" }
+
+"markup.heading" = "lilac"
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "silver", modifiers = ["underlined"] }
+"markup.link.text" = "almond"
+"markup.raw" = "almond"
+
+"diff.plus" = "#35bf86"
+"diff.minus" = "#f22c86"
+"diff.delta" = "#6f44f0"
+
+# TODO: differentiate doc comment
+# concat (ERROR) @error.syntax and "MISSING ;" selectors for errors
+
+"ui.background" = { bg = "#000000" }
+"ui.background.separator" = { fg = "comet" }
+"ui.linenr" = { fg = "#393939" }
+"ui.linenr.selected" = { fg = "#f2f4f8" }
+"ui.statusline" = { fg = "lilac", bg = "revolver" }
+"ui.statusline.inactive" = { fg = "lavender", bg = "revolver" }
+"ui.popup" = { bg = "revolver" }
+"ui.window" = { fg = "bossanova" }
+"ui.help" = { bg = "#7958DC", fg = "#171452" }
+"ui.text" = { fg = "#f2f4f8" }
+"ui.text.focus" = { fg = "white" }
+"ui.text.inactive" = "sirocco"
+"ui.text.directory" = { fg = "lilac" }
+"ui.virtual" = { fg = "comet" }
+"ui.virtual.ruler" = { bg = "bossanova" }
+"ui.virtual.jump-label" = { fg = "apricot", modifiers = ["bold"] }
+
+"ui.virtual.indent-guide" = { fg = "comet" }
+
+"ui.selection" = { bg = "#72dec290" }
+# "ui.selection.primary" = { bg = "#540099" }
+# TODO: namespace ui.cursor as ui.selection.cursor?
+"ui.cursor.select" = { bg = "delta" }
+"ui.cursor.insert" = { bg = "white" }
+"ui.cursor.primary.select" = { bg = "delta" }
+"ui.cursor.primary.insert" = { bg = "white" }
+"ui.cursor.match" = { fg = "#212121", bg = "#6C6999" }
+"ui.cursor" = { modifiers = ["reversed"] }
+"ui.cursorline.primary" = { bg = "bossanova" }
+"ui.highlight" = { bg = "bossanova" }
+"ui.highlight.frameline" = { bg = "#634450" }
+"ui.debug" = { fg = "#634450" }
+"ui.debug.breakpoint" = { fg = "apricot" }
+"ui.menu" = { fg = "lavender", bg = "revolver" }
+"ui.menu.selected" = { fg = "revolver", bg = "white" }
+"ui.menu.scroll" = { fg = "lavender", bg = "comet" }
+
+"diagnostic.hint" = { underline = { color = "silver", style = "curl" } }
+"diagnostic.info" = { underline = { color = "delta", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "lightning", style = "curl" } }
+"diagnostic.error" = { underline = { color = "apricot", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+warning = "lightning"
+error = "apricot"
+info = "delta"
+hint = "silver"
+
+[palette]
+white = "#ffffff"
+lilac = "#dbbfef"
+lavender = "#a4a0e8"
+comet = "#5a5977"
+bossanova = "#452859"
+midnight = "#3b224c"
+revolver = "#281733"
+
+silver = "#cccccc"
+sirocco = "#697C81"
+mint = "#9ff28f"
+almond = "#eccdba"
+chamois = "#E8DCA0"
+honey = "#efba5d"
+
+apricot = "#f47868"
+lightning = "#ffcd1c"
+delta = "#6F44F0"
