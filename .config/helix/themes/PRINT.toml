@@ -51,7 +51,7 @@
 # TODO: differentiate doc comment
 # concat (ERROR) @error.syntax and "MISSING ;" selectors for errors
 
-"ui.background" = { bg = "#ffffff" }
+# "ui.background" = { bg = "#ffffff" }
 "ui.background.separator" = "#939f91"
 "ui.linenr" = "#939f91"
 "ui.linenr.selected" = "grey2"
