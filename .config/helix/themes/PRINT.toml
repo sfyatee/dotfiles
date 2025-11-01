@@ -49,25 +49,25 @@ function = { fg = "#000000", modifiers = ["bold"] }
 # concat (ERROR) @error.syntax and "MISSING ;" selectors for errors
 
 # "ui.background" = { bg = "#ffffff" }
-"ui.background.separator" = "#939f91"
-"ui.linenr" = "#939f91"
-"ui.linenr.selected" = "grey2"
-# "ui.statusline" = { fg = "#000000", bg = "#909090" }
+# "ui.background.separator" = "purple"
+"ui.linenr" = "#c6c6c6"
+"ui.linenr.selected" = "#221e19"
+"ui.statusline" = { fg = "#221e19", bg = "#909090" }
 # "ui.statusline.inactive" = { fg = "#ff00dd", bg = "bg1" }
 "ui.statusline.normal" = { fg = "#221e19", bg = "#909090" }
 "ui.statusline.insert" = { fg = "#221e19", bg = "#909090" }
 "ui.statusline.select" = { fg = "#221e19", bg = "#909090" }
 "ui.popup" = { fg = "#221e19", bg = "#f4f4f4" }
 # "ui.picker.header" = { bg = "purple", modifiers = ["bold", "underlined"] }
-"ui.window" = { fg = "bg4", bg = "purple" }
-"ui.help" = { fg = "DBlack", bg = "DWhite" }
+# "ui.window" = { fg = "bg4", bg = "purple" }
+# "ui.help" = { fg = "DBlack", bg = "DWhite" }
 "ui.text" = { fg = "DBlack" }
 "ui.text.focus" = "fg"
 "ui.text.directory" = { fg = "#887777" }
 "ui.virtual.ruler" = { bg = "#e9e9e9" }
-"ui.virtual.whitespace" = { fg = "bg4" }
-"ui.virtual.inlay-hint" = { fg = "#939f91" }
-"ui.virtual.wrap" = { fg = "#939f91" }
+# "ui.virtual.whitespace" = { fg = "bg4" }
+# "ui.virtual.inlay-hint" = { fg = "#939f91" }
+# "ui.virtual.wrap" = { fg = "#939f91" }
 
 "ui.virtual.indent-guide" = { fg = "bg4" }
 
@@ -92,7 +92,7 @@ function = { fg = "#000000", modifiers = ["bold"] }
 
 "warning" = "yellow"
 "error" = "red"
-"info" = { fg = "#ff6663", modifiers = ["bold"] }
+"info" = { fg = "#ff6663", modifiers = ["bold", "dim"] }
 "hint" = "green"
 
 [palette]
