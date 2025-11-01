@@ -7,6 +7,7 @@ color-modes = true
 end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
+insert = "bar"
 select = "underline"
 
 [editor.inline-diagnostics]

@@ -12,7 +12,7 @@
 "operator" = "#393939"
 "special" = "blue"
 "variable" = "#000000"
-"variable.builtin" = "DBlack" # LANG (sh)
+# "variable.builtin" = "DBlack" # LANG (sh)
 "variable.parameter" = "#0d0b07"
 "variable.other.member" = "#575757"
 "type" = { fg = "#0d0b07", modifiers = ["italic"] } # void (c)
@@ -52,7 +52,7 @@ function = { fg = "#000000", modifiers = ["bold"] }
 # "ui.background.separator" = "purple"
 "ui.linenr" = "#c6c6c6"
 "ui.linenr.selected" = "#221e19"
-"ui.statusline" = { fg = "#221e19", bg = "#ffffff" }
+"ui.statusline" = { fg = "#221e19", bg = "#f4f4f4" }
 # "ui.statusline.inactive" = { fg = "#ff00dd", bg = "bg1" }
 "ui.statusline.normal" = { fg = "#221e19", bg = "#909090" }
 "ui.statusline.insert" = { fg = "#221e19", bg = "#909090" }
@@ -80,7 +80,7 @@ function = { fg = "#000000", modifiers = ["bold"] }
 "ui.cursor.match" = { bg = "DBlack", modifiers = ["bold"] }
 "ui.cursor" = { fg = "#ffffea", bg = "DBlack" }
 # "ui.cursorline.primary" = { bg = "#f6f9e1" }
-"ui.menu" = { fg = "DBlack", bg = "#d8d9c0" }
+"ui.menu" = { fg = "#221e19", bg = "#e9e9e9" }
 "ui.menu.selected" = { fg = "DBlack", bg = "#72dec2" }
 
 "diagnostic.hint" = { underline = { color = "green", style = "curl" } }
