@@ -8,8 +8,8 @@
 "punctuation" = "#0d0b07"
 "punctuation.delimiter" = "#393939" # pointer (c)
 "punctuation.bracket" = "#939f91" # [[
-"punctuation.special" = { fg = "fg", modifiers = ["italic"] } # $1, $HOME, the 'dollar sign'
-"operator" = "#393939" # ==
+"punctuation.special" = { fg = "fg", modifiers = ["italic"] } # '$'
+"operator" = "#393939"
 "special" = "blue"
 "variable" = "#000000"
 "variable.builtin" = "DBlack" # LANG (sh)
@@ -17,8 +17,7 @@
 "variable.other.member" = "#575757"
 "type" = { fg = "#0d0b07", modifiers = ["italic"] } # void (c)
 "constructor" = "green"
-"function" = { fg = "#000000", modifiers = ["bold"] }
-"function.macro" = "green"
+function = { fg = "#000000", modifiers = ["bold"] }
 "tag" = "orange"
 "comment" = "#909090"
 "constant" = "fg"
@@ -55,19 +54,19 @@
 "ui.background.separator" = "#939f91"
 "ui.linenr" = "#939f91"
 "ui.linenr.selected" = "grey2"
-"ui.statusline" = { fg = "#887777", bg = "#f6f9e1" }
+"ui.statusline" = { fg = "#887777", bg = "#909090" }
 # "ui.statusline.inactive" = { fg = "#ff00dd", bg = "bg1" }
-"ui.statusline.normal" = { fg = "DBlack", bg = "#f6f9e1", modifiers = ["bold"] }
+"ui.statusline.normal" = { fg = "DBlack", bg = "#909090", modifiers = ["bold"] }
 "ui.statusline.insert" = { fg = "DBlack", bg = "#c6c6c6", modifiers = ["bold"] }
 "ui.statusline.select" = { fg = "DBlack", bg = "#72dec2", modifiers = ["bold"] }
-"ui.popup" = { fg = "DBlack", bg = "#eaebd2" }
+"ui.popup" = { fg = "#221e19", bg = "#f4f4f4" }
 "ui.picker.header" = { modifiers = ["bold", "underlined"] }
 "ui.window" = { fg = "bg4", bg = "purple" }
 "ui.help" = { fg = "DBlack", bg = "DWhite" }
 "ui.text" = { fg = "DBlack" }
 "ui.text.focus" = "fg"
 "ui.text.directory" = { fg = "#887777" }
-"ui.virtual.ruler" = { bg = "#f6f9e1" }
+# "ui.virtual.ruler" = { bg = "#f6f9e1" }
 "ui.virtual.whitespace" = { fg = "bg4" }
 "ui.virtual.inlay-hint" = { fg = "#939f91" }
 "ui.virtual.wrap" = { fg = "#939f91" }
@@ -82,7 +81,7 @@
 "ui.cursor.primary.insert" = { fg = "DBlack", bg = "#c6c6c6" }
 "ui.cursor.match" = { bg = "DBlack", modifiers = ["bold"] }
 "ui.cursor" = { fg = "#ffffea", bg = "DBlack" }
-"ui.cursorline.primary" = { bg = "#f6f9e1" }
+# "ui.cursorline.primary" = { bg = "#f6f9e1" }
 "ui.menu" = { fg = "DBlack", bg = "#d8d9c0" }
 "ui.menu.selected" = { fg = "DBlack", bg = "#72dec2" }
 
