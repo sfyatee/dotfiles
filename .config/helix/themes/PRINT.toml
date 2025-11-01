@@ -20,14 +20,12 @@
 function = { fg = "#000000", modifiers = ["bold"] }
 "tag" = "orange"
 "comment" = "#909090"
-"constant" = "fg"
-"constant.builtin" = "#393939"
-"constant.builtin.boolean" = "#0d0b07"
-"constant.numeric" = "#393939"
-"constant.character.escape" = "green"
-"string" = "grey2" # include "grey2" (c)
-"string.regexp" = "DDarkgreen"
-"string.special" = "#393939"
+"constant" = "#393939"
+# "constant.builtin" = "#393939"
+# "constant.builtin.boolean" = "#0d0b07"
+# "constant.numeric" = "#393939"
+# "constant.character.escape" = "green"
+"string" = "#575757" # include "grey2" (c)
 # used for lifetimes
 "label" = "#0d0b07"
 
