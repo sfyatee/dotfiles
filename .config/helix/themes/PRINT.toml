@@ -54,12 +54,14 @@ function = { fg = "#000000", modifiers = ["bold"] }
 "ui.background.separator" = "#939f91"
 "ui.linenr" = "#939f91"
 "ui.linenr.selected" = "grey2"
-"ui.statusline" = { fg = "#887777", bg = "#909090" }
+# "ui.statusline" = { fg = "#000000", bg = "#909090" }
 # "ui.statusline.inactive" = { fg = "#ff00dd", bg = "bg1" }
-"ui.statusline.normal" = { fg = "DBlack", bg = "#909090", modifiers = ["bold"] }
-"ui.statusline.insert" = { fg = "DBlack", bg = "#c6c6c6", modifiers = ["bold"] }
-"ui.statusline.select" = { fg = "DBlack", bg = "#72dec2", modifiers = ["bold"] }
+# perfect
+"ui.statusline.normal" = { fg = "DBlack", bg = "#909090" }
+"ui.statusline.insert" = { fg = "DBlack", bg = "#909090" }
+"ui.statusline.select" = { fg = "DBlack", bg = "#909090" }
 "ui.popup" = { fg = "#221e19", bg = "#f4f4f4" }
+#
 "ui.picker.header" = { modifiers = ["bold", "underlined"] }
 "ui.window" = { fg = "bg4", bg = "purple" }
 "ui.help" = { fg = "DBlack", bg = "DWhite" }
