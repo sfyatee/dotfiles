@@ -52,7 +52,7 @@ function = { fg = "#000000", modifiers = ["bold"] }
 # "ui.background.separator" = "purple"
 "ui.linenr" = "#c6c6c6"
 "ui.linenr.selected" = "#221e19"
-"ui.statusline" = { fg = "#221e19", bg = "#909090" }
+"ui.statusline" = { fg = "#221e19", bg = "#ffffff" }
 # "ui.statusline.inactive" = { fg = "#ff00dd", bg = "bg1" }
 "ui.statusline.normal" = { fg = "#221e19", bg = "#909090" }
 "ui.statusline.insert" = { fg = "#221e19", bg = "#909090" }
