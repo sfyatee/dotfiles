@@ -81,7 +81,7 @@ function = { fg = "#000000", modifiers = ["bold"] }
 "ui.cursor" = { fg = "#ffffea", bg = "DBlack" }
 # "ui.cursorline.primary" = { bg = "#f6f9e1" }
 "ui.menu" = { fg = "#221e19", bg = "#e9e9e9" }
-"ui.menu.selected" = { fg = "DBlack", bg = "#72dec2" }
+"ui.menu.selected" = { fg = "#000000", bg = "#72dec2" }
 
 "diagnostic.hint" = { underline = { color = "green", style = "curl" } }
 "diagnostic.info" = { underline = { color = "blue", style = "curl" } }
