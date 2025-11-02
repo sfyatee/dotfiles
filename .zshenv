@@ -89,6 +89,7 @@ set +o vi
 # os specificities
 case "$OS" in
 linux)
+	export BROWSER=zen-browser
 	export NPROC=$(nproc)
 	;;
 openbsd)

@@ -108,6 +108,7 @@ fn revpatch { interdiff -q $1 /dev/null }
 # os specificities
 switch($os){
 case linux
+	BROWSER=zen-browser
 	NPROC=`{nproc}
 	fn ls{builtin ls -AFv $*}
 	fn orphrem{sudo pacman -R `{pacman -Qdtq}}
