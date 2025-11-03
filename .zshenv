@@ -54,18 +54,14 @@ export LC_TIME=C
 
 # misc.
 export CUDA_CACHE_PATH=$HOME/.cache/nv
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
-export HOMEBREW_NO_ANALYTICS=1
 export JJ_CONFIG=$XDG_CONFIG_HOME/jj/config.toml # for Apple
 export LESS=-i
 export LESSHISTFILE=/dev/null
 export NO_COLOR=1
-export POWERSHELL_TELEMETRY_OPTOUT=1
 export PYTHON_HISTORY=/dev/null
 export RUSTUP_HOME=$HOME/.local/share/rustup
-export SHELL_SESSIONS_DISABLE=1 # Apple Terminal
 
 # override $NAMESPACE; X is no more
 export NAMESPACE=/tmp/ns.$USER.:0

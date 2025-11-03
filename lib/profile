@@ -20,12 +20,10 @@ GS_FONTPATH=$PLAN9/postscript/font
 # opts
 CARGO_HOME=$home/.local/share/cargo
 CUDA_CACHE_PATH=$home/.cache/nv
-DOTNET_CLI_TELEMETRY_OPTOUT=1
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 HISTFILE=/dev/null
 HISTSIZE=500
-HOMEBREW_NO_ANALYTICS=1
 JJ_CONFIG=$XDG_CONFIG_HOME/jj/config.toml # for Apple
 LESS=-i
 LESSHISTFILE=/dev/null
