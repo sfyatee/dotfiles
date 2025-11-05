@@ -1,119 +1,110 @@
 #Tauon Music Box theme file
-
-light-mode
+#everblush by kreetzel
+#bg0 - 226,226,226
+#bg1 - 255,181,69
+#fg0 - 79,79,79
+#fg1 - 218,218,218
+#red - 229,116,116
+#grn - 114,222,194
 
 #-Backgrounds-----
 
-233,233,233		player background (top panel)
-245,245,245	  	playlist panel
-239,239,239		side panel
-35,35,35		bottom panel
-22,22,22        queue panel
-
-#-Frame--------
-
-21,21,21		sep line
-21,21,21		bb line
-140,140,140		tb line
+226,226,226		player background (top panel)
+226,226,226	 playlist panel
+226,226,226		side panel
+226,226,226		bottom panel
+226,226,226  queue panel
+226,226,226  gallery background
 
 #-Playlist-------
 
-80,80,80		track line
-80,80,80		track time
-80,80,80		track index
-40,40,40		track artist
-40,40,40		album line
+79,79,79		track line
+79,79,79		track time
+79,79,79		track index
+79,79,79		track artist
+79,79,79		album line
 
-250,250,250		track playing
-250,250,250		index playing
-250,250,250		artist playing
-250,250,250		album playing
-250,250,250		time playing
+114,222,194		track playing
+218,218,218		index playing
+114,222,194		artist playing
+218,218,218		album playing
+218,218,218		time playing
 
-200,200,200		track missing
+229,116,116		track missing
 
-60,60,60		fav line
-200,200,200		folder line
-80,80,80		folder title 
+79,79,79		fav line
+255,181,69		   folder line
+79,79,79		folder title
 
-180,140,255,255	playing highlight
-0,0,0,14		select highlight
-180,140,255,255	gallery highlight
-
-235,110,160     column bar background
+255,255,255,0		playing highlight
+255,181,69		     select highlight
+114,222,194		  gallery highlight
 
 #-Menu-------------
-240,240,240     menu background
-200,200,200     menu highlight
-40,40,40        menu text
-180,180,180     menu disable text
-0,0,0,40        menu icons
+226,226,226     menu background
+255,181,69     menu highlight
+218,218,218  menu text
+79,79,79  menu disable text
 
 #-Bottom panel------
 
-75,75,75		buttons off
-255,255,255		buttons over
-250,250,250		buttons active
+79,79,79		buttons off
+79,79,79		buttons over
+218,218,218		buttons active
 
-250,210,100,255	playing time
+114,222,194		playing time
 
-163,204,189,255	seek bar
-200,200,200		volume bar
+114,222,194		seek bar
+114,222,194		volume bar
+226,226,226	    seek bg
+255,181,69	    volume bg
+255,181,69	    scroll bar
 
-45,45,45		seek bg
-45,45,45		volume bg
+79,79,79		mode off
+218,218,218		mode over
+114,222,194		mode on
 
-40,40,40		scroll bar
-
-75,75,75		mode off
-250,250,250		mode over
-230,230,230		mode on
-
-255,255,255		bottom title
+218,218,218		bottom title
 
 #-Top panel---------
 
-240,240,240		tab active line
-30,30,30		tab line
-240,240,240		tab background
-230,230,230		tab over
-180,140,255,255	tab active background
-180,140,255,255	music vis
+218,218,218		tab active line
+79,79,79		tab line
+226,226,226		   tab background
+226,226,226		   tab over
+255,181,69		   tab active background
 
-240,240,240     window buttons background
-180,180,180     window buttons on
-190,190,190     window buttons icon off
-170,170,170     window buttons icon over
-255,255,255     window button x on
-# window button x off
+114,222,194		music vis
+
+226,226,226     window buttons background
+255,181,69     window buttons on
+79,79,79  window buttons icon off
+218,218,218  window buttons icon over
+114,222,194  window button x on
+
+#-Menu---------------
+
+255,181,69  menu border
 
 #-Dialog box---------
 
-30,30,30       box background
-#box border
+226,226,226  box background
+255,181,69  box border
+255,181,69  box button background normal
+255,181,69  box button background highlight
 
-#box title text
-#box text label
+#-Misc--------------
 
-#box text normal
-#box sub text
-#box input text
-#box text border
-
-40,40,40       box button background normal
-50,50,50       box button background highlight
-#box button background normal
-#box button background highlight
-#box button border
+226,226,226     artist bio background
+218,218,218  artist bio text
 
 #-Side panel--------
 
-25,25,25		title info
-35,35,35		extra info
-0,0,0,0 		art border
-80,80,80    lyrics text
+218,218,218		title info
+79,79,79		extra info
+114,222,194		art border
 
 #-Mini Mode---------
 
-24,24,24        mini bg
-60,60,60        mini border
+226,226,226  mini bg
+255,181,69  mini border
