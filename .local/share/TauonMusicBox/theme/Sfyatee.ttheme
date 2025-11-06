@@ -48,11 +48,11 @@
 
 #-Bottom panel------
 
-79,79,79		buttons off
-79,79,79		buttons over
-218,218,218		buttons active
+136,204,204		buttons off
+136,204,204		buttons over
+255,0,0		buttons active
 
-114,222,194		playing time
+79,79,79		playing time
 
 114,222,194		seek bar
 114,222,194		volume bar
@@ -95,14 +95,14 @@
 
 #-Misc--------------
 
-226,226,226     artist bio background
+64,64,64     artist bio background
 218,218,218  artist bio text
 
 #-Side panel--------
 
 218,218,218		title info
 79,79,79		extra info
-114,222,194		art border
+64,64,64		art border
 
 #-Mini Mode---------
 
