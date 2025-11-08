@@ -308,7 +308,7 @@ hotkey-overlay {
     skip-at-startup
 }
 
-// The front fell off...
+// A better world...
 cursor {
     xcursor-theme "macOS-White"
     hide-when-typing
