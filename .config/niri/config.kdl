@@ -107,7 +107,7 @@ output "HDMI-A-1" {
     background-color "a3ccbd"
 }
 
-// Make the backdrop light.
+// Set default background color.
 overview {
     backdrop-color "a3ccbd"
 }
@@ -303,15 +303,15 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
 
-// The questionable and miscellaneous.
-hotkey-overlay {
-    skip-at-startup
-}
-
 // A better world...
 cursor {
     xcursor-theme "macOS-White"
     hide-when-typing
+}
+
+// The questionable and miscellaneous.
+hotkey-overlay {
+    skip-at-startup
 }
 
 // Animation settings.
