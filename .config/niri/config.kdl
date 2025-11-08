@@ -282,7 +282,6 @@ spawn-sh-at-startup "~/bin/riostart"
 // A busy bee.
 spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
-spawn-at-startup "tauon"
 
 // Drowning in the sea.
 window-rule {
@@ -320,7 +319,7 @@ hotkey-overlay {
 
 // The front fell off...
 cursor {
-    xcursor-theme "plan9"
+    xcursor-theme "macOS-White"
     hide-when-typing
 }
 
