@@ -276,22 +276,13 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 
-// Spawn services as needed.
+// Across the Universe.
 spawn-sh-at-startup "~/bin/riostart"
-
-// A busy bee.
 spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
-
-// Drowning in the sea.
-window-rule {
-    
-}
-
-// A future forgotten.
 spawn-at-startup "acme"
 
-// The front is now!
+// The Front Fell Off.
 window-rule {
     match title="acme"
     open-maximized true
