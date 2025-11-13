@@ -1,0 +1,15 @@
+#!/bin/sh
+
+go install 9fans.net/go/acme/Watch@master
+go install github.com/rjkroege/edwood@master
+go install robpike.io/ivy@master
+go install rsc.io/rf@master
+
+raco pkg install racket-langserver
+
+if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
+	rustup toolchain install stable
+	rustup default stable
+else
+	rustup update
+fi
