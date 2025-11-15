@@ -56,7 +56,6 @@ export LC_TIME=C
 export CUDA_CACHE_PATH=$HOME/.cache/nv
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
-export JJ_CONFIG=$XDG_CONFIG_HOME/jj/config.toml # for Apple
 export LESS=-i
 export LESSHISTFILE=/dev/null
 export NO_COLOR=1

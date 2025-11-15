@@ -204,8 +204,8 @@ layout {
         // off
 
         width 6
-        active-color "black"
-        inactive-color "black"
+        active-color "#313131"
+        inactive-color "#313131"
 
         // Color of the border around windows that request your attention.
         urgent-color "#9b0000"
@@ -403,7 +403,7 @@ layer-rule {
 }
 
 // Dim inactive windows. Credit: visualglitch91 @ Matrix.
-window-rule {
+/-window-rule {
     match is-focused=false
     opacity 0.4
 

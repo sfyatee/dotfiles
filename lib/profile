@@ -24,7 +24,6 @@ GOTELEMETRY=off
 GOTOOLCHAIN=local
 HISTFILE=/dev/null
 HISTSIZE=500
-JJ_CONFIG=$XDG_CONFIG_HOME/jj/config.toml # for Apple
 LESS=-i
 LESSHISTFILE=/dev/null
 NO_COLOR=1
