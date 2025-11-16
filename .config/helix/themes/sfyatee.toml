@@ -1,33 +1,33 @@
-"attribute" = { fg = "#393939", modifiers = ["italic"] }
-"keyword" = "#575757"
-# "keyword.control" = "grey2" # for, if, while
-"keyword.operator" = "#393939"
-"keyword.directive" = "#575757"
-"keyword.storage" = "grey1" # static (c)
+"attribute" = { fg = "#f2f4f8" }
+"keyword" = "#a8a8a8"
+"keyword.control" = "#a8a8a8" # for, if, while
+"keyword.operator" = "#c6c6c6"
+"keyword.directive" = "#a8a8a8"
+"keyword.storage" = "#c6c6c6" # static (c)
 "namespace" = { fg = "#0d0b07" }
-"punctuation" = "#0d0b07"
-"punctuation.delimiter" = "#393939" # pointer (c)
-"punctuation.bracket" = "#939f91" # [[
-"punctuation.special" = { fg = "fg", modifiers = ["italic"] } # '$'
-"operator" = "#393939"
+"punctuation" = "#f2f4f8"
+"punctuation.delimiter" = "#c6c6c6" # pointer (c)
+"punctuation.bracket" = "#f2f4f8" # [[
+"punctuation.special" = { fg = "#f2f4f8", modifiers = ["italic"] } # '$'
+"operator" = "#c6c6c6"
 "special" = "blue"
-"variable" = "#000000"
+"variable" = "#ffffff"
 # "variable.builtin" = "DBlack" # LANG (sh)
-"variable.parameter" = "#0d0b07"
-"variable.other.member" = "#575757"
-"type" = { fg = "#0d0b07", modifiers = ["italic"] } # void (c)
+"variable.parameter" = { fg = "#f2f4f8", modifiers = ["italic"] }
+"variable.other.member" = "#ffffff"
+"type" = { fg = "#f2f4f8", modifiers = ["italic"] } # void (c)
 "constructor" = "green"
-function = { fg = "#000000", modifiers = ["bold"] }
+function = { fg = "#ffffff", modifiers = ["bold"] }
 # "tag" = "orange"
-"comment" = "#909090"
-"constant" = "#393939"
+"comment" = "#6f6f6f"
+"constant" = "#c6c6c6"
 # "constant.builtin" = "#393939"
 # "constant.builtin.boolean" = "#0d0b07"
 # "constant.numeric" = "#393939"
 # "constant.character.escape" = "green"
-"string" = "#575757" # include "grey2" (c)
+"string" = "#a8a8a8" # include "grey2" (c)
 # used for lifetimes
-"label" = "#0d0b07"
+"label" = "#f2f4f8"
 
 "markup.heading.marker" = "grey1"
 "markup.list" = "red"
@@ -61,7 +61,7 @@ function = { fg = "#000000", modifiers = ["bold"] }
 # "ui.picker.header" = { bg = "purple", modifiers = ["bold", "underlined"] }
 # "ui.window" = { fg = "bg4", bg = "purple" }
 # "ui.help" = { fg = "DBlack", bg = "DWhite" }
-"ui.text" = { fg = "DBlack" }
+"ui.text" = { fg = "#f2f4f8" }
 "ui.text.focus" = "fg"
 "ui.text.directory" = { fg = "#887777" }
 "ui.virtual.ruler" = { bg = "#e9e9e9" }
@@ -78,7 +78,7 @@ function = { fg = "#000000", modifiers = ["bold"] }
 "ui.cursor.primary.select" = { fg = "DBlack", bg = "#f4f4f4" }
 "ui.cursor.primary.insert" = { fg = "DBlack", bg = "#c6c6c6" }
 "ui.cursor.match" = { bg = "DBlack", modifiers = ["bold"] }
-"ui.cursor" = { fg = "#ffffea", bg = "DBlack" }
+"ui.cursor" = { fg = "#000000", bg = "#ffffff" }
 # "ui.cursorline.primary" = { bg = "#f6f9e1" }
 "ui.menu" = { fg = "#221e19", bg = "#e9e9e9" }
 "ui.menu.selected" = { fg = "#000000", bg = "#72dec2" }
