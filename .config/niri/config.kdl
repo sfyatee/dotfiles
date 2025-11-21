@@ -282,14 +282,14 @@ spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
 spawn-at-startup "acme"
 
-// The Front Fell Off.
+// https://research.swtch.com/acme
 window-rule {
     match title="acme"
     open-maximized true
 }
 
 // `{9 page} replacement
-/-window-rule {
+window-rule {
     match app-id="^iv"
     open-floating true
 }
