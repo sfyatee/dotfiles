@@ -1,8 +1,6 @@
 #!/bin/sh
 
-go install 9fans.net/go/acme/Watch@master
-go install github.com/cptaffe/acme-tab@latest
-mv -f $(go env GOPATH)/bin/acme-tab tab
+go install github.com/fzipp/ivy-prompt@latest
 go install github.com/rjkroege/edwood/cmd/win@master
 go install robpike.io/ivy@master
 go install rsc.io/rf@master
