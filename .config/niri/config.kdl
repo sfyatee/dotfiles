@@ -288,12 +288,6 @@ window-rule {
     open-maximized true
 }
 
-// `{9 page} replacement
-window-rule {
-    match app-id="^iv"
-    open-floating true
-}
-
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
 // Additionally, clients will be informed that they are tiled, removing some client-side rounded corners.
@@ -358,6 +352,9 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    match app-id="^iv"
+    match app-id="^mpv$"
+
     open-floating true
 }
 

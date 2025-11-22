@@ -51,7 +51,7 @@ func calctime(start, end time.Time) (years, months, days, hours, minutes, second
 	return
 }
 
-func fmtprompt(y, mo, d, h, mi, s int) string {
+func prompt(y, mo, d, h, mi, s int) string {
 	vals := []int{y, mo, d, h, mi, s}
 	start := 0
 	for start < len(vals)-3 && vals[start] == 0 {
@@ -87,7 +87,7 @@ func main() {
 
 	now := time.Now()
 	y, mo, d, h, mi, s := calctime(bt, now)
-	fmt.Printf("[%s] %s ", fmtprompt(y, mo, d, h, mi, s), host)
+	fmt.Printf("[%s] %s ", prompt(y, mo, d, h, mi, s), host)
 
 	parts := strings.Split(cwd, "/")
 	for i, part := range parts {
