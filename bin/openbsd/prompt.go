@@ -30,7 +30,7 @@ func boottime() (time.Time, error) {
 	return time.Unix(int64(boottime.Sec), int64(boottime.Usec)*1000), nil
 }
 
-func calcdate(start, end time.Time) (years, months, days, hours, minutes, seconds int) {
+func calculate(start, end time.Time) (years, months, days, hours, minutes, seconds int) {
 	if end.Before(start) {
 		start, end = end, start
 	}
@@ -56,20 +56,19 @@ func calcdate(start, end time.Time) (years, months, days, hours, minutes, second
 	seconds = int(rem / time.Second)
 
 	if hours >= 24 {
-		addDays := hours / 24
-		days += addDays
+		ndays := hours / 24
+		days += ndays
 		hours = hours % 24
 	}
 	return
 }
 
-func prompt(y, mo, d, h, mi, s int) string {
+func uptime(y, mo, d, h, mi, s int) string {
 	vals := []int{y, mo, d, h, mi, s}
 	start := 0
 	for start < len(vals)-3 && vals[start] == 0 {
 		start++
 	}
-
 	var parts []string
 	for i := start; i < len(vals); i++ {
 		if i < 3 {
@@ -99,8 +98,8 @@ func main() {
 	bt, _ := boottime()
 
 	now := time.Now()
-	y, mo, d, h, mi, s := calcdate(bt, now)
-	fmt.Printf("[%s] %s ", prompt(y, mo, d, h, mi, s), host)
+	y, mo, d, h, mi, s := calculate(bt, now)
+	fmt.Printf("[%s] %s ", uptime(y, mo, d, h, mi, s), host)
 
 	parts := strings.Split(cwd, "/")
 	for i, part := range parts {

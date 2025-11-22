@@ -358,7 +358,7 @@ window-rule {
     open-floating true
 }
 
-// Je suis un artiste!
+// These applications need it.
 window-rule {
     match app-id="^blender$"
     match app-id="^gimp"
@@ -390,6 +390,12 @@ window-rule {
 
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
+}
+
+// https://research.swtch.com/acme
+window-rule {
+    match title="acme"
+    open-maximized true
 }
 
 // Example: enable rounded corners for all windows.
