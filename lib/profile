@@ -59,6 +59,7 @@ fn calc{perl -e 'while(<>){print eval, "\n\n"}'}
 fn cp{builtin cp -i $*}
 fn edwood{builtin edwood -a -f $font -F $font2 $*}
 fn hg{chg $*}
+fn ivy{ivy-prompt}
 fn lc{builtin lc -F $*}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
@@ -83,6 +84,7 @@ if(~ $termprog 9term || ~ $termprog win){
 	# no paging
 	fn git{builtin git --no-pager $*}
 	fn hg{chg --pager=no $*}
+	fn ivy{builtin ivy}
 	fn jj{builtin jj --no-pager $*}
 }
 
