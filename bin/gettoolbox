@@ -7,6 +7,13 @@ go install rsc.io/rf@master
 
 raco pkg install racket-langserver
 
+# Load 9p kernel module if not enabled.
+if ! lsmod | grep -q 9p; then
+	mkdir -p /etc/modules-load.d/
+	echo 9p | run0 tee -a /etc/modules-load.d/9p.conf > /dev/null
+fi
+
+# Install/Update rust toolchain.
 if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
 	rustup toolchain install stable
 	rustup default stable
