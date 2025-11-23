@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ `uname` != Linux ]; then
+	fontsrv -m /mnt/font
+	foot -s
+fi
+
 swaybg -m center -i ~/.local/share/backgrounds/grendel.png
 
-if [ `uname` != Linux ]; then foot -s fi
+$(go env GOPATH)/bin/acme -F $font2 -m /mnt/acme

@@ -280,7 +280,6 @@ spawn-at-startup "waybar"
 spawn-sh-at-startup "~/bin/riostart"
 spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
-spawn-at-startup "acme"
 
 // https://research.swtch.com/acme
 window-rule {
@@ -352,6 +351,7 @@ window-rule {
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
     match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    match app-id=r#"zen$"# title="^Library$"
     match app-id="^iv"
     match app-id="^mpv$"
 
