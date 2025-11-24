@@ -306,7 +306,6 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // A better world...
 cursor {
     xcursor-theme "macOS-White"
-    hide-when-typing
 }
 
 // The questionable and miscellaneous.
@@ -684,7 +683,7 @@ binds {
     Alt+Print { screenshot-window; }
 
     // A la MacOS.
-    Shift+Mod+C { spawn-sh "niri msg pick-color"; }
+    Shift+Mod+C { spawn-sh "niri msg pick-color | grep 'Hex:' | cut -d' ' -f2 | tr -d '\n' | wl-copy"; }
     Shift+Mod+3 { screenshot-screen; }
     Shift+Mod+4 { screenshot; }
 
