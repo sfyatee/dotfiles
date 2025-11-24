@@ -281,9 +281,10 @@ spawn-sh-at-startup "~/bin/riostart"
 spawn-at-startup "footclient" "aerc"
 spawn-at-startup "footclient" "comlink"
 
-// https://research.swtch.com/acme
+// https://9p.io/plan9/
 window-rule {
     match title="acme"
+    match app-id=r#"^org\._9front\.drawterm$"#
     open-maximized true
 }
 
@@ -682,9 +683,10 @@ binds {
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-    // Taken from MacOS. Useful for keyboards without physical PrintSrc.
-    Mod+Shift+3 { screenshot-screen; }
-    Mod+Shift+4 { screenshot; }
+    // A la MacOS.
+    Shift+Mod+C { spawn-sh "niri msg pick-color"; }
+    Shift+Mod+3 { screenshot-screen; }
+    Shift+Mod+4 { screenshot; }
 
     // Applications such as remote-desktop clients and software KVM switches may
     // request that niri stops processing the keyboard shortcuts defined here
