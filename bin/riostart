@@ -1,6 +1,6 @@
 #!/usr/bin/env rc
 
-# Services to run.
+# services
 # making sure these are running
 fn felloff{
 	mkdir -p $NAMESPACE
@@ -11,7 +11,7 @@ felloff
 
 swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
 
-# Applications to run.
+# applications
 footclient aerc &
 footclient comlink &
 
@@ -23,4 +23,3 @@ if(test -f $home/acme.dump){
 acme -a $dump &
 
 zen-browser &
-
