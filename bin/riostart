@@ -1,13 +1,21 @@
 #!/usr/bin/env rc
 
 # services
-# making sure these are running
+# start factotum before secstore so it does not prompt for a password
+# load secrets manually using ipso
 fn felloff{
 	mkdir -p $NAMESPACE
+	for(proc in fontsrv factotum){
+		pgrep -x '^'^$proc > /dev/null
+		switch($status) {
+		case 1
+			$proc -m /mnt/$proc &
+		}
+	}
 	9p stat plumb >[2]/dev/null >[1=2] || plumber
 }
 
-felloff
+if (! ~ $OS linux) felloff
 
 swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
 
@@ -20,6 +28,6 @@ if(test -f $home/acme.dump){
 	dump=(-l $home/acme.dump)
 }
 
-acme -a $dump &
+acme -a $dump -m /mnt/acme &
 
 zen-browser &
