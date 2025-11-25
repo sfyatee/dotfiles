@@ -17,4 +17,4 @@ if(test -f $home/acme.dump){
 	load=(-l $home/acme.dump)
 }
 
-acme -f $font2 $load &
+acme -a -f $font2 $load &
