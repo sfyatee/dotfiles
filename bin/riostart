@@ -15,6 +15,8 @@ fn felloff{
 	9p stat plumb >[2]/dev/null >[1=2] || plumber
 }
 
+# use systemd services instead
+# it's a losing battle
 if (! ~ $OS linux) felloff
 
 swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
