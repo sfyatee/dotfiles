@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Services to run.
 if [ `uname` != Linux ]; then
 	fontsrv -m /mnt/font
 	foot -s
@@ -7,4 +8,12 @@ fi
 
 swaybg -m center -i ~/.local/share/backgrounds/grendel.png
 
-$(go env GOPATH)/bin/acme -F $font2 -m /mnt/acme
+# Applications to run.
+footclient aerc
+footclient comlink
+
+if nc -z google.com 80 >/dev/null 2>&1; then
+	zen
+fi
+
+acme -F $font2 -m /mnt/acme

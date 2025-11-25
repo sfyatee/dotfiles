@@ -276,10 +276,8 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 
-// Across the Universe.
+// Start my enviornment.
 spawn-sh-at-startup "~/bin/riostart"
-spawn-at-startup "footclient" "aerc"
-spawn-at-startup "footclient" "comlink"
 
 // https://9p.io/plan9/
 window-rule {
@@ -350,6 +348,7 @@ window-rule {
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r#"firefox$"# title="^Library$"
     match app-id=r#"zen$"# title="^Picture-in-Picture$"
     match app-id=r#"zen$"# title="^Library$"
     match app-id="^iv"
