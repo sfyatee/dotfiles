@@ -1,11 +1,11 @@
 #!/usr/bin/env rc
 
 # Services to run.
-swaybg -m center -i $home/.local/share/backgrounds/grendel.png
+swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
 
 # Applications to run.
-footclient aerc
-footclient comlink
+footclient aerc &
+footclient comlink &
 
 if(nc -z google.com 80 >[2]/dev/null){
 	zen
