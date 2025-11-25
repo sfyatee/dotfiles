@@ -1,20 +1,26 @@
 #!/usr/bin/env rc
 
 # Services to run.
+# making sure these are running
+fn felloff{
+	mkdir -p $NAMESPACE
+	9p stat plumb >[2]/dev/null >[1=2] || plumber
+}
+
+felloff
+
 swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
 
 # Applications to run.
 footclient aerc &
 footclient comlink &
 
-if(nc -z google.com 80 >[2]/dev/null){
-	zen-browser &
-}
-
-load=()
-
+dump=()
 if(test -f $home/acme.dump){
-	load=(-l $home/acme.dump)
+	dump=(-l $home/acme.dump)
 }
 
-acme -a -f $font2 $load &
+acme -a $dump &
+
+zen-browser &
+
