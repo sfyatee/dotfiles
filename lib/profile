@@ -86,7 +86,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	PAGER=nobs
 	# plan 9 from bell labs
 	prompt=('term% ' '	')
-	if (~ $#SSH_TTY 1)
+	if(~ $#SSH_TTY 1)
 		prompt=('cpu% ' '	')
 	fn term%{ $* }
 	fn cpu%{ $* }
