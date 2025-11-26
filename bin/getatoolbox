@@ -22,4 +22,3 @@ else
 fi
 
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
-cargo install --git https://github.com/sfyatee/acre acre
