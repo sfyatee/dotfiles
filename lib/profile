@@ -32,7 +32,9 @@ RUSTUP_HOME=$home/.local/share/rustup
 XDG_CONFIG_HOME=$home/.config # for Apple
 
 # path
-path=(. $BIN $home/go/bin $CARGO_HOME/bin $path $PLAN9/bin $PLAN9/bin/upas)
+append=($PLAN9/bin $PLAN9/bin/upas)
+prepend=($BIN $home/go/bin $CARGO_HOME/bin)
+path=($prepend $path $append)
 
 # UNIX means english and 24h clock. but do use UTF-8! and sort like a machine
 LANG=en_US.UTF-8
@@ -66,6 +68,7 @@ fn ls{builtin ls -AF $*}
 fn ltr{builtin ls -AlFtr $*}
 fn m{make}
 fn mg{builtin mg -n $*}
+fn mu{muon}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 fn sam{builtin sam -a $*}
@@ -76,11 +79,17 @@ fn view{hx $*}
 EDITOR=hx
 
 # 9term and acme's win
-if(~ $termprog 9term || ~ $termprog win){
+if(~ $#termprog 1 || ~ $#winid 1){
 	# plumb files instead of starting new editor
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
+	# plan 9 from bell labs
+	prompt=('term% ' '	')
+	if (~ $#SSH_TTY 1)
+		prompt=('cpu% ' '	')
+	fn term%{ $* }
+	fn cpu%{ $* }
 	# no paging
 	fn git{builtin git --no-pager $*}
 	fn hg{chg --pager=no $*}
