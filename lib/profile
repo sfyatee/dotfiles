@@ -73,7 +73,7 @@ fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 fn sam{builtin sam -a $*}
 
-# when i say vi i mean nvim (if it's installed)
+# when i say vi i mean helix (if it's installed)
 fn vi{hx $*}
 fn view{hx $*}
 EDITOR=hx
