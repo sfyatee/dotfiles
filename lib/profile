@@ -36,7 +36,7 @@ append=($PLAN9/bin $PLAN9/bin/upas)
 prepend=($BIN $home/go/bin $CARGO_HOME/bin)
 path=($prepend $path $append)
 
-# UNIX means english and 24h clock. but do use UTF-8! and sort like a machine
+# Unix means english and 24h clock. but do use UTF-8! and sort like a machine
 LANG=en_US.UTF-8
 LC_CTYPE=$LANG
 LC_COLLATE=C
