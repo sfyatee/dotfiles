@@ -51,7 +51,6 @@ font2=/mnt/font/LucidaGrandeMonoDK/11a/font
 
 # 9
 nine=➈
-fn '%'{ if(! ~ $#* 0) $* }
 secstore=localhost
 
 # custom cd, pwd
