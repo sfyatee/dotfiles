@@ -53,6 +53,7 @@ font2=/mnt/font/LucidaGrandeMonoDK/11a/font
 nine=➈
 secstore=localhost
 
+# prompt
 # see: ../bin/openbsd/prompt2.go
 fn prompt{
 	sys=`{prompt2}
