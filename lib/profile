@@ -104,6 +104,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 			status=''
 		}
 	}
+	awd
 	# plumb files instead of starting new editor
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
@@ -119,8 +120,6 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	fn ivy{builtin ivy}
 	fn jj{builtin jj --no-pager $*}
 }
-
-awd
 
 # revpatch - reverse a patch
 # 24may2020  +leah+

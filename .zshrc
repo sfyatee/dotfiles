@@ -41,7 +41,7 @@ osc7() {
 _osc7(){((ZSH_SUBSHELL))||osc7}
 add-zsh-hook -Uz chpwd _osc7
 
-# custom cd, pwd
+# see: bin/openbsd/prompt2.go
 prompt='`prompt2` %# '
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
