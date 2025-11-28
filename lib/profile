@@ -53,8 +53,8 @@ font2=/mnt/font/LucidaGrandeMonoDK/11a/font
 nine=➈
 secstore=localhost
 
-# custom cd, pwd
-fn prompts{
+# see: ../bin/openbsd/prompt2.go
+fn prompt{
 	sys=`{prompt2}
 	ps1=' % '
 	prompt=($"sys^$ps1)
@@ -65,9 +65,9 @@ fn cd{
 		builtin cd
 	if not
 		builtin cd $*
-	prompts
+	prompt
 }
-prompts
+prompt
 
 # nice things to have
 fn acme{builtin acme -a -f $font -F $font2 $*}
