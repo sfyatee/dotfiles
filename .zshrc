@@ -48,7 +48,7 @@ precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
 # nice things to have
-alias acme="acme -a -f $font -F $font2"
+alias acme="SHELL=hack acme -a -f $font -F $font2"
 alias cp="cp -i"
 alias edwood="edwood -a -f $font -F $font2"
 alias hg="chg"

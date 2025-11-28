@@ -71,8 +71,7 @@ fn cd{
 prompt
 
 # nice things to have
-fn acme{builtin acme -a -f $font -F $font2 $*}
-fn calc{perl -e 'while(<>){print eval, "\n\n"}'}
+fn acme{SHELL=hack builtin acme -a -f $font -F $font2 $*}
 fn cp{builtin cp -i $*}
 fn edwood{builtin edwood -a -f $font -F $font2 $*}
 fn hg{chg $*}
