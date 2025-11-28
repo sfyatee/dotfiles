@@ -70,7 +70,7 @@ fn cd{
 }
 promptsubst
 
-# things to make life easy
+# nice things to have
 fn acme{builtin acme -a -f $font -F $font2 $*}
 fn calc{perl -e 'while(<>){print eval, "\n\n"}'}
 fn cp{builtin cp -i $*}
