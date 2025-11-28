@@ -1,5 +1,5 @@
 #!/bin/rc
-umask 022
+# umask 022
 
 # world
 os=`{uname | tr '[:upper:]' '[:lower:]'}
@@ -61,14 +61,6 @@ fn prompt{
 	prompt=($"sys^$ps1)
 	fn $sys^$ps1 { if(! ~ $#* 0) $* }
 }
-fn cd{
-	if(~ $#* 0)
-		builtin cd
-	if not
-		builtin cd $*
-	prompt
-}
-prompt
 
 # nice things to have
 fn acme{SHELL=hack builtin acme -a -f $font -F $font2 $*}
@@ -152,7 +144,7 @@ if(! ~ $os linux){
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
 
-ulimit -c 0
+# ulimit -c 0
 
 # making sure these are running
 fn felloff{
