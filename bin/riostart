@@ -7,7 +7,7 @@ fn felloff{
 	mkdir -p $NAMESPACE
 	for(proc in fontsrv factotum){
 		pgrep -x '^'^$proc > /dev/null
-		switch($status) {
+		switch($status){
 		case 1
 			$proc -m /mnt/$proc &
 		}
@@ -17,7 +17,8 @@ fn felloff{
 
 # use systemd services instead
 # it's a losing battle
-if (! ~ $OS linux) felloff
+if(! ~ $OS linux)
+	felloff
 
 swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
 
@@ -26,10 +27,9 @@ footclient aerc &
 footclient comlink &
 
 dump=()
-if(test -f $home/acme.dump){
+if(test -f $home/acme.dump)
 	dump=(-l $home/acme.dump)
-}
 
-acme -a $dump -m /mnt/acme &
+SHELL=hack acme -a $dump -m /mnt/acme &
 
 zen-browser &
