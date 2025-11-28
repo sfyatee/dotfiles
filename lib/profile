@@ -54,7 +54,7 @@ nine=➈
 secstore=localhost
 
 # custom cd, pwd
-fn promptsubst{
+fn prompts{
 	sys=`{prompt}
 	ps1=' % '
 	prompt=($"sys^$ps1)
@@ -65,9 +65,9 @@ fn cd{
 		builtin cd
 	if not
 		builtin cd $*
-	promptsubst
+	prompts
 }
-promptsubst
+prompts
 
 # nice things to have
 fn acme{builtin acme -a -f $font -F $font2 $*}
