@@ -53,9 +53,22 @@ font2=/mnt/font/LucidaGrandeMonoDK/11a/font
 nine=➈
 fn '%'{ if(! ~ $#* 0) $* }
 secstore=localhost
-sys=`{prompt}
-ps1='% '
-prompt=($"sys)
+
+# custom cd, pwd
+fn promptsubst{
+	sys=`{prompt}
+	ps1=' % '
+	prompt=($"sys^$ps1)
+	fn $sys^$ps1 { if(! ~ $#* 0) $* }
+}
+fn cd{
+	if(~ $#* 0)
+		builtin cd
+    if not
+		builtin cd $*
+    promptsubst
+}
+promptsubst
 
 # things to make life easy
 fn acme{builtin acme -a -f $font -F $font2 $*}
@@ -82,14 +95,23 @@ EDITOR=hx
 
 # 9term and acme's win
 if(~ $#termprog 1 || ~ $#winid 1){
+	# sets the current window label using awd (see label(1))
+	fn cd {
+		# builtin cd $1 && flag i && awd
+		# is not sufficient when running in a subshell
+		# that is rc -e (like mk uses!)
+		if(builtin cd $1){
+			if(flag i) awd || status=''
+			status=''
+		}
+	}
 	# plumb files instead of starting new editor
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
 	# plan 9 from bell labs
 	prompt=('term% ' '	')
-	if(~ $#SSH_TTY 1)
-		prompt=('cpu% ' '	')
+	if(~ $#SSH_TTY 1) prompt=('cpu% ' '	')
 	fn term%{ $* }
 	fn cpu%{ $* }
 	# no paging
@@ -99,16 +121,6 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	fn jj{builtin jj --no-pager $*}
 }
 
-# sets the current window label using awd (see label(1))
-fn cd {
-	# builtin cd $1 && flag i && awd
-	# is not sufficient when running in a subshell
-	# that is rc -e (like mk uses!)
-	if(builtin cd $1){
-		if(flag i) awd || status=''
-		status=''
-	}
-}
 awd
 
 # revpatch - reverse a patch
