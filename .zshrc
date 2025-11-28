@@ -82,7 +82,6 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	unsetopt zle	# zsh line editor
 	# no paging
 	alias git="git --no-pager"
-	alias hg="chg --pager=no"
 	alias ivy="ivy"
 	alias jj="jj --no-pager"
 	# sets the current window label using awd (see label(1))
