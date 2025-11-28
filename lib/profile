@@ -63,7 +63,7 @@ fn promptsubst{
 fn cd{
 	if(~ $#* 0)
 		builtin cd
-    if not
+	if not
 		builtin cd $*
     promptsubst
 }
