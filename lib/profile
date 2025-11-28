@@ -116,7 +116,6 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	fn cpu%{ $* }
 	# no paging
 	fn git{builtin git --no-pager $*}
-	fn hg{chg --pager=no $*}
 	fn ivy{builtin ivy}
 	fn jj{builtin jj --no-pager $*}
 }
@@ -141,7 +140,6 @@ case openbsd
 	fn mpldc{make port-lib-depends-check}
 	fn mup{make update-patches}
 	fn mupl{make update-plist $*}
-	fn pclean{make clean='package plist'}
 	fn rsync{openrsync $*}
 }
 
