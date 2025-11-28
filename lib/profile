@@ -55,7 +55,7 @@ secstore=localhost
 
 # custom cd, pwd
 fn prompts{
-	sys=`{prompt}
+	sys=`{prompt2}
 	ps1=' % '
 	prompt=($"sys^$ps1)
 	fn $sys^$ps1 { if(! ~ $#* 0) $* }
