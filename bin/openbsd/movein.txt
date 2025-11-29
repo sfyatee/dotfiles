@@ -1,0 +1,16 @@
+darktable
+foot
+gimp
+github-cli
+gitlab-cli
+gopls
+jujutsu
+lilypond
+mergiraf
+mumble
+racket-minimal
+swaybg
+syncthing
+tailscale
+uv
+wev
