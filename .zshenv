@@ -41,7 +41,7 @@ pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
 export BROWSER=zen
 
 # gameoftrees got(1)
-export GOT_AUTHOR="demian garcia <sfyatee@sfyatee.com>"
+export GOT_AUTHOR="demian garcia <d@sfyatee.com>"
 
 # let gs find the plan9port document fonts
 export GS_FONTPATH=$PLAN9/postscript/font
