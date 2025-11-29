@@ -1,5 +1,5 @@
 #!/bin/rc
-# umask 022
+umask 022
 
 # world
 os=`{uname | tr '[:upper:]' '[:lower:]'}
