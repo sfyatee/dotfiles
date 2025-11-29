@@ -1,10 +1,11 @@
 #!/usr/bin/env rc
 
 # services
-# start factotum before secstore so it does not prompt for a password
-# load secrets manually using ipso
 fn felloff{
+	# override $NAMESPACE (see intro(4)) because $WSYS is not running yet
 	mkdir -p $NAMESPACE
+	# start factotum before secstore so it does not prompt for a password
+	# load secrets manually using ipso
 	for(proc in fontsrv factotum){
 		pgrep -x '^'^$proc > /dev/null
 		switch($status){
