@@ -4,6 +4,8 @@
 fn felloff{
 	# override $NAMESPACE (see intro(4)) because $WSYS is not running yet
 	mkdir -p $NAMESPACE
+	# avoid mkdir -p by using mntgen(1)
+	mntgen /mnt
 	# start factotum before secstore so it does not prompt for a password
 	# load secrets manually using ipso
 	for(proc in fontsrv factotum){
