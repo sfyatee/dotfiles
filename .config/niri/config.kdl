@@ -281,7 +281,7 @@ spawn-sh-at-startup "~/bin/riostart"
 
 workspace "casa"
 workspace "➈"
-workspace "web"
+workspace "mothra"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -344,7 +344,7 @@ window-rule {
 window-rule {
     match app-id=r#"zen$"#
     open-maximized true
-    open-on-workspace "web"
+    open-on-workspace "mothra"
 }
 
 // Work around WezTerm's initial configure bug
