@@ -10,7 +10,7 @@ go install rsc.io/rf@master
 raco pkg install racket-langserver
 
 # Arch Linux doesn't have 9p enabled by default.
-tux() {
+Tux() {
 	# Install/Update rust toolchain.
 	if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
 		rustup toolchain install stable
@@ -25,5 +25,6 @@ tux() {
 	fi
 }
 
+if [ $OS  == "Linux" ]; then; Tux fi
 
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
