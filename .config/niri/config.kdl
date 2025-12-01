@@ -279,30 +279,6 @@ spawn-at-startup "waybar"
 // Start my enviornment.
 spawn-sh-at-startup "~/bin/riostart"
 
-// Unix land.
-window-rule {
-    match at-startup=true
-    match title="aerc"
-    match title="comlink"
-    open-on-workspace "casa"
-}
-
-// A future forgotton!
-// https://9p.io/plan9/
-window-rule {
-    match title="acme"
-    match app-id=r#"^org\._9front\.drawterm$"#
-    open-maximized true
-    open-on-workspace "➈"
-}
-
-// lasciate ogne speranza, voi ch'intrate
-window-rule {
-    match app-id=r#"zen$"#
-    open-maximized true
-    open-on-workspace "web"
-}
-
 workspace "casa"
 workspace "➈"
 workspace "web"
@@ -346,6 +322,30 @@ animations {
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
+
+// Unix land.
+window-rule {
+    match at-startup=true
+    match title="aerc"
+    match title="comlink"
+    open-on-workspace "casa"
+}
+
+// A future forgotton!
+// https://9p.io/plan9/
+window-rule {
+    match title="acme"
+    match app-id=r#"^org\._9front\.drawterm$"#
+    open-maximized true
+    open-on-workspace "➈"
+}
+
+// lasciate ogne speranza, voi ch'intrate
+window-rule {
+    match app-id=r#"zen$"#
+    open-maximized true
+    open-on-workspace "web"
+}
 
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
