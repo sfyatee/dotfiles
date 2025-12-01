@@ -29,10 +29,12 @@ swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
 footclient aerc &
 footclient comlink &
 
+font=()
+font2=()
 dump=()
 if(test -f $home/acme.dump)
 	dump=(-l $home/acme.dump)
 
-SHELL=hack acme -a $dump -m /mnt/acme &
+SHELL=hack acme -a $dump &
 
 zen-browser &
