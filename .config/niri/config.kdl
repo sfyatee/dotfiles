@@ -287,7 +287,7 @@ window-rule {
     open-on-workspace "casa"
 }
 
-// A future forgotton.
+// A future forgotton!
 // https://9p.io/plan9/
 window-rule {
     match title="acme"
