@@ -104,7 +104,9 @@ input {
 
 // Set default background color.
 output "HDMI-A-1" {
-    background-color "a3ccbd"
+    layout {
+        background-color "a3ccbd"        
+    }
 }
 
 // Set default background color.
