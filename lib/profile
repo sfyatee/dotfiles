@@ -146,7 +146,7 @@ if(! ~ $os linux){
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
 
-# ulimit -c 0
+ulimit -c 0
 
 # making sure these are running
 fn felloff{
