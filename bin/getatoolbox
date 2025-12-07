@@ -9,6 +9,17 @@ go install rsc.io/rf@master
 
 raco pkg install racket-langserver
 
+if [ ! -d /usr/local/plan9 ]; then
+	sudo mkdir -p /usr/local/plan9
+	sudo chgrp $(id -gn) /usr/local/plan9
+	sudo chmod g+rwx /usr/local/plan9
+	sudo chown $(id -un):$(id -gn) /usr/local/plan9
+	git clone -b sfyatee https://github.com/sfyatee/plan9port.git /usr/local/plan9
+	cd /usr/local/plan9; ./INSTALL
+else
+	cd /usr/local/plan9; git pull; ./INSTALL
+fi
+
 # Arch Linux doesn't have 9p enabled by default.
 Tux() {
 	# Install/Update rust toolchain.
