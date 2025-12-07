@@ -27,6 +27,7 @@ HISTSIZE=500
 LESS=-i
 LESSHISTFILE=/dev/null
 NO_COLOR=1
+PACMAN_AUTH=run0
 PYTHON_HISTORY=/dev/null
 RUSTUP_HOME=$home/.local/share/rustup
 XDG_CONFIG_HOME=$home/.config # for Apple

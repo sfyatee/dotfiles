@@ -52,13 +52,14 @@ export LC_CTYPE=$LANG
 export LC_COLLATE=C
 export LC_TIME=C
 
-# misc.
+# opts
 export CUDA_CACHE_PATH=$HOME/.cache/nv
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
 export LESS=-i
 export LESSHISTFILE=/dev/null
 export NO_COLOR=1
+export PACMAN_AUTH=run0
 export PYTHON_HISTORY=/dev/null
 export RUSTUP_HOME=$HOME/.local/share/rustup
 
