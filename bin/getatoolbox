@@ -9,6 +9,7 @@ go install rsc.io/rf@master
 
 raco pkg install racket-langserver
 
+# https://9fans.github.io/plan9port/
 if [ ! -d /usr/local/plan9 ]; then
 	sudo mkdir -p /usr/local/plan9
 	sudo chgrp $(id -gn) /usr/local/plan9
