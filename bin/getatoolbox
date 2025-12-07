@@ -2,6 +2,16 @@
 
 export OS=$(uname)
 
+case "$OS" in
+Linux)
+	RUNAUTH="run0"
+	Tux
+	;;
+OpenBSD)
+	RUNAUTH="doas"
+	;;
+esac
+
 go install github.com/fzipp/ivy-prompt@latest
 go install github.com/rjkroege/edwood/cmd/win@master
 go install robpike.io/ivy@master
@@ -11,32 +21,31 @@ raco pkg install racket-langserver
 
 # https://9fans.github.io/plan9port/
 if [ ! -d /usr/local/plan9 ]; then
-	sudo mkdir -p /usr/local/plan9
-	sudo chgrp $(id -gn) /usr/local/plan9
-	sudo chmod g+rwx /usr/local/plan9
-	sudo chown $(id -un):$(id -gn) /usr/local/plan9
+	$RUNAUTH mkdir -p /usr/local/plan9
+	$RUNAUTH chgrp $(id -gn) /usr/local/plan9
+	$RUNAUTH chmod g+rwx /usr/local/plan9
+	$RUNAUTH chown $(id -un):$(id -gn) /usr/local/plan9
 	git clone -b sfyatee https://github.com/sfyatee/plan9port.git /usr/local/plan9
 	cd /usr/local/plan9; ./INSTALL
 else
 	cd /usr/local/plan9; git pull; ./INSTALL
 fi
 
-# Arch Linux doesn't have 9p enabled by default.
+# Arch Linux doesn't have 9p enabled by default
 Tux() {
-	# Install/Update rust toolchain.
+	# Install/Update rust toolchain
+	# rustup not available(recommended?) on OpenBSD
 	if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
 		rustup toolchain install stable
 		rustup default stable
 	else
 		rustup update
 	fi
-	# Load 9p kernel module if not enabled.
+	# Load 9p kernel module if not enabled
 	if ! lsmod | grep -q 9p; then
 		run0 mkdir -p /etc/modules-load.d/
 		echo 9p | run0 tee -a /etc/modules-load.d/9p.conf > /dev/null
 	fi
 }
-
-if [ $OS  == "Linux" ]; then; Tux fi
 
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
