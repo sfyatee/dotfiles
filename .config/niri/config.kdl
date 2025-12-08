@@ -376,6 +376,7 @@ window-rule {
     match app-id=r#"zen$"# title="^Library$"
     match app-id="^iv"
     match app-id="^mpv$"
+    match title="vdiff"
 
     open-floating true
 }
