@@ -67,8 +67,8 @@ export RUSTUP_HOME=$HOME/.local/share/rustup
 export NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
-export font=/mnt/font/LucidaGrande/11a/font
-export font2=/mnt/font/LucidaGrandeMonoDK/11a/font
+export font=/mnt/font/LucidaGrandeMonoDK/11a/font
+export font2=/mnt/font/LucidaGrande/11a/font
 
 # equivalent variables for rc(1)
 export home=$HOME
