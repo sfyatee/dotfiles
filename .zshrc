@@ -50,7 +50,7 @@ preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 # nice things to have
 alias acme="SHELL=hack acme -a -f $font2 -F $font"
 alias cp="cp -i"
-alias edwood="edwood -a -f $font2 -F $font"
+alias edwood="SHELL=hack edwood -a -f $font2 -F $font"
 alias hg="chg"
 alias ivy="ivy-prompt"
 alias lc="lc -F"

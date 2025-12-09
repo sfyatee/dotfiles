@@ -66,7 +66,7 @@ fn prompt{
 # nice things to have
 fn acme{SHELL=hack builtin acme -a -f $font2 -F $font $*}
 fn cp{builtin cp -i $*}
-fn edwood{builtin edwood -a -f $font -F $font2 $*}
+fn edwood{SHELL=hack builtin edwood -a -f $font2 -F $font $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
 fn lc{builtin lc -F $*}
