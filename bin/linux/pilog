@@ -1,0 +1,4 @@
+#!/bin/sh
+# pilog [PATTERN] - list installed packages by install-date
+expac -Q --timefmt='%Y-%m-%d %H:%M:%S' '%n:%l' |
+	sort -t: -k2 |column -t -s: -o: |grep -e "${1:-.}"
