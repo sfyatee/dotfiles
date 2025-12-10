@@ -2,6 +2,4 @@
 # phog - list installed XBPS packages ordered by size
 
 export LC_ALL=C
-expac -QH M '%n:%m' |
-    sort -h -t: -k2 |
-    column -s: -t
+expac -QH M '%n:%m' | sort -h -t: -k2 | column -s: -t
