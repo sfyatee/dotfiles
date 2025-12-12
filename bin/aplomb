@@ -1,5 +1,4 @@
 #!/bin/zsh
-
 # aplomb - send text to the Plan 9 plumber(4) from tmux copy mode
  
 text=''
