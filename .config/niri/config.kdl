@@ -359,6 +359,11 @@ window-rule {
     default-column-width {}
 }
 
+window-rule {
+    match title="vdiff"
+    min-height 865
+}
+
 // Add rounded corners to fuzzel.
 layer-rule {
     match namespace="^launcher$"
