@@ -56,12 +56,16 @@ secstore=localhost
 
 # prompt
 # see: ../bin/openbsd/prompt2.go
-fn prompt{
+fn aprompt {
+	fn esc {
+		printf '\001\033[%sm\002%s\001\033[0m\002' $1 $2
+	}
 	sys=`{prompt2}
-	ps1=' % '
-	prompt=($"sys^$ps1)
-	fn $sys^$ps1 { if(! ~ $#* 0) $* }
+	ps1=`{esc '1;33' '%'}
+	prompt=($"sys^' '^$ps1^' ')
+	fn $sys^' '^$ps1^' ' { if(! ~ $#* 0) $* }
 }
+aprompt
 
 # nice things to have
 fn acme{SHELL=hack builtin acme -a -f $font2 -F $font $*}
