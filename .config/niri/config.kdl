@@ -379,6 +379,7 @@ window-rule {
     match app-id=r#"firefox$"# title="^Library$"
     match app-id="^iv"
     match app-id="^mpv$"
+    match title="page"
     match app-id=r#"zen$"# title="^Picture-in-Picture$"
     match app-id=r#"zen$"# title="^Library$"
     match title="vdiff"
