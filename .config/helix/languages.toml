@@ -4,8 +4,6 @@ name = "go"
 rulers = [81]
 [[language]]
 name = "rust"
-soft-wrap = { enable = true, wrap-at-text-width = true }
-text-width = 79
 rulers = [81]
 [[language]]
 name = "java"
