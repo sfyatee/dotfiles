@@ -24,7 +24,7 @@ compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
 # OSC 7
 autoload -Uz add-zsh-hook
-osc7() {
+osc71() {
 	emulate -L zsh # also sets localoptions for us
 	setopt extendedglob
 	local LC_ALL=C p
@@ -38,8 +38,8 @@ osc7() {
 		print -nr -- "$p"
 	fi
 }
-_osc7(){((ZSH_SUBSHELL))||osc7}
-add-zsh-hook -Uz chpwd _osc7
+osc7(){((ZSH_SUBSHELL))||osc71}
+add-zsh-hook -Uz chpwd osc7
 
 # prompt
 # see: bin/openbsd/prompt2.go
@@ -90,34 +90,6 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	awd
 fi
 
-# up [|N|@|pat] -- go up 1, N or until basename matches pat many directories
-#   just output directory when not used interactively, e.g. in backticks
-# 06sep2013  +chris+
-# 11oct2017  +leah+  add completion
-# 13jul2021  +leah+  add @ for git root
-# 12oct2023  +leah+  fix @ when in git root already
-up() {
-	local op=print
-	[[ -t 1 ]] && op=cd
-	case "$1" in
-	'') up 1;;
-	-*|+*) $op ~$1;;
-	<->) $op $(printf '../%.0s' {1..$1});;
-	@) local cdup; cdup=./$(git rev-parse --show-cdup) && $op $cdup;;
-	*) local -a seg; seg=(${(s:/:)PWD%/*})
-	local n=${(j:/:)seg[1,(I)$1*]}
-	if [[ -n $n ]]; then
-		$op /$n
-	else
-		print -u2 up: could not find prefix $1 in $PWD
-		return 1
-	fi
-	esac
-}
-_up() { (( $#words > 2 )) || compadd -V segments -- ${(Oas:/:)PWD} }
-compdef _up up
-alias @='up @'
-
 # revpatch - reverse a patch
 # 24may2020  +leah+
 revpatch() { interdiff -q $1 /dev/null }
@@ -144,7 +116,7 @@ esac
 if [[ "$TERM" == "dumb" ]]; then
 	# disable
 	unsetopt promptcr	# carriage return before prompt in zle
-	unfunction _osc7 precmd preexec
+	unfunction osc7 precmd preexec
 	# set prompt so middle-clicking whole line reruns line's command
 	# show last exit code if non-zero
 	prompt=": %(?..{%?} )%m; "
