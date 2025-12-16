@@ -22,7 +22,7 @@ autoload -Uz compinit	# sinful completion
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
-# OSC 7
+# osc7
 autoload -Uz add-zsh-hook
 osc71() {
 	emulate -L zsh # also sets localoptions for us
@@ -41,13 +41,13 @@ osc71() {
 osc7(){((ZSH_SUBSHELL))||osc71}
 add-zsh-hook -Uz chpwd osc7
 
-# prompt
-# see: bin/openbsd/prompt2.go
+# prompt - "[%s] %s ", uptime(y, mo, d, h, mi, s), host
+# bin/openbsd/prompt2.go
 prompt='`prompt2` %v%B%(!.%F{red}.%F{yellow})%# %b%f'
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
-# nice things to have
+# fns
 alias acme="SHELL=hack acme -a -f $font2 -F $font"
 alias cp="cp -i"
 alias edwood="SHELL=hack edwood -a -f $font2 -F $font"
@@ -94,7 +94,7 @@ fi
 # 24may2020  +leah+
 revpatch() { interdiff -q $1 /dev/null }
 
-# os specificities
+# specificities
 case "$OS" in
 linux)
 	alias ls="ls -AFv"
@@ -123,7 +123,7 @@ if [[ "$TERM" == "dumb" ]]; then
 	RPROMPT=""
 fi
 
-# making sure these are running
+# make sure these are running
 felloff() {
 	mkdir -p $NAMESPACE
 	9p stat plumb 2>/dev/null 1>&2 || plumber
