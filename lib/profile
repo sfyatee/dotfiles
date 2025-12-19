@@ -86,7 +86,6 @@ fn prompt1 {
 	sys=`{prompt2}
 	ps1=`{esc '1;33' '%'}
 	prompt=($"sys^' '^$ps1^' ')
-	# XXX(d): remove it?
 	# fn $sys^' '^$ps1^' ' { if(! ~ $#* 0) $* }
 }
 prompt1
