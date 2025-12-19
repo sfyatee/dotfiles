@@ -15,7 +15,7 @@ fn felloff{
 			$proc -m /mnt/$proc &
 		}
 	}
-	9p stat plumb >[2]/dev/null >[1=2] || plumber
+	9p stat plumb >[2]/dev/null >[1=2] || plumber &
 }
 
 # use systemd services instead
