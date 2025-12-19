@@ -6,8 +6,8 @@ fn felloff{
 	mkdir -p $NAMESPACE
 	# use mntgen(1) for /mnt
 	mntgen /mnt
-	# start factotum before secstore so it does not prompt for a password
-	# load secrets manually using ipso
+	start factotum before secstore so it does not prompt for a password
+	load secrets manually using ipso
 	for(proc in fontsrv factotum){
 		pgrep -x '^'^$proc > /dev/null
 		switch($status){
@@ -19,9 +19,8 @@ fn felloff{
 }
 
 # use systemd services instead
-# it's a losing battle
-if(! ~ $OS linux)
-	felloff
+# if(! ~ $OS linux)
+ 	felloff
 
 swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
 
@@ -29,12 +28,10 @@ swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
 footclient aerc &
 footclient comlink &
 
-font=()
-font2=()
 dump=()
 if(test -f $home/acme.dump)
 	dump=(-l $home/acme.dump)
 
-SHELL=hack acme -a $dump &
+# SHELL=hack acme -a $dump &
 
 zen-browser &
