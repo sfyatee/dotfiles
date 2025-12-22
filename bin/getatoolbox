@@ -16,7 +16,7 @@ go install github.com/fzipp/ivy-prompt@latest
 go install github.com/rjkroege/edwood/cmd/win@master
 go install robpike.io/ivy@master
 go install rsc.io/rf@master
-
+go install git.sr.ht/~gzj/werc-quickstart@latest
 raco pkg install racket-langserver
 
 # https://9fans.github.io/plan9port/
