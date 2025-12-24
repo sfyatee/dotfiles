@@ -24,14 +24,6 @@ else
 	cd /usr/local/plan9; git pull; ./INSTALL
 fi
 
-go install github.com/fzipp/ivy-prompt@latest
-go install github.com/hdonnay/wercsrv@master
-go install github.com/rjkroege/edwood/cmd/win@master
-go install robpike.io/ivy@master
-go install rsc.io/rf@master
-go install git.sr.ht/~gzj/werc-quickstart@latest
-raco pkg install racket-langserver
-
 # Arch Linux doesn't have 9p enabled by default
 Tux() {
 	# Install/Update rust toolchain
@@ -50,3 +42,10 @@ Tux() {
 }
 
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
+go install github.com/fzipp/ivy-prompt@latest
+go install github.com/hdonnay/wercsrv@master
+go install github.com/rjkroege/edwood/cmd/win@master
+go install robpike.io/ivy@master
+go install rsc.io/rf@master
+go install git.sr.ht/~gzj/werc-quickstart@latest
+raco pkg install racket-langserver
