@@ -1,28 +1,20 @@
-#!/usr/bin/env rc
-u=''
-o=()
-scan=on
-while(! ~ $#* 0 && ~ $scan on){
-	switch($1){
-	case -u
-		u=$2
-		shift 2
-	case -n
-		o=($o --no-ask-password)
-		shift
-	case -s
-		o=($o --via-shell)
-		shift
-	case -i
-		o=($o -i)
-		shift
-	case --
-		shift
-		scan=off
-	case *
-		scan=off
-	}
-}
-if(! ~ $u '')
-	o=(--user=$u $o)
-exec run0 $o $*
+#!/bin/sh
+set -eu
+
+u=""
+o=""
+
+while [ "$#" -gt 0 ]; do
+	case "$1" in
+		-u) u=$2; shift 2 ;;
+		-n) o="$o --no-ask-password"; shift ;;
+		-s) o="$o --via-shell";       shift ;;
+		-i) o="$o -i";                shift ;;
+		--) shift; break ;;
+		*) break ;;
+	esac
+done
+
+[ -n "$u" ] && o="--user=$u$o"
+# shellcheck disable=SC2086
+exec run0 $o "$@"
