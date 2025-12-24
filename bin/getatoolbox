@@ -2,6 +2,11 @@
 
 export OS=$(uname)
 
+# opts
+export GOTELEMETRY=off
+export GOTOOLCHAIN=local
+export RUSTUP_HOME=$HOME/.local/share/rustup
+
 case "$OS" in
 Linux)
 	RUNAUTH="run0"
@@ -24,7 +29,6 @@ else
 	cd /usr/local/plan9; git pull; ./INSTALL
 fi
 
-# Arch Linux doesn't have 9p enabled by default
 Tux() {
 	# Install/Update rust toolchain
 	# rustup not available(recommended?) on OpenBSD
