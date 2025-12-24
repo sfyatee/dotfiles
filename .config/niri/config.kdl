@@ -102,14 +102,7 @@ input {
     position x=1280 y=0
 }
 
-// Set default background color.
-output "HDMI-A-1" {
-    layout {
-        background-color "a3ccbd"        
-    }
-}
-
-// Set default background color.
+// Set default backdrop color.
 overview {
     backdrop-color "a3ccbd"
 }
@@ -118,6 +111,9 @@ overview {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
+    // Set default background color.
+    background-color "a3ccbd"
+
     // Set gaps around windows in logical pixels.
     gaps 10
 
