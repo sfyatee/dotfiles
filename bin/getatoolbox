@@ -12,14 +12,6 @@ OpenBSD)
 	;;
 esac
 
-go install github.com/fzipp/ivy-prompt@latest
-go install github.com/hdonnay/wercsrv@master
-go install github.com/rjkroege/edwood/cmd/win@master
-go install robpike.io/ivy@master
-go install rsc.io/rf@master
-go install git.sr.ht/~gzj/werc-quickstart@latest
-raco pkg install racket-langserver
-
 # https://9fans.github.io/plan9port/
 if [ ! -d /usr/local/plan9 ]; then
 	$RUNAUTH mkdir -p /usr/local/plan9
@@ -31,6 +23,14 @@ if [ ! -d /usr/local/plan9 ]; then
 else
 	cd /usr/local/plan9; git pull; ./INSTALL
 fi
+
+go install github.com/fzipp/ivy-prompt@latest
+go install github.com/hdonnay/wercsrv@master
+go install github.com/rjkroege/edwood/cmd/win@master
+go install robpike.io/ivy@master
+go install rsc.io/rf@master
+go install git.sr.ht/~gzj/werc-quickstart@latest
+raco pkg install racket-langserver
 
 # Arch Linux doesn't have 9p enabled by default
 Tux() {
