@@ -1,6 +1,9 @@
 #!/usr/bin/env rc
 
 # services
+fn gui{
+	foot -s
+}
 fn felloff{
 	# override $NAMESPACE (see intro(4)) because $WSYS is not running yet
 	mkdir -p $NAMESPACE
@@ -21,6 +24,7 @@ fn felloff{
 # use systemd services instead
 # if(! ~ $OS linux)
  	felloff
+	gui
 
 swaybg -m center -i $home/.local/share/backgrounds/grendel.png &
 
