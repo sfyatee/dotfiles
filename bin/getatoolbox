@@ -52,4 +52,4 @@ go install github.com/rjkroege/edwood/cmd/win@master
 go install robpike.io/ivy@master
 go install rsc.io/rf@master
 go install git.sr.ht/~gzj/werc-quickstart@latest
-raco pkg install racket-langserver
+raco pkg install --auto --batch racket-langserver
