@@ -30,10 +30,10 @@ NO_COLOR=1
 PACMAN_AUTH=run0
 PYTHON_HISTORY=/dev/null
 RUSTUP_HOME=$home/.local/share/rustup
-XDG_CONFIG_HOME=$home/.config # for Apple
+XDG_CONFIG_HOME=$home/.config # OSX is confused
 
 # path
-append=($PLAN9/bin $PLAN9/bin/upas)
+append=(/usr/games /usr/games/bin $PLAN9/bin $PLAN9/bin/upas)
 prepend=($BIN $home/go/bin $CARGO_HOME/bin)
 path=($prepend $path $append)
 
