@@ -14,6 +14,7 @@ Linux)
 	;;
 OpenBSD)
 	RUNAUTH="doas"
+	$RUNAUTH pkg_add -l $HOME/bin/openbsd/movein.txt
 	;;
 esac
 
@@ -41,7 +42,7 @@ Tux() {
 	# Load 9p kernel module if not enabled
 	if ! lsmod | grep -q 9p; then
 		run0 mkdir -p /etc/modules-load.d/
-		echo 9p | run0 tee -a /etc/modules-load.d/9p.conf > /dev/null
+		echo 9p | $RUNAUTH tee -a /etc/modules-load.d/9p.conf > /dev/null
 	fi
 }
 
