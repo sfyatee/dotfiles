@@ -340,6 +340,7 @@ window-rule {
 
 // lasciate ogne speranza, voi ch'intrate
 window-rule {
+    match app-id=r#"nyxt$"#
     match app-id=r#"zen$"#
     open-maximized true
     open-on-workspace "mothra"
