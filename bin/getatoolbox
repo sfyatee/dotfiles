@@ -35,7 +35,6 @@ Tux() {
 	# rustup not available(recommended?) on OpenBSD
 	if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
 		rustup toolchain install stable
-		rustup default stable
 	else
 		rustup update
 	fi
