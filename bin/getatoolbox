@@ -44,6 +44,11 @@ Tux() {
 		run0 mkdir -p /etc/modules-load.d/
 		echo 9p | $RUNAUTH tee -a /etc/modules-load.d/9p.conf > /dev/null
 	fi
+	# AUR helper
+	if ! command -v yay >/dev/null 2>&1; then
+		git clone https://aur.archlinux.org/yay /tmp/yay
+		cd /tmp/yay || exit 1; makepkg -fsi --noconfirm
+	fi
 }
 
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
