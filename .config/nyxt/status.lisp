@@ -13,6 +13,30 @@
 (define-configuration :style-mode ((glyph "ϕ")))
 (define-configuration :cruise-control-mode ((glyph "σ")))
 
+(define-configuration :status-buffer
+  ((height 36)
+   (style
+    (theme:themed-css (theme *browser*)
+      `(*
+        :font-family ,"monospace"
+        :font-size "11px")
+      `(body
+        :margin "9px"
+        :margin-top "11px")
+      `("#container"
+        :display "flex"
+        :white-space "nowrap"
+        :overflow "hidden")
+      `("#emacs-mode, #buffers, #load, #percentage, #url, .tab, #minions, #modes"
+        :padding-left "9px")
+      `("#modes"
+        :color "#a2a9b0")
+      `(button
+        :all "unset")
+      `((:and (:or .button .tab "#url") :hover)
+        :font-weight "bold"
+        :cursor "pointer")))))
+
 (defmethod my-format-status-load-status ((status status-buffer))
   "A fancier load status."
   (spinneret:with-html-string
@@ -93,27 +117,3 @@
              (:div :id "modes"
                    (:raw
                      (my-format-modes status)))))))
-
-(define-configuration :status-buffer
-  ((height 36)
-   (style
-    (theme:themed-css (theme *browser*)
-      `(*
-        :font-family ,"monospace"
-        :font-size "11px")
-      `(body
-        :margin "9px"
-        :margin-top "11px")
-      `("#container"
-        :display "flex"
-        :white-space "nowrap"
-        :overflow "hidden")
-      `("#emacs-mode, #buffers, #load, #percentage, #url, .tab, #minions, #modes"
-        :padding-left "9px")
-      `("#modes"
-        :color "#a2a9b0")
-      `(button
-        :all "unset")
-      `((:and (:or .button .tab "#url") :hover)
-        :font-weight "bold"
-        :cursor "pointer")))))
