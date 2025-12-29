@@ -117,7 +117,7 @@ Why the variable? Because it's too much hassle copying it everywhere.")
    (style
     (theme:themed-css (theme *browser*)
       `(*
-        :font-family ,theme:monospace-font-family
+        :font-family ,"monospace"
         :font-size "11px")
       `(body
         :margin "9px"
