@@ -55,7 +55,7 @@ Why the variable? Because it's too much hassle copying it everywhere.")
         :display "flex"
         :white-space "nowrap"
         :overflow "hidden")
-      `("#vi-mode, #buffers, #load, #percentage, #url, .tab, #minions, #modes"
+      `("#emacs-mode, #buffers, #load, #percentage, #url, .tab, #minions, #modes"
         :padding-left "9px")
       `("#modes"
         :color "#a2a9b0")
