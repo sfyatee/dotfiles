@@ -47,6 +47,7 @@ Why the variable? Because it's too much hassle copying it everywhere.")
    (style
     (theme:themed-css (theme *browser*)
       `(*
+        :font-family ,*mono*
         :font-size "11px")
       `(body
         :margin "9px"
