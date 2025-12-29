@@ -16,6 +16,10 @@ Why the variable? Because it's too much hassle copying it everywhere.")
   "Enable proxy in nosave (private, incognito) buffers."
   ((default-modes `(:proxy-mode ,@*web-buffer-modes* ,@%slot-value%))))
 
+(define-configuration :status-buffer
+  "Display modes as short glyphs."
+  ((glyph-mode-presentation-p t)))
+
 (define-configuration :force-https-mode ((glyph "ϕ")))
 (define-configuration :user-script-mode ((glyph "u")))
 (define-configuration :blocker-mode ((glyph "β")))
