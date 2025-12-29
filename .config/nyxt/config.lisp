@@ -1,3 +1,5 @@
+(in-package #:nyxt-user)
+
 (defvar *web-buffer-modes*
   '(:emacs-mode
     :blocker-mode :force-https-mode
@@ -29,16 +31,16 @@ Why the variable? Because it's too much hassle copying it everywhere.")
 (define-configuration :style-mode ((glyph "ϕ")))
 (define-configuration :cruise-control-mode ((glyph "σ")))
 
-; (defmethod format-status-load-status ((status status-buffer))
-;   "A fancier load status."
-;   (spinneret:with-html-string
-;    (:span (if (and (current-buffer)
-;                    (web-buffer-p (current-buffer)))
-;               (case (slot-value (current-buffer) 'nyxt::status)
-;                     (:unloaded "∅")
-;                     (:loading "∞")
-;                     (:finished ""))
-;             ""))))
+(defmethod format-status-load-status ((status status-buffer))
+  "A fancier load status."
+  (spinneret:with-html-string
+   (:span (if (and (current-buffer)
+                   (web-buffer-p (current-buffer)))
+              (case (slot-value (current-buffer) 'nyxt::status)
+                    (:unloaded "∅")
+                    (:loading "∞")
+                    (:finished ""))
+            ""))))
 
 (define-configuration :status-buffer
   ((height 36)
