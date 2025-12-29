@@ -12,6 +12,10 @@ Why the variable? Because it's too much hassle copying it everywhere.")
   "Basic modes setup for web-buffer."
   ((default-modes `(,@*web-buffer-modes* ,@%slot-value%))))
 
+(define-configuration :nosave-buffer
+  "Enable proxy in nosave (private, incognito) buffers."
+  ((default-modes `(:proxy-mode ,@*web-buffer-modes* ,@%slot-value%))))
+
 (define-configuration :force-https-mode ((glyph "ϕ")))
 (define-configuration :user-script-mode ((glyph "u")))
 (define-configuration :blocker-mode ((glyph "β")))
