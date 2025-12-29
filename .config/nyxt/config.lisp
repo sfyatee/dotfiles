@@ -29,13 +29,36 @@ Why the variable? Because it's too much hassle copying it everywhere.")
 (define-configuration :style-mode ((glyph "ϕ")))
 (define-configuration :cruise-control-mode ((glyph "σ")))
 
-(defmethod format-status-load-status ((status status-buffer))
-  "A fancier load status."
-  (spinneret:with-html-string
-   (:span (if (and (current-buffer)
-                   (web-buffer-p (current-buffer)))
-              (case (slot-value (current-buffer) 'nyxt::status)
-                    (:unloaded "∅")
-                    (:loading "∞")
-                    (:finished ""))
-            ""))))
+; (defmethod format-status-load-status ((status status-buffer))
+;   "A fancier load status."
+;   (spinneret:with-html-string
+;    (:span (if (and (current-buffer)
+;                    (web-buffer-p (current-buffer)))
+;               (case (slot-value (current-buffer) 'nyxt::status)
+;                     (:unloaded "∅")
+;                     (:loading "∞")
+;                     (:finished ""))
+;             ""))))
+
+(define-configuration :status-buffer
+  ((height 36)
+   (style
+    (theme:themed-css (theme *browser*)
+      `(*
+        :font-size "11px")
+      `(body
+        :margin "9px"
+        :margin-top "11px")
+      `("#container"
+        :display "flex"
+        :white-space "nowrap"
+        :overflow "hidden")
+      `("#vi-mode, #buffers, #load, #percentage, #url, .tab, #minions, #modes"
+        :padding-left "9px")
+      `("#modes"
+        :color "#a2a9b0")
+      `(button
+        :all "unset")
+      `((:and (:or .button .tab "#url") :hover)
+        :font-weight "bold"
+        :cursor "pointer")))))
