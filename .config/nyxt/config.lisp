@@ -28,3 +28,14 @@ Why the variable? Because it's too much hassle copying it everywhere.")
 (define-configuration :certificate-exception-mode ((glyph "χ")))
 (define-configuration :style-mode ((glyph "ϕ")))
 (define-configuration :cruise-control-mode ((glyph "σ")))
+
+(defmethod format-status-load-status ((status status-buffer))
+  "A fancier load status."
+  (spinneret:with-html-string
+   (:span (if (and (current-buffer)
+                   (web-buffer-p (current-buffer)))
+              (case (slot-value (current-buffer) 'nyxt::status)
+                    (:unloaded "∅")
+                    (:loading "∞")
+                    (:finished ""))
+            ""))))
