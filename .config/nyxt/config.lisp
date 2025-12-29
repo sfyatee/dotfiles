@@ -1,5 +1,5 @@
 (defvar *web-buffer-modes*
-  '(:emacs--mode
+  '(:emacs-mode
     :blocker-mode :force-https-mode
     :reduce-tracking-mode
     :user-script-mode :bookmarklets-mode)
