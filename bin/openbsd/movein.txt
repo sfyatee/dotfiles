@@ -11,6 +11,7 @@ lilypond
 mergiraf
 mumble
 racket-minimal
+ripgrep
 syncthing
 tailscale
 uv
