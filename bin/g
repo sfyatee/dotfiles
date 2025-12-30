@@ -1,4 +1,4 @@
 #!/bin/sh
 
 [ "$#" -gt 0 ] || { echo "usage: g [flags] pattern [files]" >&2; exit 1; }
-LC_ALL=C exec rg --no-heading "$@"
+LC_ALL=C exec rg --no-heading --line-number "$@"
