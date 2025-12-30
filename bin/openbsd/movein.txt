@@ -16,4 +16,3 @@ syncthing
 tailscale
 uv
 wev
-zsh
