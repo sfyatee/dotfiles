@@ -1,15 +1,14 @@
-#!/bin/zsh
+#!/bin/sh
 # aplomb - send text to the Plan 9 plumber(4) from tmux copy mode
- 
+
 text=''
-integer i=-1
+i=-1
 
 sel() {
 	tmux send-keys -X copy-selection \; show-buffer \; delete-buffer
 }
 
 click() {
-	local p
 	p="$(tmux \
 		send-keys -X begin-selection \; \
 		send-keys -X previous-space \; \
@@ -29,22 +28,23 @@ click() {
 }
 
 main() {
-	local wd err
-
 	wd="$(tmux display-message -p '#{pane_current_path}')"
-	if [[ "$(tmux display-message -p '#{selection_present}')" == 0 ]]; then
+
+	if [ "$(tmux display-message -p '#{selection_present}')" = 0 ]; then
 		click
 	else
 		text="$(sel)"
-		(( ${#text} <= 1 )) && click
+		[ "${#text}" -le 1 ] && click
 	fi
 
-	local -a cmd
-	cmd=(9 plumb -s tmux -w "$wd")
-	(( i >= 0 )) && cmd+=(-a "click=$i")
-	cmd+=("$text")
+	# Build argv without arrays (POSIX)
+	set -- 9 plumb -s tmux -w "$wd"
+	if [ "$i" -ge 0 ]; then
+		set -- "$@" -a "click=$i"
+	fi
+	set -- "$@" "$text"
 
-	err="$("${cmd[@]}" 2>&1)" || tmux display-message -- "$err"
+	err="$("$@" 2>&1)" || tmux display-message -- "$err"
 }
 
 main "$@"
