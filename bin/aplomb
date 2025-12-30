@@ -37,7 +37,6 @@ main() {
 		[ "${#text}" -le 1 ] && click
 	fi
 
-	# Build argv without arrays (POSIX)
 	set -- 9 plumb -s tmux -w "$wd"
 	if [ "$i" -ge 0 ]; then
 		set -- "$@" -a "click=$i"
