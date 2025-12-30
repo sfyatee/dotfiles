@@ -29,7 +29,6 @@ click() {
 
 main() {
 	wd="$(tmux display-message -p '#{pane_current_path}')"
-
 	if [ "$(tmux display-message -p '#{selection_present}')" = 0 ]; then
 		click
 	else
