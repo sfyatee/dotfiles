@@ -156,7 +156,7 @@ case linux
 	BROWSER=nyxt
 	NPROC=`{nproc}
 	fn ls{builtin ls -AFv $*}
-	fn orphrem{sudo pacman -R `{pacman -Qdtq}}
+	fn orphrem{run0 pacman -R `{pacman -Qdtq}}
 	fn pQm{pacman -Qm}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn rcctl{systemctl $*}
