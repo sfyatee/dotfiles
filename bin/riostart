@@ -2,7 +2,9 @@
 
 # services
 gui(){
-	foot -s
+	if ! pgrep -x "footclient" >/dev/null 2>&1; then
+		foot -s
+	fi
 }
 felloff(){
 	# override $NAMESPACE (see intro(4)) because $WSYS is not running yet
