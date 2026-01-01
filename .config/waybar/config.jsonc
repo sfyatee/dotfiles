@@ -38,6 +38,28 @@
     "battery#bat2": {
         "bat": "BAT2"
     },
+    
+
+    "wlr/taskbar": {
+    	"format": "{icon}",
+    	"icon-size": 14,
+    	"icon-theme": "Numix-Circle",
+    	"tooltip-format": "{title}",
+    	"on-click": "activate",
+    	"on-click-middle": "close",
+    	"ignore-list": [
+    	    "Alacritty"
+    	],
+    	"app_ids-mapping": {
+    		"firefoxdeveloperedition": "firefox-developer-edition"
+    	},
+    	"rewrite": {
+    		"Firefox Web Browser": "Firefox",
+    		"Foot Server": "Terminal"
+    	}
+    },
+
+
     "network": {
         "interval": 5,
         "format-ethernet": "eth",
