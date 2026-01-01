@@ -6,8 +6,11 @@ github-cli
 gitlab-cli
 gopls
 helix
+jq
 jujutsu
+just
 lilypond
+lua-language-server
 mergiraf
 mumble
 racket-minimal
