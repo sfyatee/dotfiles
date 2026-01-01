@@ -321,7 +321,7 @@ animations {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
-// Unix land.
+// Unix.
 window-rule {
     match at-startup=true
     match title="aerc"
@@ -329,8 +329,13 @@ window-rule {
     open-on-workspace "casa"
 }
 
-// A future forgotton!
-// https://9p.io/plan9/
+// When I was a child, I used to speak like a child, think like a child,
+// reason like a child; when I became a man, I did away with childish
+// things.
+//
+// -rob
+// 
+// See also: http://acme.cat-v.org/
 window-rule {
     match title="acme"
     match app-id=r#"^org\._9front\.drawterm$"#
@@ -338,7 +343,7 @@ window-rule {
     open-on-workspace "➈"
 }
 
-// lasciate ogne speranza, voi ch'intrate
+// "LASCIATE OGNE SPERANZA, VOI CH'INTRATE"
 window-rule {
     match app-id=r#"nyxt$"#
     match app-id=r#"zen$"#
