@@ -9,6 +9,7 @@ helix
 jq
 jujutsu
 just
+knfmt
 lilypond
 lua-language-server
 mergiraf
