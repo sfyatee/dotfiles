@@ -6,6 +6,7 @@ gui(){
 		foot -s
 	fi
 }
+
 felloff(){
 	# override $NAMESPACE (see intro(4)) because $WSYS is not running yet
 	mkdir -p $NAMESPACE
@@ -18,14 +19,16 @@ felloff(){
 			"$proc" -m "/mnt/$proc" &
 		fi
 	done
-	# 9p stat plumb >[2]/dev/null >[1=2] || plumber &
+	# pal's go port of plumber(4) does not fork
+	# https://github.com/paul-lalonde/plumber/blob/main/plumber/fsys.go#L148
+	9p stat plumb >[2]/dev/null >[1=2] || plumber &
 }
 
 # use systemd services instead
-# if(! ~ $OS linux)
+# if [$OS linux]; then
  	gui
  	felloff
-
+# fi
 swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
 
 # applications
