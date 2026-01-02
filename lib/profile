@@ -34,7 +34,7 @@ XDG_CONFIG_HOME=$home/.config # OSX is confused
 
 # path
 append=(/usr/games /usr/games/bin $PLAN9/bin $PLAN9/bin/upas)
-prepend=($BIN $home/go/bin $CARGO_HOME/bin)
+prepend=($BIN $home/.local/bin $home/go/bin $CARGO_HOME/bin)
 path=($prepend $path $append)
 
 # Unix means english and 24h clock. but do use UTF-8! and sort like a machine
@@ -183,7 +183,10 @@ ulimit -c 0
 
 # make sure these are running
 fn felloff{
+	# override $NAMESPACE (see intro(4)) because $WSYS is not running yet
 	mkdir -p $NAMESPACE
+	# pal's go port of plumber(4) does not fork
+	# https://github.com/paul-lalonde/plumber/blob/main/plumber/fsys.go#L148
 	9p stat plumb >[2]/dev/null >[1=2] || plumber
 }
 
