@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # services
-gui(){
+gui() {
 	if ! pgrep -x "footclient" >/dev/null 2>&1; then
 		foot -s
 	fi
 }
 
-felloff(){
+felloff() {
 	# override $NAMESPACE (see intro(4)) because $WSYS is not running yet
 	mkdir -p $NAMESPACE
 	# use mntgen(1) for /mnt
@@ -36,11 +36,14 @@ swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
 footclient aerc &
 footclient comlink &
 
+# varfont="-f $font2"
+# fixfont="-F $font"
 dump=""
 if [ -f "$HOME/acme.dump" ]; then
 	dump="-l $HOME/acme.dump"
 fi
 
+# acme(1) https://man.9front.org/1/acme
 SHELL=hack acme -a $dump &
 
 zen-browser &
