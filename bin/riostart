@@ -50,12 +50,12 @@ lookforfont() {
 
 # sans-serif
 varfont=""
-font2="$(lookforfont LucidaGrande GoRegular)"
+font2="$(lookforfont LucidaGrande Geneva GoRegular IBMPlexSans)"
 [ -n "$font2" ] && varfont="-f $font2"
 
 # monospace
 fixfont=""
-font="$(lookforfont LucidaGrandeMonoDK Monaco Menlo-Regular Hack-Regular)"
+font="$(lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono)"
 [ -n "$font" ] && fixfont="-F $font"
 
 dump=""
