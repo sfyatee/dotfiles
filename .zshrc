@@ -126,7 +126,11 @@ fi
 # make sure these are running
 felloff() {
 	mkdir -p $NAMESPACE
-	9p stat plumb 2>/dev/null 1>&2 || plumber
+	# pal's go port does not fork
+	# https://github.com/paul-lalonde/plumber/blob/main/plumber/fsys.go#L148
+	9p stat plumb 2>/dev/null 1>&2 || plumber &!
+	# fontsrv(4) on OSX and the go port does not fork
+	9p stat font 2>/dev/null 1>&2 || fontsrv &!
 }
 
 if [ -d "$PLAN9" ]; then felloff; fi
