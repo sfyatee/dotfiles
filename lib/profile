@@ -47,20 +47,19 @@ LC_TIME=C
 NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
-fn lookforfont {
-    size=11a
-    found=()
-    for(family in $*) {
-        if(~ $#found 0){
-            if(~ `{fontsrv -p .} *^$family^/*)
-                found=/mnt/font/^$family^/^$size^/font
-        }
-    }
+fn lookforfont{
+	found=()
+	for(family in $*){
+		if(~ $#found 0){
+			if(~ `{fontsrv -p .} *^$family^/*)
+				found=/mnt/font/^$family^/11a/font
+		}
+	}
 
-    if(! ~ $#found 0)
-        echo $found
-    if(~ $#found 0)
-        return 1
+	if(! ~ $#found 0)
+		echo $found
+	if(~ $#found 0)
+		return 1
 }
 
 # san-serif
