@@ -37,8 +37,8 @@ footclient comlink &
 # default font for Plan 9 programs
 lookforfont() {
 	for family in "$@"; do
-		fonts="$(fontsrv -p .)"
-		case "$fonts" in
+		font="$(fontsrv -p .)"
+		case "$font" in
 		*"$family/"*)
 			echo "/mnt/font/$family/11a/font"
 			return 0
