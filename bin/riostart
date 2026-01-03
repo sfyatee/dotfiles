@@ -34,6 +34,7 @@ swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
 footclient aerc &
 footclient comlink &
 
+# default font for Plan 9 programs
 lookforfont() {
 	for family in "$@"; do
 		fonts="$(fontsrv -p .)"
@@ -47,11 +48,12 @@ lookforfont() {
 	return 1
 }
 
-# acme(1) https://man.9front.org/1/acme
+# sans-serif
 varfont=""
 font2="$(lookforfont LucidaGrande GoRegular)"
 [ -n "$font2" ] && varfont="-f $font2"
 
+# monospace
 fixfont=""
 font="$(lookforfont LucidaGrandeMonoDK Monaco Menlo-Regular Hack-Regular)"
 [ -n "$font" ] && fixfont="-F $font"
@@ -61,6 +63,7 @@ if [ -f "$HOME/acme.dump" ]; then
 	dump="-l $HOME/acme.dump"
 fi
 
+# acme(1) https://man.9front.org/1/acme
 SHELL=hack acme -a $varfont $fixfont $dump &
 
 zen-browser &
