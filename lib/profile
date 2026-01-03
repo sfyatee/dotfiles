@@ -47,8 +47,31 @@ LC_TIME=C
 NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
-font=/mnt/font/LucidaGrandeMonoDK/11a/font
-font2=/mnt/font/LucidaGrande/11a/font
+fn lookforfont {
+    size=11a
+    found=()
+    for(family in $*) {
+        if(~ $#found 0){
+            if(~ `{fontsrv -p .} *^$family^/*)
+                found=/mnt/font/^$family^/^$size^/font
+        }
+    }
+
+    if(! ~ $#found 0)
+        echo $found
+    if(~ $#found 0)
+        return 1
+}
+
+# san-serif
+varfont=()
+font2=`{lookforfont LucidaGrande GoRegular >[2]/dev/null}
+if(! ~ $#font2 0) varfont=(-f $font2)
+
+# monospace
+fixfont=()
+font=`{lookforfont LucidaGrandeMonoDK Monaco Menlo-Regular Hack-Regular >[2]/dev/null}
+if(! ~ $#font 0) fixfont=(-F $font)
 
 # secstore considered harmful
 secstore=localhost
@@ -91,9 +114,9 @@ fn prompt1 {
 prompt1
 
 # fns
-fn acme{SHELL=hack builtin acme -a -f $font2 -F $font $*}
+fn acme{SHELL=hack builtin acme -a $varfont $fixfont $*}
 fn cp{builtin cp -i $*}
-fn edwood{SHELL=hack builtin edwood -a -f $font2 -F $font $*}
+fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
 fn jk{just $*}
