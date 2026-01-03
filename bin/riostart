@@ -35,13 +35,11 @@ footclient aerc &
 footclient comlink &
 
 lookforfont() {
-	size=11a
-	fonts="$(fontsrv -p .)"
-
 	for family in "$@"; do
+		fonts="$(fontsrv -p .)"
 		case "$fonts" in
 		*"$family/"*)
-			echo "/mnt/font/$family/$size/font"
+			echo "/mnt/font/$family/11a/font"
 			return 0
 		;;
 		esac
