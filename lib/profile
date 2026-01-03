@@ -24,7 +24,7 @@ GOTELEMETRY=off
 GOTOOLCHAIN=local
 HISTFILE=/dev/null
 HISTSIZE=500
-LESS=-i
+LESS=-FRXi
 LESSHISTFILE=/dev/null
 NO_COLOR=1
 PACMAN_AUTH=run0
@@ -215,4 +215,4 @@ fn felloff{
 if(test -d $PLAN9) felloff
 
 # site local config
-. -q $home/lib/profile.local
+# . -q $home/lib/profile.local
