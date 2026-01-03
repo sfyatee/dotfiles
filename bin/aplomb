@@ -28,7 +28,6 @@ click() {
 }
 
 main() {
-	wd="$(tmux display-message -p '#{pane_current_path}')"
 	if [ "$(tmux display-message -p '#{selection_present}')" = 0 ]; then
 		click
 	else
@@ -36,6 +35,7 @@ main() {
 		[ "${#text}" -le 1 ] && click
 	fi
 
+	wd="$(tmux display-message -p '#{pane_current_path}')"
 	set -- 9 plumb -s tmux -w "$wd"
 	if [ "$i" -ge 0 ]; then
 		set -- "$@" -a "click=$i"

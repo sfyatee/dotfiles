@@ -96,12 +96,12 @@ fn cp{builtin cp -i $*}
 fn edwood{SHELL=hack builtin edwood -a -f $font2 -F $font $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
-fn jk{just}
+fn jk{just $*}
 fn lc{builtin lc -F $*}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
 fn ltr{builtin ls -AlFtr $*}
-fn m{make}
+fn m{make $*}
 fn mg{builtin mg -n $*}
 fn mu{muon $*}
 fn mv{builtin mv -i $*}
