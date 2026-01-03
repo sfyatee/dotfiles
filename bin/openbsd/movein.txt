@@ -6,6 +6,7 @@ github-cli
 gitlab-cli
 go-fonts
 gopls
+hack-fonts
 helix
 jq
 jujutsu
