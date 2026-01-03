@@ -51,7 +51,8 @@ fn lookforfont{
 	found=()
 	for(family in $*){
 		if(~ $#found 0){
-			if(~ `{fontsrv -p .} *^$family^/*)
+			font=`{fontsrv -p .}
+			if(~ $font *^$family^/*)
 				found=/mnt/font/^$family^/11a/font
 		}
 	}
@@ -64,12 +65,12 @@ fn lookforfont{
 
 # san-serif
 varfont=()
-font2=`{lookforfont LucidaGrande GoRegular >[2]/dev/null}
+font2=`{lookforfont LucidaGrande Geneva GoRegular >[2]/dev/null}
 if(! ~ $#font2 0) varfont=(-f $font2)
 
 # monospace
 fixfont=()
-font=`{lookforfont LucidaGrandeMonoDK Monaco Menlo-Regular Hack-Regular >[2]/dev/null}
+font=`{lookforfont LucidaGrandeMonoDK Monaco GoMono >[2]/dev/null}
 if(! ~ $#font 0) fixfont=(-F $font)
 
 # secstore considered harmful
