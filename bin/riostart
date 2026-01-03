@@ -40,10 +40,10 @@ lookforfont() {
 	size=11a
 	fonts="$(fontsrv -p .)"
 
-	for fam in "$@"; do
+	for family in "$@"; do
 		case "$fonts" in
-		*"$fam/"*)
-			echo "/mnt/font/$fam/$size/font"
+		*"$family/"*)
+			echo "/mnt/font/$family/$size/font"
 			return 0
 		;;
 		esac
