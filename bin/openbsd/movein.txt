@@ -4,6 +4,7 @@ foot
 gimp
 github-cli
 gitlab-cli
+go-fonts
 gopls
 helix
 jq
