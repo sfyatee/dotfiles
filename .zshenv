@@ -52,12 +52,15 @@ export LC_CTYPE=$LANG
 export LC_COLLATE=C
 export LC_TIME=C
 
+# less: ok defaults
+# https://github.com/jj-vcs/jj/commit/4967bd7
+export LESS=-FRXi
+export LESSHISTFILE=/dev/null
+
 # opts
 export CUDA_CACHE_PATH=$HOME/.cache/nv
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
-export LESS=-FRXi
-export LESSHISTFILE=/dev/null
 export NO_COLOR=1
 export PACMAN_AUTH=run0
 export PYTHON_HISTORY=/dev/null

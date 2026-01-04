@@ -24,8 +24,6 @@ GOTELEMETRY=off
 GOTOOLCHAIN=local
 HISTFILE=/dev/null
 HISTSIZE=500
-LESS=-FRXi
-LESSHISTFILE=/dev/null
 NO_COLOR=1
 PACMAN_AUTH=run0
 PYTHON_HISTORY=/dev/null
@@ -42,6 +40,11 @@ LANG=en_US.UTF-8
 LC_CTYPE=$LANG
 LC_COLLATE=C
 LC_TIME=C
+
+# less: ok defaults
+# https://github.com/jj-vcs/jj/commit/4967bd7
+LESS=-FRXi
+LESSHISTFILE=/dev/null
 
 # override $NAMESPACE; X is no more
 NAMESPACE=/tmp/ns.$USER.:0
@@ -75,6 +78,11 @@ if(! ~ $#font 0) fixfont=(-F $font)
 
 # secstore considered harmful
 secstore=localhost
+
+# http://man.9front.org/1/emacs
+fn acme{SHELL=hack builtin acme -a $varfont $fixfont $*}
+fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
+fn sam{builtin sam -a $*}
 
 # osc7
 fn osc7{
@@ -114,9 +122,7 @@ fn prompt1 {
 prompt1
 
 # fns
-fn acme{SHELL=hack builtin acme -a $varfont $fixfont $*}
 fn cp{builtin cp -i $*}
-fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
 fn jk{just $*}
@@ -129,7 +135,6 @@ fn mg{builtin mg -n $*}
 fn mu{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
-fn sam{builtin sam -a $*}
 
 # when i say vi i mean helix (if it's installed)
 if(test -x /usr/bin/hx || test -x /usr/bin/helix){

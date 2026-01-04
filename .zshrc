@@ -22,6 +22,11 @@ autoload -Uz compinit	# sinful completion
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
+# http://man.9front.org/1/emacs
+alias acme="SHELL=hack acme -a $varfont $fixfont"
+alias edwood="SHELL=hack edwood -a $varfont $fixfont"
+alias sam="sam -a"
+
 # osc7
 autoload -Uz add-zsh-hook
 osc71() {
@@ -48,9 +53,7 @@ precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
 # fns
-alias acme="SHELL=hack acme -a $varfont $fixfont"
 alias cp="cp -i"
-alias edwood="SHELL=hack edwood -a $varfont $fixfont"
 alias hg="chg"
 alias ivy="ivy-prompt"
 alias jk="just"
@@ -63,7 +66,6 @@ alias mg="mg -n"
 alias mu="muon"
 alias mv="mv -i"
 alias ph="ps auwwx | head"
-alias sam="sam -a"
 
 # when i say vi i mean helix (if it's installed)
 if [ -x "`which hx`" ]; then
