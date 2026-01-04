@@ -37,16 +37,16 @@ pathadd ~/go/bin $CARGO_HOME/bin
 pathadd ~/.local/bin
 pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
 
-# browser used by web(1) and thus plumber
+# Browser used by web(1) and thus plumber.
 export BROWSER=zen
 
 # gameoftrees got(1)
 export GOT_AUTHOR="demian garcia <d@sfyatee.com>"
 
-# let gs find the plan9port document fonts
+# Let gs find the plan9port document fonts.
 export GS_FONTPATH=$PLAN9/postscript/font
 
-# UNIX means english and 24h clock. but do use UTF-8! and sort like a machine
+# UNIX means english and 24h clock. but do use UTF-8! and sort like a machine.
 export LANG=en_US.UTF-8
 export LC_CTYPE=$LANG
 export LC_COLLATE=C
@@ -96,7 +96,9 @@ fixfont=""
 export font="$(lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono)"
 [ -n "$font" ] && fixfont="-F $font"
 
-# secstore considered harmful
+# Secstore considered harmful?
+# https://9fans.topicbox.com/groups/9fans/T2e892f330bc0513b-M168e79b077a072dbe954da15
+# https://lists.9front.org/9front/2024/April/1714325162.00
 secstore=localhost
 
 # Equivalent variables for rc(1).
