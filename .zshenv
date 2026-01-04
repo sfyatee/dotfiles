@@ -109,7 +109,7 @@ export user=$USER
 # Add dot to path.
 export PATH=$PATH:.
 
-# Turn *off* emacs and vi line editing and
+# Turn *off* vi line editing and
 # turn *on* autoexport of environment variables (like in rc).
 set +o vi
 set -a	# autoexport
