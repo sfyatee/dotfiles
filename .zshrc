@@ -48,9 +48,9 @@ precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
 # fns
-alias acme="SHELL=hack acme -a -f $font2 -F $font"
+alias acme="SHELL=hack acme -a $varfont $fixfont"
 alias cp="cp -i"
-alias edwood="SHELL=hack edwood -a -f $font2 -F $font"
+alias edwood="SHELL=hack edwood -a $varfont $fixfont"
 alias hg="chg"
 alias ivy="ivy-prompt"
 alias jk="just"

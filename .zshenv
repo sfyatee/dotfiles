@@ -67,8 +67,28 @@ export RUSTUP_HOME=$HOME/.local/share/rustup
 export NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
-export font=/mnt/font/LucidaGrandeMonoDK/11a/font
-export font2=/mnt/font/LucidaGrande/11a/font
+lookforfont() {
+	for family in "$@"; do
+		font="$(fontsrv -p .)"
+		case "$font" in
+		*"$family/"*)
+			echo "/mnt/font/$family/11a/font"
+			return 0
+		;;
+		esac
+	done
+	return 1
+}
+
+# sans-serif
+varfont=""
+export font2="$(lookforfont LucidaGrande Geneva GoRegular IBMPlexSans)"
+[ -n "$font2" ] && varfont="-f $font2"
+
+# monospace
+fixfont=""
+export font="$(lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono)"
+[ -n "$font" ] && fixfont="-F $font"
 
 # equivalent variables for rc(1)
 export home=$HOME
