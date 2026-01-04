@@ -68,8 +68,8 @@ export NAMESPACE=/tmp/ns.$USER.:0
 
 # default font for Plan 9 programs
 lookforfont() {
+	font="$(fontsrv -p .)"
 	for family in "$@"; do
-		font="$(fontsrv -p .)"
 		case "$font" in
 		*"$family/"*)
 			echo "/mnt/font/$family/11a/font"
