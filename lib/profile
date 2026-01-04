@@ -8,13 +8,13 @@ path=(/usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin /usr/X11R6/bi
 BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
 
-# browser used by web(1) and thus plumber
+# Browser used by web(1) and thus plumber.
 BROWSER=zen
 
 # gameoftrees got(1)
 GOT_AUTHOR=('demian garcia <d@sfyatee.com>')
 
-# let gs find the plan9port document fonts
+# Let gs find the plan9port document fonts.
 GS_FONTPATH=$PLAN9/postscript/font
 
 # opts
@@ -35,7 +35,7 @@ append=(/usr/games /usr/games/bin $PLAN9/bin $PLAN9/bin/upas)
 prepend=($BIN $home/.local/bin $home/go/bin $CARGO_HOME/bin)
 path=($prepend $path $append)
 
-# Unix means english and 24h clock. but do use UTF-8! and sort like a machine
+# Unix means english and 24h clock. but do use UTF-8! and sort like a machine.
 LANG=en_US.UTF-8
 LC_CTYPE=$LANG
 LC_COLLATE=C
@@ -46,10 +46,10 @@ LC_TIME=C
 LESS=-FRXi
 LESSHISTFILE=/dev/null
 
-# override $NAMESPACE; X is no more
+# Override $NAMESPACE; X is no more.
 NAMESPACE=/tmp/ns.$USER.:0
 
-# default font for Plan 9 programs
+# Default font for Plan 9 programs.
 fn lookforfont{
 	found=()
 	font=`{fontsrv -p .}
@@ -76,7 +76,7 @@ fixfont=()
 font=`{lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono >[2]/dev/null}
 if(! ~ $#font 0) fixfont=(-F $font)
 
-# secstore considered harmful
+# Secstore considered harmful.
 secstore=localhost
 
 # http://man.9front.org/1/emacs
@@ -178,7 +178,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 # 24may2020  +leah+
 fn revpatch { interdiff -q $1 /dev/null }
 
-# specificities
+# OS specificities.
 switch($os){
 case linux
 	BROWSER=nyxt
@@ -203,7 +203,7 @@ if(! ~ $os linux){
 	stty status '^T'
 }
 
-# use $NPROC jobs
+# Use $NPROC jobs.
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
 

@@ -48,7 +48,7 @@ add-zsh-hook -Uz chpwd osc7
 
 # prompt - "[%s] %s ", uptime(y, mo, d, h, mi, s), host
 # bin/openbsd/prompt2.go
-prompt='`prompt2` %v%B%(!.%F{red}.%F{yellow})%# %b%f'
+PROMPT='`prompt2` %v%B%(!.%F{red}.%F{yellow})%# %b%f'
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
@@ -121,7 +121,7 @@ if [[ "$TERM" == "dumb" ]]; then
 	unfunction osc7 precmd preexec
 	# set prompt so middle-clicking whole line reruns line's command
 	# show last exit code if non-zero
-	prompt=": %(?..{%?} )%m; "
+	PROMPT=": %(?..{%?} )%m; "
 	RPROMPT=""
 fi
 

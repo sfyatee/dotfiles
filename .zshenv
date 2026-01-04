@@ -66,10 +66,13 @@ export PACMAN_AUTH=run0
 export PYTHON_HISTORY=/dev/null
 export RUSTUP_HOME=$HOME/.local/share/rustup
 
-# override $NAMESPACE; X is no more
+# Override $NAMESPACE; X is no more.
 export NAMESPACE=/tmp/ns.$USER.:0
 
-# default font for Plan 9 programs
+# Prompt (is almost a no-op in bash).
+export H=`hostname | sed 's/\..*//'`
+
+# Default font for Plan 9 programs.
 lookforfont() {
 	font="$(fontsrv -p .)"
 	for family in "$@"; do
@@ -93,19 +96,22 @@ fixfont=""
 export font="$(lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono)"
 [ -n "$font" ] && fixfont="-F $font"
 
-# equivalent variables for rc(1)
+# secstore considered harmful
+secstore=localhost
+
+# Equivalent variables for rc(1).
 export home=$HOME
-export secstore=localhost
+export prompt="$H=; 	"
 export user=$USER
 
-# add dot to path
+# Add dot to path.
 export PATH=$PATH:.
 
-# emulate rc shell
+# Turn *on* autoexport of environment variables (like in rc).
 set -a
 set +o vi
 
-# os specificities
+# OS specificities.
 case "$OS" in
 linux)
 	export BROWSER=nyxt
@@ -120,11 +126,11 @@ if [ "$OS" != "linux" ]; then
 	stty status '^T'
 fi
 
-# use $NPROC jobs
+# Use $NPROC jobs.
 export MAKEFLAGS=-j$NPROC
 export SAMUFLAGS=-j$NPROC
 
 ulimit -c 0	# don't litter
 
-# site local config
+# Site local config.
 [[ -e ~/.zshenv.local ]] && . ~/.zshenv.local || :
