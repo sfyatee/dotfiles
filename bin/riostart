@@ -3,7 +3,7 @@
 # Services.
 gui() {
 	if ! pgrep -x "footclient" >/dev/null 2>&1; then
-		foot -s
+		foot -s &
 	fi
 }
 
@@ -34,7 +34,7 @@ swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
 
 # Applications.
 footclient aerc &
-footclient comlink &
+footclient senpai &
 
 # Default font for Plan 9 programs.
 lookforfont() {
