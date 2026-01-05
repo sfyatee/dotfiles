@@ -83,7 +83,7 @@ export PYTHON_HISTORY=/dev/null
 export NAMESPACE=/tmp/ns.$USER.:0
 
 # Prompt (is almost a no-op in bash).
-export H=`hostname | sed 's/\..*//'`
+export H=`uname -n | sed 's/\..*//'`
 
 # Default font for Plan 9 programs.
 lookforfont() {
