@@ -7,17 +7,18 @@ if(~ $#* 0)
 if not
 	pattern=$1
 
-for (i in `{9p ls -l acme | grep '^d' | sed -e 's/.* //g' | grep '^[0-9]*$'}) {
-	tag=`{9p read acme/$i/tag}
-	tagline = $"tag
-	#file=$tag(1) # assumes no whitespace in filename
-	file=`{echo $tag | sed -e 's/ Del Snarf.*//'}
+cd /mnt/acme
+for (i in [0-9]*){
+	if(test -d $i){
+		tag=`{cat $i/tag}
+		tagline = $"tag
+		file=`{echo $tag | sed -e 's/ Del Snarf.*//'}
 
-	# must match our pattern if given, must be a clean window,
-	# and must not be a directory, Errors window, win or mail.
+		# must match our pattern if given, must be a clean window,
+		# and must not be a directory, Errors window, win or mail.
 
-	if(! ~ $file */ *+Errors* */-* */mail/* && ! ~ $tagline *Put* 
-	&& echo $file | grep $pattern >/dev/null >[2]/dev/null)
-		9 echo del | 9p write acme/$i/ctl
+		if(! ~ $file */ *+Errors* */-* */mail/* && ! ~ $tagline *Put* 
+		&& echo $file | grep $pattern >/dev/null >[2]/dev/null)
+			echo del >$i/ctl
 }
 status=''
