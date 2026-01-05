@@ -23,8 +23,13 @@ export PLAN9=/usr/local/plan9
 
 # XDG
 export XDG_CACHE_HOME=$HOME/.cache
-export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CONFIG_HOME=$HOME/.config # OSX is confused
+
+# XDG offenders...
+# https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
 export CARGO_HOME=$HOME/.local/share/cargo
+export CUDA_CACHE_PATH=$HOME/.cache/nv
+export RUSTUP_HOME=$HOME/.local/share/rustup
 
 # path
 [[ -o login ]] && path=()
@@ -55,16 +60,16 @@ export LC_TIME=C
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
 export LESS=-FRXi
-export LESSHISTFILE=/dev/null
 
 # opts
-export CUDA_CACHE_PATH=$HOME/.cache/nv
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
 export NO_COLOR=1
 export PACMAN_AUTH=run0
+
+# The End of History?
+export LESSHISTFILE=/dev/null
 export PYTHON_HISTORY=/dev/null
-export RUSTUP_HOME=$HOME/.local/share/rustup
 
 # Override $NAMESPACE; X is no more.
 export NAMESPACE=/tmp/ns.$USER.:0

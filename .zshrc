@@ -27,7 +27,7 @@ alias acme="SHELL=hack acme -a $varfont $fixfont"
 alias edwood="SHELL=hack edwood -a $varfont $fixfont"
 alias sam="sam -a"
 
-# osc7
+# OSC 7
 autoload -Uz add-zsh-hook
 osc71() {
 	emulate -L zsh # also sets localoptions for us
@@ -67,7 +67,7 @@ alias mu="muon"
 alias mv="mv -i"
 alias ph="ps auwwx | head"
 
-# when i say vi i mean helix (if it's installed)
+# When i say vi i mean helix (if it's installed).
 if [ -x "`which hx`" ]; then
 	alias vi="hx"
 	export EDITOR=`which hx`
@@ -75,7 +75,7 @@ else
 	export EDITOR=/usr/bin/vi
 fi
 
-# 9term and acme's win
+# For 9term and acme's win.
 if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
 	export EDITOR=editinacme
@@ -96,7 +96,7 @@ fi
 # 24may2020  +leah+
 revpatch() { interdiff -q $1 /dev/null }
 
-# specificities
+# OS specificities.
 case "$OS" in
 linux)
 	alias ls="ls -AFv"
@@ -114,7 +114,7 @@ openbsd)
 	alias rsync="openrsync"
 esac
 
-# no fancy zsh prompt in dumb terminals
+# No fancy zsh prompt in dumb terminals.
 if [[ "$TERM" == "dumb" ]]; then
 	# disable
 	unsetopt promptcr	# carriage return before prompt in zle
@@ -125,7 +125,7 @@ if [[ "$TERM" == "dumb" ]]; then
 	RPROMPT=""
 fi
 
-# make sure these are running
+# Make sure these are running.
 felloff() {
 	mkdir -p $NAMESPACE
 	# pal's go port does not fork
@@ -137,5 +137,5 @@ felloff() {
 
 if [ -d "$PLAN9" ]; then felloff; fi
 
-# site local config
+# Site local config.
 [[ -e ~/.zshrc.local ]] && . ~/.zshrc.local || :

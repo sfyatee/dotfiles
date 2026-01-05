@@ -8,6 +8,21 @@ path=(/usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin /usr/X11R6/bi
 BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
 
+# XDG
+XDG_CACHE_HOME=$home/.cache
+XDG_CONFIG_HOME=$home/.config # OSX is confused
+
+# XDG offenders...
+# https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
+CARGO_HOME=$home/.local/share/cargo
+CUDA_CACHE_PATH=$home/.cache/nv
+RUSTUP_HOME=$home/.local/share/rustup
+
+# path
+append=(/usr/games /usr/games/bin $PLAN9/bin $PLAN9/bin/upas)
+prepend=($BIN $home/.local/bin $home/go/bin $CARGO_HOME/bin)
+path=($prepend $path $append)
+
 # Browser used by web(1) and thus plumber.
 BROWSER=zen
 
@@ -16,24 +31,6 @@ GOT_AUTHOR=('demian garcia <d@sfyatee.com>')
 
 # Let gs find the plan9port document fonts.
 GS_FONTPATH=$PLAN9/postscript/font
-
-# opts
-CARGO_HOME=$home/.local/share/cargo
-CUDA_CACHE_PATH=$home/.cache/nv
-GOTELEMETRY=off
-GOTOOLCHAIN=local
-HISTFILE=/dev/null
-HISTSIZE=500
-NO_COLOR=1
-PACMAN_AUTH=run0
-PYTHON_HISTORY=/dev/null
-RUSTUP_HOME=$home/.local/share/rustup
-XDG_CONFIG_HOME=$home/.config # OSX is confused
-
-# path
-append=(/usr/games /usr/games/bin $PLAN9/bin $PLAN9/bin/upas)
-prepend=($BIN $home/.local/bin $home/go/bin $CARGO_HOME/bin)
-path=($prepend $path $append)
 
 # Unix means english and 24h clock. but do use UTF-8! and sort like a machine.
 LANG=en_US.UTF-8
@@ -44,7 +41,18 @@ LC_TIME=C
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=-FRXi
+
+# opts
+GOTELEMETRY=off
+GOTOOLCHAIN=local
+HISTFILE=/dev/null
+HISTSIZE=500
+NO_COLOR=1
+PACMAN_AUTH=run0
+
+# The End of History?
 LESSHISTFILE=/dev/null
+PYTHON_HISTORY=/dev/null
 
 # Override $NAMESPACE; X is no more.
 NAMESPACE=/tmp/ns.$USER.:0
@@ -86,7 +94,7 @@ fn acme{SHELL=hack builtin acme -a $varfont $fixfont $*}
 fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
 fn sam{builtin sam -a $*}
 
-# osc7
+# OSC 7
 fn osc7{
 	enc=`{echo `{pwd} | sed 's/%/%25/g; s/ /%20/g'}
 	p=`{printf '\033]7;file://%s%s\033\\' `{uname -n} $enc}
@@ -138,7 +146,7 @@ fn mu{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 
-# when i say vi i mean helix (if it's installed)
+# When i say vi i mean helix (if it's installed).
 if(test -x /usr/bin/hx || test -x /usr/bin/helix){
 	fn vi{hx $*}
 	EDITOR=hx
@@ -147,7 +155,7 @@ if not{
 	EDITOR=/usr/bin/vi
 }
 
-# 9term and acme's win
+# For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){
 	# sets the current window label using awd (see label(1))
 	fn cd {
@@ -211,7 +219,7 @@ SAMUFLAGS=-j$NPROC
 
 ulimit -c 0
 
-# make sure these are running
+# Make sure these are running.
 fn felloff{
 	# override $NAMESPACE (see intro(4)) because $WSYS is not running yet
 	mkdir -p $NAMESPACE
