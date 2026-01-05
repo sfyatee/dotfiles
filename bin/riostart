@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# services
+# Services.
 gui() {
 	if ! pgrep -x "footclient" >/dev/null 2>&1; then
 		foot -s
@@ -8,21 +8,23 @@ gui() {
 }
 
 felloff() {
-	# override $NAMESPACE (see intro(4)) because $WSYS is not running yet
+	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
-	# use mntgen(1) for /mnt
+	# Use mntgen(1) for /mnt.
 	mntgen /mnt
-	# start factotum before secstore so it does not prompt for a password
-	# load secrets manually using ipso
+	# Start factotum before secstore so it does not prompt for a password
+	# load secrets manually using ipso.
 
-	# pal's go port of plumber(4) does not fork
+	# pal's go port of plumber(4) does not fork.
 	# https://github.com/paul-lalonde/plumber/blob/main/plumber/fsys.go#L148
 	9p stat plumb 2>/dev/null 1>&2 || plumber &
-	# fontsrv(4) on OSX and the go port does not fork
+	# fontsrv(4) on OSX and the go port does not fork.
 	9p stat font 2>/dev/null 1>&2 || fontsrv -m
+	# Plan 9 ssh agent connects to factotum(4).
+	# eval `9 ssh-agent -e`
 }
 
-# use systemd services instead
+# Use systemd services instead.
 # if [ $OS = linux ]; then
  	gui
  	felloff
@@ -30,11 +32,11 @@ felloff() {
 
 swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
 
-# applications
+# Applications.
 footclient aerc &
 footclient comlink &
 
-# default font for Plan 9 programs
+# Default font for Plan 9 programs.
 lookforfont() {
 	font="$(fontsrv -p .)"
 	for family in "$@"; do
