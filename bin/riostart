@@ -11,7 +11,7 @@ felloff() {
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
 	# Use mntgen(1) for /mnt.
-	mntgen /mnt
+	mntgen -s slashmnt
 	# Start factotum before secstore so it does not prompt for a password
 	# load secrets manually using ipso.
 
