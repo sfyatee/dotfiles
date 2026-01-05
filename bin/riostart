@@ -25,10 +25,10 @@ felloff() {
 }
 
 # Use systemd services instead.
-# if [ $OS = linux ]; then
+if [ $OS = linux ]; then
  	gui
  	felloff
-# fi
+fi
 
 swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
 
