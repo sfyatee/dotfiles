@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+# DO NOT LOAD /etc/profile which resets stuff here.
+# 07dec2011  +leah+
+setopt NO_GLOBAL_RCS
+
 # enviornment
 export PATH
 typeset -U path PATH
