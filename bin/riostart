@@ -12,8 +12,7 @@ felloff() {
 	mkdir -p $NAMESPACE
 	# Use mntgen(1) for slashn and slashmnt.
 	# https://github.com/musolinoa/mntgen/tree/master
-	# ~/go/bin/mntgen /n &
-	~/go/bin/mntgen /mnt &
+	runmntgen
 	# Mount factotum(4) because we can.
 	9p stat factotum 2>/dev/null 1>&2 factotum -m /mnt/factotum &
 	# pal's go port of plumber(4) does not fork.

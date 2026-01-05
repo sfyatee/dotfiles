@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Linux
+if findmnt -rn --target /mnt >/dev/null 2>&1; then
+	stat /mnt >/dev/null 2>&1 && exit 0
+	fusermount -uz /mnt 2>/dev/null || umount -l /mnt
+fi
+mntgen /mnt &
