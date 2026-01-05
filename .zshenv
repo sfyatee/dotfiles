@@ -66,21 +66,23 @@ export NAMESPACE=/tmp/ns.$USER.:0
 export H=`uname -n | sed 's/\..*//'`
 
 # Default font for Plan 9 programs.
-FONTLIST="$(fontsrv -p . 2>/dev/null)"
+typeset -gA _FONTSET
+_FONTSET=()
+
+# Populate once
+while IFS= read -r line; do
+	_FONTSET[$line]=1
+done < <(fontsrv -p . 2>/dev/null)
 
 hasfont() {
-    case "$FONTLIST" in
-        *"
-$1/
-"*) return 0 ;;
-        *)  return 1 ;;
-    esac
+	(( ${+_FONTSET["$1/"]} ))
 }
 
 lookforfont() {
+	local family
 	for family in "$@"; do
 		if hasfont "$family"; then
-			echo "/mnt/font/$family/11a/font"
+			print -r -- "/mnt/font/$family/11a/font"
 			return 0
 		fi
 	done
@@ -89,13 +91,11 @@ lookforfont() {
 
 # sans-serif
 font2="$(lookforfont LucidaGrande Geneva GoRegular IBMPlexSans)" && export font2
-varfont=""
-[ -n "$font2" ] && varfont="-f $font2"
+varfont=(); [[ -n $font2 ]] && varfont=(-f $font2)
 
 # monospace
 font="$(lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono)" && export font
-fixfont=""
-[ -n "$font" ] && fixfont="-F $font"
+fixfont=(); [[ -n $font  ]] && fixfont=(-F $font)
 
 # Secstore considered harmful?
 # https://9fans.topicbox.com/groups/9fans/T2e892f330bc0513b-M168e79b077a072dbe954da15
