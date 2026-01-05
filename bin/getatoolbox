@@ -53,6 +53,7 @@ Tux() {
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
 go install github.com/fzipp/ivy-prompt@latest
 go install github.com/hdonnay/wercsrv@master
+go install github.com/knusbaum/go9p/cmd/mount9p@master
 go install github.com/rjkroege/edwood/cmd/win@master
 go install robpike.io/ivy@master
 go install rsc.io/rf@master
