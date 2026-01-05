@@ -8,7 +8,7 @@ if not
 	pattern=$1
 
 cd /mnt/acme
-for (i in [0-9]*){
+for (i in [0-9][0-9]*) {
 	if(test -d $i){
 		tag=`{cat $i/tag}
 		tagline = $"tag
