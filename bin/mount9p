@@ -1,3 +1,9 @@
 #!/bin/sh
+# mount9p: wrapper for github.com/knusbaum/go9p/cmd/mount9p
+# /usr/local/plan9/src/lib9/post9p.c:
+if [ "x$1" = "x-" ]; then
+	shift
+	exec $(go env GOPATH)/bin/mount9p -s "$@"
+fi
 
-$(go env GOPATH)/bin/mount9p -s "$@"
+exec $(go env GOPATH)/bin/mount9p "$@"
