@@ -1,28 +1,10 @@
 #!/bin/zsh
 
-# DO NOT LOAD /etc/profile which resets stuff here.
-# 07dec2011  +leah+
-setopt NO_GLOBAL_RCS
-
-# enviornment
-export PATH
-typeset -U path PATH
-
-# pathadd [-P] [PATHS] [-- APPEND_PATHS] - prepend/append PATHS to path
-# 08jan2018  +leah+
-# 09jan2018  +leah+
-# 11aug2021  +leah+  -P to not follow symlinks, useful for Nix
-# 24aug2025  +fe!n+  arithmetic with $(( ... ))
-pathadd() {
-	setopt localoptions extendedglob
-	if [[ $1 == -P ]]; then shift; else set -- ${@//#%(#m)*~--/$MATCH:A}; fi
-	path=(${^${@[1,$(($@[(i)--]-1))]}:|path}(N-/)
-	    $path ${^${@[$(($@[(i)--]+1)),-1]}:|path}(N-/))
-}
-
 # world
 export OS=$(uname | tr '[:upper:]' '[:lower:]')
 export ARCH=$(uname -m | sed 's/x86_64/amd64/')
+export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
+export BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 export PLAN9=/usr/local/plan9
 
 # XDG
@@ -36,15 +18,9 @@ export CUDA_CACHE_PATH=$HOME/.cache/nv
 export RUSTUP_HOME=$HOME/.local/share/rustup
 
 # path
-[[ -o login ]] && path=()
-pathadd -- /usr/{s,}bin /{s,}bin
-pathadd -- /usr/X11R{6,7}/bin /usr/pkg/{s,}bin
-pathadd /usr/local/{s,}bin
-pathadd ~/go/bin $CARGO_HOME/bin
-pathadd -- /usr/games /usr/games/bin
-pathadd -- $PLAN9/bin $PLAN9/bin/upas
-pathadd ~/.local/bin
-pathadd ~/bin ~/bin/$OS ~/bin/$OS/$ARCH
+export append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
+export prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
+export PATH=$prepend:$PATH:$append
 
 # Browser used by web(1) and thus plumber.
 export BROWSER=zen
