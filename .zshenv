@@ -51,7 +51,7 @@ export GOT_AUTHOR="demian garcia <d@sfyatee.com>"
 # Let gs find the plan9port document fonts.
 export GS_FONTPATH=$PLAN9/postscript/font
 
-# UNIX means english and 24h clock. but do use UTF-8! and sort like a machine.
+# Unix means english and 24h clock. but do use UTF-8! and sort like a machine.
 export LANG=en_US.UTF-8
 export LC_CTYPE=$LANG
 export LC_COLLATE=C
@@ -61,10 +61,18 @@ export LC_TIME=C
 # https://github.com/jj-vcs/jj/commit/4967bd7
 export LESS=-FRXi
 
-# opts
+# Google™
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
+
+# When I was a child, I used to speak like a child, think like a child,
+# reason like a child; when I became a man, I did away with childish
+# things.
+#
+# -rob
 export NO_COLOR=1
+
+# run0(1)
 export PACMAN_AUTH=run0
 
 # The End of History?

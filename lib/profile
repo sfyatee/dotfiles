@@ -42,15 +42,23 @@ LC_TIME=C
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=-FRXi
 
-# opts
+# Google™
 GOTELEMETRY=off
 GOTOOLCHAIN=local
-HISTFILE=/dev/null
-HISTSIZE=500
+
+# When I was a child, I used to speak like a child, think like a child,
+# reason like a child; when I became a man, I did away with childish
+# things.
+#
+# -rob
 NO_COLOR=1
+
+# run0(1)
 PACMAN_AUTH=run0
 
 # The End of History?
+HISTFILE=/dev/null
+HISTSIZE=500
 LESSHISTFILE=/dev/null
 PYTHON_HISTORY=/dev/null
 
