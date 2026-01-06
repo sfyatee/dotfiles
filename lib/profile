@@ -231,11 +231,14 @@ ulimit -c 0
 fn felloff{
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
-	# pal's go port does not fork.
-	# https://github.com/paul-lalonde/plumber/blob/main/plumber/fsys.go#L148
-	9p stat plumb >[2]/dev/null >[1=2] || plumber &
-	# fontsrv(4) on OSX and the go port does not fork.
-	9p stat font >[2]/dev/null >[1=2] || fontsrv &
+	# Start factotum before secstore so it does not prompt for a password.
+	for(proc in fontsrv factotum plumber) {
+		pgrep -x '^'^$proc > /dev/null
+		switch($status) {
+		case 1
+			$proc &
+		}
+	}
 	# Plan 9 ssh-agent connects to factotum(4).
 	# eval `{9 ssh-agent}
 }

@@ -10,16 +10,13 @@ gui() {
 felloff() {
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
-	# Use mntgen(1) for slashn and slashmnt.
-	# https://github.com/musolinoa/mntgen/tree/master
-	runmntgen
-	# Mount factotum(4) because we can.
-	9p stat factotum 2>/dev/null 1>&2 factotum -m /mnt/factotum &
-	# pal's go port of plumber(4) does not fork.
-	# https://github.com/paul-lalonde/plumber/blob/main/plumber/fsys.go#L148
-	9p stat plumb 2>/dev/null 1>&2 || plumber &
-	# fontsrv(4) on OSX and the go port does not fork.
-	9p stat font 2>/dev/null 1>&2 || fontsrv -m /mnt/font &
+	# Start factotum before secstore so it does not prompt for a password.
+	for proc in fontsrv factotum plumber; do
+		pgrep -x $proc 2>&1 > /dev/null
+		if [ $? -ne 0 ]; then
+			$proc &
+		fi
+	done
 	# Plan 9 ssh-agent connects to factotum(4).
 	# eval `9 ssh-agent -e`
 }
@@ -38,7 +35,7 @@ foot senpai &
 
 # Default font for Plan 9 programs.
 lookforfont() {
-	font="$(fontsrv -p .)"
+	font="`fontsrv -p .`"
 	for family in "$@"; do
 		case "$font" in
 		*"$family/"*)
@@ -52,12 +49,12 @@ lookforfont() {
 
 # sans-serif
 varfont=""
-font2="$(lookforfont LucidaGrande Geneva GoRegular IBMPlexSans)"
+font2="`lookforfont LucidaGrande Geneva GoRegular IBMPlexSans`"
 [ -n "$font2" ] && varfont="-f $font2"
 
 # monospace
 fixfont=""
-font="$(lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono)"
+font="`lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono`"
 [ -n "$font" ] && fixfont="-F $font"
 
 dump=""

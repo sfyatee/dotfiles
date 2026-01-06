@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+export PATH
+typeset -U path PATH
+
 # world
 export OS=$(uname | tr '[:upper:]' '[:lower:]')
 export ARCH=$(uname -m | sed 's/x86_64/amd64/')
