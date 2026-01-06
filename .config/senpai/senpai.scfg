@@ -1,2 +1,9 @@
 address "irc.libera.chat"
 nickname "sfyatee"
+realname "demian garcia"
+# password-cmd
+pane-widths {
+	nicknames -1
+	channels -1
+	members -1
+}

@@ -1,5 +1,9 @@
 #!/bin/sh
 
+export XDG_SESSION_TYPE=wayland
+export _JAVA_AWT_WM_NONREPARENTING=1
+export MOZ_ENABLE_WAYLAND=1
+
 # Services.
 gui() {
 	if ! pgrep -x "footclient" >/dev/null 2>&1; then
@@ -12,9 +16,8 @@ felloff() {
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	for proc in fontsrv factotum plumber; do
-		pgrep -x $proc 2>&1 > /dev/null
-		if [ $? -ne 0 ]; then
-			$proc &
+		if ! pgrep -x "$proc" > /dev/null 2>&1; then
+			"$proc" &
 		fi
 	done
 	# Plan 9 ssh-agent connects to factotum(4).

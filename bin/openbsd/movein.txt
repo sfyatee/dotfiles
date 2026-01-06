@@ -18,6 +18,7 @@ mergiraf
 mumble
 racket-minimal
 ripgrep
+senpai
 syncthing
 tailscale
 uv

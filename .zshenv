@@ -122,10 +122,10 @@ set -a	# autoexport
 case "$OS" in
 linux)
 	export BROWSER=nyxt
-	export NPROC=$(nproc)
+	export NPROC=`nproc`
 	;;
 openbsd)
-	export cdpath=(. /usr/ports /usr/ports/mystuff)
+	export CDPATH=.:/usr/ports:/usr/ports/mystuff
 esac
 
 if [ "$OS" != "linux" ]; then
