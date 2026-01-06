@@ -4,8 +4,8 @@ export PATH
 typeset -U path PATH
 
 # world
-export OS=$(uname | tr '[:upper:]' '[:lower:]')
-export ARCH=$(uname -m | sed 's/x86_64/amd64/')
+export OS="`uname | tr '[:upper:]' '[:lower:]'`"
+export ARCH="`uname -m | sed 's/x86_64/amd64/'`"
 export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 export BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 export PLAN9=/usr/local/plan9
