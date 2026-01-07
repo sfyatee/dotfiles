@@ -131,7 +131,7 @@ felloff() {
 	# Start factotum before secstore so it does not prompt for a password.
 	for proc in fontsrv factotum secstored plumber; do
 		if ! pgrep -x "$proc" >/dev/null 2>&1; then
-			"$proc" >/dev/null 2>&1 &	# XXX: zsh
+			"$proc" &!	# XXX: zsh
 		fi
 	done
 	# Plan 9 ssh-agent connects to factotum(4).
