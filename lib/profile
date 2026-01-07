@@ -66,30 +66,12 @@ PYTHON_HISTORY=/dev/null
 NAMESPACE=/tmp/ns.$USER.:0
 
 # Default font for Plan 9 programs.
-fn lookforfont{
-	found=()
-	font=`{fontsrv -p .}
-	for(family in $*){
-		if(~ $#found 0){
-			if(~ $font *^$family^/*)
-				found=/mnt/font/^$family^/11a/font
-		}
-	}
-
-	if(! ~ $#found 0)
-		echo $found
-	if(~ $#found 0)
-		return 1
-}
-
-# san-serif
 varfont=()
-font2=`{lookforfont LucidaGrande Geneva GoRegular IBMPlexSans >[2]/dev/null}
+font2=/mnt/font/IBMPlexSans/12a/font
 if(! ~ $#font2 0) varfont=(-f $font2)
 
-# monospace
 fixfont=()
-font=`{lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono >[2]/dev/null}
+font=/mnt/font/IBMPlexMono/12a/font 
 if(! ~ $#font 0) fixfont=(-F $font)
 
 # Secstore considered harmful?
