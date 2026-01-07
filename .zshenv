@@ -4,21 +4,27 @@ export PATH
 typeset -U path PATH
 
 # world
-export OS="`uname | tr '[:upper:]' '[:lower:]'`"
-export ARCH="`uname -m | sed 's/x86_64/amd64/'`"
-export PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
-export BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
-export PLAN9=/usr/local/plan9
+OS="`uname | tr '[:upper:]' '[:lower:]'`"
+ARCH="`uname -m | sed 's/x86_64/amd64/'`"
+PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
+BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
+PLAN9=/usr/local/plan9
+
+export OS ARCH PATH BIN PLAN9
 
 # XDG
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_CONFIG_HOME=$HOME/.config # OSX is confused
+XDG_CACHE_HOME=$HOME/.cache
+XDG_CONFIG_HOME=$HOME/.config # OSX is confused
+
+export XDG_CACHE_HOME XDG_CONFIG_HOME
 
 # XDG offenders...
 # https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
-export CARGO_HOME=$HOME/.local/share/cargo
-export CUDA_CACHE_PATH=$HOME/.cache/nv
-export RUSTUP_HOME=$HOME/.local/share/rustup
+CARGO_HOME=$HOME/.local/share/cargo
+CUDA_CACHE_PATH=$HOME/.cache/nv
+RUSTUP_HOME=$HOME/.local/share/rustup
+
+export CARGO_HOME CUDA_CACHE_PATH RUSTUP_HOME
 
 # path
 export append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
@@ -26,47 +32,56 @@ export prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
 export PATH=$prepend:$PATH:$append
 
 # Browser used by web(1) and thus plumber.
-export BROWSER=zen
+BROWSER=zen
 
 # gameoftrees got(1)
-export GOT_AUTHOR="demian garcia <d@sfyatee.com>"
+GOT_AUTHOR="demian garcia <d@sfyatee.com>"
 
 # Let gs find the plan9port document fonts.
-export GS_FONTPATH=$PLAN9/postscript/font
+GS_FONTPATH=$PLAN9/postscript/font
+
+export GOT_AUTHOR GS_FONTPATH
 
 # Unix means english and 24h clock. but do use UTF-8! and sort like a machine.
-export LANG=en_US.UTF-8
-export LC_CTYPE=$LANG
-export LC_COLLATE=C
-export LC_TIME=C
+LANG=en_US.UTF-8
+LC_CTYPE=$LANG
+LC_COLLATE=C
+LC_TIME=C
+
+export LANG LC_CTYPE LC_COLLATE LC_TIME
 
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
-export LESS=-FRXi
+LESS=-FRXi
 
 # Google™
-export GOTELEMETRY=off
-export GOTOOLCHAIN=local
+GOTELEMETRY=off
+GOTOOLCHAIN=local
 
 # When I was a child, I used to speak like a child, think like a child,
 # reason like a child; when I became a man, I did away with childish
 # things.
 #
 # -rob
-export NO_COLOR=1
+NO_COLOR=1
 
 # run0(1)
-export PACMAN_AUTH=run0
+PACMAN_AUTH=run0
+
+export LESS GOTELEMETRY GOTOOLCHAIN NO_COLOR PACMAN_AUTH
 
 # The End of History?
-export LESSHISTFILE=/dev/null
-export PYTHON_HISTORY=/dev/null
+HISTFILE=/dev/null
+LESSHISTFILE=/dev/null
+PYTHON_HISTORY=/dev/null
+
+export HISTFILE LESSHISTFILE PYTHON_HISTORY
 
 # Override $NAMESPACE; X is no more.
-export NAMESPACE=/tmp/ns.$USER.:0
+NAMESPACE=/tmp/ns.$USER.:0
 
 # Prompt (is almost a no-op in bash).
-export H=`uname -n | sed 's/\..*//'`
+H=`uname -n | sed 's/\..*//'`
 
 # Default font for Plan 9 programs.
 export font2="/mnt/font/IBMPlexSans/12a/font"
@@ -81,9 +96,11 @@ export font="/mnt/font/IBMPlexMono/12a/font"
 secstore=localhost
 
 # Equivalent variables for rc(1).
-export home=$HOME
-export prompt="$H=; 	"
-export user=$USER
+home=$HOME
+prompt="$H=; 	"
+user=$USER
+
+export NAMESPACE H secstore home prompt user
 
 # Add dot to path.
 export PATH=$PATH:.
@@ -96,21 +113,25 @@ set -a	# autoexport
 # OS specificities.
 case "$OS" in
 linux)
-	export BROWSER=nyxt
-	export NPROC=`nproc`
+	BROWSER=nyxt
+	NPROC=`nproc`
 	;;
 openbsd)
-	export CDPATH=.:/usr/ports:/usr/ports/mystuff
+	CDPATH=.:/usr/ports:/usr/ports/mystuff
 esac
 
+CDPATH=.:/usr/local/plan9
+
 if [ "$OS" != "linux" ]; then
-	export NPROC=`sysctl -n hw.ncpu`
+	NPROC=`sysctl -n hw.ncpu`
 	stty status '^T'
 fi
 
 # Use $NPROC jobs.
-export MAKEFLAGS=-j$NPROC
-export SAMUFLAGS=-j$NPROC
+MAKEFLAGS=-j$NPROC
+SAMUFLAGS=-j$NPROC
+
+export BROWSER NPROC CDPATH MAKEFLAGS SAMUFLAGS
 
 ulimit -c 0	# don't litter
 
