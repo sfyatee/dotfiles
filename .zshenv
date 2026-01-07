@@ -10,8 +10,6 @@ PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 PLAN9=/usr/local/plan9
 
-export OS ARCH PATH BIN PLAN9
-
 # XDG
 XDG_CACHE_HOME=$HOME/.cache
 XDG_CONFIG_HOME=$HOME/.config # OSX is confused
@@ -27,9 +25,11 @@ RUSTUP_HOME=$HOME/.local/share/rustup
 export CARGO_HOME CUDA_CACHE_PATH RUSTUP_HOME
 
 # path
-export append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
-export prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
-export PATH=$prepend:$PATH:$append
+append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
+prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
+PATH=$prepend:$PATH:$append:.
+
+export OS ARCH PATH BIN PLAN9 append prepend
 
 # Browser used by web(1) and thus plumber.
 BROWSER=zen
@@ -101,9 +101,6 @@ prompt="$H=; 	"
 user=$USER
 
 export NAMESPACE H font2 font secstore home prompt user
-
-# Add dot to path.
-export PATH=$PATH:.
 
 # Turn *off* vi line editing and
 # turn *on* autoexport of environment variables (like in rc).

@@ -8,6 +8,8 @@ go-fonts
 gopls
 hack-fonts
 helix
+hermit-font
+ibm-plex
 jq
 jujutsu
 just
