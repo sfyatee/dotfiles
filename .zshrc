@@ -129,7 +129,7 @@ fi
 felloff() {
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
-	for proc in fontsrv factotum plumber; do
+	for proc in fontsrv factotum secstored plumber; do
 		if ! pgrep -x "$proc" >/dev/null 2>&1; then
 			"$proc" >/dev/null 2>&1 &	# XXX: zsh
 		fi
