@@ -20,8 +20,9 @@ esac
 
 # Dangerous and stupid.
 # https://inbox.vuxu.org/9fans/dd6fe68a1001241127j2f5bed0em5f3eee1699342f@mail.gmail.com/
-# $RUNAUTH chown $(id -un) /mnt
+# $RUNAUTH mkdir -r /n
 # $RUNAUTH chmod 755 /mnt
+# $RUNAUTH chown $(id -un) /mnt
 
 # https://9fans.github.io/plan9port/
 if [ ! -d /usr/local/plan9 ]; then
