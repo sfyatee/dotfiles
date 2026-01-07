@@ -16,7 +16,7 @@ felloff() {
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	for proc in fontsrv factotum plumber; do
-		if ! pgrep -x "$proc" > /dev/null 2>&1; then
+		if ! pgrep -x "$proc" >/dev/null 2>&1; then
 			"$proc" &
 		fi
 	done
@@ -33,8 +33,8 @@ fi
 swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
 
 # Applications.
-foot aerc &
-foot senpai &
+footclient aerc &
+footclient senpai &
 
 # Default font for Plan 9 programs.
 lookforfont() {

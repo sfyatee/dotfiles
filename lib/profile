@@ -40,7 +40,7 @@ LC_TIME=C
 
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
-LESS=-FRXi
+LESS=FRXi
 
 # Google™
 GOTELEMETRY=off
@@ -207,7 +207,7 @@ case linux
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn rcctl{systemctl $*}
 case openbsd
-	cdpath=(. /usr/ports /usr/ports/mystuff)
+	cdpath=(/usr/ports /usr/ports/mystuff)
 	fn cvs{opencvs $*}
 	fn mpldc{make port-lib-depends-check}
 	fn mup{make update-patches}
@@ -215,6 +215,9 @@ case openbsd
 	fn pclean{make clean='package plist'}
 	fn rsync{openrsync $*}
 }
+
+# https://www.omarpolo.com/post/enjoying-cdpath.html
+cdpath=(. $cdpath /usr/local/plan9)
 
 if(! ~ $os linux){
 	NPROC=`{sysctl -n hw.ncpu}
