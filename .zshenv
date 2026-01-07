@@ -128,7 +128,7 @@ if [ "$OS" != "linux" ]; then
 	stty status '^T'
 fi
 
-# Use $NPROC jobs.
+# Set $NPROC for parallelism.
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
 
