@@ -84,10 +84,10 @@ NAMESPACE=/tmp/ns.$USER.:0
 H=`uname -n | sed 's/\..*//'`
 
 # Default font for Plan 9 programs.
-export font2="/mnt/font/IBMPlexSans/12a/font"
+font2="/mnt/font/IBMPlexSans/12a/font"
 [ -n "$font2" ] && varfont="-f $font2"
 
-export font="/mnt/font/IBMPlexMono/12a/font" 
+font="/mnt/font/IBMPlexMono/12a/font" 
 [ -n "$font" ] && fixfont="-F $font"
 
 # Secstore considered harmful?
@@ -100,7 +100,7 @@ home=$HOME
 prompt="$H=; 	"
 user=$USER
 
-export NAMESPACE H secstore home prompt user
+export NAMESPACE H font2 font secstore home prompt user
 
 # Add dot to path.
 export PATH=$PATH:.
