@@ -117,10 +117,11 @@ linux)
 	NPROC=`nproc`
 	;;
 openbsd)
-	CDPATH=.:/usr/ports:/usr/ports/mystuff
+	CDPATH=/usr/ports:/usr/ports/mystuff
 esac
 
-CDPATH=.:/usr/local/plan9
+# https://www.omarpolo.com/post/enjoying-cdpath.html
+CDPATH=.:$CDPATH:/usr/local/plan9
 
 if [ "$OS" != "linux" ]; then
 	NPROC=`sysctl -n hw.ncpu`
