@@ -80,7 +80,7 @@ export HISTFILE LESSHISTFILE PYTHON_HISTORY
 # Override $NAMESPACE; X is no more.
 NAMESPACE=/tmp/ns.$USER.:0
 
-# Prompt (is almost a no-op in bash).
+# Prompt rc(1)
 H=`uname -n`
 H=${H%%.*}
 
