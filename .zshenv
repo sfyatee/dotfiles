@@ -81,7 +81,8 @@ export HISTFILE LESSHISTFILE PYTHON_HISTORY
 NAMESPACE=/tmp/ns.$USER.:0
 
 # Prompt (is almost a no-op in bash).
-H=`uname -n | sed 's/\..*//'`
+H=`uname -n`
+H=${H%%.*}
 
 # Default font for Plan 9 programs.
 font2="/mnt/font/IBMPlexSans/12a/font"
