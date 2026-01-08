@@ -17,10 +17,10 @@ setopt rcquotes	# plan9-like quoting
 bindkey -e	# emacs binds
 
 # completion files: use xdg dirs
-autoload -Uz compinit	# sinful completion
+autoload -Uz compinit	# unfortunate
 [ -d "$HOME/.cache"/zsh ] || mkdir -p "$HOME/.cache"/zsh
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
-compinit -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
+compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
 # http://man.9front.org/1/emacs
 alias acme="SHELL=hack acme -a $varfont $fixfont"
@@ -129,11 +129,9 @@ fi
 felloff() {
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
-	for proc in fontsrv factotum secstored plumber; do
-		if ! pgrep -x "$proc" >/dev/null 2>&1; then
-			"$proc" &!	# XXX: zsh
-		fi
-	done
+	[ -e "$NAMESPACE/font" ] || fontsrv &!
+	[ -e "$NAMESPACE/factotum" ] || factotum &!
+	[ -e "$NAMESPACE/plumb" ] || plumber &!
 	# Plan 9 ssh-agent connects to factotum(4).
 	# eval `9 ssh-agent -e`
 }

@@ -13,13 +13,11 @@ gui() {
 
 felloff() {
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
-	mkdir -p $NAMESPACE
+	rm -rf $NAMESPACE; mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
-	for proc in fontsrv factotum secstored plumber; do
-		if ! pgrep -x "$proc" >/dev/null 2>&1; then
-			"$proc" &
-		fi
-	done
+	[ -e "$NAMESPACE/font" ] || fontsrv &
+	[ -e "$NAMESPACE/factotum" ] || factotum &
+	[ -e "$NAMESPACE/plumb" ] || plumber &
 	# Plan 9 ssh-agent connects to factotum(4).
 	# eval `9 ssh-agent -e`
 }
