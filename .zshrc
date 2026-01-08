@@ -4,7 +4,7 @@ umask 022
 # speed things up
 if [[ ! -o interactive ]]; then return; fi
 
-# plan9 settings
+# zsh settings
 unset HISTFILE	# no
 setopt globdots	# hidden files in completion
 setopt listtypes	# ls -F in completion
@@ -127,6 +127,8 @@ fi
 
 # Make sure these are running.
 felloff() {
+	# Override $NAMESPACE (see intro(4)) because the default on MacOS is too long.
+	# /tmp/ns.rsc._private_tmp_com.apple.launchd.7VN9hyV2B7_org.macosforge.xquartz:0/
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	[ -e "$NAMESPACE/font" ] || fontsrv &!

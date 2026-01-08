@@ -13,7 +13,7 @@ gui() {
 
 felloff() {
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
-	rm -rf $NAMESPACE; mkdir -p $NAMESPACE
+	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	[ -e "$NAMESPACE/font" ] || fontsrv &
 	[ -e "$NAMESPACE/factotum" ] || factotum &
@@ -24,8 +24,8 @@ felloff() {
 
 # Use systemd services instead.
 if [ $OS = linux ]; then
- 	gui
- 	felloff
+	gui
+	felloff
 fi
 
 swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
