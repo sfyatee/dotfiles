@@ -1,0 +1,85 @@
+# vim: filetype=dosini
+
+# Rosé Pine Dawn Theme for Aerc
+# All natural pine, faux fur and a bit of soho vibes for the classy minimalist
+# Save as ~/.config/aerc/stylesets/rose-pine-dawn
+
+# Base styling
+default.fg=#56949f
+default.bg=#faf4ed
+
+success.fg=#286983
+error.fg=#575279
+warning.fg=#575279
+
+title.bg=#f2e9e1
+title.fg=#907aa9
+
+header.fg=#907aa9
+
+spinner.fg=#9893a5
+
+part_filename.fg=#575279
+part_mimetype.fg=#907aa9
+
+# Global selection
+*.selected.fg=#faf4ed
+*.selected.bg=#d7827e
+*.selected.bold=true
+
+# Message list
+msglist_default.fg=#56949f
+msglist_default.bg=#fffaf3
+msglist_unread.fg=#cecacd
+msglist_unread.bold=true
+msglist_read.fg=#9893a5
+msglist_flagged.fg=#575279
+msglist_flagged.bold=true
+msglist_deleted.bg=#575279
+msglist_deleted.fg=#faf4ed
+msglist_deleted.bold=true
+msglist_marked.fg=#faf4ed
+msglist_marked.bg=#286983
+msglist_marked.bold=true
+
+# Status bar
+statusline_*.bold=true
+statusline_*.fg=#faf4ed
+statusline_default.fg=#56949f
+statusline_default.bg=#faf4ed
+statusline_error.bg=#575279
+statusline_success.bg=#286983
+
+# Completion
+completion_default.fg=#56949f
+completion_default.bg=#fffaf3
+completion_gutter.bg=#f2e9e1
+completion_description.bg=#f2e9e1
+
+# Scrollbars
+*_pill.fg=#faf4ed
+*_pill.bg=#9893a5
+
+# Border
+border.fg=#faf4ed
+border.bg=#faf4ed
+
+# Tab
+tab.bg=#faf4ed
+tab.selected.fg=#d7827e
+tab.selected.bg=#faf4ed
+tab.selected.bold=true
+
+[viewer]
+url.fg=#907aa9
+url.underline=true
+header.bold=true
+signature.dim=true
+diff_meta.bold=true
+diff_chunk.fg=#907aa9
+diff_chunk_func.fg=#907aa9
+diff_chunk_func.bold=true
+diff_add.fg=#cecacd
+diff_del.fg=#575279
+quote_*.fg=#797593
+quote_1.fg=#f4ede8
