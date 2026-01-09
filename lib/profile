@@ -215,6 +215,7 @@ ulimit -c 0
 # Make sure these are running.
 fn felloff{
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
+	# /tmp/ns.rsc._private_tmp_com.apple.launchd.7VN9hyV2B7_org.macosforge.xquartz:0/
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	if(! test -e $NAMESPACE/font)     fontsrv &
