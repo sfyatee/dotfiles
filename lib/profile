@@ -63,7 +63,7 @@ LESSHISTFILE=/dev/null
 PYTHON_HISTORY=/dev/null
 
 # Override $NAMESPACE; X is no more.
-NAMESPACE=/tmp/ns.$USER.:0
+NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # Default font for Plan 9 programs.
 varfont=()

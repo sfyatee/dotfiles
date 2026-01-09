@@ -78,7 +78,7 @@ PYTHON_HISTORY=/dev/null
 export HISTFILE LESSHISTFILE PYTHON_HISTORY
 
 # Override $NAMESPACE; X is no more.
-NAMESPACE=/tmp/ns.$USER.:0
+NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # Prompt rc(1)
 H=`uname -n`
@@ -99,7 +99,7 @@ secstore=localhost
 # Equivalent variables for rc(1).
 home=$HOME
 prompt="$H=; 	"
-user=$USER
+user=$LOGNAME
 
 export NAMESPACE H font2 font secstore home prompt user
 
