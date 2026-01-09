@@ -1,6 +1,4 @@
 #!/bin/zsh
-
-export PATH
 typeset -U path PATH
 
 # world
