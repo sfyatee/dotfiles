@@ -1,6 +1,7 @@
 aerc
 darktable
 foot
+fzf
 gimp
 github-cli
 gitlab-cli

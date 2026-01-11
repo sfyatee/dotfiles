@@ -15,7 +15,7 @@ XDG_CONFIG_HOME=$HOME/.config # OSX is confused
 export XDG_CACHE_HOME XDG_CONFIG_HOME
 
 # XDG offenders...
-# https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
+# See: https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
 CARGO_HOME=$HOME/.local/share/cargo
 CUDA_CACHE_PATH=$HOME/.cache/nv
 RUSTUP_HOME=$HOME/.local/share/rustup
@@ -93,8 +93,8 @@ font="/mnt/font/IBMPlexMono/12a/font"
 [ -n "$font" ] && fixfont="-F $font"
 
 # Secstore considered harmful?
-# https://9fans.topicbox.com/groups/9fans/T2e892f330bc0513b-M168e79b077a072dbe954da15
-# https://lists.9front.org/9front/2024/April/1714325162.00
+# See: https://9fans.topicbox.com/groups/9fans/T2e892f330bc0513b-M168e79b077a072dbe954da15
+# See: https://lists.9front.org/9front/2024/April/1714325162.00
 secstore=localhost
 
 # Equivalent variables for rc(1).
@@ -125,7 +125,7 @@ if [ "$OS" != "linux" ]; then
 	stty status '^T'
 fi
 
-# Set $NPROC for parallelism.
+# Use $NPROC for parallelism.
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
 
