@@ -31,8 +31,8 @@ fi
 swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
 
 # Applications.
-footclient aerc &
-footclient senpai &
+foot aerc &
+foot senpai &
 
 # Default font for Plan 9 programs.
 lookforfont() {
