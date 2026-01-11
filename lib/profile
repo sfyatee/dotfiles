@@ -218,9 +218,9 @@ fn felloff{
 	# This needs to exist.
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
-	if(! test -e $NAMESPACE/font)     fontsrv &
+	if(! test -e $NAMESPACE/font) fontsrv &
 	if(! test -e $NAMESPACE/factotum) factotum &
-	if(! test -e $NAMESPACE/plumb)    plumber &
+	if(! test -e $NAMESPACE/plumb) plumber &
 	# Plan 9 ssh-agent connects to factotum(4).
 	# eval `{9 ssh-agent}
 }
