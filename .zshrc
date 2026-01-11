@@ -127,6 +127,7 @@ fi
 
 # Make sure these are running.
 felloff() {
+	# This needs to exist.
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	[ -e "$NAMESPACE/font" ] || fontsrv &!
