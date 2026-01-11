@@ -22,7 +22,7 @@ autoload -Uz compinit	# unfortunate
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
-# http://man.9front.org/1/emacs
+# See: http://man.9front.org/1/emacs
 alias acme="SHELL=hack acme -a $varfont $fixfont"
 alias edwood="SHELL=hack edwood -a $varfont $fixfont"
 alias sam="sam -a"
@@ -68,9 +68,9 @@ alias mv="mv -i"
 alias ph="ps auwwx | head"
 
 # When i say vi i mean helix (if it's installed).
-if [ -x "`which hx`" ]; then
+if command -v hx >/dev/null 2>&1; then
 	alias vi="hx"
-	export EDITOR=`which hx`
+	export EDITOR=`command -v hx`
 else
 	export EDITOR=/usr/bin/vi
 fi
@@ -127,8 +127,6 @@ fi
 
 # Make sure these are running.
 felloff() {
-	# Override $NAMESPACE (see intro(4)) because the default on MacOS is too long.
-	# /tmp/ns.rsc._private_tmp_com.apple.launchd.7VN9hyV2B7_org.macosforge.xquartz:0/
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	[ -e "$NAMESPACE/font" ] || fontsrv &!

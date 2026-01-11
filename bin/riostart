@@ -50,12 +50,12 @@ lookforfont() {
 
 # sans-serif
 varfont=""
-font2="`lookforfont LucidaGrande Geneva GoRegular IBMPlexSans`"
+font2="`lookforfont LucidaGrande LuxiSans Geneva GoRegular IBMPlexSans`"
 [ -n "$font2" ] && varfont="-f $font2"
 
 # monospace
 fixfont=""
-font="`lookforfont LucidaGrandeMonoDK Monaco GoMono IBMPlexMono`"
+font="`lookforfont LucidaGrandeMonoDK LuxiMono Monaco GoMono IBMPlexMono`"
 [ -n "$font" ] && fixfont="-F $font"
 
 dump=""
@@ -63,7 +63,7 @@ if [ -f "$HOME/acme.dump" ]; then
 	dump="-l $HOME/acme.dump"
 fi
 
-# http://man.9front.org/1/emacs
+# See: http://man.9front.org/1/emacs
 SHELL=hack acme -a $varfont $fixfont $dump -m /mnt/acme &
 
 zen-browser &

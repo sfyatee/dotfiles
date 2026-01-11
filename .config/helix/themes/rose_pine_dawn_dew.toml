@@ -1,0 +1,4 @@
+inherits = "rose_pine_dawn"
+"ui.cursor.primary" = { bg = "#93a1a1" }
+"ui.cursor.match" = { bg = "#93a1a1" }
+"ui.cursor" = { bg = "#93a1a1" }

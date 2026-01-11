@@ -62,7 +62,10 @@ HISTSIZE=500
 LESSHISTFILE=/dev/null
 PYTHON_HISTORY=/dev/null
 
-# Override $NAMESPACE; X is no more.
+# Override $NAMESPACE (see intro(4)) because the default on MacOS is too long.
+# See: https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
+# This matches the default on other Unices when $WSYS is running.
+# See: /usr/local/plan9/src/lib9/getns.c#L43
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # Default font for Plan 9 programs.
@@ -79,7 +82,7 @@ if(! ~ $#font 0) fixfont=(-F $font)
 # https://lists.9front.org/9front/2024/April/1714325162.00
 secstore=localhost
 
-# http://man.9front.org/1/emacs
+# See: http://man.9front.org/1/emacs
 fn acme{SHELL=hack builtin acme -a $varfont $fixfont $*}
 fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
 fn sam{builtin sam -a $*}
@@ -189,6 +192,7 @@ case linux
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn rcctl{systemctl $*}
 case openbsd
+	# See: https://www.omarpolo.com/post/enjoying-cdpath.html
 	cdpath=(/usr/ports /usr/ports/mystuff)
 	fn cvs{opencvs $*}
 	fn mpldc{make port-lib-depends-check}
@@ -197,9 +201,6 @@ case openbsd
 	fn pclean{make clean='package plist'}
 	fn rsync{openrsync $*}
 }
-
-# https://www.omarpolo.com/post/enjoying-cdpath.html
-cdpath=(. $cdpath /usr/local/plan9)
 
 if(! ~ $os linux){
 	NPROC=`{sysctl -n hw.ncpu}
@@ -214,8 +215,6 @@ ulimit -c 0
 
 # Make sure these are running.
 fn felloff{
-	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
-	# /tmp/ns.rsc._private_tmp_com.apple.launchd.7VN9hyV2B7_org.macosforge.xquartz:0/
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	if(! test -e $NAMESPACE/font)     fontsrv &

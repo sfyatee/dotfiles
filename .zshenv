@@ -75,7 +75,10 @@ PYTHON_HISTORY=/dev/null
 
 export HISTFILE LESSHISTFILE PYTHON_HISTORY
 
-# Override $NAMESPACE; X is no more.
+# Override $NAMESPACE (see intro(4)) because the default on MacOS is too long.
+# See: https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
+# This matches the default on other Unices when $WSYS is running.
+# See: /usr/local/plan9/src/lib9/getns.c#L43
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # Prompt rc(1)
@@ -113,11 +116,9 @@ linux)
 	NPROC=`nproc`
 	;;
 openbsd)
+	# See: https://www.omarpolo.com/post/enjoying-cdpath.html
 	CDPATH=/usr/ports:/usr/ports/mystuff
 esac
-
-# https://www.omarpolo.com/post/enjoying-cdpath.html
-CDPATH=.:$CDPATH:/usr/local/plan9
 
 if [ "$OS" != "linux" ]; then
 	NPROC=`sysctl -n hw.ncpu`
