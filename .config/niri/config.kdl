@@ -335,7 +335,7 @@ window-rule {
 //
 // -rob
 // 
-// See also: http://acme.cat-v.org/
+// See: http://acme.cat-v.org/
 window-rule {
     match title="acme"
     match app-id=r#"^org\._9front\.drawterm$"#
