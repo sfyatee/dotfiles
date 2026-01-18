@@ -271,7 +271,7 @@ layout {
 // which may be more convenient to use.
 // See the binds section below for more spawn examples.
 
-// This line starts waybar, a commonly used bar for Wayland compositors.
+// This line starts ironbar, a simpler alternative to waybar.
 spawn-at-startup "ironbar"
 
 // Start my enviornment.
