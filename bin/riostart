@@ -64,6 +64,6 @@ if [ -f "$HOME/acme.dump" ]; then
 fi
 
 # See: http://man.9front.org/1/emacs
-SHELL=hack acme -a $varfont $fixfont $dump -m /mnt/acme &
+SHELL=hack acme -a $varfont $fixfont $dump &
 
 zen-browser &
