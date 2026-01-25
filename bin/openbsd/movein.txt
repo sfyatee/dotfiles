@@ -19,6 +19,7 @@ lilypond
 lua-language-server
 mergiraf
 mumble
+niri
 racket-minimal
 ripgrep
 senpai
