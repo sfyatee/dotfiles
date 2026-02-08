@@ -20,6 +20,7 @@ lua-language-server
 mergiraf
 mumble
 niri
+playerctl
 racket-minimal
 ripgrep
 senpai
