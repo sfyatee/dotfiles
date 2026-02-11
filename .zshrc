@@ -67,14 +67,6 @@ alias mu="muon"
 alias mv="mv -i"
 alias ph="ps auwwx | head"
 
-# When i say vi i mean helix (if it's installed).
-if command -v hx >/dev/null 2>&1; then
-	alias vi="hx"
-	export EDITOR=`command -v hx`
-else
-	export EDITOR=/usr/bin/vi
-fi
-
 # For 9term and acme's win.
 if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
@@ -99,11 +91,13 @@ revpatch() { interdiff -q $1 /dev/null }
 # OS specificities.
 case "$OS" in
 linux)
+	export EDITOR=`command -v vis`
 	alias ls="ls -AFv"
 	alias orphrem='doas pacman -R $(pacman -Qdtq)'
 	alias pQm="pacman -Qm"
 	alias ph="ps auwwx | sort -rk 3,3 | head"
 	alias rcctl="systemctl"
+	alias vi="vis"
 	;;
 openbsd)
 	alias cvs="opencvs"
@@ -113,6 +107,16 @@ openbsd)
 	alias pclean='make clean="package plist"'
 	alias rsync="openrsync"
 esac
+
+if [ "$OS" != "linux" ]; then
+	# When i say vi i mean vis{e} (if it's installed).
+	if command -v vise >/dev/null 2>&1; then
+		alias vi="vise"
+		export EDITOR=`command -v vise`
+	else
+		export EDITOR=/usr/bin/vi
+	fi
+fi
 
 # No fancy zsh prompt in dumb terminals.
 if [[ "$TERM" == "dumb" ]]; then

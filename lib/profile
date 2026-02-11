@@ -139,15 +139,6 @@ fn mu{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 
-# When i say vi i mean helix (if it's installed).
-if(test -x /usr/bin/hx || test -x /usr/bin/helix){
-	fn vi{hx $*}
-	EDITOR=hx
-}
-if not{
-	EDITOR=/usr/bin/vi
-}
-
 # For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){
 	# sets the current window label using awd (see label(1))
@@ -185,12 +176,14 @@ fn revpatch { interdiff -q $1 /dev/null }
 switch($os){
 case linux
 	BROWSER=nyxt
+	EDITOR=vis
 	NPROC=`{nproc}
 	fn ls{builtin ls -AFv $*}
 	fn orphrem{doas pacman -R `{pacman -Qdtq}}
 	fn pQm{pacman -Qm}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn rcctl{systemctl $*}
+	fn vi{vis $*}
 case openbsd
 	# See: https://www.omarpolo.com/post/enjoying-cdpath.html
 	cdpath=(/usr/ports /usr/ports/mystuff)
@@ -203,6 +196,14 @@ case openbsd
 }
 
 if(! ~ $os linux){
+	# When i say vi i mean vis{e} (if it's installed).
+	if(test -x /usr/bin/hx || test -x /usr/bin/helix){
+		fn vi{vise $*}
+		EDITOR=vise
+	}
+	if not{
+		EDITOR=/usr/bin/vi
+	}
 	NPROC=`{sysctl -n hw.ncpu}
 	stty status '^T'
 }
