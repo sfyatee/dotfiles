@@ -1,8 +1,6 @@
 aerc
-darktable
 foot
 fzf
-gimp
 github-cli
 gitlab-cli
 go-fonts
@@ -17,6 +15,7 @@ just
 knfmt
 lilypond
 lua-language-server
+luaposix
 mergiraf
 mumble
 niri
