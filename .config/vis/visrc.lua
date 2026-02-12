@@ -9,8 +9,11 @@ end return require('plugins/vis-plug') end)()
 
 -- configure plugins in an array of tables with git urls and options
 local plugins = {
-	{ 'fischerling/vis-lspc' },
+	{ 'https://repo.or.cz/vis-surround.git' },
 }
+
+-- require and optionally install plugins on init
+plug.init(plugins, true)
 
 vis.events.subscribe(vis.events.INIT, function()
 	vis:command("set theme sfyatee")
