@@ -141,6 +141,10 @@ fn ph{ps auwwx | head $*}
 
 # For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){
+	# plumb files instead of starting new editor
+	EDITOR=editinacme
+	# get rid of backspace characters in Unix man output
+	PAGER=nobs
 	# sets the current window label using awd (see label(1))
 	fn cd {
 		# builtin cd $1 && flag i && awd
@@ -152,15 +156,6 @@ if(~ $#termprog 1 || ~ $#winid 1){
 		}
 	}
 	awd
-	# plumb files instead of starting new editor
-	EDITOR=editinacme
-	# get rid of backspace characters in Unix man output
-	PAGER=nobs
-	# plan 9 from bell labs
-	prompt=('term% ' '	')
-	if(~ $#SSH_TTY 1) prompt=('cpu% ' '	')
-	fn term%{ $* }
-	fn cpu%{ $* }
 	# no paging
 	fn git{builtin git --no-pager $*}
 	fn hg{chg --pager=no $*}
@@ -196,16 +191,16 @@ case openbsd
 }
 
 if(! ~ $os linux){
+	NPROC=`{sysctl -n hw.ncpu}
+	stty status '^T'
 	# When i say vi i mean vis{e} (if it's installed).
-	if(test -x /usr/bin/hx || test -x /usr/bin/helix){
+	if(test -x /usr/bin/vise){
 		fn vi{vise $*}
 		EDITOR=vise
 	}
 	if not{
 		EDITOR=/usr/bin/vi
 	}
-	NPROC=`{sysctl -n hw.ncpu}
-	stty status '^T'
 }
 
 # Use $NPROC for parallelism.
