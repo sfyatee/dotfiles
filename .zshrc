@@ -131,7 +131,7 @@ fi
 
 # Make sure these are running.
 felloff() {
-	# This needs to exist.
+	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	[ -e "$NAMESPACE/font" ] || fontsrv &!

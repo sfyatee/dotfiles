@@ -211,7 +211,7 @@ ulimit -c 0
 
 # Make sure these are running.
 fn felloff{
-	# This needs to exist.
+	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
 	if(! test -e $NAMESPACE/font) fontsrv &
