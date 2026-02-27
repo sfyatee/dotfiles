@@ -45,7 +45,6 @@ lookforfont() {
 		;;
 		esac
 	done
-	return 1
 }
 
 # sans-serif
