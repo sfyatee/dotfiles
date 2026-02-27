@@ -66,4 +66,9 @@ fi
 # See: http://man.9front.org/1/emacs
 SHELL=hack acme -a $varfont $fixfont $dump &
 
-zen-browser &
+# WORLD WIDE WEB
+if [ $OS = linux ]; then
+	nyxt &
+else
+	firefox &
+fi
