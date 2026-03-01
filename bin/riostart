@@ -1,10 +1,13 @@
 #!/bin/sh
 
 export XDG_SESSION_TYPE=wayland
+# magic variable for java apps refusing to work
+# https://github.com/Smithay/smithay/issues/389#issuecomment-933199697
 export _JAVA_AWT_WM_NONREPARENTING=1
 export MOZ_ENABLE_WAYLAND=1
+# better two-finger touchpad scrolling
+export MOZ_USE_XINPUT2=1
 
-# Services.
 gui() {
 	if ! pgrep -x "footclient" >/dev/null 2>&1; then
 		foot -s &
@@ -30,7 +33,6 @@ fi
 
 swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
 
-# Applications.
 foot aerc &
 foot senpai &
 
@@ -65,7 +67,7 @@ fi
 # See: http://man.9front.org/1/emacs
 SHELL=hack acme -a $varfont $fixfont $dump &
 
-# WORLD WIDE WEB 🌐!
+# https://9front.org
 if [ $OS = linux ]; then
 	nyxt &
 else
