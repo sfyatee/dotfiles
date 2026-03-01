@@ -2,7 +2,6 @@
 
 export XDG_SESSION_TYPE=wayland
 # magic variable for java apps refusing to work
-# https://github.com/Smithay/smithay/issues/389#issuecomment-933199697
 export _JAVA_AWT_WM_NONREPARENTING=1
 export MOZ_ENABLE_WAYLAND=1
 # better two-finger touchpad scrolling
