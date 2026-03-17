@@ -1,5 +1,4 @@
 aerc
-foot
 fzf
 github-cli
 gitlab-cli
