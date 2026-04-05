@@ -58,7 +58,7 @@ PACMAN_AUTH=run0
 
 # The End of History?
 HISTFILE=/dev/null
-HISTSIZE=500
+HISTSIZE=5000
 LESSHISTFILE=/dev/null
 PYTHON_HISTORY=/dev/null
 
