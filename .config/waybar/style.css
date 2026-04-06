@@ -11,11 +11,15 @@
 }
 
 window#waybar {
-    background: linear-gradient(90deg, rgba(53, 134, 100, 0.808), rgba(49, 123, 104, 0), rgba(53, 134, 100, 0.808));
+    background: linear-gradient(
+        90deg,
+        rgba(53, 134, 100, 0.808),
+        rgba(49, 123, 104, 0),
+        rgba(53, 134, 100, 0.808)
+    );
 
-    border: 0px solid;
+    border: 0px solid #52b781;
     border-radius: 16px;
-    border-color: #52b781;
 }
 
 button {
