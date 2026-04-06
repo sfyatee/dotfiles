@@ -55,7 +55,7 @@ button:hover,
 }
 
 #workspaces button.focused.current_output {
-    color: rgb(19, 213, 100);
+    color: #72dec2;
     background: rgb(1, 46, 12);
     border-bottom: solid rgb(19, 213, 100) 2px;
     border-radius: 2px 26px;
