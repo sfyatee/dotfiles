@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# Magic variables for the strange and stranger...
 export XDG_SESSION_TYPE=wayland
 # magic variable for java apps refusing to work
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -30,7 +31,7 @@ if [ $OS = linux ]; then
 	felloff
 fi
 
-swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png &
+swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png -c a3ccbd &
 
 foot aerc &
 foot senpai &
