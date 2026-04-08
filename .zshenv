@@ -79,7 +79,7 @@ export HISTFILE LESSHISTFILE PYTHON_HISTORY
 # Override $NAMESPACE (see intro(4)) because the default on MacOS is too long.
 # See: https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
 # This matches the default on other Unices when $WSYS is running.
-# See: /usr/local/plan9/src/lib9/getns.c#L43
+# See: /usr/local/plan9/src/lib9/getns.c:43
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # Prompt rc(1)
@@ -90,7 +90,7 @@ H=${H%%.*}
 font2="/mnt/font/IBMPlexSans/12a/font"
 [ -n "$font2" ] && varfont="-f $font2"
 
-font="/mnt/font/IBMPlexMono/12a/font" 
+font="/mnt/font/IBMPlexMono/12a/font"
 [ -n "$font" ] && fixfont="-F $font"
 
 # Secstore considered harmful?

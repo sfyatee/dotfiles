@@ -31,7 +31,7 @@ if [ $OS = linux ]; then
 	felloff
 fi
 
-swaybg -m center -i $HOME/.local/share/backgrounds/grendel.png -c a3ccbd &
+swaybg -m center -i $HOME/.local/share/backgrounds/7564218.webp -c a3ccbd &
 
 foot aerc &
 foot senpai &
