@@ -32,7 +32,7 @@ if [ ! -d /usr/local/plan9 ]; then
 	$RUNAUTH chown $(id -un):$(id -gn) /usr/local/plan9
 	git clone -b sfyatee https://github.com/sfyatee/plan9port.git /usr/local/plan9
 	cd /usr/local/plan9; ./INSTALL
-	# git clone https://github.com/lufia/factotum-keyring.git /usr/local/plan/src/cmd/auth/keyring
+	# git clone https://github.com/lufia/factotum-keyring.git src/cmd/auth/keyring
 	# cd src/cmd/auth/keyring; mk install
 else
 	cd /usr/local/plan9; git pull; ./INSTALL
