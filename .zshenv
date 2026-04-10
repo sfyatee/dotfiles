@@ -88,10 +88,9 @@ H=${H%%.*}
 
 # Default font for Plan 9 programs.
 font2="/mnt/font/IBMPlexSans/12a/font"
-[ -n "$font2" ] && varfont="-f $font2"
-
-font="/mnt/font/IBMPlexMono/12a/font"
-[ -n "$font" ] && fixfont="-F $font"
+varfont="-f $font2"
+font="/mnt/font/RobotoMono-Regular/12a/font"
+fixfont="-F $font"
 
 # Secstore considered harmful?
 # See: https://9fans.topicbox.com/groups/9fans/T2e892f330bc0513b-M168e79b077a072dbe954da15

@@ -21,6 +21,7 @@ niri
 playerctl
 racket-minimal
 ripgrep
+roboto-fonts
 senpai
 syncthing
 tailscale
