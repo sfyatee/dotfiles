@@ -112,7 +112,7 @@ set -a	# autoexport
 # OS specificities.
 case "$OS" in
 linux)
-	BROWSER=nyxt
+	BROWSER=zen-browser
 	NPROC=`nproc`
 	;;
 openbsd)

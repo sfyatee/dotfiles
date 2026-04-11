@@ -22,11 +22,6 @@ autoload -Uz compinit	# unfortunate
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
-# See: http://man.9front.org/1/emacs
-alias acme="SHELL=hack acme -a $varfont $fixfont"
-alias edwood="SHELL=hack edwood -a $varfont $fixfont"
-alias sam="sam -a"
-
 # OSC 7
 autoload -Uz add-zsh-hook
 osc71() {
@@ -51,6 +46,11 @@ add-zsh-hook -Uz chpwd osc7
 PROMPT='`prompt2` %v%B%(!.%F{red}.%F{yellow})%# %b%f'
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
+
+# See: http://man.9front.org/1/emacs
+alias acme="SHELL=hack acme -a $varfont $fixfont"
+alias edwood="SHELL=hack edwood -a $varfont $fixfont"
+alias sam="sam -a"
 
 # fns
 alias cp="cp -i"
