@@ -210,9 +210,8 @@ if(! ~ $os linux){
 		fn vi{vise $*}
 		EDITOR=vise
 	}
-	if not{
+	if not
 		EDITOR=/usr/bin/vi
-	}
 }
 
 # Use $NPROC for parallelism.
