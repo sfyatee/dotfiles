@@ -63,7 +63,7 @@ alias ls="ls -AF"
 alias ltr="ls -AlFtr"
 alias m="make"
 alias mg="mg -n"
-alias mu="muon"
+alias me="muon"
 alias mv="mv -i"
 alias ph="ps auwwx | head"
 

@@ -139,7 +139,7 @@ fn ls{builtin ls -AF $*}
 fn ltr{builtin ls -AlFtr $*}
 fn m{make $*}
 fn mg{builtin mg -n $*}
-fn mu{muon $*}
+fn me{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 
