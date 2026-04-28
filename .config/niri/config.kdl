@@ -1,3 +1,6 @@
+include "misc.kdl"
+include "rules.kdl"
+
 // This config is in the KDL format: https://kdl.dev
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
@@ -72,11 +75,6 @@ input {
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 output "eDP-1" {
-    layout {
-        // Set default background color.
-        background-color "a3ccbd"
-    }
-
     // Uncomment this line to disable this output.
     // off
 
@@ -105,18 +103,6 @@ output "eDP-1" {
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
     // position x=1280 y=0
-}
-
-output "HDMI-A-1" {
-    layout {
-        // Set default background color.
-        background-color "a3ccbd"
-    }
-}
-
-// Set default backdrop color.
-overview {
-    backdrop-color "a3ccbd"
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -287,7 +273,7 @@ spawn-at-startup "waybar"
 spawn-sh-at-startup "~/bin/riostart"
 
 workspace "casa"
-workspace "➈"
+workspace "felloff"
 workspace "mothra"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -304,16 +290,6 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 // You can also set this to null to disable saving screenshots to disk.
 // screenshot-path null
-
-// A better world...
-cursor {
-    xcursor-theme "macOS-White"
-}
-
-// The questionable and miscellaneous.
-hotkey-overlay {
-    skip-at-startup
-}
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
@@ -338,20 +314,6 @@ window-rule {
     open-on-workspace "casa"
 }
 
-// When I was a child, I used to speak like a child, think like a child,
-// reason like a child; when I became a man, I did away with childish
-// things.
-//
-// -rob
-//
-// See: http://acme.cat-v.org/
-window-rule {
-    match title="acme"
-    match app-id=r#"^org\._9front\.drawterm$"#
-    open-maximized true
-    open-on-workspace "➈"
-}
-
 // "LASCIATE OGNE SPERANZA, VOI CH'INTRATE"
 window-rule {
     match app-id=r#"nyxt$"#
@@ -373,12 +335,6 @@ window-rule {
 window-rule {
     match title="vdiff"
     min-height 865
-}
-
-// Add rounded corners to fuzzel.
-layer-rule {
-    match namespace="^launcher$"
-    geometry-corner-radius 12
 }
 
 // Open the Firefox picture-in-picture player as floating by default.
@@ -437,12 +393,6 @@ window-rule {
 window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
-}
-
-// Block out notifications from screencast.
-layer-rule {
-    match namespace="^notifications$"
-    block-out-from "screencast"
 }
 
 // Dim inactive windows. Credit: visualglitch91 @ Matrix.

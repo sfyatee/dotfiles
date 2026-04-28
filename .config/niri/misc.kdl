@@ -1,0 +1,14 @@
+// Set default backdrop color.
+overview {
+    backdrop-color "a3ccbd"
+}
+
+// The questionable and miscellaneous.
+cursor {
+    xcursor-theme "macOS-White"
+}
+
+// Not needed.
+hotkey-overlay {
+    skip-at-startup
+}

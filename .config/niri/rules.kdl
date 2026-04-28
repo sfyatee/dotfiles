@@ -1,0 +1,25 @@
+// When I was a child, I used to speak like a child, think like a child,
+// reason like a child; when I became a man, I did away with childish
+// things.
+//
+// -rob
+//
+// See: http://acme.cat-v.org/
+window-rule {
+    match title="acme"
+    match app-id=r#"^org\._9front\.drawterm$"#
+    open-maximized true
+    open-on-workspace "felloff"
+}
+
+// Add rounded corners to fuzzel.
+layer-rule {
+    match namespace="^launcher$"
+    geometry-corner-radius 12
+}
+
+// Block out notifications from screencast.
+layer-rule {
+    match namespace="^notifications$"
+    block-out-from "screencast"
+}

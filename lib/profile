@@ -129,6 +129,7 @@ fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
 fn sam{builtin sam -a $*}
 
 # fns
+fn ck{cmake $*}
 fn cp{builtin cp -i $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}

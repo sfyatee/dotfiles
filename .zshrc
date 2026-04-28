@@ -54,6 +54,7 @@ alias sam="sam -a"
 
 # fns
 alias cp="cp -i"
+alias ck="cmake"
 alias hg="chg"
 alias ivy="ivy-prompt"
 alias jk="just"
