@@ -354,21 +354,6 @@ window-rule {
     open-floating true
 }
 
-// These applications need it.
-window-rule {
-    match app-id="^blender$"
-    match app-id="^gimp"
-    default-column-width { fixed 1200; }
-    open-maximized true
-}
-
-// Don't give focus to the GIMP startup splash screen.
-window-rule {
-    match app-id="^gimp" title="^GIMP Startup$"
-
-    open-focused false
-}
-
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 window-rule {
