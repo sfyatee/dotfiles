@@ -5,6 +5,21 @@ window-rule {
     open-focused false
 }
 
+// Dim inactive windows. Credit: visualglitch91 @ Matrix.
+/-window-rule {
+    match is-focused=false
+    opacity 0.4
+
+    shadow {
+        on
+        inactive-color "#1D1D1FEB"
+        spread 0
+        softness 0
+        offset x=0 y=0
+        draw-behind-window true
+    }
+}
+
 // When I was a child, I used to speak like a child, think like a child,
 // reason like a child; when I became a man, I did away with childish
 // things.
