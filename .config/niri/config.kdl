@@ -1,3 +1,4 @@
+include "workspaces.kdl"
 include "misc.kdl"
 include "rules.kdl"
 
@@ -271,10 +272,6 @@ spawn-at-startup "waybar"
 
 // Start my enviornment.
 spawn-sh-at-startup "~/bin/riostart"
-
-workspace "casa"
-workspace "felloff"
-workspace "mothra"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
