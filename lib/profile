@@ -112,16 +112,13 @@ cr='
 
 # prompt - "[%s] %s ", uptime(y, mo, d, h, mi, s), host
 # ../bin/openbsd/prompt2.go
-fn prompt1 {
-	fn esc{
-		printf '\001\033[%sm\002%s\001\033[0m\002' $1 $2
-	}
+fn promp {
 	sys=`{prompt2}
-	ps1=`{esc '1;33' '%'}
+	ps1='%'
 	prompt=($"sys^' '^$ps1^' ')
 	# fn $sys^' '^$ps1^' ' { if(! ~ $#* 0) $* }
 }
-prompt1
+promp
 
 # See: http://man.9front.org/1/emacs
 fn acme{SHELL=hack builtin acme -a $varfont $fixfont $*}
