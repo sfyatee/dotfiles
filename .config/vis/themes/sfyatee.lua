@@ -1,7 +1,7 @@
 local lexers = vis.lexers
 
 lexers.STYLE_COMMENT           = 'fore:#9893a5,italics'
---lexers.STYLE_CONSTANT          = 'fore:black,string'
+lexers.STYLE_FUNCTION          = 'fore:default'
 lexers.STYLE_KEYWORD           = 'fore:white,bold'
 lexers.STYLE_NUMBER            = 'fore:white,underlined'
 lexers.STYLE_OPERATOR          = 'fore:white'
