@@ -198,7 +198,7 @@ layout {
         // off
 
         width 6
-        active-color "#0c0a0e"
+        active-color "#3a403e"
         inactive-color "#e0dde2"
 
         // Color of the border around windows that request your attention.
@@ -372,7 +372,7 @@ window-rule {
 
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
-window-rule {
+/-window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
 }

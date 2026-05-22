@@ -1,3 +1,9 @@
+// Softer rounded corners.
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
 // Don't give focus to the GIMP startup splash screen.
 window-rule {
     match app-id="^gimp" title="^GIMP Startup$"
