@@ -61,17 +61,14 @@ fixfont=""
 font="`lookforfont LucidaGrandeMonoDK GoMono LuxiMono Monaco IBMPlexMono`"
 [ -n "$font" ] && fixfont="-F $font"
 
-dump=""
-if [ -f "$HOME/acme.dump" ]; then
-	dump="-l $HOME/acme.dump"
-fi
-
-# See: http://man.9front.org/1/emacs
-SHELL=hack acme -a $varfont $fixfont $dump &
-
 # https://9front.org
 if [ $OS = linux ]; then
-	nyxt &
+	zed
 else
-	firefox &
+	dump=""
+	if [ -f "$HOME/acme.dump" ]; then
+		dump="-l $HOME/acme.dump"
+	fi
+	# See: http://man.9front.org/1/emacs
+	SHELL=hack acme -a $varfont $fixfont $dump &
 fi
