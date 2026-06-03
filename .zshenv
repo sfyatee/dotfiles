@@ -53,7 +53,10 @@ export LANG LC_CTYPE LC_COLLATE LC_TIME
 LESS=FRXi
 
 # TheFuture™
+# "You MUST have an account, or else..."
+# GitHub CLI
 DO_NOT_TRACK=true
+# Google
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 
