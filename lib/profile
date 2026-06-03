@@ -42,7 +42,8 @@ LC_TIME=C
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=FRXi
 
-# Google™
+# TheFuture™
+DO_NOT_TRACK=true
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 

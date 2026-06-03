@@ -52,7 +52,8 @@ export LANG LC_CTYPE LC_COLLATE LC_TIME
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=FRXi
 
-# Google™
+# TheFuture™
+DO_NOT_TRACK=true
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 
@@ -66,7 +67,7 @@ NO_COLOR=1
 # run0(1)
 PACMAN_AUTH=run0
 
-export LESS GOTELEMETRY GOTOOLCHAIN NO_COLOR PACMAN_AUTH
+export DO_NOT_TRACK LESS GOTELEMETRY GOTOOLCHAIN NO_COLOR PACMAN_AUTH
 
 # The End of History?
 HISTFILE=/dev/null

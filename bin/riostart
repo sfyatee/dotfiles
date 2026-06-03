@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Magic variables for the strange and stranger...
+# in hopes to make things work
 export XDG_SESSION_TYPE=wayland
 # magic variable for java apps refusing to work
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -31,7 +31,7 @@ if [ $OS = linux ]; then
 	felloff
 fi
 
-swaybg -m center -i $HOME/.local/share/backgrounds/bodavk.jpg -c a3ccbd &
+swaybg -c a3ccbd &
 
 # I'm afraid it's terminal...
 foot aerc &
