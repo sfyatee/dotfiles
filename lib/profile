@@ -59,6 +59,7 @@ NO_COLOR=1
 
 # run0(1)
 PACMAN_AUTH=run0
+SYSTEMD_RUN_SHELL_PROMPT_PREFIX=('')
 
 # The End of History?
 HISTFILE=/dev/null
