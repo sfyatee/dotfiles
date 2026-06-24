@@ -8,12 +8,13 @@
     // Choose the order of the modules
     "modules-left": [
         "niri/workspaces",
-        "niri/language",
+        "niri/window",
     ],
     "modules-center": [
         "tray",
     ],
     "modules-right": [
+        "niri/language",
         "wireplumber",
         "network",
         "battery",
@@ -21,6 +22,7 @@
         "clock#time",
     ],
     "niri/workspaces": {
+        "current-only": true,
         "format": "{icon}",
         "format-icons": {
             "1": "\u4e00",
@@ -28,8 +30,11 @@
             "3": "\u4e09",
             "4": "\u56db",
             "5": "\u4e94",
-            "default": "{value}"
-        }
+            "default": "{value}",
+        },
+
+        "on-scroll-up": "niri msg action focus-workspace-up",
+        "on-scroll-down": "niri msg action focus-workspace-down",
     },
     "tray": {
         // "icon-size": 21,
@@ -38,6 +43,9 @@
         //   "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
         // }
+    },
+    "niri/language": {
+        "format": "{short}",
     },
     "wireplumber": {
         // "scroll-step": 1, // %, can be a float
