@@ -18,7 +18,6 @@ window#waybar {
         rgba(53, 134, 100, 0.808)
     );
     border: 0px solid #52b781;
-    /* text color */
     color: #ffffff;
 }
 
@@ -28,13 +27,11 @@ window#waybar {
 }
 
 #workspaces button {
-    color: #81ff01;
     background: rgb(1, 46, 12);
-
     border: 0px;
     border-bottom: solid rgb(19, 213, 100) 2px;
     border-radius: 2px 26px;
-
+    color: #81ff01;
     padding: 0px 8px;
     min-width: 40px;
 }
@@ -46,13 +43,12 @@ window#waybar {
 
 #language,#wireplumber,#network,#clock {
     background: #bfd0a8;
-    color: #000000;
-
     border: 2px solid #111111;
+    border-radius: 8px;
     box-shadow: 4px 4px 0 #111111;
+    color: #000000;
     padding: 0px 8px;
     margin: 4px 8px;
-    border-radius: 8px;
 
 }
 
