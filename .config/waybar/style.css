@@ -42,7 +42,7 @@ window#waybar {
 }
 
 #language,#wireplumber,#network,#clock {
-    background: #f0e8b5;
+    background: #f3edc8;
     border: 2px solid #111111;
     border-radius: 8px;
     box-shadow: 4px 4px 0 #111111;
