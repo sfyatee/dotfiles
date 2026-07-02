@@ -1,144 +1,185 @@
 # Oxocarbon PRINT Dawn for Helix
-# Inherits Rose Pine Dawn and only overrides the palette/scopes needed for an
-# Oxocarbon PRINT-like monochrome scheme.
+# Keeps Rose Pine Dawn background/UI base, overrides syntax toward Oxocarbon PRINT.
 # Save as: ~/.config/helix/themes/oxocarbon_print_dawn.toml
 
 inherits = "rose_pine_dawn"
 
 # Syntax
-"attribute" = { fg = "fg" }
-"type" = { fg = "ink_1", modifiers = ["italic"] }
-"type.builtin" = { fg = "ink_2", modifiers = ["italic"] }
-"type.parameter" = { fg = "fg", modifiers = ["italic"] }
-"constructor" = { fg = "ink_0", modifiers = ["bold"] }
-"constant" = { fg = "ink_1" }
-"constant.builtin" = { fg = "ink_1" }
-"constant.builtin.boolean" = { fg = "ink_1" }
-"constant.numeric" = { fg = "ink_1" }
-"constant.character.escape" = { fg = "ink_2" }
-"string" = { fg = "ink_2" }
-"string.regexp" = { fg = "ink_2" }
-"string.special" = { fg = "ink_2" }
-"comment" = { fg = "muted" }
-"comment.unused" = { fg = "subtle", modifiers = ["dim"] }
-"variable" = { fg = "black" }
-"variable.builtin" = { fg = "ink_3" }
-"variable.parameter" = { fg = "fg", modifiers = ["italic"] }
-"variable.other.member" = { fg = "ink_3" }
-"label" = { fg = "black" }
-"punctuation" = { fg = "fg" }
-"punctuation.delimiter" = { fg = "ink_1" }
-"punctuation.bracket" = { fg = "fg" }
-"punctuation.special" = { fg = "ink_2" }
-"keyword" = { fg = "ink_3" }
-"keyword.control" = { fg = "ink_3" }
-"keyword.control.import" = { fg = "fg" }
-"keyword.control.return" = { fg = "ink_3" }
-"keyword.operator" = { fg = "ink_1" }
-"keyword.directive" = { fg = "ink_3" }
-"keyword.function" = { fg = "ink_1" }
-"keyword.storage" = { fg = "ink_1", modifiers = ["italic"] }
-"keyword.storage.type" = { fg = "ink_1", modifiers = ["italic"] }
-"keyword.storage.modifier" = { fg = "ink_3" }
-"operator" = { fg = "ink_1" }
-"function" = { fg = "ink_3", modifiers = ["bold"] }
-"function.builtin" = { fg = "ink_3" }
-"function.method" = { fg = "ink_3" }
-"function.macro" = { fg = "alert" }
-"function.special" = { fg = "ink_2" }
-"tag" = { fg = "ink_3", modifiers = ["bold"] }
-"namespace" = { fg = "ink_2" }
-"special" = { fg = "ink_2" }
+"attribute" = { fg = "ox_fg" }
+
+"type" = { fg = "ox_fg", modifiers = ["italic"] }
+"type.builtin" = { fg = "ox_fg", modifiers = ["italic"] }
+"type.parameter" = { fg = "ox_fg", modifiers = ["italic"] }
+
+"constructor" = { fg = "ox_entity", modifiers = ["bold"] }
+
+"constant" = { fg = "ox_gray_1" }
+"constant.builtin" = { fg = "ox_gray_1" }
+"constant.builtin.boolean" = { fg = "ox_gray_1" }
+"constant.numeric" = { fg = "ox_gray_1" }
+"constant.character" = { fg = "ox_gray_2" }
+"constant.character.escape" = { fg = "ox_gray_2" }
+
+"string" = { fg = "ox_gray_2" }
+"string.regexp" = { fg = "ox_gray_2" }
+"string.special" = { fg = "ox_gray_2" }
+
+"comment" = { fg = "ox_comment" }
+"comment.unused" = { fg = "ox_subtle", modifiers = ["dim"] }
+
+"variable" = { fg = "ox_black" }
+"variable.builtin" = { fg = "ox_gray_2" }
+"variable.parameter" = { fg = "ox_fg", modifiers = ["italic"] }
+"variable.other.member" = { fg = "ox_gray_2" }
+
+"label" = { fg = "ox_black" }
+
+"punctuation" = { fg = "ox_fg" }
+"punctuation.delimiter" = { fg = "ox_gray_1" }
+"punctuation.bracket" = { fg = "ox_fg" }
+"punctuation.special" = { fg = "ox_gray_2" }
+
+"keyword" = { fg = "ox_gray_2" }
+"keyword.control" = { fg = "ox_gray_2" }
+"keyword.control.import" = { fg = "ox_fg" }
+"keyword.control.return" = { fg = "ox_gray_2" }
+"keyword.operator" = { fg = "ox_gray_1" }
+"keyword.directive" = { fg = "ox_gray_2" }
+"keyword.function" = { fg = "ox_gray_1" }
+"keyword.storage" = { fg = "ox_fg", modifiers = ["italic"] }
+"keyword.storage.type" = { fg = "ox_fg", modifiers = ["italic"] }
+"keyword.storage.modifier" = { fg = "ox_gray_2" }
+
+"operator" = { fg = "ox_gray_1" }
+
+"function" = { fg = "ox_black", modifiers = ["bold"] }
+"function.builtin" = { fg = "ox_gray_2" }
+"function.method" = { fg = "ox_black", modifiers = ["bold"] }
+"function.macro" = { fg = "ox_alert", modifiers = ["bold"] }
+"function.special" = { fg = "ox_gray_2" }
+
+"tag" = { fg = "ox_gray_2", modifiers = ["bold"] }
+"namespace" = { fg = "ox_gray_2" }
+"special" = { fg = "ox_gray_2" }
 
 # Markup
-"markup.heading" = { fg = "black", modifiers = ["bold"] }
-"markup.heading.marker" = { fg = "ink_3" }
-"markup.list" = { fg = "ink_3" }
-"markup.bold" = { fg = "black", modifiers = ["bold"] }
-"markup.italic" = { fg = "fg", modifiers = ["italic"] }
+"markup.heading" = { fg = "ox_black", modifiers = ["bold"] }
+"markup.heading.marker" = { fg = "ox_gray_2" }
+"markup.list" = { fg = "ox_gray_2" }
+"markup.bold" = { fg = "ox_black", modifiers = ["bold"] }
+"markup.italic" = { fg = "ox_fg", modifiers = ["italic"] }
 "markup.strikethrough" = { modifiers = ["crossed_out"] }
-"markup.link.url" = { fg = "ink_3", underline = { style = "line" } }
-"markup.link.text" = { fg = "ink_3" }
-"markup.quote" = { fg = "fg", bg = "surface" }
-"markup.raw" = { fg = "black", bg = "surface" }
+"markup.link.url" = { fg = "ox_gray_2", underline = { style = "line" } }
+"markup.link.text" = { fg = "ox_gray_2" }
+"markup.quote" = { fg = "ox_fg", bg = "surface" }
+"markup.raw" = { fg = "ox_black", bg = "surface" }
 
 # Diff / diagnostics
-"diff.plus" = { fg = "ink_3" }
-"diff.delta" = { fg = "ink_2" }
-"diff.minus" = { fg = "alert" }
-"warning" = { fg = "ink_3" }
-"error" = { fg = "alert" }
-"info" = { fg = "ink_3" }
-"hint" = { fg = "fg" }
-"diagnostic.warning" = { underline = { color = "ink_3", style = "curl" } }
-"diagnostic.error" = { underline = { color = "alert", style = "curl" } }
-"diagnostic.info" = { underline = { color = "ink_3", style = "curl" } }
-"diagnostic.hint" = { underline = { color = "fg", style = "curl" } }
+"diff.plus" = { fg = "ox_gray_2" }
+"diff.delta" = { fg = "ox_gray_1" }
+"diff.minus" = { fg = "ox_alert" }
 
-# Editor UI
+"warning" = { fg = "ox_gray_2" }
+"error" = { fg = "ox_alert" }
+"info" = { fg = "ox_gray_2" }
+"hint" = { fg = "ox_fg" }
+
+"diagnostic.warning" = { underline = { color = "ox_gray_2", style = "curl" } }
+"diagnostic.error" = { underline = { color = "ox_alert", style = "curl" } }
+"diagnostic.info" = { underline = { color = "ox_gray_2", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "ox_fg", style = "curl" } }
+
+# Editor UI — keeps Rose Pine Dawn background
 "ui.background" = { bg = "base" }
 "ui.background.separator" = { fg = "highlight_high" }
-"ui.text" = { fg = "fg" }
-"ui.text.focus" = { fg = "black", modifiers = ["bold"] }
-"ui.text.inactive" = { fg = "subtle" }
-"ui.virtual" = { fg = "subtle" }
-"ui.virtual.ruler" = { bg = "surface" }
+
+"ui.text" = { fg = "ox_fg" }
+"ui.text.focus" = { fg = "ox_black", modifiers = ["bold"] }
+"ui.text.inactive" = { fg = "ox_disabled" }
+"ui.text.info" = { fg = "ox_gray_2" }
+"ui.text.warning" = { fg = "ox_gray_2" }
+"ui.text.error" = { fg = "ox_alert" }
+
+"ui.virtual" = { fg = "ox_subtle" }
+"ui.virtual.ruler" = { bg = "highlight_low" }
 "ui.virtual.whitespace" = { fg = "highlight_high" }
 "ui.virtual.indent-guide" = { fg = "highlight_high" }
-"ui.virtual.inlay-hint" = { fg = "inlay", bg = "surface" }
-"ui.virtual.jump-label" = { fg = "black", bg = "highlight_med", modifiers = ["bold"] }
+"ui.virtual.inlay-hint" = { fg = "ox_inlay", bg = "surface" }
+"ui.virtual.jump-label" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
 
-"ui.cursor" = { fg = "base", bg = "black" }
-"ui.cursor.primary" = { fg = "base", bg = "black" }
-"ui.cursor.match" = { fg = "black", bg = "highlight_med" }
-"ui.selection" = { bg = "highlight_med" }
+"ui.cursor" = { fg = "base", bg = "ox_black" }
+"ui.cursor.primary" = { fg = "base", bg = "ox_black" }
+"ui.cursor.match" = { fg = "ox_black", bg = "highlight_med" }
+
+"ui.cursor.normal" = { fg = "base", bg = "ox_black" }
+"ui.cursor.insert" = { fg = "base", bg = "ox_black" }
+"ui.cursor.select" = { fg = "base", bg = "ox_black" }
+"ui.cursor.primary.normal" = { fg = "base", bg = "ox_black" }
+"ui.cursor.primary.insert" = { fg = "base", bg = "ox_black" }
+"ui.cursor.primary.select" = { fg = "base", bg = "ox_black" }
+
+"ui.selection" = { fg = "ox_fg", bg = "highlight_med" }
+"ui.selection.primary" = { fg = "ox_fg", bg = "highlight_med" }
+
 "ui.highlight" = { bg = "highlight_low" }
 "ui.highlight.frameline" = { bg = "surface" }
-"ui.linenr" = { fg = "subtle" }
-"ui.linenr.selected" = { fg = "fg" }
-"ui.statusline" = { fg = "fg", bg = "base" }
-"ui.statusline.inactive" = { fg = "subtle", bg = "surface" }
-"ui.statusline.normal" = { fg = "black", bg = "highlight_med", modifiers = ["bold"] }
-"ui.statusline.insert" = { fg = "black", bg = "highlight_med", modifiers = ["bold"] }
-"ui.statusline.select" = { fg = "black", bg = "highlight_med", modifiers = ["bold"] }
-"ui.popup" = { fg = "fg", bg = "surface" }
-"ui.popup.info" = { fg = "fg", bg = "surface" }
+
+"ui.linenr" = { fg = "ox_subtle" }
+"ui.linenr.selected" = { fg = "ox_entity" }
+
+"ui.statusline" = { fg = "ox_entity", bg = "base" }
+"ui.statusline.inactive" = { fg = "ox_disabled", bg = "surface" }
+"ui.statusline.normal" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
+"ui.statusline.separator" = { fg = "highlight_high" }
+
+"ui.popup" = { fg = "ox_entity", bg = "surface" }
+"ui.popup.info" = { fg = "ox_entity", bg = "surface" }
 "ui.window" = { fg = "highlight_high" }
-"ui.help" = { fg = "fg", bg = "surface" }
-"ui.menu" = { fg = "fg", bg = "surface" }
-"ui.menu.selected" = { fg = "black", bg = "highlight_med" }
-"ui.menu.scroll" = { fg = "subtle", bg = "surface" }
-"ui.picker.header" = { fg = "black", modifiers = ["bold"] }
-"ui.picker.header.column" = { fg = "fg" }
-"ui.picker.header.column.active" = { fg = "black", modifiers = ["bold"] }
+"ui.help" = { fg = "ox_entity", bg = "surface" }
+
+"ui.menu" = { fg = "ox_entity", bg = "surface" }
+"ui.menu.selected" = { fg = "ox_black", bg = "highlight_med" }
+"ui.menu.scroll" = { fg = "ox_subtle", bg = "surface" }
+
+"ui.picker.header" = { fg = "ox_black", modifiers = ["bold"] }
+"ui.picker.header.column" = { fg = "ox_fg" }
+"ui.picker.header.column.active" = { fg = "ox_black", modifiers = ["bold"] }
+
+"ui.bufferline" = { fg = "ox_disabled", bg = "base" }
+"ui.bufferline.active" = { fg = "ox_black", bg = "base", modifiers = ["bold"] }
+"ui.bufferline.background" = { bg = "base" }
 
 # Gutter / VCS
 "ui.gutter" = { bg = "base" }
 "ui.gutter.selected" = { bg = "base" }
+
 "ui.cursorline" = { bg = "highlight_low" }
 "ui.cursorline.primary" = { bg = "highlight_low" }
 "ui.cursorline.secondary" = { bg = "highlight_low" }
 "ui.cursorcolumn.primary" = { bg = "highlight_low" }
 "ui.cursorcolumn.secondary" = { bg = "highlight_low" }
-"ui.debug.breakpoint" = { fg = "alert" }
-"ui.debug.active" = { fg = "black", bg = "highlight_med" }
-"ui.gutter.debug" = { fg = "alert" }
-"ui.gutter.diff.added" = { fg = "ink_3" }
-"ui.gutter.diff.modified" = { fg = "ink_3" }
-"ui.gutter.diff.removed" = { fg = "alert" }
+
+"ui.debug.breakpoint" = { fg = "ox_alert" }
+"ui.debug.active" = { fg = "ox_black", bg = "highlight_med" }
+"ui.gutter.debug" = { fg = "ox_alert" }
+
+"ui.gutter.diff.added" = { fg = "ox_gray_2" }
+"ui.gutter.diff.modified" = { fg = "ox_gray_2" }
+"ui.gutter.diff.removed" = { fg = "ox_alert" }
 
 [palette]
-# Custom Oxocarbon PRINT-style grayscale overrides.
-# Rose Pine Dawn still supplies: base, surface, overlay, highlight_low,
-# highlight_med, highlight_high, and the rest of its warm background palette.
-muted = "#909090"
-subtle = "#c6c6c6"
-inlay = "#525757"
-fg = "#0d0b07"
-fg2 = "#221e19"
-black = "#000000"
-ink_0 = "#221e19"
-ink_1 = "#393939"
-ink_2 = "#575757"
-ink_3 = "#575757"
-alert = "#727272"
+# Oxocarbon PRINT foreground/syntax only.
+# Rose Pine Dawn supplies base, surface, overlay, highlight_low,
+# highlight_med, highlight_high, etc.
+ox_fg = "#0d0b07"
+ox_entity = "#221e19"
+ox_black = "#000000"
+ox_gray_1 = "#393939"
+ox_gray_2 = "#575757"
+ox_alert = "#727272"
+ox_comment = "#909090"
+ox_subtle = "#c6c6c6"
+ox_disabled = "#727272"
+ox_inlay = "#525757"
