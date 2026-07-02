@@ -1,9 +1,10 @@
 #!/bin/sh
 
-# in hopes to make things work
+# a coin flip on some machines...
 export XDG_SESSION_TYPE=wayland
 # magic variable for java apps refusing to work
 export _JAVA_AWT_WM_NONREPARENTING=1
+# force wayland on firefox
 export MOZ_ENABLE_WAYLAND=1
 # better two-finger touchpad scrolling
 export MOZ_USE_XINPUT2=1
