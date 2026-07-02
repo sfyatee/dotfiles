@@ -1,5 +1,6 @@
 # Oxocarbon PRINT Dawn for Helix
-# Inherits Rosé Pine Dawn and overrides the palette/scopes toward Oxocarbon PRINT.
+# Inherits Rose Pine Dawn and only overrides the palette/scopes needed for an
+# Oxocarbon PRINT-like monochrome scheme.
 # Save as: ~/.config/helix/themes/oxocarbon_print_dawn.toml
 
 inherits = "rose_pine_dawn"
@@ -76,36 +77,36 @@ inherits = "rose_pine_dawn"
 
 # Editor UI
 "ui.background" = { bg = "base" }
-"ui.background.separator" = { fg = "border" }
+"ui.background.separator" = { fg = "highlight_high" }
 "ui.text" = { fg = "fg" }
 "ui.text.focus" = { fg = "black", modifiers = ["bold"] }
 "ui.text.inactive" = { fg = "subtle" }
 "ui.virtual" = { fg = "subtle" }
 "ui.virtual.ruler" = { bg = "surface" }
-"ui.virtual.whitespace" = { fg = "border" }
-"ui.virtual.indent-guide" = { fg = "border" }
+"ui.virtual.whitespace" = { fg = "highlight_high" }
+"ui.virtual.indent-guide" = { fg = "highlight_high" }
 "ui.virtual.inlay-hint" = { fg = "inlay", bg = "surface" }
-"ui.virtual.jump-label" = { fg = "black", bg = "selection", modifiers = ["bold"] }
+"ui.virtual.jump-label" = { fg = "black", bg = "highlight_med", modifiers = ["bold"] }
 
 "ui.cursor" = { fg = "base", bg = "black" }
 "ui.cursor.primary" = { fg = "base", bg = "black" }
-"ui.cursor.match" = { fg = "black", bg = "selection" }
-"ui.selection" = { bg = "selection" }
-"ui.highlight" = { bg = "hover" }
+"ui.cursor.match" = { fg = "black", bg = "highlight_med" }
+"ui.selection" = { bg = "highlight_med" }
+"ui.highlight" = { bg = "highlight_low" }
 "ui.highlight.frameline" = { bg = "surface" }
 "ui.linenr" = { fg = "subtle" }
 "ui.linenr.selected" = { fg = "fg" }
 "ui.statusline" = { fg = "fg", bg = "base" }
 "ui.statusline.inactive" = { fg = "subtle", bg = "surface" }
-"ui.statusline.normal" = { fg = "black", bg = "selection", modifiers = ["bold"] }
-"ui.statusline.insert" = { fg = "black", bg = "selection", modifiers = ["bold"] }
-"ui.statusline.select" = { fg = "black", bg = "selection", modifiers = ["bold"] }
+"ui.statusline.normal" = { fg = "black", bg = "highlight_med", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "black", bg = "highlight_med", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "black", bg = "highlight_med", modifiers = ["bold"] }
 "ui.popup" = { fg = "fg", bg = "surface" }
 "ui.popup.info" = { fg = "fg", bg = "surface" }
-"ui.window" = { fg = "border" }
+"ui.window" = { fg = "highlight_high" }
 "ui.help" = { fg = "fg", bg = "surface" }
 "ui.menu" = { fg = "fg", bg = "surface" }
-"ui.menu.selected" = { fg = "black", bg = "selection" }
+"ui.menu.selected" = { fg = "black", bg = "highlight_med" }
 "ui.menu.scroll" = { fg = "subtle", bg = "surface" }
 "ui.picker.header" = { fg = "black", modifiers = ["bold"] }
 "ui.picker.header.column" = { fg = "fg" }
@@ -114,26 +115,22 @@ inherits = "rose_pine_dawn"
 # Gutter / VCS
 "ui.gutter" = { bg = "base" }
 "ui.gutter.selected" = { bg = "base" }
-"ui.cursorline" = { bg = "paper" }
-"ui.cursorline.primary" = { bg = "paper" }
-"ui.cursorline.secondary" = { bg = "paper" }
-"ui.cursorcolumn.primary" = { bg = "paper" }
-"ui.cursorcolumn.secondary" = { bg = "paper" }
+"ui.cursorline" = { bg = "highlight_low" }
+"ui.cursorline.primary" = { bg = "highlight_low" }
+"ui.cursorline.secondary" = { bg = "highlight_low" }
+"ui.cursorcolumn.primary" = { bg = "highlight_low" }
+"ui.cursorcolumn.secondary" = { bg = "highlight_low" }
 "ui.debug.breakpoint" = { fg = "alert" }
-"ui.debug.active" = { fg = "black", bg = "selection" }
+"ui.debug.active" = { fg = "black", bg = "highlight_med" }
 "ui.gutter.debug" = { fg = "alert" }
 "ui.gutter.diff.added" = { fg = "ink_3" }
 "ui.gutter.diff.modified" = { fg = "ink_3" }
 "ui.gutter.diff.removed" = { fg = "alert" }
 
 [palette]
-base = "#faf4ed"
-paper = "#f4ede8"
-surface = "#fffaf3"
-subsurface = "#f2e9e1"
-selection = "#dfdad9"
-border = "#cecacd"
-hover = "#dfdad999"
+# Custom Oxocarbon PRINT-style grayscale overrides.
+# Rose Pine Dawn still supplies: base, surface, overlay, highlight_low,
+# highlight_med, highlight_high, and the rest of its warm background palette.
 muted = "#909090"
 subtle = "#c6c6c6"
 inlay = "#525757"
