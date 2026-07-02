@@ -182,14 +182,12 @@ fn revpatch { interdiff -q $1 /dev/null }
 switch($os){
 case linux
 	BROWSER=zen-browser
-	EDITOR=vis
 	NPROC=`{nproc}
 	fn ls{builtin ls -AFv $*}
 	fn orphrem{doas pacman -R `{pacman -Qdtq}}
 	fn pQm{pacman -Qm}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn rcctl{systemctl $*}
-	fn vi{vis $*}
 case openbsd
 	# See: https://www.omarpolo.com/post/enjoying-cdpath.html
 	cdpath=(/usr/ports /usr/ports/mystuff)
@@ -204,14 +202,19 @@ case openbsd
 if(! ~ $os linux){
 	NPROC=`{sysctl -n hw.ncpu}
 	stty status '^T'
-	# When i say vi i mean vis{e} (if it's installed).
-	if(test -x /usr/bin/vise){
-		fn vi{vise $*}
-		EDITOR=vise
-	}
-	if not
-		EDITOR=/usr/bin/vi
 }
+
+# When i say vi i mean vis{e} (if it's installed).
+if(test -x /usr/bin/hx){
+	fn vi{hx $*}
+	EDITOR=hx
+}
+if(test -x /usr/bin/helix){
+	fn vi{helix $*}
+	EDITOR=helix
+}
+if not
+	EDITOR=/usr/bin/vi
 
 # Use $NPROC for parallelism.
 MAKEFLAGS=-j$NPROC
