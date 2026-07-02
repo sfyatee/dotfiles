@@ -1,15 +1,12 @@
 inherits = "rose_pine_dawn"
 
 "attribute" = { fg = "ox_fg" }
-
 "type" = { fg = "ox_fg", modifiers = ["italic"] }
 "type.builtin" = { fg = "ox_fg", modifiers = ["italic"] }
 "type.parameter" = { fg = "ox_fg", modifiers = ["italic"] }
 "type.enum" = { fg = "ox_gray_2" }
 "type.enum.variant" = { fg = "ox_gray_2" }
-
 "constructor" = { fg = "ox_entity" }
-
 "constant" = { fg = "ox_gray_1" }
 "constant.builtin" = { fg = "ox_gray_1" }
 "constant.builtin.boolean" = { fg = "ox_gray_1" }
@@ -18,32 +15,26 @@ inherits = "rose_pine_dawn"
 "constant.numeric" = { fg = "ox_gray_1" }
 "constant.numeric.integer" = { fg = "ox_gray_1" }
 "constant.numeric.float" = { fg = "ox_gray_1" }
-
 "string" = { fg = "ox_gray_2" }
 "string.regexp" = { fg = "ox_gray_2" }
 "string.special" = { fg = "ox_gray_2" }
 "string.special.path" = { fg = "ox_gray_2" }
 "string.special.url" = { fg = "ox_gray_2" }
 "string.special.symbol" = { fg = "ox_gray_2" }
-
 "comment" = { fg = "ox_comment" }
 "comment.line" = { fg = "ox_comment" }
 "comment.block" = { fg = "ox_comment" }
 "comment.unused" = { fg = "ox_subtle", modifiers = ["dim"] }
-
 "variable" = { fg = "ox_black" }
 "variable.builtin" = { fg = "ox_gray_2" }
 "variable.parameter" = { fg = "ox_fg" }
 "variable.other.member" = { fg = "ox_gray_2" }
 "variable.other.member.private" = { fg = "ox_gray_2" }
-
 "label" = { fg = "ox_black" }
-
 "punctuation" = { fg = "ox_fg" }
 "punctuation.delimiter" = { fg = "ox_gray_1" }
 "punctuation.bracket" = { fg = "ox_fg" }
 "punctuation.special" = { fg = "ox_gray_2" }
-
 "keyword" = { fg = "ox_gray_2" }
 "keyword.control" = { fg = "ox_gray_2" }
 "keyword.control.conditional" = { fg = "ox_gray_2" }
@@ -57,28 +48,17 @@ inherits = "rose_pine_dawn"
 "keyword.storage" = { fg = "ox_fg", modifiers = ["italic"] }
 "keyword.storage.type" = { fg = "ox_fg", modifiers = ["italic"] }
 "keyword.storage.modifier" = { fg = "ox_gray_2" }
-
 "operator" = { fg = "ox_gray_1" }
-
-# PRINT has:
-# - entity.name.command / support.function -> #575757
-# - entity.name.function / variable.other.definition -> bold #000000
-#
-# Helix often collapses shell commands and function names into `function`.
-# So generic `function` is gray-bold: this prevents shell commands like pgrep/mkdir
-# from becoming pure black. More-specific scopes get stronger styling.
 "function" = { fg = "ox_black", modifiers = ["bold"] }
 "function.builtin" = { fg = "ox_gray_2" }
 "function.method" = { fg = "ox_black", modifiers = ["bold"] }
 "function.method.private" = { fg = "ox_gray_2", modifiers = ["bold"] }
 "function.macro" = { fg = "ox_alert", modifiers = ["bold"] }
 "function.special" = { fg = "ox_gray_2" }
-
 "tag" = { fg = "ox_gray_2", modifiers = ["bold"] }
 "tag.builtin" = { fg = "ox_gray_2", modifiers = ["bold"] }
 "namespace" = { fg = "ox_gray_2" }
 "special" = { fg = "ox_gray_2" }
-
 "markup.heading" = { fg = "ox_black", modifiers = ["bold"] }
 "markup.heading.marker" = { fg = "ox_gray_2" }
 "markup.heading.1" = { fg = "ox_black", modifiers = ["bold"] }
@@ -102,19 +82,16 @@ inherits = "rose_pine_dawn"
 "markup.raw" = { fg = "ox_black", bg = "surface", modifiers = ["bold"] }
 "markup.raw.inline" = { fg = "ox_black", bg = "surface" }
 "markup.raw.block" = { fg = "ox_black", bg = "surface" }
-
 "diff.plus" = { fg = "ox_gray_2" }
 "diff.plus.gutter" = { fg = "ox_gray_2" }
 "diff.delta" = { fg = "ox_gray_1" }
 "diff.delta.gutter" = { fg = "ox_gray_2" }
 "diff.minus" = { fg = "ox_alert" }
 "diff.minus.gutter" = { fg = "ox_alert" }
-
 "warning" = { fg = "ox_gray_2" }
 "error" = { fg = "ox_alert" }
 "info" = { fg = "ox_gray_2" }
 "hint" = { fg = "ox_entity" }
-
 "diagnostic" = { underline = { color = "ox_gray_2", style = "curl" } }
 "diagnostic.warning" = { underline = { color = "ox_gray_2", style = "curl" } }
 "diagnostic.error" = { underline = { color = "ox_alert", style = "curl" } }
@@ -122,7 +99,6 @@ inherits = "rose_pine_dawn"
 "diagnostic.hint" = { underline = { color = "ox_entity", style = "curl" } }
 "diagnostic.unnecessary" = { modifiers = ["dim"] }
 "diagnostic.deprecated" = { modifiers = ["crossed_out"] }
-
 "ui.background" = { bg = "base" }
 "ui.background.separator" = { fg = "highlight_high" }
 "ui.text" = { fg = "ox_fg" }
@@ -188,9 +164,7 @@ inherits = "rose_pine_dawn"
 "ui.gutter.diff.added" = { fg = "ox_gray_2" }
 "ui.gutter.diff.modified" = { fg = "ox_gray_2" }
 "ui.gutter.diff.removed" = { fg = "ox_alert" }
-
 "tabstop" = { fg = "ox_black", bg = "highlight_med" }
-
 "markup.normal.completion" = { fg = "ox_entity", bg = "surface" }
 "markup.heading.completion" = { fg = "ox_black", bg = "surface", modifiers = ["bold"] }
 "markup.raw.inline.completion" = { fg = "ox_black", bg = "highlight_low" }
