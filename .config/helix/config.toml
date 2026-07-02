@@ -1,2 +1,4 @@
+theme = 'sfyatee'
+
 [editor]
 gutters = []

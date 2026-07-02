@@ -1,0 +1,147 @@
+# Oxocarbon PRINT Dawn for Helix
+# Inherits Rosé Pine Dawn and overrides the palette/scopes toward Oxocarbon PRINT.
+# Save as: ~/.config/helix/themes/oxocarbon_print_dawn.toml
+
+inherits = "rose_pine_dawn"
+
+# Syntax
+"attribute" = { fg = "fg" }
+"type" = { fg = "ink_1", modifiers = ["italic"] }
+"type.builtin" = { fg = "ink_2", modifiers = ["italic"] }
+"type.parameter" = { fg = "fg", modifiers = ["italic"] }
+"constructor" = { fg = "ink_0", modifiers = ["bold"] }
+"constant" = { fg = "ink_1" }
+"constant.builtin" = { fg = "ink_1" }
+"constant.builtin.boolean" = { fg = "ink_1" }
+"constant.numeric" = { fg = "ink_1" }
+"constant.character.escape" = { fg = "ink_2" }
+"string" = { fg = "ink_2" }
+"string.regexp" = { fg = "ink_2" }
+"string.special" = { fg = "ink_2" }
+"comment" = { fg = "muted" }
+"comment.unused" = { fg = "subtle", modifiers = ["dim"] }
+"variable" = { fg = "black" }
+"variable.builtin" = { fg = "ink_3" }
+"variable.parameter" = { fg = "fg", modifiers = ["italic"] }
+"variable.other.member" = { fg = "ink_3" }
+"label" = { fg = "black" }
+"punctuation" = { fg = "fg" }
+"punctuation.delimiter" = { fg = "ink_1" }
+"punctuation.bracket" = { fg = "fg" }
+"punctuation.special" = { fg = "ink_2" }
+"keyword" = { fg = "ink_3" }
+"keyword.control" = { fg = "ink_3" }
+"keyword.control.import" = { fg = "fg" }
+"keyword.control.return" = { fg = "ink_3" }
+"keyword.operator" = { fg = "ink_1" }
+"keyword.directive" = { fg = "ink_3" }
+"keyword.function" = { fg = "ink_1" }
+"keyword.storage" = { fg = "ink_1", modifiers = ["italic"] }
+"keyword.storage.type" = { fg = "ink_1", modifiers = ["italic"] }
+"keyword.storage.modifier" = { fg = "ink_3" }
+"operator" = { fg = "ink_1" }
+"function" = { fg = "ink_3", modifiers = ["bold"] }
+"function.builtin" = { fg = "ink_3" }
+"function.method" = { fg = "ink_3" }
+"function.macro" = { fg = "alert" }
+"function.special" = { fg = "ink_2" }
+"tag" = { fg = "ink_3", modifiers = ["bold"] }
+"namespace" = { fg = "ink_2" }
+"special" = { fg = "ink_2" }
+
+# Markup
+"markup.heading" = { fg = "black", modifiers = ["bold"] }
+"markup.heading.marker" = { fg = "ink_3" }
+"markup.list" = { fg = "ink_3" }
+"markup.bold" = { fg = "black", modifiers = ["bold"] }
+"markup.italic" = { fg = "fg", modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "ink_3", underline = { style = "line" } }
+"markup.link.text" = { fg = "ink_3" }
+"markup.quote" = { fg = "fg", bg = "surface" }
+"markup.raw" = { fg = "black", bg = "surface" }
+
+# Diff / diagnostics
+"diff.plus" = { fg = "ink_3" }
+"diff.delta" = { fg = "ink_2" }
+"diff.minus" = { fg = "alert" }
+"warning" = { fg = "ink_3" }
+"error" = { fg = "alert" }
+"info" = { fg = "ink_3" }
+"hint" = { fg = "fg" }
+"diagnostic.warning" = { underline = { color = "ink_3", style = "curl" } }
+"diagnostic.error" = { underline = { color = "alert", style = "curl" } }
+"diagnostic.info" = { underline = { color = "ink_3", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "fg", style = "curl" } }
+
+# Editor UI
+"ui.background" = { bg = "base" }
+"ui.background.separator" = { fg = "border" }
+"ui.text" = { fg = "fg" }
+"ui.text.focus" = { fg = "black", modifiers = ["bold"] }
+"ui.text.inactive" = { fg = "subtle" }
+"ui.virtual" = { fg = "subtle" }
+"ui.virtual.ruler" = { bg = "surface" }
+"ui.virtual.whitespace" = { fg = "border" }
+"ui.virtual.indent-guide" = { fg = "border" }
+"ui.virtual.inlay-hint" = { fg = "inlay", bg = "surface" }
+"ui.virtual.jump-label" = { fg = "black", bg = "selection", modifiers = ["bold"] }
+
+"ui.cursor" = { fg = "base", bg = "black" }
+"ui.cursor.primary" = { fg = "base", bg = "black" }
+"ui.cursor.match" = { fg = "black", bg = "selection" }
+"ui.selection" = { bg = "selection" }
+"ui.highlight" = { bg = "hover" }
+"ui.highlight.frameline" = { bg = "surface" }
+"ui.linenr" = { fg = "subtle" }
+"ui.linenr.selected" = { fg = "fg" }
+"ui.statusline" = { fg = "fg", bg = "base" }
+"ui.statusline.inactive" = { fg = "subtle", bg = "surface" }
+"ui.statusline.normal" = { fg = "black", bg = "selection", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "black", bg = "selection", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "black", bg = "selection", modifiers = ["bold"] }
+"ui.popup" = { fg = "fg", bg = "surface" }
+"ui.popup.info" = { fg = "fg", bg = "surface" }
+"ui.window" = { fg = "border" }
+"ui.help" = { fg = "fg", bg = "surface" }
+"ui.menu" = { fg = "fg", bg = "surface" }
+"ui.menu.selected" = { fg = "black", bg = "selection" }
+"ui.menu.scroll" = { fg = "subtle", bg = "surface" }
+"ui.picker.header" = { fg = "black", modifiers = ["bold"] }
+"ui.picker.header.column" = { fg = "fg" }
+"ui.picker.header.column.active" = { fg = "black", modifiers = ["bold"] }
+
+# Gutter / VCS
+"ui.gutter" = { bg = "base" }
+"ui.gutter.selected" = { bg = "base" }
+"ui.cursorline" = { bg = "paper" }
+"ui.cursorline.primary" = { bg = "paper" }
+"ui.cursorline.secondary" = { bg = "paper" }
+"ui.cursorcolumn.primary" = { bg = "paper" }
+"ui.cursorcolumn.secondary" = { bg = "paper" }
+"ui.debug.breakpoint" = { fg = "alert" }
+"ui.debug.active" = { fg = "black", bg = "selection" }
+"ui.gutter.debug" = { fg = "alert" }
+"ui.gutter.diff.added" = { fg = "ink_3" }
+"ui.gutter.diff.modified" = { fg = "ink_3" }
+"ui.gutter.diff.removed" = { fg = "alert" }
+
+[palette]
+base = "#faf4ed"
+paper = "#f4ede8"
+surface = "#fffaf3"
+subsurface = "#f2e9e1"
+selection = "#dfdad9"
+border = "#cecacd"
+hover = "#dfdad999"
+muted = "#909090"
+subtle = "#c6c6c6"
+inlay = "#525757"
+fg = "#0d0b07"
+fg2 = "#221e19"
+black = "#000000"
+ink_0 = "#221e19"
+ink_1 = "#393939"
+ink_2 = "#575757"
+ink_3 = "#575757"
+alert = "#727272"
