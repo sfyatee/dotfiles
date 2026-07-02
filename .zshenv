@@ -94,7 +94,7 @@ H=`uname -n`
 H=${H%%.*}
 
 # Default font for Plan 9 programs.
-font2="/mnt/font/IBMPlexSans/11a/font"
+font2="/mnt/font/GoRegular/11a/font"
 varfont="-f $font2"
 font="/mnt/font/GoMono/11a/font"
 fixfont="-F $font"

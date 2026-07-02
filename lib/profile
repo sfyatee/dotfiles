@@ -74,10 +74,8 @@ PYTHON_HISTORY=/dev/null
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # Default font for Plan 9 programs.
-varfont=()
-font2=/mnt/font/IBMPlexSans/11a/font
+font2=/mnt/font/GoRegular/11a/font
 varfont=(-f $font2)
-fixfont=()
 font=/mnt/font/GoMono/11a/font
 fixfont=(-F $font)
 
