@@ -1,27 +1,15 @@
-# Oxocarbon PRINT Dawn for Helix
-# Keeps Rose Pine Dawn's warm background/UI base.
-# Reworks syntax toward Oxocarbon PRINT.
-
 inherits = "rose_pine_dawn"
 
-# Syntax ----------------------------------------------------------------------
-
-# PRINT: entity.other.attribute-name -> #0d0b07
 "attribute" = { fg = "ox_fg" }
 
-# PRINT: storage.type + variable.parameter -> italic #0d0b07
-# Helix primitive types like void/int/char usually land in type.builtin.
 "type" = { fg = "ox_fg", modifiers = ["italic"] }
 "type.builtin" = { fg = "ox_fg", modifiers = ["italic"] }
 "type.parameter" = { fg = "ox_fg", modifiers = ["italic"] }
 "type.enum" = { fg = "ox_gray_2" }
 "type.enum.variant" = { fg = "ox_gray_2" }
 
-# PRINT: entity -> #221e19
 "constructor" = { fg = "ox_entity" }
 
-# PRINT: constant -> #393939
-# Numbers should NOT be italic.
 "constant" = { fg = "ox_gray_1" }
 "constant.builtin" = { fg = "ox_gray_1" }
 "constant.builtin.boolean" = { fg = "ox_gray_1" }
@@ -31,7 +19,6 @@ inherits = "rose_pine_dawn"
 "constant.numeric.integer" = { fg = "ox_gray_1" }
 "constant.numeric.float" = { fg = "ox_gray_1" }
 
-# PRINT: string + punctuation.definition.string -> #575757
 "string" = { fg = "ox_gray_2" }
 "string.regexp" = { fg = "ox_gray_2" }
 "string.special" = { fg = "ox_gray_2" }
@@ -39,36 +26,24 @@ inherits = "rose_pine_dawn"
 "string.special.url" = { fg = "ox_gray_2" }
 "string.special.symbol" = { fg = "ox_gray_2" }
 
-# PRINT: comment -> #909090
 "comment" = { fg = "ox_comment" }
 "comment.line" = { fg = "ox_comment" }
 "comment.block" = { fg = "ox_comment" }
 "comment.unused" = { fg = "ox_subtle", modifiers = ["dim"] }
 
-# PRINT: variable -> #000000
-# PRINT: variable.parameter -> italic #0d0b07
-# PRINT: variable.member -> #575757
 "variable" = { fg = "ox_black" }
 "variable.builtin" = { fg = "ox_gray_2" }
 "variable.parameter" = { fg = "ox_fg" }
 "variable.other.member" = { fg = "ox_gray_2" }
 "variable.other.member.private" = { fg = "ox_gray_2" }
 
-# PRINT: label -> #000000
 "label" = { fg = "ox_black" }
 
-# PRINT: punctuation -> #0d0b07
-# PRINT: punctuation.separator -> #393939
-# PRINT: punctuation.definition.comment -> #909090
 "punctuation" = { fg = "ox_fg" }
 "punctuation.delimiter" = { fg = "ox_gray_1" }
 "punctuation.bracket" = { fg = "ox_fg" }
 "punctuation.special" = { fg = "ox_gray_2" }
 
-# PRINT: keyword -> #575757
-# PRINT: keyword.operator / storage.type-ish -> #393939
-# PRINT: storage.modifier.package/import -> #0d0b07
-# PRINT: storage.type -> italic #0d0b07
 "keyword" = { fg = "ox_gray_2" }
 "keyword.control" = { fg = "ox_gray_2" }
 "keyword.control.conditional" = { fg = "ox_gray_2" }
@@ -83,7 +58,6 @@ inherits = "rose_pine_dawn"
 "keyword.storage.type" = { fg = "ox_fg", modifiers = ["italic"] }
 "keyword.storage.modifier" = { fg = "ox_gray_2" }
 
-# PRINT: keyword.operator / operators lean #393939
 "operator" = { fg = "ox_gray_1" }
 
 # PRINT has:
@@ -100,17 +74,11 @@ inherits = "rose_pine_dawn"
 "function.macro" = { fg = "ox_alert", modifiers = ["bold"] }
 "function.special" = { fg = "ox_gray_2" }
 
-# PRINT: tag/module refs mostly #575757, some declarations bold black
 "tag" = { fg = "ox_gray_2", modifiers = ["bold"] }
 "tag.builtin" = { fg = "ox_gray_2", modifiers = ["bold"] }
-
-# PRINT: support/entity namespaces tend #575757
 "namespace" = { fg = "ox_gray_2" }
 "special" = { fg = "ox_gray_2" }
 
-# Markup ----------------------------------------------------------------------
-
-# PRINT: markdown section/raw title -> bold #000000
 "markup.heading" = { fg = "ox_black", modifiers = ["bold"] }
 "markup.heading.marker" = { fg = "ox_gray_2" }
 "markup.heading.1" = { fg = "ox_black", modifiers = ["bold"] }
@@ -119,27 +87,21 @@ inherits = "rose_pine_dawn"
 "markup.heading.4" = { fg = "ox_black", modifiers = ["bold"] }
 "markup.heading.5" = { fg = "ox_black", modifiers = ["bold"] }
 "markup.heading.6" = { fg = "ox_black", modifiers = ["bold"] }
-
 "markup.list" = { fg = "ox_gray_2" }
 "markup.list.unnumbered" = { fg = "ox_gray_2" }
 "markup.list.numbered" = { fg = "ox_gray_2" }
 "markup.list.checked" = { fg = "ox_gray_2" }
 "markup.list.unchecked" = { fg = "ox_gray_2" }
-
 "markup.bold" = { fg = "ox_black", modifiers = ["bold"] }
 "markup.italic" = { fg = "ox_fg", modifiers = ["italic"] }
 "markup.strikethrough" = { modifiers = ["crossed_out"] }
-
 "markup.link.url" = { fg = "ox_gray_2", underline = { style = "line" } }
 "markup.link.text" = { fg = "ox_gray_2" }
 "markup.link.label" = { fg = "ox_gray_2" }
-
 "markup.quote" = { fg = "ox_gray_2", bg = "surface" }
 "markup.raw" = { fg = "ox_black", bg = "surface", modifiers = ["bold"] }
 "markup.raw.inline" = { fg = "ox_black", bg = "surface" }
 "markup.raw.block" = { fg = "ox_black", bg = "surface" }
-
-# Diff / diagnostics ----------------------------------------------------------
 
 "diff.plus" = { fg = "ox_gray_2" }
 "diff.plus.gutter" = { fg = "ox_gray_2" }
@@ -161,12 +123,8 @@ inherits = "rose_pine_dawn"
 "diagnostic.unnecessary" = { modifiers = ["dim"] }
 "diagnostic.deprecated" = { modifiers = ["crossed_out"] }
 
-# Editor UI -------------------------------------------------------------------
-# Keep Rose Pine Dawn background: base/surface/overlay/highlight_* come from inheritance.
-
 "ui.background" = { bg = "base" }
 "ui.background.separator" = { fg = "highlight_high" }
-
 "ui.text" = { fg = "ox_fg" }
 "ui.text.focus" = { fg = "ox_black", modifiers = ["bold"] }
 "ui.text.inactive" = { fg = "ox_disabled" }
@@ -174,7 +132,6 @@ inherits = "rose_pine_dawn"
 "ui.text.warning" = { fg = "ox_gray_2" }
 "ui.text.error" = { fg = "ox_alert" }
 "ui.text.directory" = { fg = "ox_black", modifiers = ["bold"] }
-
 "ui.virtual" = { fg = "ox_subtle" }
 "ui.virtual.ruler" = { bg = "highlight_low" }
 "ui.virtual.whitespace" = { fg = "highlight_high" }
@@ -184,92 +141,69 @@ inherits = "rose_pine_dawn"
 "ui.virtual.inlay-hint.type" = { fg = "ox_inlay", bg = "surface" }
 "ui.virtual.wrap" = { fg = "ox_subtle" }
 "ui.virtual.jump-label" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
-
 "ui.cursor" = { fg = "base", bg = "ox_black" }
 "ui.cursor.primary" = { fg = "base", bg = "ox_black" }
 "ui.cursor.match" = { fg = "ox_black", bg = "highlight_med" }
-
 "ui.cursor.normal" = { fg = "base", bg = "ox_black" }
 "ui.cursor.insert" = { fg = "base", bg = "ox_black" }
 "ui.cursor.select" = { fg = "base", bg = "ox_black" }
 "ui.cursor.primary.normal" = { fg = "base", bg = "ox_black" }
 "ui.cursor.primary.insert" = { fg = "base", bg = "ox_black" }
 "ui.cursor.primary.select" = { fg = "base", bg = "ox_black" }
-
 "ui.selection" = { fg = "ox_fg", bg = "highlight_med" }
 "ui.selection.primary" = { fg = "ox_fg", bg = "highlight_med" }
-
 "ui.highlight" = { bg = "highlight_low" }
 "ui.highlight.frameline" = { bg = "surface" }
-
 "ui.linenr" = { fg = "ox_subtle" }
 "ui.linenr.selected" = { fg = "ox_entity" }
-
 "ui.statusline" = { fg = "ox_entity", bg = "base" }
 "ui.statusline.inactive" = { fg = "ox_disabled", bg = "surface" }
 "ui.statusline.normal" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
 "ui.statusline.insert" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
 "ui.statusline.select" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
 "ui.statusline.separator" = { fg = "highlight_high" }
-
 "ui.bufferline" = { fg = "ox_disabled", bg = "base" }
 "ui.bufferline.active" = { fg = "ox_black", bg = "base", modifiers = ["bold"] }
 "ui.bufferline.background" = { bg = "base" }
-
 "ui.popup" = { fg = "ox_entity", bg = "surface" }
 "ui.popup.info" = { fg = "ox_entity", bg = "surface" }
 "ui.window" = { fg = "highlight_high" }
 "ui.help" = { fg = "ox_entity", bg = "surface" }
-
 "ui.menu" = { fg = "ox_entity", bg = "surface" }
 "ui.menu.selected" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
 "ui.menu.scroll" = { fg = "ox_subtle", bg = "surface" }
-
 "ui.picker.header" = { fg = "ox_black", modifiers = ["bold"] }
 "ui.picker.header.column" = { fg = "ox_fg" }
 "ui.picker.header.column.active" = { fg = "ox_black", modifiers = ["bold"] }
-
 "ui.gutter" = { bg = "base" }
 "ui.gutter.selected" = { bg = "base" }
-
 "ui.cursorline" = { bg = "highlight_low" }
 "ui.cursorline.primary" = { bg = "highlight_low" }
 "ui.cursorline.secondary" = { bg = "highlight_low" }
 "ui.cursorcolumn.primary" = { bg = "highlight_low" }
 "ui.cursorcolumn.secondary" = { bg = "highlight_low" }
-
 "ui.debug.breakpoint" = { fg = "ox_alert" }
 "ui.debug.active" = { fg = "ox_black", bg = "highlight_med" }
 "ui.gutter.debug" = { fg = "ox_alert" }
-
 "ui.gutter.diff.added" = { fg = "ox_gray_2" }
 "ui.gutter.diff.modified" = { fg = "ox_gray_2" }
 "ui.gutter.diff.removed" = { fg = "ox_alert" }
 
 "tabstop" = { fg = "ox_black", bg = "highlight_med" }
 
-# Completion / hover markup UI ------------------------------------------------
-
 "markup.normal.completion" = { fg = "ox_entity", bg = "surface" }
 "markup.heading.completion" = { fg = "ox_black", bg = "surface", modifiers = ["bold"] }
 "markup.raw.inline.completion" = { fg = "ox_black", bg = "highlight_low" }
-
 "markup.normal.hover" = { fg = "ox_entity", bg = "surface" }
 "markup.heading.hover" = { fg = "ox_black", bg = "surface", modifiers = ["bold"] }
 "markup.raw.inline.hover" = { fg = "ox_black", bg = "highlight_low" }
 
 [palette]
-# Oxocarbon PRINT foreground/syntax palette.
-# Rose Pine Dawn still supplies: base, surface, overlay, highlight_low,
-# highlight_med, highlight_high, and the warm Dawn background.
-
 ox_fg = "#0d0b07"
 ox_entity = "#221e19"
 ox_black = "#000000"
-
 ox_gray_1 = "#393939"
 ox_gray_2 = "#575757"
-
 ox_alert = "#727272"
 ox_comment = "#909090"
 ox_subtle = "#c6c6c6"
