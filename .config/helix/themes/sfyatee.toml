@@ -5,31 +5,22 @@ inherits = "rose_pine_dawn"
 "type.builtin" = { fg = "ox_fg", modifiers = ["italic"] }
 "type.parameter" = { fg = "ox_fg", modifiers = ["italic"] }
 "type.enum" = { fg = "ox_gray_2" }
-"type.enum.variant" = { fg = "ox_gray_2" }
 "constructor" = { fg = "ox_entity" }
 "constant" = { fg = "ox_gray_1" }
 "constant.builtin" = { fg = "ox_gray_1" }
-"constant.builtin.boolean" = { fg = "ox_gray_1" }
+"constant.builtin.boolean" = { fg = "ox_fg" }
 "constant.character" = { fg = "ox_gray_1" }
 "constant.character.escape" = { fg = "ox_gray_2" }
 "constant.numeric" = { fg = "ox_gray_1" }
-"constant.numeric.integer" = { fg = "ox_gray_1" }
-"constant.numeric.float" = { fg = "ox_gray_1" }
 "string" = { fg = "ox_gray_2" }
 "string.regexp" = { fg = "ox_gray_2" }
 "string.special" = { fg = "ox_gray_2" }
-"string.special.path" = { fg = "ox_gray_2" }
-"string.special.url" = { fg = "ox_gray_2" }
-"string.special.symbol" = { fg = "ox_gray_2" }
 "comment" = { fg = "ox_comment" }
-"comment.line" = { fg = "ox_comment" }
-"comment.block" = { fg = "ox_comment" }
 "comment.unused" = { fg = "ox_subtle", modifiers = ["dim"] }
 "variable" = { fg = "ox_black" }
 "variable.builtin" = { fg = "ox_gray_2" }
 "variable.parameter" = { fg = "ox_fg" }
 "variable.other.member" = { fg = "ox_gray_2" }
-"variable.other.member.private" = { fg = "ox_gray_2" }
 "label" = { fg = "ox_black" }
 "punctuation" = { fg = "ox_fg" }
 "punctuation.delimiter" = { fg = "ox_gray_1" }
@@ -37,11 +28,7 @@ inherits = "rose_pine_dawn"
 "punctuation.special" = { fg = "ox_gray_2" }
 "keyword" = { fg = "ox_gray_2" }
 "keyword.control" = { fg = "ox_gray_2" }
-"keyword.control.conditional" = { fg = "ox_gray_2" }
-"keyword.control.repeat" = { fg = "ox_gray_2" }
 "keyword.control.import" = { fg = "ox_fg" }
-"keyword.control.return" = { fg = "ox_gray_2" }
-"keyword.control.exception" = { fg = "ox_gray_2" }
 "keyword.operator" = { fg = "ox_gray_1" }
 "keyword.directive" = { fg = "ox_gray_2" }
 "keyword.function" = { fg = "ox_gray_1" }
@@ -56,22 +43,11 @@ inherits = "rose_pine_dawn"
 "function.macro" = { fg = "ox_alert", modifiers = ["bold"] }
 "function.special" = { fg = "ox_gray_2" }
 "tag" = { fg = "ox_gray_2", modifiers = ["bold"] }
-"tag.builtin" = { fg = "ox_gray_2", modifiers = ["bold"] }
 "namespace" = { fg = "ox_gray_2" }
 "special" = { fg = "ox_gray_2" }
 "markup.heading" = { fg = "ox_black", modifiers = ["bold"] }
 "markup.heading.marker" = { fg = "ox_gray_2" }
-"markup.heading.1" = { fg = "ox_black", modifiers = ["bold"] }
-"markup.heading.2" = { fg = "ox_black", modifiers = ["bold"] }
-"markup.heading.3" = { fg = "ox_black", modifiers = ["bold"] }
-"markup.heading.4" = { fg = "ox_black", modifiers = ["bold"] }
-"markup.heading.5" = { fg = "ox_black", modifiers = ["bold"] }
-"markup.heading.6" = { fg = "ox_black", modifiers = ["bold"] }
 "markup.list" = { fg = "ox_gray_2" }
-"markup.list.unnumbered" = { fg = "ox_gray_2" }
-"markup.list.numbered" = { fg = "ox_gray_2" }
-"markup.list.checked" = { fg = "ox_gray_2" }
-"markup.list.unchecked" = { fg = "ox_gray_2" }
 "markup.bold" = { fg = "ox_black", modifiers = ["bold"] }
 "markup.italic" = { fg = "ox_fg", modifiers = ["italic"] }
 "markup.strikethrough" = { modifiers = ["crossed_out"] }
@@ -83,11 +59,8 @@ inherits = "rose_pine_dawn"
 "markup.raw.inline" = { fg = "ox_black", bg = "surface" }
 "markup.raw.block" = { fg = "ox_black", bg = "surface" }
 "diff.plus" = { fg = "ox_gray_2" }
-"diff.plus.gutter" = { fg = "ox_gray_2" }
 "diff.delta" = { fg = "ox_gray_1" }
-"diff.delta.gutter" = { fg = "ox_gray_2" }
 "diff.minus" = { fg = "ox_alert" }
-"diff.minus.gutter" = { fg = "ox_alert" }
 "warning" = { fg = "ox_gray_2" }
 "error" = { fg = "ox_alert" }
 "info" = { fg = "ox_gray_2" }
@@ -113,8 +86,6 @@ inherits = "rose_pine_dawn"
 "ui.virtual.whitespace" = { fg = "highlight_high" }
 "ui.virtual.indent-guide" = { fg = "highlight_high" }
 "ui.virtual.inlay-hint" = { fg = "ox_inlay", bg = "surface" }
-"ui.virtual.inlay-hint.parameter" = { fg = "ox_inlay", bg = "surface" }
-"ui.virtual.inlay-hint.type" = { fg = "ox_inlay", bg = "surface" }
 "ui.virtual.wrap" = { fg = "ox_subtle" }
 "ui.virtual.jump-label" = { fg = "ox_black", bg = "highlight_med", modifiers = ["bold"] }
 "ui.cursor" = { fg = "base", bg = "ox_black" }
