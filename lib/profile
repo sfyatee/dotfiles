@@ -144,6 +144,18 @@ fn me{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 
+# When i say vi i mean vis{e} (if it's installed).
+if(test -x /usr/bin/hx){
+	fn vi{hx $*}
+	EDITOR=hx
+}
+if(test -x /usr/bin/helix){
+	fn vi{helix $*}
+	EDITOR=helix
+}
+if not
+	EDITOR=/usr/bin/vi
+
 # For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){
 	# plumb files instead of starting new editor
@@ -202,18 +214,6 @@ if(! ~ $os linux){
 	NPROC=`{sysctl -n hw.ncpu}
 	stty status '^T'
 }
-
-# When i say vi i mean vis{e} (if it's installed).
-if(test -x /usr/bin/hx){
-	fn vi{hx $*}
-	EDITOR=hx
-}
-if(test -x /usr/bin/helix){
-	fn vi{helix $*}
-	EDITOR=helix
-}
-if not
-	EDITOR=/usr/bin/vi
 
 # Use $NPROC for parallelism.
 MAKEFLAGS=-j$NPROC
