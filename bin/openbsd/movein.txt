@@ -8,6 +8,7 @@ gitlab-cli
 go
 go-fonts
 gopls
+got
 hack-fonts
 hare
 helix
