@@ -44,21 +44,21 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 
 ### Input configuration
 #
-# Example configuration:
-#
-#   input type:touchpad {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-#   input type:keyboard {
-#       xkb_layout "eu"
-#   }
-#
 # You can also configure each device individually.
-# Read `man 5 sway-input` for more information about this section.
+# Read sway-input(5) for more information about this section.
+#
+# https://wayland.freedesktop.org/libinput/doc/latest/configuration.html
+#
+#input type:touchpad {
+#    dwt enabled
+#    tap enabled
+#    natural_scroll enabled
+#    middle_emulation enabled
+#}
+
+input type:pointer {
+    natural_scroll enabled
+}
 
 ### Key bindings
 #
@@ -223,7 +223,7 @@ bindsym $mod+r mode "resize"
 #
 # Status Bar:
 #
-# Read `man 5 sway-bar` for more information about this section.
+# Read sway-bar(5) for more information about this section.
 bar {
     position top
 
@@ -238,4 +238,6 @@ bar {
     }
 }
 
+include ~/.config/sway/conf.d/*
+include ~/.config/sway/"$(uname -n)"/*
 include /etc/sway/config.d/*
