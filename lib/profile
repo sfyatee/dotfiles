@@ -150,7 +150,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
-	# prompt - {uname -s}%
+	# prompt - : {uname -n};
 	sys=`{uname -n|sed 's/\..*//'}
 	ps1='; '
 	prompt=($sys^$ps1 $tab)
