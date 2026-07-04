@@ -106,7 +106,7 @@ openbsd)
 	alias rsync="openrsync"
 esac
 
-# When i say vi i mean vis{e} (if it's installed).
+# When I say vi I mean helix (if it's installed).
 if command -v hx >/dev/null 2>&1; then
 	alias vi=hx
 	export EDITOR=hx

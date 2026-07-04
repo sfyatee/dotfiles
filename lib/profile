@@ -144,7 +144,7 @@ fn me{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 
-# When i say vi i mean helix (if it's installed).
+# When I say vi I mean helix (if it's installed).
 if(test -x /usr/bin/hx){
 	fn vi{hx $*}
 	EDITOR=hx
