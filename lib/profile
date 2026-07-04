@@ -113,13 +113,15 @@ cr='
 
 # prompt - "[%s] %s ", uptime(y, mo, d, h, mi, s), host
 # ../bin/openbsd/prompt2.go
-fn promp {
+fn : {}
+fn prompt1{
 	sys=`{prompt2}
 	ps1='%'
-	prompt=($"sys^' '^$ps1^' ')
-	# fn $sys^' '^$ps1^' ' { if(! ~ $#* 0) $* }
+	prompt=(': '^$"sys^' '^$ps1^' ')
+	fn $sys^' '^$ps1^' ' { if(! ~ $#* 0) $* }
 }
-promp
+fn cd { builtin cd $* && prompt1 }
+prompt1
 
 # See: http://man.9front.org/1/emacs
 fn acme{SHELL=hack builtin acme -a $varfont $fixfont $*}
@@ -148,11 +150,8 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
-	# prompt - g%
-	if(~ $#SSH_CONNECTION 0)
-		sys=g
-	if not
-		sys=`{uname -s}
+	# prompt - {uname -s}%
+	sys=`{uname -n|sed 's/\..*//'}
 	ps1='% '
 	prompt=($sys^$ps1 $tab)
 	fn $sys^'%' { if(! ~ $#* 0) $* }

@@ -43,7 +43,7 @@ add-zsh-hook -Uz chpwd osc7
 
 # prompt - "[%s] %s ", uptime(y, mo, d, h, mi, s), host
 # bin/openbsd/prompt2.go
-PROMPT='`prompt2` %# '
+PROMPT=': `prompt2` %# '
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
