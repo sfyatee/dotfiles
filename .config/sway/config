@@ -1,8 +1,4 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+# Read sway(5) for a complete reference.
 
 ### Variables
 #
@@ -17,6 +13,8 @@ set $right l
 set $term foot
 # Your preferred application launcher
 set $menu fuzzel
+
+default_border pixel
 
 ### Output configuration
 #
