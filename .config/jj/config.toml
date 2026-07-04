@@ -5,6 +5,7 @@ email = "d@sfyatee.com"
 [ui]
 diff-formatter = ":git"
 merge-editor = "mergiraf"
+default-command = "log"
 
 [aliases]
 # create a pull request using `gh` for closest_bookmark(@)
