@@ -14,9 +14,9 @@ set $term foot
 # Your preferred application launcher
 set $menu fuzzel
 # Colors
-set $bg #000000
+set $bg  #000000
 set $bga #444444
-set $fg #ffffff
+set $fg  #ffffff
 set $fgi #888888
 set $fgu #555555
 set $btf #000000
