@@ -93,10 +93,9 @@ revpatch() { interdiff -q $1 /dev/null }
 case "$OS" in
 linux)
 	alias ls="ls -AFv"
-	alias orphrem='doas pacman -R $(pacman -Qdtq)'
+	alias orphrem='run0 pacman -R $(pacman -Qdtq)'
 	alias pQm="pacman -Qm"
 	alias ph="ps auwwx | sort -rk 3,3 | head"
-	alias rcctl="systemctl"
 	;;
 openbsd)
 	alias cvs="opencvs"
