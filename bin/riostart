@@ -37,7 +37,6 @@ swaybg -c a3ccbd &
 # I'm afraid it's terminal...
 foot aerc &
 foot senpai &
-foot cmus &
 
 # Default font for Plan 9 programs.
 lookforfont() {
