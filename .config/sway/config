@@ -218,28 +218,16 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
-# class                  border     bg       text indicator child_border
-client.focused           #f4f2f5    #e0dde2  $fg  $bga      $bg
+# class                  border  bg       text    indicator child_border
+client.focused           #f4f2f5 #e0dde2  #000000 #000000   #000000
 #client.focused_inactive $bg    $bg  $fgi $bg       $bg
 #client.unfocused        $bg    $bg  $fgu $bg       $bg
 
 #
 # Status Bar:
 #
-# Read sway-bar(5) for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+# Forget about sway-bar(5) and read waybar(5)
+# waybar
 
 include ~/.config/sway/conf.d/*
 include ~/.config/sway/"$(uname -n)"/*
