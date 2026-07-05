@@ -41,7 +41,7 @@ osc71() {
 osc7(){((ZSH_SUBSHELL))||osc71}
 add-zsh-hook -Uz chpwd osc7
 
-# prompt - "[%s] %s ", uptime(y, mo, d, h, mi, s), host
+# prompt - : ~/bin %
 # bin/openbsd/prompt2.go
 PROMPT=': `prompt2` %# '
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
@@ -105,14 +105,6 @@ openbsd)
 	alias pclean='make clean="package plist"'
 	alias rsync="openrsync"
 esac
-
-# When I say vi I mean helix (if it's installed).
-if command -v emacs >/dev/null 2>&1; then
-	alias ed=emacs
-	export EDITOR=emacs
-else
-	export EDITOR=/usr/bin/mg
-fi
 
 # No fancy zsh prompt in dumb terminals.
 if [[ "$TERM" == "dumb" ]]; then

@@ -38,6 +38,9 @@ LC_CTYPE=$LANG
 LC_COLLATE=C
 LC_TIME=C
 
+# mg(1)
+EDITOR=mg
+
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=FRXi
@@ -111,14 +114,13 @@ nl='
 cr='
 '
 
-# prompt - "[%s] %s ", uptime(y, mo, d, h, mi, s), host
+# prompt - : ~/bin %
 # ../bin/openbsd/prompt2.go
-fn : {}
 fn prompt1{
 	sys=`{prompt2}
 	ps1='%'
 	prompt=(': '^$"sys^' '^$ps1^' ')
-	fn $sys^' '^$ps1^' ' { if(! ~ $#* 0) $* }
+	fn ':'^' '^$sys^' '^$ps1^' ' { if(! ~ $#* 0) $* }
 }
 fn cd { builtin cd $* && prompt1 }
 prompt1
@@ -143,14 +145,6 @@ fn mg{builtin mg -n $*}
 fn me{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
-
-# When I say vi I mean helix (if it's installed).
-if(test -x emacs){
-	fn ed{emacs $*}
-	EDITOR=emacs
-}
-if not
-	EDITOR=/usr/bin/mg
 
 # For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){

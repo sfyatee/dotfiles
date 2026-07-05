@@ -48,6 +48,9 @@ LC_TIME=C
 
 export LANG LC_CTYPE LC_COLLATE LC_TIME
 
+# mg(1)
+EDITOR=mg
+
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=FRXi
@@ -67,7 +70,7 @@ GOTOOLCHAIN=local
 # -rob
 NO_COLOR=1
 
-export DO_NOT_TRACK LESS GOTELEMETRY GOTOOLCHAIN NO_COLOR
+export DO_NOT_TRACK EDITOR GOTELEMETRY GOTOOLCHAIN LESS NO_COLOR
 
 # run0(1)
 PACMAN_AUTH=run0
