@@ -227,28 +227,6 @@ client.focused           #f4f2f5 #e0dde2  #000000 #ff007f   #000000
 # Status Bar:
 #
 # Forget about sway-bar(5) and read waybar(5)
-bar {
-    # swaybar_command swaybar
-    swaybar_command waybar
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d :: %X'; do sleep 1; done
-
-  position bottom
-  separator_symbol "::"
-  colors {
-    background #222222
-    statusline #9b8d7f
-    separator #9b8d7f
-
-    focused_workspace #9b8d7f #9b8d7f #222222
-    inactive_workspace #222222 #222222 #9b8d7f
-    active_workspace #222222 #222222 #9b8d7f
-    urgent_workspace #222222 #222222 #9b8d7f
-    binding_mode #222222 #222222 #9b8d7f
-  }
-}
 
 include ~/.config/sway/conf.d/*
 include ~/.config/sway/"$(uname -n)"/*
