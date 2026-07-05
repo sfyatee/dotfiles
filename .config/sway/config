@@ -13,13 +13,6 @@ set $right l
 set $term foot
 # Your preferred application launcher
 set $menu fuzzel
-# Colors
-set $bg  #000000
-set $bga #444444
-set $fg  #ffffff
-set $fgi #888888
-set $fgu #555555
-set $btf #000000
 # Misc. Settings
 #default_border pixel
 
@@ -225,8 +218,8 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
-# class                 border bg   text indicator child_border
-client.focused          #f4f2f5    #e0dde2  $fg  $bga      $bg
+# class                  border     bg       text indicator child_border
+client.focused           #f4f2f5    #e0dde2  $fg  $bga      $bg
 #client.focused_inactive $bg    $bg  $fgi $bg       $bg
 #client.unfocused        $bg    $bg  $fgu $bg       $bg
 
