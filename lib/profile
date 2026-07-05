@@ -38,9 +38,6 @@ LC_CTYPE=$LANG
 LC_COLLATE=C
 LC_TIME=C
 
-# mg(1)
-EDITOR=mg
-
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=FRXi
@@ -145,6 +142,18 @@ fn mg{builtin mg -n $*}
 fn me{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
+
+# When I say vi I mean helix (if it's installed).
+if(test -x /usr/bin/hx){
+	fn vi{hx $*}
+	EDITOR=hx
+}
+if(test -x /usr/bin/helix){
+	fn vi{helix $*}
+	EDITOR=helix
+}
+if not
+	EDITOR=/usr/bin/vi
 
 # For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){

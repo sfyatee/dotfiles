@@ -48,9 +48,6 @@ LC_TIME=C
 
 export LANG LC_CTYPE LC_COLLATE LC_TIME
 
-# mg(1)
-EDITOR=mg
-
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=FRXi

@@ -106,6 +106,16 @@ openbsd)
 	alias rsync="openrsync"
 esac
 
+if command -v hx >/dev/null 2>&1; then
+	alias vi=hx
+	export EDITOR=hx
+elif command -v helix >/dev/null 2>&1; then
+	alias vi=helix
+	export EDITOR=helix
+else
+	export EDITOR=/usr/bin/vi
+fi
+
 # No fancy zsh prompt in dumb terminals.
 if [[ "$TERM" == "dumb" ]]; then
 	# disable
