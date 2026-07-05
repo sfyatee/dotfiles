@@ -220,11 +220,12 @@ bindsym $mod+r mode "resize"
 # Window Borders and Title Bars:
 # sway(5) - "Configures the color of window borders and title bars."
 # 
-# class                  border  bg       text    indicator child_border
-client.focused           #f4f2f5 #e0dde2  #000000 #000000   #e0dde2
-#client.focused_inactive $bg    $bg  $fgi $bg       $bg
-#client.unfocused        $bg    $bg  $fgu $bg       $bg
+# class                 border  bg       text    indicator child_border
+client.focused          #202020 #000000  #9b8d7f #fcb134   #202020
+# client.focused_inactive $bg    $bg  $fgi $bg       $bg
+client.unfocused        #e0dde2 #e0dde2  #000000 #000000   #e0dde2
 
+#
 #
 # Status Bar:
 #
