@@ -13,13 +13,11 @@ set $right l
 set $term foot
 # Your preferred application launcher
 set $menu fuzzel
-# Misc. Settings
-#default_border pixel
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /dev/null fill #f4f2f5
 #
 # Example configuration:
 #
@@ -223,7 +221,7 @@ bindsym $mod+r mode "resize"
 # sway(5) - "Configures the color of window borders and title bars."
 # 
 # class                  border  bg       text    indicator child_border
-client.focused           #f4f2f5 #e0dde2  #000000 #ff007f   #fafa33
+client.focused           #f4f2f5 #e0dde2  #000000 #000000   #e0dde2
 #client.focused_inactive $bg    $bg  $fgi $bg       $bg
 #client.unfocused        $bg    $bg  $fgu $bg       $bg
 
