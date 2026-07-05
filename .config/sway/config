@@ -218,8 +218,12 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
+#
+# Window Borders and Title Bars:
+# sway(5) - "Configures the color of window borders and title bars."
+# 
 # class                  border  bg       text    indicator child_border
-client.focused           #f4f2f5 #e0dde2  #000000 #ff007f   #000000
+client.focused           #f4f2f5 #e0dde2  #000000 #ff007f   #fafa33
 #client.focused_inactive $bg    $bg  $fgi $bg       $bg
 #client.unfocused        $bg    $bg  $fgu $bg       $bg
 
