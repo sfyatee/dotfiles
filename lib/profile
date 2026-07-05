@@ -145,16 +145,12 @@ fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 
 # When I say vi I mean helix (if it's installed).
-if(test -x /usr/bin/hx){
-	fn vi{hx $*}
-	EDITOR=hx
-}
-if(test -x /usr/bin/helix){
-	fn vi{helix $*}
-	EDITOR=helix
+if(test -x emacs){
+	fn ed{emacs $*}
+	EDITOR=emacs
 }
 if not
-	EDITOR=/usr/bin/vi
+	EDITOR=/usr/bin/mg
 
 # For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){

@@ -107,14 +107,11 @@ openbsd)
 esac
 
 # When I say vi I mean helix (if it's installed).
-if command -v hx >/dev/null 2>&1; then
-	alias vi=hx
-	export EDITOR=hx
-elif command -v helix >/dev/null 2>&1; then
-	alias vi=helix
-	export EDITOR=helix
+if command -v emacs >/dev/null 2>&1; then
+	alias ed=emacs
+	export EDITOR=emacs
 else
-	export EDITOR=/usr/bin/vi
+	export EDITOR=/usr/bin/mg
 fi
 
 # No fancy zsh prompt in dumb terminals.
