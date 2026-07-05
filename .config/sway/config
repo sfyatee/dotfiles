@@ -226,7 +226,7 @@ bindsym $mod+r mode "resize"
     bindsym Print exec grim
 
 # class                 border bg   text indicator child_border
-#client.focused          $bg    $bg  $fg  $bga      $bg
+client.focused          $bg    #e0dde2  $fg  $bga      $bg
 #client.focused_inactive $bg    $bg  $fgi $bg       $bg
 #client.unfocused        $bg    $bg  $fgu $bg       $bg
 
