@@ -60,6 +60,9 @@ DO_NOT_TRACK=true
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 
+# Buy AMD...
+SWAY_UNSUPPORTED_GPU=true
+
 # When I was a child, I used to speak like a child, think like a child,
 # reason like a child; when I became a man, I did away with childish
 # things.
@@ -67,7 +70,7 @@ GOTOOLCHAIN=local
 # -rob
 NO_COLOR=1
 
-export DO_NOT_TRACK EDITOR GOTELEMETRY GOTOOLCHAIN LESS NO_COLOR
+export DO_NOT_TRACK EDITOR GOTELEMETRY GOTOOLCHAIN LESS NO_COLOR SWAY_UNSUPPORTED_GPU
 
 # run0(1)
 PACMAN_AUTH=run0
