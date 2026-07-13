@@ -20,6 +20,7 @@ knfmt
 lilypond
 mergiraf
 mumble
+plakar
 playerctl
 racket-minimal
 ripgrep
