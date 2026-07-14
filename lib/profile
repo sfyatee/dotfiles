@@ -151,14 +151,10 @@ fn me{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 
-# When I say vi I mean helix (if it's installed).
-if(test -x /usr/bin/hx){
-	fn vi{hx $*}
-	EDITOR=hx
-}
-if(test -x /usr/bin/helix){
-	fn vi{helix $*}
-	EDITOR=helix
+# When I say vi I mean kakoune (if it's installed).
+if(test -x kak){
+	fn vi{kak $*}
+	EDITOR=kak
 }
 if not EDITOR=/usr/bin/vi
 

@@ -106,6 +106,7 @@ openbsd)
 	alias rsync="openrsync"
 esac
 
+# When I say vi I mean kakoune (if it's installed).
 if command -v kak >/dev/null 2>&1; then
 	alias vi=kak
 	export EDITOR=kak
