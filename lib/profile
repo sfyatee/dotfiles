@@ -77,6 +77,19 @@ PYTHON_HISTORY=/dev/null
 # See: /usr/local/plan9/src/lib9/getns.c:43
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
+# `{hostname -s} not POSIX.
+H=`{uname -n}
+sys=`{echo $H|sed 's/\..*//'}
+
+# Prompt rc(1)
+fn prompt1{
+	pwd=`{prompt2} # ../bin/openbsd/prompt2.go
+	ps1='%'
+	prompt=(': '^$"pwd^' '^$ps1^' ')
+	fn ':'^' '^$pwd^' '^$ps1^' ' { if(! ~ $#* 0) $* }
+}
+prompt1
+
 # Default font for Plan 9 programs.
 font2=/mnt/font/GoRegular/11a/font
 varfont=(-f $font2)
@@ -91,11 +104,10 @@ secstore=localhost
 # OSC 7
 fn osc7{
 	enc=`{echo `{pwd} | sed 's/%/%25/g; s/ /%20/g'}
-	p=`{printf '\033]7;file://%s%s\033\\' `{uname -n} $enc}
-	if(~ $#TMUX 1)
+	p=`{printf '\033]7;file://%s%s\033\\' $H $enc}
+	if(~ $"TMUX ?*)
 		printf '%s' $p > `{tmux display-message -p '#{client_tty}'}
-	if not
-		printf '%s' $p
+	if not printf '%s' $p
 }
 
 # cd - set hooks
@@ -106,6 +118,7 @@ fn cd{
 		builtin cd $*
 
 	osc7 $*
+	prompt1
 }
 
 # special characters
@@ -114,17 +127,6 @@ nl='
 '
 cr='
 '
-
-# prompt - : ~/bin %
-# ../bin/openbsd/prompt2.go
-fn prompt1{
-	sys=`{prompt2}
-	ps1='%'
-	prompt=(': '^$"sys^' '^$ps1^' ')
-	fn ':'^' '^$sys^' '^$ps1^' ' { if(! ~ $#* 0) $* }
-}
-fn cd { builtin cd $* && prompt1 }
-prompt1
 
 # See: http://man.9front.org/1/emacs
 fn acme{SHELL=hack builtin acme -a $varfont $fixfont $*}
@@ -165,8 +167,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
-	# prompt - : {uname -n};
-	sys=`{uname -n|sed 's/\..*//'}
+	# prompt
 	ps1='; '
 	prompt=(':'^' '^$sys^$ps1 $tab)
 	fn ':'^' '^$sys^';' { if(! ~ $#* 0) $* }
