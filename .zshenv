@@ -11,8 +11,9 @@ PLAN9=/usr/local/plan9
 # XDG
 XDG_CACHE_HOME=$HOME/.cache
 XDG_CONFIG_HOME=$HOME/.config # OSX is confused
+XDG_DATA_HOME="$HOME/.local/share"
 
-export XDG_CACHE_HOME XDG_CONFIG_HOME
+export XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME
 
 # XDG offenders...
 # See: https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
@@ -32,13 +33,24 @@ export OS ARCH PATH BIN PLAN9 append prepend
 # Browser used by web(1) and thus plumber.
 BROWSER=zen
 
+# less: ok defaults
+# https://github.com/jj-vcs/jj/commit/4967bd7
+LESS=FRXi
+
 # gameoftrees got(1)
 GOT_AUTHOR="demian garcia <d@sfyatee.com>"
 
 # Let gs find the plan9port document fonts.
 GS_FONTPATH=$PLAN9/postscript/font
 
-export GOT_AUTHOR GS_FONTPATH
+# When I was a child, I used to speak like a child, think like a child,
+# reason like a child; when I became a man, I did away with childish
+# things.
+#
+# -rob
+NO_COLOR=1
+
+export BROWSER GOT_AUTHOR GS_FONTPATH LESS NO_COLOR
 
 # Unix means english and 24h clock. but do use UTF-8! and sort like a machine.
 LANG=en_US.UTF-8
@@ -47,10 +59,6 @@ LC_COLLATE=C
 LC_TIME=C
 
 export LANG LC_CTYPE LC_COLLATE LC_TIME
-
-# less: ok defaults
-# https://github.com/jj-vcs/jj/commit/4967bd7
-LESS=FRXi
 
 # TheFuture™
 # "You MUST have an account, or else..."
@@ -63,14 +71,7 @@ GOTOOLCHAIN=local
 # Buy AMD...
 SWAY_UNSUPPORTED_GPU=true
 
-# When I was a child, I used to speak like a child, think like a child,
-# reason like a child; when I became a man, I did away with childish
-# things.
-#
-# -rob
-NO_COLOR=1
-
-export DO_NOT_TRACK EDITOR GOTELEMETRY GOTOOLCHAIN LESS NO_COLOR SWAY_UNSUPPORTED_GPU
+export DO_NOT_TRACK GOTELEMETRY GOTOOLCHAIN SWAY_UNSUPPORTED_GPU
 
 # run0(1)
 PACMAN_AUTH=run0
