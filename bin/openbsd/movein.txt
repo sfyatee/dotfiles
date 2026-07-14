@@ -1,5 +1,6 @@
 aerc
 firefox
+fnott
 foot
 fuzzel
 fzf
@@ -30,5 +31,6 @@ sway
 syncthing
 tailscale
 uv
+wayvnc
 wev
 zsh
