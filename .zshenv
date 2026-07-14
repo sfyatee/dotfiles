@@ -17,9 +17,9 @@ export XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME
 
 # XDG offenders...
 # See: https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
-CARGO_HOME=$HOME/.local/share/cargo
+CARGO_HOME=$XDG_DATA_HOME/cargo
 CUDA_CACHE_PATH=$HOME/.cache/nv
-RUSTUP_HOME=$HOME/.local/share/rustup
+RUSTUP_HOME=$XDG_DATA_HOME/rustup
 
 export CARGO_HOME CUDA_CACHE_PATH RUSTUP_HOME
 
