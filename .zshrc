@@ -106,12 +106,9 @@ openbsd)
 	alias rsync="openrsync"
 esac
 
-if command -v hx >/dev/null 2>&1; then
-	alias vi=hx
-	export EDITOR=hx
-elif command -v helix >/dev/null 2>&1; then
-	alias vi=helix
-	export EDITOR=helix
+if command -v kak >/dev/null 2>&1; then
+	alias vi=kak
+	export EDITOR=kak
 else
 	export EDITOR=/usr/bin/vi
 fi

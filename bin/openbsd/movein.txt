@@ -18,6 +18,7 @@ ibm-plex
 jq
 jujutsu
 just
+kakoune
 knfmt
 lilypond
 mergiraf

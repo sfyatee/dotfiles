@@ -2,8 +2,9 @@
 umask 022
 
 # world
-os=`{uname | tr '[:upper:]' '[:lower:]'}
-arch=`{uname -m | sed 's/x86_64/amd64/'}
+INFO=`{uname -snm}
+os=`{echo $INFO(1)| tr '[:upper:]' '[:lower:]'}
+arch=`{echo $INFO(3)| sed 's/x86_64/amd64/'}
 path=(/usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin /usr/X11R6/bin)
 BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
@@ -11,7 +12,7 @@ PLAN9=/usr/local/plan9
 # XDG
 XDG_CACHE_HOME=$home/.cache
 XDG_CONFIG_HOME=$home/.config # OSX is confused
-XDG_DATA_HOME="$HOME/.local/share"
+XDG_DATA_HOME=$home/.local/share
 
 # XDG offenders...
 # See: https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
@@ -77,18 +78,19 @@ PYTHON_HISTORY=/dev/null
 # See: /usr/local/plan9/src/lib9/getns.c:43
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
-# `{hostname -s} not POSIX.
-H=`{uname -n}
-sys=`{echo $H|sed 's/\..*//'}
+# `{hostname -s} is not POSIX!
+H=$INFO(2)
+h=`$ifs^'.'{printf %s $H}
+sys=$h(1)
+h=()
 
-# Prompt rc(1)
+# rc(1): $prompt
 fn prompt1{
-	pwd=`{prompt2} # ../bin/openbsd/prompt2.go
+	pwd=`{prompt2} # ../bin/prompt2.go
 	ps1='%'
 	prompt=(': '^$"pwd^' '^$ps1^' ')
 	fn ':'^' '^$pwd^' '^$ps1^' ' { if(! ~ $#* 0) $* }
 }
-prompt1
 
 # Default font for Plan 9 programs.
 font2=/mnt/font/GoRegular/11a/font
@@ -158,8 +160,7 @@ if(test -x /usr/bin/helix){
 	fn vi{helix $*}
 	EDITOR=helix
 }
-if not
-	EDITOR=/usr/bin/vi
+if not EDITOR=/usr/bin/vi
 
 # For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){
@@ -167,10 +168,10 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
-	# prompt
-	ps1='; '
-	prompt=(':'^' '^$sys^$ps1 $tab)
-	fn ':'^' '^$sys^';' { if(! ~ $#* 0) $* }
+	# rc(1): $prompt
+	ps1=(':'^' '^$sys^'; ' $tab)
+	prompt=($ps1)
+	fn $ps1 { if(! ~ $#* 0) $* }
 	# sets the current window label using awd (see label(1))
 	fn cd {
 		# builtin cd $1 && flag i && awd
@@ -188,6 +189,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	fn ivy{builtin ivy}
 	fn jj{builtin jj --no-pager $*}
 }
+if not prompt1
 
 # revpatch - reverse a patch
 # 24may2020  +leah+
