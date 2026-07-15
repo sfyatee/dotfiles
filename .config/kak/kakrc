@@ -13,11 +13,19 @@ define-command -hidden -params 1 user-colorcolumn %{
     add-highlighter -override window/user-colorcolumn column %arg{1} default,rgb:303030
 }
 
+# email and commit messages - expand tabs, wrap at 68 for future quoting, enable spelling
+hook global WinSetOption filetype=(git-commit|mail) %{
+    set buffer autowrap_column 68
+    autowrap-enable
+    try %{ spell }
+    user-colorcolumn 69
+}
+
 # markdown files get hard tabs, wrapped at 79 and spell checking
 hook global WinSetOption filetype=markdown %{
-    set-option buffer autowrap_column 79
-    set-option buffer indentwidth 0
-    try %{ autowrap-enable }
+    set buffer autowrap_column 79
+    set buffer indentwidth 0
+    autowrap-enable
     try %{ spell }
     user-colorcolumn 81
 }
