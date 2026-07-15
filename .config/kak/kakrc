@@ -12,6 +12,11 @@ bundle-noload kak-bundle https://codeberg.org/jdugan6240/kak-bundle
 # set global autoinfo ""
 # set global ui_options terminal_assistant=off
 
+# load config files
+define-command load -params 2 %{
+    source "%val{config}/%arg{1}/%arg{2}.kak"
+}
+
 # minor color config
 colorscheme zenburn
 
@@ -86,3 +91,5 @@ hook global WinSetOption filetype=markdown %{
     try %{ spell }
     set window textwidth 81
 }
+
+load filetype aerc
