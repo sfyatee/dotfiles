@@ -21,4 +21,3 @@ hook global WinSetOption filetype=markdown %{
     try %{ spell }
     user-colorcolumn 81
 }
-
