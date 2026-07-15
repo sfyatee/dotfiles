@@ -15,6 +15,13 @@ declare-option int textwidth 0
 # configure color column... color
 addhl global/ column '%opt{textwidth}' default,rgb:404040
 
+# all source code gets wrapped at <80 and auto-indented
+hook global WinSetOption filetype=(c|cpp|gas|go|java|makefile|perl|sh) %{
+    set buffer autowrap_column 79
+    autowrap-enable
+    set window textwidth 81
+}
+
 # makefiles and c have tabstops at 8 for portability
 hook global WinSetOption filetype=(gas|makefile|c|cpp) %{
     set buffer tabstop 8
