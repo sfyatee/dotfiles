@@ -12,7 +12,7 @@ colorscheme zenburn
 # default to no color column
 declare-option int textwidth 0
 
-# configure color column... color
+# configure the color of the column
 addhl global/ column '%opt{textwidth}' default,rgb:404040
 
 # all source code gets wrapped at <80 and auto-indented
