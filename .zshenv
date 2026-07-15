@@ -2,8 +2,9 @@
 typeset -U path PATH
 
 # world
-OS="`uname | tr '[:upper:]' '[:lower:]'`"
-ARCH="`uname -m | sed 's/x86_64/amd64/'`"
+INFO=`uname -snm`
+OS=`printf '%s\n' "${INFO%% *}" | tr '[:upper:]' '[:lower:]'`
+ARCH=`printf '%s\n' "${INFO##* }" | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 PLAN9=/usr/local/plan9
@@ -28,7 +29,7 @@ append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
 prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
 PATH=$prepend:$PATH:$append:.
 
-export OS ARCH PATH BIN PLAN9 append prepend
+export INFO OS ARCH PATH BIN PLAN9 append prepend
 
 # Browser used by web(1) and thus plumber.
 BROWSER=zen
@@ -93,8 +94,9 @@ export HISTFILE LESSHISTFILE PYTHON_HISTORY
 # See: /usr/local/plan9/src/lib9/getns.c:43
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
-# Prompt rc(1)
-H=`uname -n`
+# `hostname -s` is not POSIX!
+H=${INFO#* }
+H=${H% *}
 H=${H%%.*}
 
 # Default font for Plan 9 programs.
