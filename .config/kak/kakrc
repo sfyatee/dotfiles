@@ -9,8 +9,8 @@ evaluate-commands %sh{
 bundle-noload kak-bundle https://codeberg.org/jdugan6240/kak-bundle
 
 # turn off the noise
-set global autoinfo ""
-set global ui_options terminal_assistant=off
+# set global autoinfo ""
+# set global ui_options terminal_assistant=off
 
 # minor color config
 colorscheme zenburn
