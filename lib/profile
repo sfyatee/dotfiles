@@ -87,9 +87,10 @@ h=()
 # rc(1): $prompt
 fn prompt1{
 	pwd=`{prompt2} # ../bin/prompt2.go
-	ps1='%'
-	prompt=(': '^$"pwd^' '^$ps1^' ')
-	fn ':'^' '^$pwd^' '^$ps1^' ' { if(! ~ $#* 0) $* }
+	ps1=(': '^$"pwd^' '^'%'^' ')
+	prompt=($ps1)
+	# https://9p.io/sources/contrib/lyndon/prompt.rc
+	fn $ps1 { if(! ~ $#* 0) $* }
 }
 
 # Default font for Plan 9 programs.
@@ -154,6 +155,7 @@ fn ph{ps auwwx | head $*}
 # When I say vi I mean kakoune (if it's installed).
 if(test -x kak){
 	fn vi{kak $*}
+	fn view{kak -ro $*}
 	EDITOR=kak
 }
 if not EDITOR=/usr/bin/vi
@@ -167,6 +169,8 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	# rc(1): $prompt
 	ps1=(':'^' '^$sys^'; ' $tab)
 	prompt=($ps1)
+	# https://9p.io/sources/contrib/lyndon/prompt.rc
+	fn : {}
 	fn $ps1 { if(! ~ $#* 0) $* }
 	# sets the current window label using awd (see label(1))
 	fn cd {

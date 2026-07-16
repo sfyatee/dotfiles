@@ -108,7 +108,8 @@ esac
 
 # When I say vi I mean kakoune (if it's installed).
 if command -v kak >/dev/null 2>&1; then
-	alias vi=kak
+	alias vi="kak"
+	alias view="kak -ro"
 	export EDITOR=kak
 else
 	export EDITOR=/usr/bin/vi
