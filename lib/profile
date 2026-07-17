@@ -132,6 +132,7 @@ cr='
 '
 
 # See: http://man.9front.org/1/emacs
+fn 9term{SHELL=hack builtin 9term $*}
 fn acme{SHELL=hack builtin acme -a $varfont $fixfont $*}
 fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
 fn sam{builtin sam -a $*}

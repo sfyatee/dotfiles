@@ -48,9 +48,10 @@ precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
 # See: http://man.9front.org/1/emacs
+alias 9term="SHELL=hack 9term"
 alias acme="SHELL=hack acme -a $varfont $fixfont"
 alias edwood="SHELL=hack edwood -a $varfont $fixfont"
-alias sam="sam -a"
+alias sam="SHELL=hack sam -a"
 
 # fns
 alias cp="cp -i"
