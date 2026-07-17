@@ -186,6 +186,11 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	awd
 	# no paging
 	fn git{builtin git --no-pager $*}
+	fn gl {
+		root=`{git rev-parse --show-toplevel}
+		got log $* |
+			plumb -i -d edit -a ('action=showdata filename='^$root^'/+log')
+	}
 	fn hg{chg --pager=no $*}
 	fn ivy{builtin ivy}
 	fn jj{builtin jj --no-pager $*}
