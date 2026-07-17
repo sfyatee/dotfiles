@@ -19,7 +19,7 @@ default_border pixel
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /dev/null fill #f4f2f5
+output * bg /dev/null fill #a3ccbd
 #
 # Example configuration:
 #
