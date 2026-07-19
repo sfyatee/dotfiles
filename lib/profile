@@ -89,7 +89,7 @@ h=()
 
 # rc(1): $prompt
 fn prompt1{
-	pwd=`{prompt2} # ../bin/prompt2.go
+	pwd=`{prompt2} # ../bin/prompt2.ha
 	ps1=(': '^$"pwd^' '^'%'^' ')
 	prompt=($ps1)
 	# https://9p.io/sources/contrib/lyndon/prompt.rc
