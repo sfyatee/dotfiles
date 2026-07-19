@@ -14,7 +14,11 @@ set $term foot
 # Your preferred application launcher
 set $menu fuzzel
 
-# default_border pixel
+set $bga #2C4B91
+set $bg  #080F20
+set $fg #ffffff
+
+default_border pixel 4
 # hide_edge_borders smart
 
 ### Output configuration
@@ -220,10 +224,10 @@ bindsym $mod+r mode "resize"
 # Window Borders and Title Bars:
 # sway(5) - "Configures the color of window borders and title bars."
 # 
-# class                 border  bg      text    indicator child_border
-client.focused          #9b8d7f #9b8d7f #000000 #9b8d7f   #9b8d7f
-client.focused_inactive #202020 #202020 #9b8d7f #202020   #202020
-client.unfocused        #202020 #202020 #9b8d7f #202020   #202020
+# class                 border  bg      text indicator child_border
+client.focused          $bga    $bga    $fg  $bga      $bga
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
 
 for_window [title=".*"] title_format %title (class=%class app_id=%app_id instance=%instance shell=%shell)
 
