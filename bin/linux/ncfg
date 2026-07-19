@@ -13,7 +13,7 @@ if [ -d "$TF2" ]; then
 	enabled="$budopts/_enabled"
 
 	# misc.
-	cp -r "$budopts"/bh_player_uicentered/ "$enabled"
+	# cp -r "$budopts"/bh_player_uicentered/ "$enabled"
 	cp "$budopts"/bh_chat_lowerleft.res "$enabled"
 	cp "$budopts"/bh_tournamentpanels_lowered.res "$enabled"
 	cp "$budopts"/bh_menu_hide{news,stats}.res "$enabled"
@@ -22,7 +22,7 @@ if [ -d "$TF2" ]; then
 	cp -r "$budopts"/bh_targetid_healthcross/ "$enabled"
 	cp "$budopts"/bh_animate_foreground.txt "$enabled"
 	# medic
-	# mv "$enabled"/bh_targetid_depleting.res .
+	rm "$enabled"/bh_targetid_depleting.res
 	cp "$budopts"/bh_uber_{longchargemeter,percentagenearcrosshair}.res "$enabled"
 	cp "$budopts"/bh_medic_rainbowcharge.txt "$enabled"
 fi
