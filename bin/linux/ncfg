@@ -7,11 +7,12 @@ if [ -d "$TF2" ]; then
 	# hud
 	if [ ! -d "budhud" ]; then
 		git clone https://github.com/rbjaxter/budhud.git
+	else
+    		git -C pull budhud
 	fi
 
 	budopts='budhud/#customization'
 	enabled="$budopts/_enabled"
-
 	# misc.
 	# cp -r "$budopts"/bh_player_uicentered/ "$enabled"
 	cp "$budopts"/bh_chat_lowerleft.res "$enabled"
