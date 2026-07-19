@@ -1,0 +1,20 @@
+[Servers]
+	[Servers.gopls]
+	Command = ["gopls", "serve", "-rpc.trace"]
+	StderrFile = "gopls.stderr.log"
+	LogFile = "gopls.log"
+
+[[FilenameHandlers]]
+  Pattern = "[/\\\\]go\\.mod$"
+  LanguageID = "go.mod"
+  ServerKey = "gopls"
+
+[[FilenameHandlers]]
+  Pattern = "[/\\\\]go\\.sum$"
+  LanguageID = "go.sum"
+  ServerKey = "gopls"
+
+[[FilenameHandlers]]
+  Pattern = "\\.go$"
+  LanguageID = "go"
+  ServerKey = "gopls"
