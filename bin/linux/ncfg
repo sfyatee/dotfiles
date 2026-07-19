@@ -24,6 +24,6 @@ if [ -d "$TF2" ]; then
 	cp "$budopts"/bh_animate_foreground.txt "$enabled"
 	rm "$enabled"/bh_targetid_depleting.res
 	# medic
-	cp "$budopts"/bh_uber_{longchargemeter,percentagenearcrosshair}.res "$enabled"
+	cp "$budopts"/bh_uber_percentagenearcrosshair.res "$enabled"
 	cp "$budopts"/bh_medic_rainbowcharge.txt "$enabled"
 fi
