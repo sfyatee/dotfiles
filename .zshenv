@@ -51,7 +51,10 @@ GS_FONTPATH=$PLAN9/postscript/font
 # -rob
 NO_COLOR=1
 
-export BROWSER GOT_AUTHOR GS_FONTPATH LESS NO_COLOR
+# Team Fortress 2
+TF2="$HOME/.local/share/Steam/steamapps/common/Team Fortress 2/tf/custom"
+
+export BROWSER GOT_AUTHOR GS_FONTPATH LESS NO_COLOR TF2
 
 # Unix means english and 24h clock. but do use UTF-8! and sort like a machine.
 LANG=en_US.UTF-8
