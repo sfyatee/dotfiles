@@ -4,6 +4,11 @@
 	StderrFile = "gopls.stderr.log"
 	LogFile = "gopls.log"
 
+	[Servers.rust-analyzer]
+	Command = ["rust-analyzer"]
+	StderrFile = "rust-analyzer.stderr.log"
+	Logfile = "rust-analyzer.log"
+
 [[FilenameHandlers]]
   Pattern = "[/\\\\]go\\.mod$"
   LanguageID = "go.mod"
