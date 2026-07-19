@@ -87,12 +87,11 @@ h=`$ifs^'.'{printf %s $H}
 sys=$h(1)
 h=()
 
-# rc(1): $prompt
+# prompt - [00:00:00] ~/bin/prompt2.ha %
 fn prompt1{
-	pwd=`{prompt2} # ../bin/prompt2.ha
-	ps1=(': '^$"pwd^' '^'%'^' ')
+	upwd=`{prompt2}
+	ps1=($"upwd^' '^'%'^' ')
 	prompt=($ps1)
-	# https://9p.io/sources/contrib/lyndon/prompt.rc
 	fn $ps1 { if(! ~ $#* 0) $* }
 }
 

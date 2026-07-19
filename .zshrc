@@ -41,8 +41,7 @@ osc71() {
 osc7(){((ZSH_SUBSHELL))||osc71}
 add-zsh-hook -Uz chpwd osc7
 
-# prompt - : ~/bin %
-# bin/openbsd/prompt2.ha
+# prompt - [00:00:00] ~/bin/prompt2.ha %
 PROMPT='`prompt2` %# '
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
