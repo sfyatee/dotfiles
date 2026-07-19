@@ -68,6 +68,29 @@ alias me="muon"
 alias mv="mv -i"
 alias ph="ps auwwx | head"
 
+# git
+alias gp='git pull'
+alias ga='git add'
+alias gc='git commit'
+alias gs='git status'
+alias gd='git diff'
+alias gl='git log'
+alias gb='git branch'
+alias gg='git grep'
+alias gco='git checkout'
+alias gse='git send-email'
+
+# jujutsu
+alias jd='jj desc'
+alias jp='jj push'
+alias ju='jj up'
+alias jn='jj new'
+alias jr='jj rebase'
+alias je='jj edit'
+alias jb='jj bump'
+alias ja='jj abandon'
+alias js='jj squash'
+
 # For 9term and acme's win.
 if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
