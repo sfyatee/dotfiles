@@ -1,4 +1,5 @@
-# Kakoune default color scheme
+# configure the color of the column
+addhl global/ column '%opt{textwidth}' default,rgb:0c2229
 
 # For Code
 face global value red

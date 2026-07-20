@@ -1,9 +1,6 @@
 # minor color config
 colorscheme monodust
 
-# configure the color of the column
-addhl global/ column '%opt{textwidth}' default,rgb:404040
-
 # setopts
 #set global autoinfo ""
 set global ui_options terminal_assistant=off
