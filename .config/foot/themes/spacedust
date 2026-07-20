@@ -2,24 +2,27 @@
 foreground=ecefc1
 background=0a1e24
 
-regular0=6e5246
-regular1=e35a00
-regular2=5cab96
-regular3=e3cd7b
-regular4=0e548b
-regular5=e35a00
-regular6=06afc7
-regular7=f0f1ce
+## Normal/regular colors (color palette 0-7)
+regular0=6e5246  # black
+regular1=e35a00  # red
+regular2=5cab96  # green
+regular3=e3cd7b  # yellow
+regular4=0e548b  # blue
+regular5=e35a00  # magenta
+regular6=06afc7  # cyan
+regular7=f0f1ce  # white
 
-bright0=674c31
-bright1=ff8a39
-bright2=adcab8
-bright3=ffc777
-bright4=67a0cd
-bright5=ff8a39
-bright6=83a6b3
-bright7=fefff0
+## Bright colors (color palette 8-15)
+bright0=674c31   # bright black
+bright1=ff8a39   # bright red
+bright2=adcab8   # bright green
+bright3=ffc777   # bright yellow
+bright4=67a0cd   # bright blue
+bright5=ff8a39   # bright magenta
+bright6=83a6b3   # bright cyan
+bright7=fefff0   # bright white
 
+## Misc colors
 selection-foreground=0a1e24
 selection-background=0a385c
 
