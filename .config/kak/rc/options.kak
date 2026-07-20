@@ -1,4 +1,18 @@
-# default to no color column
+# minor color config
+colorscheme default
+
+# subtle statusline
+face global StatusLine cyan,rgb:0f242a
+
+# configure the color of the column
+addhl global/ column '%opt{textwidth}' default,rgb:404040
+
+# defaults
+#set global autoinfo ""
+set global ui_options terminal_assistant=off
+set global disabled_hooks '.+-highlight'
+
+# no color column by default
 declare-option int textwidth 0
 
 # all source code gets wrapped at <80 and auto-indented
