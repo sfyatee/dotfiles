@@ -8,7 +8,7 @@ if [ -d "$TF2" ]; then
 	if [ ! -d "budhud" ]; then
 		git clone https://github.com/rbjaxter/budhud.git
 	else
-    		git -C pull budhud
+		git -C pull budhud
 	fi
 
 	budopts='budhud/#customization'
