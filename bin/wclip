@@ -1,0 +1,54 @@
+#!/bin/zsh
+
+c=${XDG_CACHE_HOME:-$HOME/.cache}/cliphist
+t=$c/thumbnails
+l=$(cliphist list)
+
+if [[ -z $l ]]; then
+	fuzzel -d --prompt-only 'cliphist: please store something first '
+	rm -rf -- $t
+	exit
+fi
+
+mkdir -p -- $t
+i=$(
+	print -r -- $l |
+	awk -v d="$t" '
+		/^[0-9]+[[:space:]]+<meta http-equiv=/ { next }
+		/binary/ {
+			for(n=1;n<=NF;n++) if($n~/^(jpg|jpeg|png|bmp)$/) {
+				f=d"/"$1"."$n
+				system("test -f \""f"\" || printf \""$1"\\t\" | cliphist decode >\""f"\"")
+				printf "%s%cicon%c%s\n",$0,0,31,f
+				next
+			}
+		}
+		1
+	' |
+	fuzzel -d --placeholder 'Search clipboard...' --counter --no-sort --with-nth 2
+)
+
+s=$?
+case $s in
+19)
+	[[ $(print -l No Yes |
+		fuzzel -d --placeholder 'Delete history?' --lines 2) == Yes ]] &&
+		rm -rf -- $c/db $t
+	;;
+10)
+	[[ -n $i ]] && {
+		id=${i%%$'\t'*}
+		print -r -- $id | cliphist delete
+		rm -f -- $t/$id.*
+	}
+	;;
+*)
+	[[ -n $i ]] && print -r -- $i | cliphist decode | wl-copy
+	;;
+esac
+
+for f in $t/*(N.); do
+	id=${${f:t}%.*}
+	rg -q "^$id[[:space:]]+\[\[ binary data" <<< $l || rm -f -- $f
+done
+

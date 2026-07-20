@@ -16,7 +16,7 @@ set $menu fuzzel
 
 set $bga #2C4B91
 set $bg  #080F20
-set $fg #ffffff
+set $fg  #ffffff
 
 default_border pixel 4
 # hide_edge_borders smart
@@ -36,11 +36,9 @@ output * bg /dev/null fill #a3ccbd
 #
 # Example configuration:
 # 
-# exec bin/idle
+# See: ../bin/idle for more.
 #
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# exec idle
 
 ### Input configuration
 #
@@ -71,7 +69,7 @@ input type:pointer {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+space exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -157,7 +155,7 @@ input type:pointer {
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+d focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -223,7 +221,7 @@ bindsym $mod+r mode "resize"
 #
 # Window Borders and Title Bars:
 # sway(5) - "Configures the color of window borders and title bars."
-# 
+#
 # class                 border  bg      text indicator child_border
 client.focused          $bga    $bga    $fg  $bga      $bga
 client.unfocused        $bg     $bg     $fg  $bg       $bg
