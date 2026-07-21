@@ -170,11 +170,9 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
 	# rc(1): $prompt
-	ps1=(':'^' '^$sys^'; ' $tab)
-	prompt=($ps1)
 	# https://9p.io/sources/contrib/lyndon/prompt.rc
 	fn : {}
-	fn $ps1 { if(! ~ $#* 0) $* }
+	prompt=(':'^' '^$sys^'; ' $tab)
 	# sets the current window label using awd (see label(1))
 	fn cd {
 		# builtin cd $1 && flag i && awd
