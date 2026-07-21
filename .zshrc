@@ -76,7 +76,6 @@ alias gs='git status'
 alias gd='git diff'
 alias gl='git log'
 alias gb='git branch'
-alias gg='git grep'
 alias gco='git checkout'
 alias gse='git send-email'
 
