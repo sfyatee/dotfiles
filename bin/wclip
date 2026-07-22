@@ -3,12 +3,12 @@
 c=${XDG_CACHE_HOME:-$HOME/.cache}/cliphist
 t=$c/thumbnails
 l=$(cliphist list)
+
 if [[ -z $l ]]; then
 	fuzzel -d --prompt-only 'cliphist: please store something first '
 	rm -rf -- $t
 	exit
 fi
-
 mkdir -p -- $t
 i=$(
 	print -r -- $l |
