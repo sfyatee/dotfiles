@@ -23,7 +23,7 @@ default_border pixel 4
 
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# swaybg(1)
 output * bg /dev/null fill #a3ccbd
 #
 # Example configuration:
@@ -234,6 +234,5 @@ for_window [title=".*"] title_format %title (class=%class app_id=%app_id instanc
 #
 # Read `man 5 sway-bar` for more information about this section.
 
-include ~/.config/sway/conf.d/*
 include ~/.config/sway/"$(uname -n)"/*
 include /etc/sway/config.d/*
