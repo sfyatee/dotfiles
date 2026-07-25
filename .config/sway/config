@@ -36,7 +36,7 @@ output * bg /dev/null fill #a3ccbd
 #
 # Example configuration:
 #
-# See: ../bin/idle for more.
+# See: ../../bin/idle for more.
 #
 # exec idle
 
