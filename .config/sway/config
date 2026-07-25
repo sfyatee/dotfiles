@@ -35,7 +35,7 @@ output * bg /dev/null fill #a3ccbd
 ### Idle configuration
 #
 # Example configuration:
-# 
+#
 # See: ../bin/idle for more.
 #
 # exec idle
@@ -198,7 +198,7 @@ bindsym $mod+r mode "resize"
 #
 # Utilities:
 #
-    # Special keys to adjust volume via ../bin/linux/volume && ../bin/openbsd/volume
+    # Special keys to adjust volume via ../../bin/openbsd/volume
     bindsym --locked XF86AudioMute exec volume mute
     bindsym --locked XF86AudioLowerVolume exec volume down
     bindsym --locked XF86AudioRaiseVolume exec volume up
