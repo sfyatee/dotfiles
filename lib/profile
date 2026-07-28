@@ -83,17 +83,18 @@ PYTHON_HISTORY=/dev/null
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # `{hostname -s} is not POSIX!
+# https://9p.io/sources/contrib/lyndon/prompt.rc
+fn : {}
 H=$SYSIN(2)
 h=`$ifs^'.'{printf %s $H}
 sys=$h(1)
 h=()
 
-# prompt - [00:00:00] ~/b/openbsd %
+# prompt - : $sys ~/b/openbsd %
 fn prompt1{
 	upwd=`{prompt2}
-	ps1=($"upwd^' '^'%'^' ')
-	prompt=($ps1)
-	fn $ps1 { if(! ~ $#* 0) $* }
+	ps1='% '
+	prompt=(': '^$"sys^':'^$"upwd^$ps1)
 }
 
 # Default font for Plan 9 programs.
@@ -156,6 +157,10 @@ fn me{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 
+# git
+fn ga{git add $*}
+fn gc{git commit $*}
+
 # When I say vi I mean kakoune (if it's installed).
 if(test -x kak){
 	fn vi{kak $*}
@@ -170,9 +175,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
-	# rc(1): $prompt
-	# https://9p.io/sources/contrib/lyndon/prompt.rc
-	fn : {}
+	# prompt - : $sys;
 	prompt=(':'^' '^$sys^'; ' $tab)
 	# sets the current window label using awd (see label(1))
 	fn cd {
