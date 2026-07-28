@@ -2,9 +2,9 @@
 umask 022
 
 # world
-INFO=`{uname -snm}
-os=`{echo $INFO(1)| tr '[:upper:]' '[:lower:]'}
-arch=`{echo $INFO(3)| sed 's/x86_64/amd64/'}
+SYSIN=`{uname -snm}
+os=`{echo $SYSIN(1)| tr '[:upper:]' '[:lower:]'}
+arch=`{echo $SYSIN(3)| sed 's/x86_64/amd64/'}
 path=(/usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin /usr/X11R6/bin)
 BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
@@ -61,7 +61,8 @@ DO_NOT_TRACK=true
 # Google
 GOTELEMETRY=off
 GOTOOLCHAIN=local
-
+# LLM Garbage
+OLLAMA_MODELS=$XDG_DATA_HOME/ollama/models
 # Buy AMD...
 SWAY_UNSUPPORTED_GPU=true
 
@@ -82,12 +83,12 @@ PYTHON_HISTORY=/dev/null
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # `{hostname -s} is not POSIX!
-H=$INFO(2)
+H=$SYSIN(2)
 h=`$ifs^'.'{printf %s $H}
 sys=$h(1)
 h=()
 
-# prompt - [00:00:00] ~/bin/prompt2.ha %
+# prompt - [00:00:00] ~/b/openbsd %
 fn prompt1{
 	upwd=`{prompt2}
 	ps1=($"upwd^' '^'%'^' ')

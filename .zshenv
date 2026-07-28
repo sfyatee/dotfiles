@@ -2,9 +2,9 @@
 typeset -U path PATH
 
 # world
-INFO=`uname -snm`
-OS=`printf '%s\n' "${INFO%% *}" | tr '[:upper:]' '[:lower:]'`
-ARCH=`printf '%s\n' "${INFO##* }" | sed 's/x86_64/amd64/'`
+SYSIN=`uname -snm`
+OS=`printf '%s\n' "${SYSIN%% *}" | tr '[:upper:]' '[:lower:]'`
+ARCH=`printf '%s\n' "${SYSIN##* }" | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 PLAN9=/usr/local/plan9
@@ -29,7 +29,7 @@ append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
 prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
 PATH=$prepend:$PATH:$append:.
 
-export INFO OS ARCH PATH BIN PLAN9 append prepend
+export SYSIN OS ARCH PATH BIN PLAN9 append prepend
 
 # Browser used by web(1) and thus plumber.
 BROWSER=zen
@@ -71,11 +71,12 @@ DO_NOT_TRACK=true
 # Google
 GOTELEMETRY=off
 GOTOOLCHAIN=local
-
+# LLM Garbage
+OLLAMA_MODELS=$XDG_DATA_HOME/ollama/models
 # Buy AMD...
 SWAY_UNSUPPORTED_GPU=true
 
-export DO_NOT_TRACK GOTELEMETRY GOTOOLCHAIN SWAY_UNSUPPORTED_GPU
+export DO_NOT_TRACK GOTELEMETRY GOTOOLCHAIN OLLAMA_MODELS SWAY_UNSUPPORTED_GPU
 
 # run0(1)
 PACMAN_AUTH=run0
@@ -98,7 +99,7 @@ export HISTFILE LESSHISTFILE PYTHON_HISTORY
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # `hostname -s` is not POSIX!
-H=${INFO#* }
+H=${SYSIN#* }
 H=${H% *}
 H=${H%%.*}
 
