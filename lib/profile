@@ -90,10 +90,10 @@ h=`$ifs^'.'{printf %s $H}
 sys=$h(1)
 h=()
 
-# prompt - : $sys ~/b/openbsd %
+# prompt - : $sys ~/b/openbsd$
 fn prompt1{
 	upwd=`{prompt2}
-	ps1='% '
+	ps1='$ '
 	prompt=(': '^$"sys^':'^$"upwd^$ps1)
 }
 
