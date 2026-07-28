@@ -142,24 +142,25 @@ fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
 fn sam{builtin sam -a $*}
 
 # fns
-fn ck{cmake $*}
 fn cp{builtin cp -i $*}
+fn gp{git pull $*}
+fn ga{git add $*}
+fn gc{git commit $*}
+fn gs{git status -s $*}
+fn gd{git diff $*}
+fn gl{got log $* | less}
+fn gb{git branch $*}
+fn gco{git checkout $*}
+fn gse{git send-email $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
-fn jk{just $*}
 fn lc{builtin lc -F $*}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
 fn ltr{builtin ls -AlFtr $*}
-fn m{make $*}
 fn mg{builtin mg -n $*}
-fn me{muon $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
-
-# git
-fn ga{git add $*}
-fn gc{git commit $*}
 
 # When I say vi I mean kakoune (if it's installed).
 if(test -x kak){

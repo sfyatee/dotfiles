@@ -54,32 +54,16 @@ alias sam="SHELL=hack sam -a"
 
 # fns
 alias cp="cp -i"
-alias ck="cmake"
-alias hg="chg"
-alias ivy="ivy-prompt"
-alias jk="just"
-alias lc="lc -F"
-alias ll="ls -AlF"
-alias ls="ls -AF"
-alias ltr="ls -AlFtr"
-alias m="make"
-alias mg="mg -n"
-alias me="muon"
-alias mv="mv -i"
-alias ph="ps auwwx | head"
-
-# git
 alias gp='git pull'
 alias ga='git add'
 alias gc='git commit'
-alias gs='git status'
+alias gs='git status -s'
 alias gd='git diff'
-alias gl='git log'
 alias gb='git branch'
 alias gco='git checkout'
 alias gse='git send-email'
-
-# jujutsu
+alias hg="chg"
+alias ivy="ivy-prompt"
 alias jd='jj desc'
 alias jp='jj push'
 alias ju='jj up'
@@ -89,6 +73,18 @@ alias je='jj edit'
 alias jb='jj bump'
 alias ja='jj abandon'
 alias js='jj squash'
+alias lc="lc -F"
+alias ll="ls -AlF"
+alias ls="ls -AF"
+alias ltr="ls -AlFtr"
+alias mg="mg -n"
+alias mv="mv -i"
+alias ph="ps auwwx | head"
+alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
+
+gl() {
+	got log "$@" | less
+}
 
 # For 9term and acme's win.
 if [ "$termprog" ] || [ "$winid" ]; then
