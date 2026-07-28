@@ -5,7 +5,7 @@ umask 022
 SYSIN=`{uname -snm}
 os=`{echo $SYSIN(1)| tr '[:upper:]' '[:lower:]'}
 arch=`{echo $SYSIN(3)| sed 's/x86_64/amd64/'}
-path=(/usr/local/bin /usr/local/sbin /usr/bin /bin /usr/sbin /sbin /usr/X11R6/bin)
+path=(/usr/local/bin /usr/local/sbin /bin /usr/bin /sbin /usr/sbin /usr/X11R6/bin)
 BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
 
