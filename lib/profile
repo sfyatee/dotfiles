@@ -197,7 +197,7 @@ fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 
 # When I say vi I mean kakoune (if it's installed).
-if(test -x kak){
+if(test -x /usr/bin/kak){
 	fn vi{kak $*}
 	fn view{kak -ro $*}
 	EDITOR=kak

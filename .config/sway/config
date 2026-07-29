@@ -23,7 +23,7 @@ default_border pixel 4
 
 ### Output configuration
 #
-# swaybg(1)
+# swaybg(1) under the hood.
 output * bg /dev/null fill #a3ccbd
 #
 # Example configuration:
