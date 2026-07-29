@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# kill any active tokens
+doas -L
+if [ `uname -s` = "OpenBSD" ]; then
+	doas -L
+else
+	sudo -k
+fi
+
+# screenlock
