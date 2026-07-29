@@ -1,11 +1,18 @@
 #!/bin/sh
 
+D=`date`
+echo "[$D] locking"
+
 # kill any active tokens
-doas -L
+ssh-add -D
 if [ `uname -s` = "OpenBSD" ]; then
 	doas -L
 else
 	sudo -k
 fi
 
-# screenlock
+# clear clipboard
+wl-copy -c
+wl-copy -p -c
+
+# http://man.9front.org/8/screenlock
