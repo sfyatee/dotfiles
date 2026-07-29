@@ -136,7 +136,7 @@ fn hook{
 	status=''
 }
 
-fn cd {
+fn cd{
 	odir=$pwd
 
 	switch($#*){
