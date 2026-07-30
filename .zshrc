@@ -22,7 +22,9 @@ autoload -Uz compinit	# unfortunate
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
-# OSC 7
+# https://ghostty.org/docs/vt/osc/7
+# https://codeberg.org/dnkl/foot/wiki#shell-integration
+# https://wiki.9front.org/plumber-vt
 autoload -Uz add-zsh-hook
 osc71() {
 	emulate -L zsh # also sets localoptions for us

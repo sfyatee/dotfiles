@@ -32,7 +32,7 @@ PATH=$prepend:$PATH:$append:.
 export SYSIN OS ARCH PATH BIN PLAN9 append prepend
 
 # Browser used by web(1) and thus plumber.
-BROWSER=zen
+BROWSER=firefox
 
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
@@ -129,7 +129,6 @@ set -a	# autoexport
 # OS specificities.
 case "$OS" in
 linux)
-	BROWSER=zen-browser
 	NPROC=`nproc`
 	;;
 openbsd)

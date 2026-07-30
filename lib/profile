@@ -26,7 +26,7 @@ prepend=($BIN $home/.local/bin $home/go/bin $CARGO_HOME/bin)
 path=($prepend $path $append)
 
 # Browser used by web(1) and thus plumber.
-BROWSER=zen
+BROWSER=firefox
 
 # less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
@@ -118,6 +118,7 @@ fn prompt1{
 	prompt=(': '^$"sys^':'^$dir^$ps1)
 }
 
+# https://ghostty.org/docs/vt/osc/7
 # https://codeberg.org/dnkl/foot/wiki#shell-integration
 # https://wiki.9front.org/plumber-vt
 fn osc7{
@@ -239,7 +240,6 @@ fn revpatch { interdiff -q $1 /dev/null }
 # OS specificities.
 switch($os){
 case linux
-	BROWSER=zen-browser
 	NPROC=`{nproc}
 	fn ls{builtin ls -AFv $*}
 	fn orphrem{run0 pacman -R `{pacman -Qdtq}}
