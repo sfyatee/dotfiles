@@ -63,3 +63,4 @@ go install github.com/hdonnay/wercsrv@master
 go install github.com/rjkroege/edwood/cmd/win@master
 go install robpike.io/ivy@master
 go install git.sr.ht/~gzj/werc-quickstart@latest
+go install git.sr.ht/~mkhl/xplor@master
