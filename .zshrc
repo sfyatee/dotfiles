@@ -22,9 +22,9 @@ autoload -Uz compinit	# unfortunate
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
-# https://ghostty.org/docs/vt/osc/7
-# https://codeberg.org/dnkl/foot/wiki#shell-integration
-# https://wiki.9front.org/plumber-vt
+# See: https://ghostty.org/docs/vt/osc/7
+# See: https://codeberg.org/dnkl/foot/wiki#shell-integration
+# See: https://wiki.9front.org/plumber-vt
 autoload -Uz add-zsh-hook
 osc71() {
 	emulate -L zsh # also sets localoptions for us
@@ -118,6 +118,19 @@ linux)
 	alias ph="ps auwwx | sort -rk 3,3 | head"
 	;;
 openbsd)
+	# check shared libs version
+	# See: https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
+	cshlib() {
+		local cnt=0
+		local f
+
+		for f in $(make show=SHARED_LIBS); do
+			[ "$((cnt++ % 2))" -eq 1 ] && continue
+			echo '===>' $f
+			/usr/src/lib/check_sym /usr/local/lib/lib$f.so* \
+				$(make show=WRKINST)/usr/local/lib/lib$f.so*
+		done
+	}
 	alias cvs="opencvs"
 	alias mpldc="make port-lib-depends-check"
 	alias mup="make update-patches"
