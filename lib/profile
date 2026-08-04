@@ -188,6 +188,15 @@ fn gco{git checkout $*}
 fn gse{git send-email $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
+fn jd{jj desc $*}
+fn jp{jj push $*}
+fn ju{jj up $*}
+fn jn{jj new $*}
+fn jr{jj rebase $*}
+fn je{jj edit $*}
+fn jb{jj bump $*}
+fn ja{jj abandon $*}
+fn js{jj squash $*}
 fn lc{builtin lc -F $*}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
