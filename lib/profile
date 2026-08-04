@@ -183,7 +183,6 @@ fn ga{git add $*}
 fn gc{git commit $*}
 fn gs{git status -s $*}
 fn gd{git diff $*}
-fn gl{got log $* | less}
 fn gb{git branch $*}
 fn gco{git checkout $*}
 fn gse{git send-email $*}
@@ -196,6 +195,10 @@ fn ltr{builtin ls -AlFtr $*}
 fn mg{builtin mg -n $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
+
+fn gl{
+	got log $* | less
+}
 
 # When I say vi I mean kakoune (if it's installed).
 if(test -x /usr/bin/kak){
