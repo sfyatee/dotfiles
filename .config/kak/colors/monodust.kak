@@ -2,7 +2,7 @@
 addhl global/ column '%opt{textwidth}' default,rgb:0c2229
 hook global WinSetOption filetype=diff %{
     require-module diff
-
+#
     remove-highlighter window/diff
     add-highlighter window/diff group
 
