@@ -1,31 +1,6 @@
 # configure the color of the column
 addhl global/ column '%opt{textwidth}' default,rgb:0c2229
-hook global WinSetOption filetype=diff %{
-    require-module diff
-#
-    remove-highlighter window/diff
-    add-highlighter window/diff group
 
-    # Inserted lines: diffEditor.insertedLineBackground
-    add-highlighter window/diff/ regex \
-        '^\+[^\n]*\n' \
-        0:default,rgba:57575720
-
-    # Removed lines: diffEditor.removedLineBackground
-    add-highlighter window/diff/ regex \
-        '^-[^\n]*\n' \
-        0:default,rgba:72727220
-
-    # Hunk headers
-    add-highlighter window/diff/ regex \
-        '^@@[^\n]*@@' \
-        0:rgb:575757,default
-
-    # Added trailing whitespace
-    add-highlighter window/diff/ regex \
-        '^\+[^\n]*?(\h+)\n' \
-        1:default,rgba:72727240
-}
 # For Code
 face global value red
 face global type yellow
