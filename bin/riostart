@@ -11,7 +11,7 @@ export MOZ_USE_XINPUT2=1
 
 gui() {
 	footclient 2>/dev/null || foot -s &
-	# sunsetr --background
+	wlsunet 2>/dev/null || wlsunset -l 34 -L -118.6 &
 }
 
 felloff() {

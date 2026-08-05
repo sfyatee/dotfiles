@@ -14,7 +14,7 @@ set $term foot
 # Your preferred application launcher
 set $menu fuzzel
 
-set $bga #2C4B91
+set $bga #a3ccbd
 set $bg  #080F20
 set $fg  #ffffff
 
