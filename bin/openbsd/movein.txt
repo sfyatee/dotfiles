@@ -1,5 +1,6 @@
 aerc
 cliphist
+cow
 curl
 firefox
 fnott
@@ -28,9 +29,9 @@ plakar
 playerctl
 racket-minimal
 ripgrep
+river
 roboto-fonts
 senpai
-sway
 syncthing
 tailscale
 uv
