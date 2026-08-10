@@ -3,8 +3,8 @@ umask 022
 
 # world
 SYSINFO=`{uname -snm}
-os=`{echo $SYSINFO(1)| tr '[:upper:]' '[:lower:]'}
-arch=`{echo $SYSINFO(3)| sed 's/x86_64/amd64/'}
+os=`{echo $SYSINFO(1) | tr '[:upper:]' '[:lower:]'}
+arch=`{echo $SYSINFO(3) | sed 's/x86_64/amd64/'}
 path=(/usr/local/bin /usr/local/sbin /bin /usr/bin /sbin /usr/sbin /usr/X11R6/bin)
 BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
