@@ -22,9 +22,9 @@ autoload -Uz compinit	# unfortunate
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
-# See: https://ghostty.org/docs/vt/osc/7
-# See: https://codeberg.org/dnkl/foot/wiki#shell-integration
-# See: https://wiki.9front.org/plumber-vt
+# https://ghostty.org/docs/vt/osc/7
+# https://codeberg.org/dnkl/foot/wiki#shell-integration
+# https://wiki.9front.org/plumber-vt
 autoload -Uz add-zsh-hook
 osc71() {
 	emulate -L zsh # also sets localoptions for us
@@ -48,7 +48,7 @@ PROMPT='`prompt2` %# '
 precmd() { print -Pn "\e]0;%m:%~%%\a" }
 preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
 
-# See: http://man.9front.org/1/emacs
+# http://man.9front.org/1/emacs
 alias 9term="SHELL=hack $PLAN9/bin/9term"
 alias acme="SHELL=hack $PLAN9/bin/acme -a $varfont $fixfont"
 alias edwood="SHELL=hack edwood -a $varfont $fixfont"
@@ -56,25 +56,8 @@ alias sam="SHELL=hack $PLAN9/bin/sam -a"
 
 # fns
 alias cp="cp -i"
-alias gp='git pull'
-alias ga='git add'
-alias gc='git commit'
-alias gs='git status -s'
-alias gd='git diff'
-alias gb='git branch'
-alias gco='git checkout'
-alias gse='git send-email'
 alias hg="chg"
 alias ivy="ivy-prompt"
-alias jd='jj desc'
-alias jp='jj push'
-alias ju='jj up'
-alias jn='jj new'
-alias jr='jj rebase'
-alias je='jj edit'
-alias jb='jj bump'
-alias ja='jj abandon'
-alias js='jj squash'
 alias lc="lc -F"
 alias ll="ls -AlF"
 alias ls="ls -AF"
@@ -113,13 +96,12 @@ revpatch() { interdiff -q $1 /dev/null }
 case "$OS" in
 linux)
 	alias ls="ls -AFv"
-	alias orphrem='run0 pacman -R $(pacman -Qdtq)'
 	alias pQm="pacman -Qm"
 	alias ph="ps auwwx | sort -rk 3,3 | head"
 	;;
 openbsd)
 	# check shared libs version
-	# See: https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
+	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
 	cshlib() {
 		local cnt=0
 		local f

@@ -2,9 +2,9 @@
 umask 022
 
 # world
-SYSIN=`{uname -snm}
-os=`{echo $SYSIN(1)| tr '[:upper:]' '[:lower:]'}
-arch=`{echo $SYSIN(3)| sed 's/x86_64/amd64/'}
+SYSINFO=`{uname -snm}
+os=`{echo $SYSINFO(1)| tr '[:upper:]' '[:lower:]'}
+arch=`{echo $SYSINFO(3)| sed 's/x86_64/amd64/'}
 path=(/usr/local/bin /usr/local/sbin /bin /usr/bin /sbin /usr/sbin /usr/X11R6/bin)
 BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
@@ -97,7 +97,7 @@ cr='
 # `{hostname -s} is not POSIX!
 # https://9p.io/sources/contrib/lyndon/prompt.rc
 fn : {}
-H=$SYSIN(2)
+H=$SYSINFO(2)
 h=`$ifs^'.'{printf %s $H}
 sys=$h(1)
 h=()
@@ -118,9 +118,9 @@ fn prompt1{
 	prompt=(': '^$"sys^':'^$dir^$ps1)
 }
 
-# See: https://ghostty.org/docs/vt/osc/7
-# See: https://codeberg.org/dnkl/foot/wiki#shell-integration
-# See: https://wiki.9front.org/plumber-vt
+# https://wiki.9front.org/plumber-vt
+# https://codeberg.org/dnkl/foot/wiki#shell-integration
+# https://ghostty.org/docs/vt/osc/7
 fn osc7{
 	enc=`{echo $pwd | sed 's/%/%25/g; s/ /%20/g'}
 	p=`{printf '\033]7;file://%s%s\033\\' $H $enc}
@@ -170,7 +170,7 @@ varfont=(-f $font2)
 font=/mnt/font/GoMono/11a/font
 fixfont=(-F $font)
 
-# See: http://man.9front.org/1/emacs
+# http://man.9front.org/1/emacs
 fn 9term{SHELL=hack $PLAN9/bin/9term $*}
 fn acme{SHELL=hack $PLAN9/bin/acme -a $varfont $fixfont $*}
 fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
@@ -178,25 +178,8 @@ fn sam{builtin $PLAN9/bin/sam -a $*}
 
 # fns
 fn cp{builtin cp -i $*}
-fn gp{git pull $*}
-fn ga{git add $*}
-fn gc{git commit $*}
-fn gs{git status -s $*}
-fn gd{git diff $*}
-fn gb{git branch $*}
-fn gco{git checkout $*}
-fn gse{git send-email $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
-fn jd{jj desc $*}
-fn jp{jj push $*}
-fn ju{jj up $*}
-fn jn{jj new $*}
-fn jr{jj rebase $*}
-fn je{jj edit $*}
-fn jb{jj bump $*}
-fn ja{jj abandon $*}
-fn js{jj squash $*}
 fn lc{builtin lc -F $*}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
@@ -204,6 +187,7 @@ fn ltr{builtin ls -AlFtr $*}
 fn mg{builtin mg -n $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
+fn publicip{curl -4 -w '\n' -s http://ifconfig.me}
 
 fn gl{
 	got log $* | less
@@ -226,15 +210,11 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	# prompt - : $sys;
 	prompt=(':'^' '^$sys^'; ' $tab)
 	# sets the current window label using awd (see label(1))
-	fn hook{
-		if(flag i)
-			awd
-		status=''
-	}
+	fn hook{ if(flag i) { awd }; status='' }
 	awd
 	# no paging
 	fn git{builtin git --no-pager $*}
-	fn gl {
+	fn gl{
 		root=`{git rev-parse --show-toplevel}
 		got log $* |
 			plumb -i -d edit -a ('action=showdata filename='^$root^'/+log')
@@ -254,15 +234,14 @@ switch($os){
 case linux
 	NPROC=`{nproc}
 	fn ls{builtin ls -AFv $*}
-	fn orphrem{run0 pacman -R `{pacman -Qdtq}}
 	fn pQm{pacman -Qm}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 case openbsd
-	# See: https://www.omarpolo.com/post/enjoying-cdpath.html
+	# https://www.omarpolo.com/post/enjoying-cdpath.html
 	cdpath=(/usr/ports /usr/ports/mystuff)
 	# check shared libs version
-	# See: https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
-	fn cshlib {
+	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
+	fn cshlib{
 		libs=`{make show=SHARED_LIBS}
 
 		while(! ~ $#libs 0){

@@ -2,9 +2,9 @@
 typeset -U path PATH
 
 # world
-SYSIN=`uname -snm`
-OS=`printf '%s\n' "${SYSIN%% *}" | tr '[:upper:]' '[:lower:]'`
-ARCH=`printf '%s\n' "${SYSIN##* }" | sed 's/x86_64/amd64/'`
+SYSINFO=`uname -snm`
+OS=`printf '%s\n' "${SYSINFO%% *}" | tr '[:upper:]' '[:lower:]'`
+ARCH=`printf '%s\n' "${SYSINFO##* }" | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 PLAN9=/usr/local/plan9
@@ -29,7 +29,7 @@ append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
 prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
 PATH=$prepend:$PATH:$append:.
 
-export SYSIN OS ARCH PATH BIN PLAN9 append prepend
+export SYSINFO OS ARCH PATH BIN PLAN9 append prepend
 
 # Browser used by web(1) and thus plumber.
 BROWSER=firefox
@@ -99,7 +99,7 @@ export HISTFILE LESSHISTFILE PYTHON_HISTORY
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # `hostname -s` is not POSIX!
-H=${SYSIN#* }
+H=${SYSINFO#* }
 H=${H% *}
 H=${H%%.*}
 
