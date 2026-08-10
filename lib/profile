@@ -114,8 +114,7 @@ fn prompt1{
 	case *
 		dir=$pwd
 	}
-	ps1='$ '
-	prompt=(': '^$"sys^':'^$dir^$ps1)
+	prompt=($"sys^':'^$dir^'% ')
 }
 
 # https://wiki.9front.org/plumber-vt
@@ -207,8 +206,8 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
-	# prompt - : $sys;
-	prompt=(':'^' '^$sys^'; ' $tab)
+	# prompt - $sys%
+	prompt=($sys^':% ' $tab)
 	# sets the current window label using awd (see label(1))
 	fn hook{ if(flag i) { awd }; status='' }
 	awd
