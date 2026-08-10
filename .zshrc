@@ -44,9 +44,9 @@ osc7(){((ZSH_SUBSHELL))||osc71}
 add-zsh-hook -Uz chpwd osc7
 
 # prompt - [00:00:00] ~/b/openbsd %
-PROMPT='`prompt2` %# '
-precmd() { print -Pn "\e]0;%m:%~%%\a" }
-preexec() { print -Pn "\e]0;%m:%~%% $1\a" }
+PROMPT='%m:%~%(!.#.$) '
+precmd() { print -Pn "\e]0;%m:%~$\a" }
+preexec() { print -Pn "\e]0;%m:%~$ ${~1:gs/%/%%}\a" }
 
 # http://man.9front.org/1/emacs
 alias 9term="SHELL=hack $PLAN9/bin/9term"
