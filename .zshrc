@@ -43,7 +43,7 @@ osc71() {
 osc7(){((ZSH_SUBSHELL))||osc71}
 add-zsh-hook -Uz chpwd osc7
 
-# prompt - [00:00:00] ~/b/openbsd %
+# prompt - gaia:~$
 PROMPT='%m:%~%(!.#.$) '
 precmd() { print -Pn "\e]0;%m:%~$\a" }
 preexec() { print -Pn "\e]0;%m:%~$ ${~1:gs/%/%%}\a" }
