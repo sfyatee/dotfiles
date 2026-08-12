@@ -137,7 +137,7 @@ if [[ "$TERM" == "dumb" ]]; then
 	unfunction osc7 precmd preexec
 	# set prompt so middle-clicking whole line reruns line's command
 	# show last exit code if non-zero
-	PROMPT="%(?..{%?} )%m; "
+	PROMPT="%(?..{%?} )%m:$ "
 	RPROMPT=""
 fi
 
