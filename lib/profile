@@ -209,6 +209,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	PAGER=nobs
 	# prompt - $sys:%
 	prompt=($sys^':% ' $tab)
+	fn $sys^':%' { if(! ~ $#* 0) $* }
 	# sets the current window label using awd (see label(1))
 	fn hook{ if(flag i) { awd }; status='' }
 	awd
