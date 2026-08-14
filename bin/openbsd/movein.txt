@@ -3,9 +3,6 @@ cliphist
 cow
 curl
 firefox
-fnott
-foot
-fuzzel
 fzf
 github-cli
 gitlab-cli
@@ -29,11 +26,11 @@ plakar
 playerctl
 racket-minimal
 ripgrep
-river
 roboto-fonts
 senpai
 syncthing
 tailscale
+ttyp0-font
 uv
 wayvnc
 wev
