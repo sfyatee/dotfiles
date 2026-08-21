@@ -1,0 +1,15 @@
+[Unit]
+Description=acme-lsp
+Documentation=https://pkg.go.dev/9fans.net/acme-lsp@master/cmd/acme-lsp
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+Environment=PLAN9=/usr/local/plan9
+Environment=PATH=/usr/bin:/usr/local/plan9/bin
+ExecStart=%h/go/bin/acme-lsp
+Restart=always
+
+[Install]
+WantedBy=default.target
