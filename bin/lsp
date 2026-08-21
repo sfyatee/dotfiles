@@ -11,8 +11,8 @@ if(~ `{which systemctl >[2]/dev/null} ?*){
 	rcctl=(systemctl --user)
 	rclist=(systemctl --user list-units --type=service --all)
 }
-if not {
-	# https://git.sr.ht/~craftyguy/superd/tree/master/item/doc/superctl.1.scd
+if not{
+	# See: https://git.sr.ht/~craftyguy/superd/tree/master/
 	rcctl=superctl
 	rclist=(superctl status)
 }
