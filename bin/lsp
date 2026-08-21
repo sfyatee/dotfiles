@@ -1,4 +1,4 @@
-#!/usr/bin/env rc
+#!/bin/rc
 
 # acme-lsp/acmefocused helper script adapted from:
 # Start ACME LSP via Launchd -- https://9lab.org/9port/acme-with-lsp/
