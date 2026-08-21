@@ -2,6 +2,7 @@
 
 # acme-lsp/acmefocused helper script adapted from:
 # Start ACME LSP via Launchd -- https://9lab.org/9port/acme-with-lsp/
+# Look at:
 # ../.config/systemd/user/acmefocused.service
 # ../.config/systemd/user/acme-lsp.service
 services=(acme-lsp acmefocused)
@@ -11,6 +12,7 @@ if(~ `{which systemctl >[2]/dev/null} ?*){
 	rclist=(systemctl --user list-units --type=service --all)
 }
 if not {
+	# https://git.sr.ht/~craftyguy/superd/tree/master/item/doc/superctl.1.scd
 	rcctl=superctl
 	rclist=(superctl status)
 }

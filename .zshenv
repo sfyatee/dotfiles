@@ -2,9 +2,9 @@
 typeset -U path PATH
 
 # world
-SYSINFO=`uname -snm`
-OS=`printf '%s\n' "${SYSINFO%% *}" | tr '[:upper:]' '[:lower:]'`
-ARCH=`printf '%s\n' "${SYSINFO##* }" | sed 's/x86_64/amd64/'`
+BOX=`uname -snm`
+OS=`printf '%s\n' "${BOX%% *}" | tr '[:upper:]' '[:lower:]'`
+ARCH=`printf '%s\n' "${BOX##* }" | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 PLAN9=/usr/local/plan9
@@ -90,7 +90,7 @@ export HISTFILE LESSHISTFILE PYTHON_HISTORY
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # `hostname -s` is not POSIX!
-H=${SYSINFO#* }
+H=${BOX#* }
 H=${H% *}
 H=${H%%.*}
 
