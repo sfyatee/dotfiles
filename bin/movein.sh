@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 
 export OS=$(uname)
 export CARGO_HOME=$HOME/.local/share/cargo
@@ -36,6 +36,9 @@ if [ ! -d /usr/local/plan9 ]; then
 else
 	cd /usr/local/plan9; git pull; ./INSTALL
 fi
+
+# #!/bin/rc
+$AUTH install -m 755 /usr/local/plan9/bin/rc /bin/rc
 
 unfortunate() {
 	if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
