@@ -29,8 +29,6 @@ append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
 prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
 PATH=$prepend:$PATH:$append:.
 
-export SYSINFO OS ARCH PATH BIN PLAN9 append prepend
-
 # Browser used by web(1) and thus plumber.
 BROWSER=firefox
 
@@ -54,15 +52,11 @@ NO_COLOR=1
 # Team Fortress 2
 TF2="$HOME/.local/share/Steam/steamapps/common/Team Fortress 2/tf/custom"
 
-export BROWSER GOT_AUTHOR GS_FONTPATH LESS NO_COLOR TF2
-
 # Unix means english and 24h clock. but do use UTF-8! and sort like a machine.
 LANG=en_US.UTF-8
 LC_CTYPE=$LANG
 LC_COLLATE=C
 LC_TIME=C
-
-export LANG LC_CTYPE LC_COLLATE LC_TIME
 
 # TheFuture™
 # "You MUST have an account, or else..."
@@ -72,17 +66,14 @@ DO_NOT_TRACK=true
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 # LLM Garbage
+CLAUDE_CONFIG_DIR=$XDG_CONFIG_HOME/claude
 OLLAMA_MODELS=$XDG_DATA_HOME/ollama/models
 # Buy AMD...
 SWAY_UNSUPPORTED_GPU=true
 
-export DO_NOT_TRACK GOTELEMETRY GOTOOLCHAIN OLLAMA_MODELS SWAY_UNSUPPORTED_GPU
-
 # run0(1)
 PACMAN_AUTH=run0
 SYSTEMD_RUN_SHELL_PROMPT_PREFIX=": "
-
-export PACMAN_AUTH SYSTEMD_RUN_SHELL_PROMPT_PREFIX
 
 # The End of History?
 HISTFILE=/dev/null
@@ -119,8 +110,6 @@ home=$HOME
 prompt="$H=; 	"
 user=$LOGNAME
 
-export NAMESPACE H font2 font secstore home prompt user
-
 # Turn *off* vi line editing and
 # turn *on* autoexport of environment variables (like in rc).
 set +o vi
@@ -145,7 +134,38 @@ fi
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
 
-export BROWSER NPROC CDPATH MAKEFLAGS SAMUFLAGS
+export\
+	BROWSER\
+	DO_NOT_TRACK\
+	GOT_AUTHOR\
+	GOTELEMETRY\
+	GOTOOLCHAIN\
+	GS_FONT_PATH\
+	LANG\
+	LC_CTYPE\
+	LC_COLLATE\
+	LC_TIME\
+	LESS\
+	PATH\
+	PLAN9\
+	PS1\
+	NAMESPACE\
+	NO_COLOR\
+	NPROC\
+	MAKEFLAGS\
+	SAMUFLAGS\
+	TF2\
+	CLAUDE_CONFIG_DIR\
+	OLLAMA_MODELS\
+	SWAY_UNSUPPORTED_GPU\
+	PACMAN_AUTH\
+	SYSTEMD_RUN_SHELL_PROMPT_PREFIX\
+	font\
+	font2\
+	secstore\
+	home\
+	prompt\
+	user\
 
 ulimit -c 0	# don't litter
 
