@@ -1,18 +1,10 @@
 !/bin/sh
 
 export OS=$(uname)
-export CARGO_HOME=~/.local/share/cargo
+export CARGO_HOME=$HOME/.local/share/cargo
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
-export RUSTUP_HOME=~/.local/share/rustup
-
-# remove cruft installed by default in openbsd
-rm -f ~/.cshrc \
-	~/.login \
-	~/.mailrc \
-	~/.profile \
-	~/.Xdefaults \
-	~/.cvsrc
+export RUSTUP_HOME=$HOME/.local/share/rustup
 
 case "$OS" in
 Linux)
@@ -24,6 +16,14 @@ OpenBSD)
 	doas pkg_add -l $HOME/bin/openbsd/movein.txt
 	;;
 esac
+
+# remove cruft installed by default in openbsd
+rm -f ~/.cshrc \
+	~/.login \
+	~/.mailrc \
+	~/.profile \
+	~/.Xdefaults \
+	~/.cvsrc
 
 # https://9fans.github.io/plan9port/
 if [ ! -d /usr/local/plan9 ]; then
@@ -55,10 +55,11 @@ unfortunate() {
 
 cd ~
 
-# essentials
+# utilis
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
-go install 9fans.net/acme-lsp/cmd/acme-lsp@master
 go install 9fans.net/acme-lsp/cmd/L@master
+go install 9fans.net/acme-lsp/cmd/acme-lsp@master
+go install 9fans.net/acme-lsp/cmd/acmefocused@master
 go install github.com/fzipp/ivy-prompt@latest
 go install github.com/hdonnay/wercsrv@master
 go install github.com/rjkroege/edwood/cmd/win@master

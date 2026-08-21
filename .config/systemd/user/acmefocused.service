@@ -1,15 +1,15 @@
 [Unit]
-Description=factotum
-Documentation=man:factotum(4)
+Description=acmefocused
+Documentation=https://pkg.go.dev/9fans.net/acme-lsp@master/cmd/acmefocused
 PartOf=graphical-session.target
 After=graphical-session.target
 
 [Service]
-Type=forking
+Type=simple
 Environment=PLAN9=/usr/local/plan9
 Environment=PATH=/usr/bin:/usr/local/plan9/bin
-Environment=secstore=localhost
-ExecStart=/usr/local/plan9/bin/factotum
+ExecStart=%h/go/bin/acmefocused
+Restart=always
 
 [Install]
 WantedBy=default.target

@@ -1,0 +1,54 @@
+#!/usr/bin/env rc
+
+# acme-lsp/acmefocused helper script adapted from:
+# Start ACME LSP via Launchd -- https://9lab.org/9port/acme-with-lsp/
+# ../.config/systemd/user/acmefocused.service
+# ../.config/systemd/user/acme-lsp.service
+services=(acme-lsp acmefocused)
+
+if(~ `{which systemctl >[2]/dev/null} ?*){
+	rcctl=(systemctl --user)
+	rclist=(systemctl --user list-units --type=service --all)
+}
+if not {
+	rcctl=superctl
+	rclist=(superctl status)
+}
+
+fn usage{
+	echo `{basename $0}^' [list|stop|start|restart|log]'
+}
+
+fn list{$rclist | grep acme}
+fn start{for(s in $services) $rcctl enable --now $s}
+fn stop{for(s in $services) $rcctl disable --now $s}
+fn restart{for(s in $services) $rcctl restart $s}
+
+fn log{
+	switch($rcctl(1)){
+	case systemctl
+		journalctl --user -u acme-lsp -u acmefocused
+	case superctl
+		for(s in $services) superctl log $s
+	}
+}
+
+switch($#*){
+case 0
+	usage
+case *
+    switch($1){
+	case list
+		list
+	case start
+		start
+	case stop
+		stop
+	case restart
+		restart
+	case log
+		log
+	case *
+		usage
+	}
+}
