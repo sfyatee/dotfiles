@@ -1,4 +1,4 @@
-#!/usr/bin/env rc
+#!/bin/rc
 
 rfork e
 
@@ -16,7 +16,7 @@ for (i in `{9p ls -l acme | grep '^d' | sed -e 's/.* //g' | grep '^[0-9]*$'}) {
 	# must match our pattern if given, must be a clean window,
 	# and must not be a directory, Errors window, win or mail.
 
-	if(! ~ $file */ *+Errors* */-* */mail/* && ! ~ $tagline *Put* 
+	if(! ~ $file */ *+Errors* */-* */mail/* && ! ~ $tagline *Put*
 	&& echo $file | grep $pattern >/dev/null >[2]/dev/null)
 		9 echo del | 9p write acme/$i/ctl
 }
