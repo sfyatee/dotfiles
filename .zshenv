@@ -80,7 +80,7 @@ HISTFILE=/dev/null
 HISTSIZE=5000
 PYTHON_HISTORY=/dev/null
 
-export HISTFILE LESSHISTFILE PYTHON_HISTORY
+export PYTHON_HISTORY
 
 # Override $NAMESPACE (see intro(4)) because the default on MacOS is too long.
 # See: https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
@@ -140,6 +140,7 @@ export\
 	GOTELEMETRY\
 	GOTOOLCHAIN\
 	GS_FONT_PATH\
+	HISTFILE\
 	LANG\
 	LC_CTYPE\
 	LC_COLLATE\
@@ -154,9 +155,9 @@ export\
 	MAKEFLAGS\
 	SAMUFLAGS\
 	TF2\
+	CLAUDE_CONFIG_DIR\
 	CODEX_HOME\
 	COPILOT_HOME\
-	CLAUDE_CONFIG_DIR\
 	OLLAMA_MODELS\
 	PACMAN_AUTH\
 	SYSTEMD_RUN_SHELL_PROMPT_PREFIX\

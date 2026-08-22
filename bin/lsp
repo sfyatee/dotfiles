@@ -1,6 +1,6 @@
 #!/bin/rc
 
-# acme-lsp/acmefocused helper script adapted from
+# acme-lsp/acmefocused helper script
 # Igor B�hm -- https://9lab.org/9port/acme-with-lsp/
 # Look at:
 # ../.config/systemd/user/acmefocused.service
@@ -12,7 +12,7 @@ if(~ `{which systemctl >[2]/dev/null} ?*){
 	rclist=(systemctl --user list-units --type=service --all)
 }
 if not{
-	# See: https://git.sr.ht/~craftyguy/superd/tree/master/
+	# See: https://sr.ht/~craftyguy/superd/
 	rcctl=superctl
 	rclist=(superctl status)
 }

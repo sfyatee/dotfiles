@@ -1,12 +1,12 @@
 #!/bin/sh
 
-export OS=$(uname)
+# silly
 export CARGO_HOME=$HOME/.local/share/cargo
+export RUSTUP_HOME=$HOME/.local/share/rustup
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
-export RUSTUP_HOME=$HOME/.local/share/rustup
 
-case "$OS" in
+case "$(uname)" in
 Linux)
 	AUTH="run0"
 	unfortunate
@@ -37,7 +37,6 @@ else
 	cd /usr/local/plan9; git pull; ./INSTALL
 fi
 
-# #!/bin/rc
 $AUTH install -m 755 /usr/local/plan9/bin/rc /bin/rc
 
 unfortunate() {
