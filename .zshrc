@@ -74,9 +74,9 @@ gl() {
 # For 9term and acme's win.
 if [ "$termprog" ] || [ "$winid" ]; then
 	# plumb files instead of starting new editor
-	export EDITOR=editinacme
+	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
-	export PAGER=nobs
+	PAGER=nobs
 	# disable
 	unsetopt zle	# zsh line editor
 	# no paging
@@ -125,9 +125,9 @@ esac
 if command -v kak >/dev/null 2>&1; then
 	alias vi="kak"
 	alias view="kak -ro"
-	export EDITOR=kak
+	EDITOR=kak
 else
-	export EDITOR=/usr/bin/vi
+	EDITOR=/usr/bin/vi
 fi
 
 # No fancy zsh prompt in dumb terminals.
