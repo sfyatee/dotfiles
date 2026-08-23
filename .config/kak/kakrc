@@ -1,0 +1,24 @@
+# init kak-plug
+evaluate-commands %sh{
+    bundle="$kak_config/bundle"
+    mkdir -p "$bundle"
+    [ ! -e "$bundle/kak-bundle" ] && \
+        git clone -q https://codeberg.org/jdugan6240/kak-bundle.git "$bundle/kak-bundle"
+    printf "%s\n" "source '$bundle/kak-bundle/rc/kak-bundle.kak'"
+}
+bundle-noload kak-bundle https://codeberg.org/jdugan6240/kak-bundle
+
+# load config files
+define-command load -params 2 %{
+    source "%val{config}/%arg{1}/%arg{2}.kak"
+}
+
+# load plugins
+load rc plugins
+
+# colorscheme and defaults
+load rc options
+
+# granular settings
+load filetype aerc
+load filetype go
