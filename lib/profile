@@ -26,11 +26,11 @@ path=($prepend $path $append)
 # Browser used by web(1) and thus plumber.
 BROWSER=firefox
 
-# less: ok defaults
+# less(1): ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=FRXi
 
-# gameoftrees got(1)
+# got(1)
 GOT_AUTHOR=('demian garcia <d@sfyatee.com>')
 
 # Let gs find the plan9port document fonts.
