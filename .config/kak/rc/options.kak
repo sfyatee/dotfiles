@@ -1,6 +1,3 @@
-# minor color config
-colorscheme PRINT
-
 # setopts
 #set global autoinfo ""
 set global ui_options terminal_assistant=off
