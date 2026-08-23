@@ -44,16 +44,14 @@
   :ensure t
   :demand t
   :config
-  (setq doric-themes-to-toggle '(doric-light doric-dark))
+  (setq doric-themes-to-toggle '(wind doric-dark))
   (setq doric-themes-to-rotate doric-themes-collection)
 
   (doric-themes-select 'doric-wind)
 
-  ;; ;; For optimal results, also define your preferred font family (or use my `fontaine' package):
-  ;;
-  ;; (set-face-attribute 'default nil :family "Aporetic Sans Mono" :height 160)
-  ;; (set-face-attribute 'variable-pitch nil :family "Aporetic Sans" :height 1.0)
-  ;; (set-face-attribute 'fixed-pitch nil :family "Aporetic Sans Mono" :height 1.0)
+  (set-face-attribute 'default nil :family "Lucida Grande" :height 160)
+  (set-face-attribute 'variable-pitch nil :family "Lucida Grande" :height 1.0)
+  (set-face-attribute 'fixed-pitch nil :family "Lucida Grande Mono DK" :height 1.0)
 
   :bind
   (("<f5>" . doric-themes-toggle)
