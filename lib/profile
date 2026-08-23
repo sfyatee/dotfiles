@@ -195,7 +195,7 @@ fn gl{
 }
 
 # When I say vi I mean kakoune (if it's installed).
-if(test -x /usr/bin/kak){
+if(~ `{which kak >[2]/dev/null} ?*){
 	fn vi{kak $*}
 	fn view{kak -ro $*}
 	EDITOR=kak
