@@ -1,7 +1,6 @@
 #!/bin/rc
 umask 022
 
-# world
 BOX=`{uname -snm}
 os=`{echo $BOX(1) | tr '[:upper:]' '[:lower:]'}
 arch=`{echo $BOX(3) | sed 's/x86_64/amd64/'}
@@ -20,7 +19,6 @@ CARGO_HOME=$XDG_DATA_HOME/cargo
 CUDA_CACHE_PATH=$home/.cache/nv
 RUSTUP_HOME=$XDG_DATA_HOME/rustup
 
-# path
 append=(/usr/games /usr/games/bin $PLAN9/bin $PLAN9/bin/upas)
 prepend=($BIN $home/.local/bin $home/go/bin $CARGO_HOME/bin)
 path=($prepend $path $append)
@@ -115,7 +113,6 @@ fn prompt1{
 	case *
 		dir=$pwd
 	}
-	# prompt - gaia:~$
 	prompt=($"sys^':'^$dir^'% ')
 }
 
@@ -208,7 +205,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	EDITOR=editinacme
 	# get rid of backspace characters in Unix man output
 	PAGER=nobs
-	# prompt - $sys:%
+	# make prompt executable
 	prompt=($sys^':% ' $tab)
 	fn $sys^':%' { if(! ~ $#* 0) $* }
 	# sets the current window label using awd (see label(1))

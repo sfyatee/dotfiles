@@ -1,7 +1,6 @@
 #!/bin/zsh
 typeset -U path PATH
 
-# world
 BOX=`uname -snm`
 OS=`printf '%s\n' "${BOX%% *}" | tr '[:upper:]' '[:lower:]'`
 ARCH=`printf '%s\n' "${BOX##* }" | sed 's/x86_64/amd64/'`
@@ -14,17 +13,12 @@ XDG_CACHE_HOME="$HOME/.cache"
 XDG_CONFIG_HOME="$HOME/.config"
 XDG_DATA_HOME="$HOME/.local/share"
 
-export XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME
-
 # XDG offenders...
 # See: https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
 CARGO_HOME=$XDG_DATA_HOME/cargo
 CUDA_CACHE_PATH=$HOME/.cache/nv
 RUSTUP_HOME=$XDG_DATA_HOME/rustup
 
-export CARGO_HOME CUDA_CACHE_PATH RUSTUP_HOME
-
-# path
 append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
 prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
 PATH=$prepend:$PATH:$append:.
@@ -80,8 +74,6 @@ HISTFILE=/dev/null
 HISTSIZE=5000
 PYTHON_HISTORY=/dev/null
 
-export PYTHON_HISTORY
-
 # Override $NAMESPACE (see intro(4)) because the default on MacOS is too long.
 # See: https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
 # This matches the default on other Unices when $WSYS is running.
@@ -132,6 +124,9 @@ fi
 # Use $NPROC for parallelism.
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
+
+export XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME
+export CARGO_HOME CUDA_CACHE_PATH RUSTUP_HOME
 
 export BROWSER DO_NOT_TRACK EDITOR GOT_AUTHOR GOTELEMETRY GOTOOLCHAIN\
     GS_FONT_PATH HISTFILE PYTHON_HISTORY LANG LC_CTYPE LC_COLLATE LC_TIME\

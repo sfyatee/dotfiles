@@ -4,13 +4,14 @@ umask 022
 # speed things up
 if [[ ! -o interactive ]]; then return; fi
 
-# zsh settings
+# options
 unset HISTFILE	# no
 setopt globdots	# hidden files in completion
 setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
 setopt promptsubst	# make `prompt` work
 setopt rcquotes	# plan9-like quoting
+PROMPT='%m:%~%(!.#.$) '
 
 # this needs to run before compinit installs keybindings.
 # 12mar2013  +chris+
@@ -43,8 +44,6 @@ osc71() {
 osc7(){((ZSH_SUBSHELL))||osc71}
 add-zsh-hook -Uz chpwd osc7
 
-# prompt - gaia:~$
-PROMPT='%m:%~%(!.#.$) '
 precmd() { print -Pn "\e]0;%m:%~$\a" }
 preexec() { print -Pn "\e]0;%m:%~$ ${~1:gs/%/%%}\a" }
 
