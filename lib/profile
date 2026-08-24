@@ -10,7 +10,7 @@ PLAN9=/usr/local/plan9
 
 # XDG
 XDG_CACHE_HOME=$home/.cache
-XDG_CONFIG_HOME=$home/.config # OSX is confused
+XDG_CONFIG_HOME=$home/.config
 XDG_DATA_HOME=$home/.local/share
 
 # XDG offenders...
