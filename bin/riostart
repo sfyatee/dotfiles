@@ -65,7 +65,7 @@ if [ -f "$HOME/acme.dump" ]; then
 fi
 
 # 9 man stats
-stats -lmisce
+stats -lmisce $fixfont
 
 # See: http://man.9front.org/1/emacs
 SHELL=hack /usr/local/plan9/bin/acme -a $varfont $fixfont $dump &
