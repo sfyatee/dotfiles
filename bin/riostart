@@ -1,13 +1,7 @@
 #!/bin/sh
 
-# a coin flip on some machines...
-export XDG_SESSION_TYPE=wayland
-# magic variable for java apps refusing to work
-export _JAVA_AWT_WM_NONREPARENTING=1
 # force wayland on firefox
 export MOZ_ENABLE_WAYLAND=1
-# better two-finger touchpad scrolling
-export MOZ_USE_XINPUT2=1
 
 gui() {
 	footclient 2>/dev/null || foot -s &
@@ -32,8 +26,7 @@ if [ $OS = linux ]; then
 fi
 
 # I'm afraid it's terminal...
-foot aerc &
-foot senpai &
+# foot/tmux
 
 # Default font for Plan 9 programs.
 lookforfont() {
