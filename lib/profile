@@ -16,7 +16,9 @@ XDG_DATA_HOME=$home/.local/share
 # XDG offenders...
 # See: https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
 CARGO_HOME=$XDG_DATA_HOME/cargo
-CUDA_CACHE_PATH=$home/.cache/nv
+CUDA_CACHE_PATH=$XDG_CACHE_HOME/nv
+NUGET_PACKAGES=$XDG_CACHE_HOME/NuGetPackages
+RUFF_CACHE_DIR=$XDG_CACHE_HOME/ruff
 RUSTUP_HOME=$XDG_DATA_HOME/rustup
 
 append=(/usr/games /usr/games/bin $PLAN9/bin $PLAN9/bin/upas)
@@ -30,6 +32,8 @@ BROWSER=firefox
 # https://github.com/jj-vcs/jj/commit/4967bd7
 LESS=FRXi
 
+# cvs(1)
+CVS_RSH=/usr/bin/ssh
 # got(1)
 GOT_AUTHOR=('demian garcia <d@sfyatee.com>')
 
@@ -76,7 +80,10 @@ CVS_RSH=/usr/bin/ssh
 PACMAN_AUTH=run0
 SYSTEMD_RUN_SHELL_PROMPT_PREFIX=(': ')
 
-# The End of History?
+# rg(1)
+FZF_DEFAULT_COMMAND=(rg --files)
+
+# 福山
 HISTFILE=/dev/null
 HISTSIZE=5000
 LESSHISTFILE=/dev/null
