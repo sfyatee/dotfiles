@@ -112,7 +112,7 @@ cr='
 # https://9p.io/sources/contrib/lyndon/prompt.rc
 fn : {}
 H=$BOX(2)
-h=`$ifs^'.'{printf %s $H}
+h=`$ifs^'.-'{printf %s $H}
 sys=$h(1)
 h=()
 
