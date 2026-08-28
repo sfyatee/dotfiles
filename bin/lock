@@ -8,7 +8,8 @@ ssh-add -D
 if [ `uname -s` = "OpenBSD" ]; then
 	doas -L
 else
-	sudo -k
+	# pkcheck(1)
+	# pkcheck --revoke-temp && sudo -k
 fi
 
 # clear clipboard
