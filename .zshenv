@@ -98,6 +98,7 @@ NAMESPACE=/tmp/ns.$LOGNAME.:0
 H=${BOX#* }
 H=${H% *}
 H=${H%%.*}
+H=${H%%-*}
 
 # Default font for Plan 9 programs.
 font2="/mnt/font/GoRegular/11a/font"

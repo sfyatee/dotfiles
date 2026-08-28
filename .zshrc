@@ -11,7 +11,7 @@ setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
 setopt promptsubst	# make `prompt` work
 setopt rcquotes	# plan9-like quoting
-PROMPT='%m:%~%(!.#.$) '
+PROMPT="$H:%~%(!.#.$) "
 
 # this needs to run before compinit installs keybindings.
 # 12mar2013  +chris+
@@ -23,22 +23,23 @@ autoload -Uz compinit	# unfortunate
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
-# https://ghostty.org/docs/vt/osc/7
-# https://codeberg.org/dnkl/foot/wiki#shell-integration
-# https://wiki.9front.org/plumber-vt
+# Change Working Directory (OSC 7)
+# See: https://codeberg.org/dnkl/foot/wiki#shell-integration
 autoload -Uz add-zsh-hook
 osc71() {
 	emulate -L zsh # also sets localoptions for us
 	setopt extendedglob
 	local LC_ALL=C p
-	p=`printf '\e]7;file://%s%s\e\' $HOST \
-	    ${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}`
-	# 9front's plumber + vt
+	p=$'\e]7;file://'"$HOST"\
+	    "${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}$'\e\\'
+	# Needs set -g allow-passthrough on to work.
+	# See: https://github.com/tmux/tmux/wiki/FAQ
+	# "...it’s required to pass OSC 7 message to vt explicitely"
+	# See: https://wiki.9front.org/plumber-vt
 	if [[ -n "$TMUX" ]]; then
-		# required to pass OSC 7 message to vt explicitely
-		print -nr -- "$p" >`tmux display -p '#{client_tty}'`
+		printf '%s' $'\ePtmux;\e'"$p"$'\e\\'
 	else
-		print -nr -- "$p"
+		printf '%s' "$p"
 	fi
 }
 osc7(){((ZSH_SUBSHELL))||osc71}

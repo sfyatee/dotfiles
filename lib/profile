@@ -131,8 +131,8 @@ fn prompt1{
 	prompt=($"sys^':'^$dir^'% ')
 }
 
-# https://codeberg.org/dnkl/foot/wiki#shell-integration
-# https://ghostty.org/docs/vt/osc/7
+# Change Working Directory (OSC 7)
+# See: https://codeberg.org/dnkl/foot/wiki#shell-integration
 fn osc7{
 	enc=`{echo $pwd | sed 's/%/%25/g; s/ /%20/g'}
 	p=`{printf '\033]7;file://%s%s\033\\' $H $enc}
