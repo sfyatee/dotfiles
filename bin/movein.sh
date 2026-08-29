@@ -16,6 +16,22 @@ rm -f ~/.cshrc \
 	~/.Xdefaults \
 	~/.cvsrc
 
+slop() {
+	if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
+		rustup toolchain install stable
+	else
+		rustup update
+	fi
+	if ! lsmod | grep -q 9p; then
+		$AUTH mkdir -p /etc/modules-load.d/
+		echo 9p | $AUTH tee -a /etc/modules-load.d/9p.conf > /dev/null
+	fi
+	if ! command -v yay >/dev/null 2>&1; then
+		git clone https://aur.archlinux.org/yay /tmp/yay
+		cd /tmp/yay || exit 1; makepkg -fsi --noconfirm
+	fi
+}
+
 snarf() {
 	git --git-dir="$DOTS" --work-tree="$HOME" "$@"
 }
@@ -53,22 +69,6 @@ else
 	cd /usr/local/plan9; git pull; ./INSTALL
 fi
 $AUTH install -m 755 /usr/local/plan9/bin/rc /bin/rc
-
-slop() {
-	if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
-		rustup toolchain install stable
-	else
-		rustup update
-	fi
-	if ! lsmod | grep -q 9p; then
-		$AUTH mkdir -p /etc/modules-load.d/
-		echo 9p | $AUTH tee -a /etc/modules-load.d/9p.conf > /dev/null
-	fi
-	if ! command -v yay >/dev/null 2>&1; then
-		git clone https://aur.archlinux.org/yay /tmp/yay
-		cd /tmp/yay || exit 1; makepkg -fsi --noconfirm
-	fi
-}
 
 # utilis
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
