@@ -40,7 +40,7 @@ if [ -d $DOTFILES ]; then
 	snarf remote set-url origin git@github.com:sfyatee/dotfiles.git
 	snarf fetch --prune origin
 else
-        mkdir -p ~/lib
+	mkdir -p ~/lib
 	git clone --bare https://github.com/sfyatee/dotfiles $DOTFILES
 fi
 snarf config status.showUntrackedFiles no
