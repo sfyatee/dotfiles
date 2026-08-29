@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# prevent $home from getting trashed
+# defaults
+export DOTS="~/.dots"
 export CARGO_HOME="~/.local/share/cargo"
 export RUSTUP_HOME="~/.local/share/rustup"
 export GOTELEMETRY=off
@@ -15,12 +16,17 @@ rm -f ~/.cshrc \
 	~/.Xdefaults \
 	~/.cvsrc
 
-if [ -d ~/.dotfiles ]; then
-	cd ~/.dotfiles
-	git pull --ff-only
+dot() {
+	git --git-dir="$DOTS" --work-tree="$HOME" "$@"
+}
+
+if [ -d "$DOTS" ]; then
+	dot fetch --prune origin
 else
-	git clone https://github.com/sfyatee/dotfiles ~/.dotfiles
+        git clone --bare https://github.com/sfyatee/dotfiles "$DOTS"
+        dot config status.showUntrackedFiles no
 fi
+dot checkout -f master
 
 case "$(uname)" in
 Linux)

@@ -61,6 +61,7 @@ alias mg="mg -n"
 alias mv="mv -i"
 alias ph="ps auwwx | head"
 alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
+alias snarf='git --git-dir="$DOTS" --work-tree="$HOME"'
 
 gl() {
 	got log "$@" | less

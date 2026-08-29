@@ -71,6 +71,7 @@ COPILOT_HOME=$XDG_CONFIG_HOME/copilot
 CLAUDE_CONFIG_DIR=$XDG_CONFIG_HOME/claude
 OLLAMA_MODELS=$XDG_DATA_HOME/ollama/models
 # Silly needs...
+DOTS=$home/.dots	# needed for git bare repo hack
 _JAVA_AWT_WM_NONREPARENTING=1
 MOZ_USE_XINPUT2=1
 
@@ -199,6 +200,7 @@ fn mg{builtin mg -n $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 fn publicip{curl -4 -w '\n' -s http://ifconfig.me}
+fn snarf{git --git-dir="$DOTS" --work-tree="$HOME"}
 
 fn gl{
 	got log $* | less

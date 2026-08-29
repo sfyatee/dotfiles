@@ -1,4 +1,5 @@
 drawterm-9front-wl-git
 gameoftrees
 knfmt
+libfsm-git
 pacman-mandoc-update-hook

@@ -71,6 +71,7 @@ CODEX_HOME=$XDG_CONFIG_HOME/codex
 COPILOT_HOME=$XDG_CONFIG_HOME/copilot
 OLLAMA_MODELS=$XDG_DATA_HOME/ollama/models
 # Silly needs...
+DOTS=$HOME/.dots	# needed for git bare repo hack
 _JAVA_AWT_WM_NONREPARENTING=1
 MOZ_USE_XINPUT2=1
 
