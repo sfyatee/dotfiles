@@ -1,9 +1,9 @@
 #!/bin/sh
 
 # defaults
-export DOTS="~/.dots"
-export CARGO_HOME="~/.local/share/cargo"
-export RUSTUP_HOME="~/.local/share/rustup"
+export DOTS=~/lib/dots
+export CARGO_HOME=~/.local/share/cargo
+export RUSTUP_HOME=~/.local/share/rustup
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
 export PACMAN_AUTH=run0
@@ -24,8 +24,8 @@ if [ -d "$DOTS" ]; then
 	dot fetch --prune origin
 else
         git clone --bare https://github.com/sfyatee/dotfiles "$DOTS"
-        dot config status.showUntrackedFiles no
 fi
+dot config status.showUntrackedFiles no
 dot checkout -f master
 
 case "$(uname)" in
