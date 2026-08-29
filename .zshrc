@@ -30,8 +30,9 @@ osc71() {
 	emulate -L zsh # also sets localoptions for us
 	setopt extendedglob
 	local LC_ALL=C p
-	p=$'\e]7;file://'"$HOST"\
-	    "${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}$'\e\\'
+	p=$'\e]7;file://'"$HOST"
+	p+=${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
+	p+=$'\e\\'
 	# Needs set -g allow-passthrough on to work.
 	# See: https://github.com/tmux/tmux/wiki/FAQ
 	# "...it’s required to pass OSC 7 message to vt explicitely"
@@ -45,16 +46,10 @@ osc71() {
 osc7(){((ZSH_SUBSHELL))||osc71}
 add-zsh-hook -Uz chpwd osc7
 
-precmd() { print -Pn "\e]0;%m:%~$\a" }
-preexec() { print -Pn "\e]0;%m:%~$ ${~1:gs/%/%%}\a" }
+# Sets the label of the current X terminal window.
+precmd() { print -Pn "\e]0;$H:%~$\a" }
+preexec() { print -Pn "\e]0;$H:%~$ ${~1:gs/%/%%}\a" }
 
-# http://man.9front.org/1/emacs
-alias 9term="SHELL=hack $PLAN9/bin/9term"
-alias acme="SHELL=hack $PLAN9/bin/acme -a $varfont $fixfont"
-alias edwood="SHELL=hack edwood -a $varfont $fixfont"
-alias sam="SHELL=hack $PLAN9/bin/sam -a"
-
-# fns
 alias cp="cp -i"
 alias hg="chg"
 alias ivy="ivy-prompt"
@@ -70,6 +65,12 @@ alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
 gl() {
 	got log "$@" | less
 }
+
+# http://man.9front.org/1/emacs
+alias 9term="SHELL=hack $PLAN9/bin/9term"
+alias acme="SHELL=hack $PLAN9/bin/acme -a $varfont $fixfont"
+alias edwood="SHELL=hack edwood -a $varfont $fixfont"
+alias sam="SHELL=hack $PLAN9/bin/sam -a"
 
 # For 9term and acme's win.
 if [ "$termprog" ] || [ "$winid" ]; then
