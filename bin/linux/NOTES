@@ -1,2 +1,0 @@
-Need fuse2 package for usr/bin/fusermount which 9pfuse uses. A better solution
-would be to use something other than 9pfuse.

@@ -26,6 +26,7 @@ case "$(uname)" in
 Linux)
 	AUTH="run0"
 	slop
+	# yay --noconfirm -S --needed - < ~/bin/linux/movein.txt
 	;;
 OpenBSD)
 	AUTH="doas"
