@@ -266,6 +266,8 @@ case linux
 	fn pQm{pacman -Qm}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 case openbsd
+	if(test `{sysctl -n hw.ncpuonline} -gt 1) MP=.MP; if not MP=''
+	fn cdg{cd /usr/src/sys/arch/`{machine}/compile/GENERIC^$MP}
 	# https://www.omarpolo.com/post/enjoying-cdpath.html
 	cdpath=(/usr/ports /usr/ports/mystuff)
 	# check shared libs version

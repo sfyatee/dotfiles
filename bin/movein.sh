@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # defaults
-export DOTS=~/lib/dots
+export DOTFILES=~/lib/dotfiles
 export CARGO_HOME=~/.local/share/cargo
 export RUSTUP_HOME=~/.local/share/rustup
 export GOTELEMETRY=off
@@ -33,13 +33,15 @@ slop() {
 }
 
 snarf() {
-	git --git-dir="$DOTS" --work-tree="$HOME" "$@"
+	git --git-dir="$DOTFILES" --work-tree="$HOME" "$@"
 }
 
-if [ -d "$DOTS" ]; then
+if [ -d "$DOTFILES" ]; then
 	snarf fetch --prune origin
 else
-        git clone --bare https://github.com/sfyatee/dotfiles "$DOTS"
+        mkdir -p ~/lib
+	# XXX: https://codeberg.org/sfyatee/dotfiles
+	git clone --bare https://github.com/sfyatee/dotfiles "$DOTFILES"
 fi
 snarf config status.showUntrackedFiles no
 snarf checkout -f master
