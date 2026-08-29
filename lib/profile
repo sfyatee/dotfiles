@@ -81,7 +81,7 @@ PACMAN_AUTH=run0
 SYSTEMD_RUN_SHELL_PROMPT_PREFIX=(': ')
 
 # rg(1)
-FZF_DEFAULT_COMMAND=(rg --files)
+FZF_DEFAULT_COMMAND='rg --files'
 
 # 福山
 HISTFILE=/dev/null
