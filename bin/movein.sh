@@ -1,21 +1,11 @@
 #!/bin/sh
 
-# silly
-export CARGO_HOME=$HOME/.local/share/cargo
-export RUSTUP_HOME=$HOME/.local/share/rustup
+# prevent $home from getting trashed
+export CARGO_HOME="~/.local/share/cargo"
+export RUSTUP_HOME="~/.local/share/rustup"
 export GOTELEMETRY=off
 export GOTOOLCHAIN=local
-
-case "$(uname)" in
-Linux)
-	AUTH="run0"
-	unfortunate
-	;;
-OpenBSD)
-	AUTH="doas"
-	doas pkg_add -l $HOME/bin/openbsd/movein.txt
-	;;
-esac
+export PACMAN_AUTH=run0
 
 # remove cruft installed by default in openbsd
 rm -f ~/.cshrc \
@@ -25,7 +15,26 @@ rm -f ~/.cshrc \
 	~/.Xdefaults \
 	~/.cvsrc
 
-# https://9fans.github.io/plan9port/
+if [ -d ~/.dotfiles ]; then
+	cd ~/.dotfiles
+	git pull --ff-only
+else
+	git clone https://github.com/sfyatee/dotfiles ~/.dotfiles
+fi
+
+case "$(uname)" in
+Linux)
+	AUTH="run0"
+	slop
+	;;
+OpenBSD)
+	AUTH="doas"
+	$AUTH pkg_add -l ~/bin/openbsd/movein.txt
+	;;
+esac
+
+# Plan 9 userspace ported to Unix.
+# See: https://9fans.github.io/plan9port/
 if [ ! -d /usr/local/plan9 ]; then
 	$AUTH mkdir -p /usr/local/plan9
 	$AUTH chgrp $(id -gn) /usr/local/plan9
@@ -36,26 +45,23 @@ if [ ! -d /usr/local/plan9 ]; then
 else
 	cd /usr/local/plan9; git pull; ./INSTALL
 fi
-
 $AUTH install -m 755 /usr/local/plan9/bin/rc /bin/rc
 
-unfortunate() {
+slop() {
 	if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
 		rustup toolchain install stable
 	else
 		rustup update
 	fi
 	if ! lsmod | grep -q 9p; then
-		run0 mkdir -p /etc/modules-load.d/
-		echo 9p | run0 tee -a /etc/modules-load.d/9p.conf > /dev/null
+		$AUTH mkdir -p /etc/modules-load.d/
+		echo 9p | $AUTH tee -a /etc/modules-load.d/9p.conf > /dev/null
 	fi
 	if ! command -v yay >/dev/null 2>&1; then
 		git clone https://aur.archlinux.org/yay /tmp/yay
 		cd /tmp/yay || exit 1; makepkg -fsi --noconfirm
 	fi
 }
-
-cd ~
 
 # utilis
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
