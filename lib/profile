@@ -107,11 +107,13 @@ nl='
 '
 cr='
 '
+fn :{}
 
 # `{hostname -s} is not POSIX!
-# https://9p.io/sources/contrib/lyndon/prompt.rc
-fn : {}
 H=$BOX(2)
+# Some hostnames get a '-'^'i++' suffix when a hostname matches an existing
+# one on the network. Strip that off. '{stats} displays the correct hostname.
+# While at it also strip the *.{lan,home,local} suffix in hostnames. $BOX
 h=`$ifs^'.-'{printf %s $H}
 sys=$h(1)
 h=()

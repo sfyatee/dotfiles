@@ -97,7 +97,10 @@ NAMESPACE=/tmp/ns.$LOGNAME.:0
 # `hostname -s` is not POSIX!
 H=${BOX#* }
 H=${H% *}
+# While at it also strip the *.{lan,home,local} suffix in hostnames. $BOX
 H=${H%%.*}
+# Some hostnames get a '-'^'i++' suffix when a hostname matches an existing
+# one on the network. Strip that off. `stats` displays the correct hostname.
 H=${H%%-*}
 
 # Default font for Plan 9 programs.
