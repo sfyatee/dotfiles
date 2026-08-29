@@ -145,10 +145,16 @@ fn osc7{
 	if not printf '%s' $p
 }
 
+# Sets the label of the current X terminal window.
+fn title{
+	printf '\033]0;%s:%s%%\007' $sys $dir
+}
+
 fn hook{
 	if(flag i){
 		osc7
 		prompt1
+		title
 	}
 	status=''
 }
@@ -243,7 +249,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	fn ivy{builtin ivy}
 	fn jj{builtin jj --no-pager $*}
 }
-if not prompt1
+if not hook
 
 # revpatch - reverse a patch
 # 24may2020  +leah+
