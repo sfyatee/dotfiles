@@ -16,17 +16,17 @@ rm -f ~/.cshrc \
 	~/.Xdefaults \
 	~/.cvsrc
 
-dot() {
+snarf() {
 	git --git-dir="$DOTS" --work-tree="$HOME" "$@"
 }
 
 if [ -d "$DOTS" ]; then
-	dot fetch --prune origin
+	snarf fetch --prune origin
 else
         git clone --bare https://github.com/sfyatee/dotfiles "$DOTS"
 fi
-dot config status.showUntrackedFiles no
-dot checkout -f master
+snarf config status.showUntrackedFiles no
+snarf checkout -f master
 
 case "$(uname)" in
 Linux)
