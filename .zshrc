@@ -61,7 +61,7 @@ alias mg="mg -n"
 alias mv="mv -i"
 alias ph="ps auwwx | head"
 alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
-alias snarf='git --git-dir="$DOTS" --work-tree="$HOME"'
+alias snarf='git --git-dir="~/lib/dotfiles" --work-tree="$HOME"'
 
 gl() {
 	got log "$@" | less
@@ -102,6 +102,8 @@ linux)
 	alias ph="ps auwwx | sort -rk 3,3 | head"
 	;;
 openbsd)
+	[ $(sysctl -n hw.ncpuonline) -gt 1 ] && MP=".MP" || MP=""
+	alias cdg='cd /usr/src/sys/arch/`machine`/compile/GENERIC${MP}'
 	# check shared libs version
 	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
 	cshlib() {
