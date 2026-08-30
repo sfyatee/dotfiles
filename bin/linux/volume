@@ -1,13 +1,15 @@
 #!/bin/rc
 
+# http://imgur.com/a/qWgAw
 fn volume{
-	wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ printf "%d\n", $2 * 100 }'
+	wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf "%d\n", $2 * 100}'
 }
 
 fn muted{
 	wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q '\[MUTED\]'
 }
 
+# No need for seq.
 fn bar{
 	n=`{echo `{volume} / 5 | bc}
 	s=''
