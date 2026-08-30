@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# https://gist.github.com/sebastiencs/5d7227f388d93374cebdf72e783fbd6a
+# http://imgur.com/a/qWgAw
+# https://github.com/jcs/dotfiles/blob/master/bin/volume
 OSD_CAT="osd_cat -p top -A center -f \"Helvetica Neue Bold 28\" \
 	-b percentage -o 150 -c \"#00ee00\" -s 1 -l 1 -d 1"
 

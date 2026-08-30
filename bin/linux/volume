@@ -1,6 +1,9 @@
 #!/bin/rc
 
+# Many parts pilaged from these scripts:
+# https://gist.github.com/sebastiencs/5d7227f388d93374cebdf72e783fbd6a
 # http://imgur.com/a/qWgAw
+# https://github.com/jcs/dotfiles/blob/master/bin/volume
 fn volume{
 	wpctl get-volume @DEFAULT_AUDIO_SINK@ | \
 		awk '{printf "%d\n", $2 * 100}'
