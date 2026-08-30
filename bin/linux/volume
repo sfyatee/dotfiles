@@ -1,0 +1,45 @@
+#!/bin/rc
+
+fn volume{
+	wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{ printf "%d\n", $2 * 100 }'
+}
+
+fn muted{
+	wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q '\[MUTED\]'
+}
+
+fn bar{
+	n=`{echo `{volume} / 5 | bc}
+	s=''
+
+	while(! ~ $n 0){
+		s=$s^'─'
+		n=`{echo $n - 1 | bc}
+	}
+
+	printf '    %s\n' $s
+}
+
+fn notify{
+	notify-send -a volume -u normal -t 800 -i $1 $2
+}
+
+switch($1){
+case up
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
+	wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+
+	notify audio-volume-muted-blocking `{bar}
+
+case down
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
+	wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%-
+	notify audio-volume-muted-blocking `{bar}
+
+case mute
+	wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+
+	if(muted)
+		notify audio-volume-muted Mute
+	if not
+		notify audio-volume-muted-blocking `{bar}
+}
