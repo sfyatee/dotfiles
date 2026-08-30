@@ -26,25 +26,25 @@ compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 # Change Working Directory (OSC 7)
 # See: https://codeberg.org/dnkl/foot/wiki#shell-integration
 autoload -Uz add-zsh-hook
-osc71() {
+osc7e() {
 	emulate -L zsh # also sets localoptions for us
 	setopt extendedglob
 	local LC_ALL=C p
 	p=$'\e]7;file://'"$HOST"
 	p+=${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
 	p+=$'\e\\'
-	# Needs set -g allow-passthrough on to work.
+	printf '%s' "$p"
+	# XXX: set -g allow-passthrough needed or not?
 	# See: https://github.com/tmux/tmux/wiki/FAQ
 	# "...it’s required to pass OSC 7 message to vt explicitely"
 	# See: https://wiki.9front.org/plumber-vt
-	if [[ -n "$TMUX" ]]; then
-		printf '%s' $'\ePtmux;\e'"$p"$'\e\\'
-	else
-		printf '%s' "$p"
-	fi
+	# Do not delete this! This makes ctrl-shift+n spawn in $cwd.
+	[[ -n "$TMUX" ]] && printf '%s' $'\ePtmux;\e'"$p"$'\e\\'
 }
-osc7(){((ZSH_SUBSHELL))||osc71}
-add-zsh-hook -Uz chpwd osc7
+osc7(){((ZSH_SUBSHELL))||osc7e}
+# Makes osc7 execute before each prompt.
+# The rc version for ref:lib/profile:255:8
+add-zsh-hook -Uz precmd osc7
 
 # Sets the label of the current X terminal window.
 precmd() { print -Pn "\e]0;$H:%~$\a" }
