@@ -100,7 +100,7 @@ H=${H% *}
 # While at it also strip the *.{lan,home,local} suffix in hostnames. $BOX
 H=${H%%.*}
 # Some hostnames get a '-'^'i++' suffix when a hostname matches an existing
-# one on the network. Strip that off. `stats` displays the correct hostname.
+# one on the network. Strip that off. Use $PLAN9/bin/stats for the truth...
 H=${H%%-*}
 
 # Default font for Plan 9 programs.

@@ -112,7 +112,7 @@ fn :{}
 # `{hostname -s} is not POSIX!
 H=$BOX(2)
 # Some hostnames get a '-'^'i++' suffix when a hostname matches an existing
-# one on the network. Strip that off. '{stats} displays the correct hostname.
+# one on the network. Strip that off. Use $PLAN9/bin/stats for the truth...
 # While at it also strip the *.{lan,home,local} suffix in hostnames. $BOX
 h=`$ifs^'.-'{printf %s $H}
 sys=$h(1)
