@@ -1,13 +1,5 @@
 #!/bin/sh
 
-# defaults
-export DOTFILES=~/lib/dotfiles
-export CARGO_HOME=~/.local/share/cargo
-export RUSTUP_HOME=~/.local/share/rustup
-export GOTELEMETRY=off
-export GOTOOLCHAIN=local
-export PACMAN_AUTH=run0
-
 # remove cruft installed by default in openbsd
 rm -f ~/.cshrc \
 	~/.login \
@@ -17,6 +9,7 @@ rm -f ~/.cshrc \
 	~/.cvsrc
 
 slop() {
+	RUSTUP_HOME=$HOME/.local/share/rustup; export RUSTUP_HOME
 	if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
 		rustup toolchain install stable
 	else
@@ -33,7 +26,7 @@ slop() {
 }
 
 snarf() {
-	git --git-dir=$DOTFILES --work-tree=$HOME "$@"
+	git --git-dir=$HOME/lib/dotfiles --work-tree=$HOME "$@"
 }
 
 if [ -d $DOTFILES ]; then
@@ -41,13 +34,14 @@ if [ -d $DOTFILES ]; then
 	snarf fetch --prune origin
 else
 	mkdir -p ~/lib
-	git clone --bare https://github.com/sfyatee/dotfiles $DOTFILES
+	git clone --bare https://github.com/sfyatee/dotfiles $HOME/lib/dotfiles
 fi
 snarf config status.showUntrackedFiles no
 snarf checkout -f master
 
 case "$(uname)" in
 Linux)
+	PACMAN_AUTH=run0; export PACMAN_AUTH
 	AUTH="run0"
 	slop
 	# yay --noconfirm -S --needed - < ~/bin/linux/movein.txt
@@ -73,7 +67,11 @@ fi
 $AUTH install -m 755 /usr/local/plan9/bin/rc /bin/rc
 
 # utilis
+CARGO_HOME=$HOME/.local/share/cargo; export CARGO_HOME
 cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
+
+GOTELEMETRY=off; export GOTELEMETRY
+GOTOOLCHAIN=local; export GOTOOLCHAIN
 go install 9fans.net/acme-lsp/cmd/L@master
 go install 9fans.net/acme-lsp/cmd/acme-lsp@master
 go install 9fans.net/acme-lsp/cmd/acmefocused@master
