@@ -1,0 +1,16 @@
+[Unit]
+Description=Presents the host window system's fonts in the standard Plan 9 format
+Documentation=man:fontsrv(4)
+# Not supported by superd(1). PartOf/After options considered harmful?
+# See: https://github.com/lufia/plan9port-systemd-units/blob/main/user/fontsrv.service
+# PartOf=graphical-session.target
+# After=graphical-session.target
+
+[Service]
+Type=simple
+Environment=PLAN9=/usr/local/plan9
+Environment=PATH=/usr/local/plan9/bin
+ExecStart=/usr/local/plan9/bin/fontsrv
+
+[Install]
+WantedBy=default.target

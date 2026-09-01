@@ -24,6 +24,7 @@ felloff() {
 # See: ../.config/systemd/user/acme-lsp.service
 # See: ../.config/systemd/user/acmefocused.service
 # See: ../.config/systemd/user/factotum.service
+# See: ../.config/systemd/user/fontsrv.service
 # See: ../.config/systemd/user/plumber.service
 if [ $OS = linux ]; then
 	gui
