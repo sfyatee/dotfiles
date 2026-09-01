@@ -48,6 +48,6 @@ esac
 
 for f in $t/*(N.); do
 	id=${${f:t}%.*}
-	rg -q "^$id[[:space:]]+\[\[ binary data" <<< $l || rm -f -- $f
+	egrep -q "^$id[[:space:]]+\[\[ binary data" <<< "$l" || rm -f -- "$f"
 done
 
