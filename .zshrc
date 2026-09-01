@@ -100,6 +100,7 @@ linux)
 	alias ls="ls -AFv"
 	alias pQm="pacman -Qm"
 	alias ph="ps auwwx | sort -rk 3,3 | head"
+	alias superctl="systemctl --user"
 	;;
 openbsd)
 	[ $(sysctl -n hw.ncpuonline) -gt 1 ] && MP=".MP" || MP=""
