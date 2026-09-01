@@ -1,4 +1,27 @@
-#!/bin/sh
+#!/bin/zsh
+local r p f
+local skip='(^|/)(\.bzr|\.git|\.hg|\.svn|CVS|RCS|_darcs|_build)($|/)|(^|/)([^/]*~|[^/]*\.o|tags)$'
+local -a o a e
+while (( $# > 1 )) && [[ $1 == -* && $1 != -- ]]; do
+	[[ $1 == -n ]] && r=-n1 || o+=("$1")
+	shift
+done
+[[ $1 == -- ]] && shift
+if (( $# == 0 )); then
+	print -u2 'usage: g [flags] pattern [+ext ...] [file ...]'
+	exit 2
+fi
+p=$1
+shift
 
-[ "$#" -gt 0 ] || { echo "usage: g [flags] pattern [files]" >&2; exit 1; }
-exec rg -n --no-heading "$@"
+a=(${@:#+*})
+(( $#a )) || a=(.)
+# +go +c → \.go$|\.c$
+e=(${${(M)@:#+*}:s/+/\\./})
+(( $#e )) && e=(${^e}\$)
+(( $#e )) && f=${(j:|:)e}
+{
+	for x in $a; do
+		[[ -d $x ]] && walk -f $r -- $x || print -r -- $x
+	done
+} | 9 grep -v "$skip" | { [[ -n $f ]] && 9 grep "$f" || cat } | xargs 9 grep -n $o -- "$p" /dev/null

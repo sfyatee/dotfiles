@@ -27,7 +27,7 @@ felloff() {
 # Insurance, just in case the service supervisor somehow fails.
 [ -e "$NAMESPACE/font" ] &&
 [ -e "$NAMESPACE/factotum" ] &&
-[ -e "$NAMESPACE/plumb" ] || fellofff
+[ -e "$NAMESPACE/plumb" ] || felloff
 
 # Default font for Plan 9 programs.
 lookforfont() {

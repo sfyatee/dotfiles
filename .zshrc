@@ -1,7 +1,6 @@
 #!/bin/zsh
 umask 022
 
-# speed things up
 if [[ ! -o interactive ]]; then return; fi
 
 # options
@@ -13,9 +12,8 @@ setopt promptsubst	# make `prompt` work
 setopt rcquotes	# plan9-like quoting
 PROMPT="$H:%~%(!.#.$) "
 
-# this needs to run before compinit installs keybindings.
-# 12mar2013  +chris+
-bindkey -e	# emacs binds
+# We don't like vi.
+bindkey -e 
 
 # completion files: use xdg dirs
 autoload -Uz compinit	# unfortunate

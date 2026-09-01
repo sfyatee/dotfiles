@@ -1,11 +1,5 @@
-#!/bin/zsh -f
-
-# see also: g
-gg() {
-	local p=$argv[-1] o=
-	(( ARGC > 1 )) && { git rev-parse -q --verify $p >/dev/null || [ -d $p ] } &&
-	argv[-1]=() || { o='--cached'; p=; }
-	LC_ALL=C GIT_PAGER=less git grep $o -P ${@:?regexp missing} $p
-}
-
-gg "$@"
+#!/bin/zsh
+local p=$argv[-1] o=
+(( ARGC > 1 )) && { git rev-parse -q --verify $p >/dev/null || [ -d $p ] } &&
+argv[-1]=() || { o='--cached'; p=; }
+LC_ALL=C GIT_PAGER=$PAGER git grep $o -P ${@:?regexp missing} $p
