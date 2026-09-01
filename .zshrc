@@ -43,7 +43,7 @@ osc7e() {
 }
 osc7(){((ZSH_SUBSHELL))||osc7e}
 # Makes osc7 execute before each prompt.
-# The rc version for ref:lib/profile:255:8
+# See rc version: lib/profile:138:9
 add-zsh-hook -Uz precmd osc7
 
 # Sets the label of the current X terminal window.
