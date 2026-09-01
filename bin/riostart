@@ -1,12 +1,6 @@
 #!/bin/sh
 
-gui() {
-	footclient 2>/dev/null || foot -s &
-	wlsunet 2>/dev/null || wlsunset -l 34 -L -118.6 &
-}
-
-
-# Setups up the Plan 9 enviornment. Needs to be set early to prevent failure.
+# Setups up the Plan 9 enviornment. Acme and friends need the $(namespace).
 felloff() {
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
@@ -26,10 +20,14 @@ felloff() {
 # See: ../.config/systemd/user/factotum.service
 # See: ../.config/systemd/user/fontsrv.service
 # See: ../.config/systemd/user/plumber.service
-if [ $OS = linux ]; then
-	gui
-	felloff
-fi
+#
+# superctl enable -now plumber.service
+# superctl enable -now acme-lsp.service
+
+# Insurance, just in case the service supervisor somehow fails.
+[ -e "$NAMESPACE/font" ] &&
+[ -e "$NAMESPACE/factotum" ] &&
+[ -e "$NAMESPACE/plumb" ] || fellofff
 
 # Default font for Plan 9 programs.
 lookforfont() {
