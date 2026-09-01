@@ -51,7 +51,7 @@ fixfont=""
 font="`lookforfont LucidaGrandeMonoDK GoMono LuxiMono Monaco IBMPlexMono`"
 [ -n "$font" ] && fixfont="-F $font"
 
-# https://9front.org
+# Restore the state of acme from a file.
 dump=""
 if [ -f "$HOME/acme.dump" ]; then
 	dump="-l $HOME/acme.dump"
