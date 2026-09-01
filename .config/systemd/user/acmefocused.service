@@ -1,7 +1,8 @@
 [Unit]
-Description=acmefocused
+Description=Server that tells acme's focused window ID to clients
 Documentation=https://pkg.go.dev/9fans.net/acme-lsp@master/cmd/acmefocused
 # Not supported by superd(1). PartOf/After options considered harmful?
+# See: https://9lab.org/9port/acme-with-lsp/
 # PartOf=graphical-session.target
 # After=graphical-session.target
 
