@@ -1,13 +1,12 @@
 #!/bin/sh
 
-# force wayland on firefox
-export MOZ_ENABLE_WAYLAND=1
-
 gui() {
 	footclient 2>/dev/null || foot -s &
 	wlsunet 2>/dev/null || wlsunset -l 34 -L -118.6 &
 }
 
+
+# Setups up the Plan 9 enviornment. Needs to be set early to prevent failure.
 felloff() {
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
@@ -19,14 +18,17 @@ felloff() {
 	# eval `9 ssh-agent -e`
 }
 
-# Use systemd services instead.
+# Setups up the Plan 9 enviornment with a user service supervisor.
+# Systems without systemd(1) can use: https://sr.ht/~craftyguy/superd/
+#
+# See: ../.config/systemd/user/acme-lsp.service
+# See: ../.config/systemd/user/acmefocused.service
+# See: ../.config/systemd/user/factotum.service
+# See: ../.config/systemd/user/plumber.service
 if [ $OS = linux ]; then
 	gui
 	felloff
 fi
-
-# I'm afraid it's terminal...
-# foot/tmux
 
 # Default font for Plan 9 programs.
 lookforfont() {
@@ -60,7 +62,7 @@ fi
 # For these Plan 9 programs, the Wayland backend for devdraw doesn't allow specifying @x.y
 # for -W winsize. Wayland doesnt allow windows to position themselves. This is by design...
 # The general workaround is to set compositor-specific rules. Welcome to the future! ʕ◔ϖ◔ʔ
-# See: ../.config/cow/cow.conf:369 and cow(1) (fvwm3 for Wayland)
+# See: ../.config/cow/cow.conf:369 and https://codeberg.org/cow-wm/cow (fvwm for Wayland).
 # See: https://github.com/eaburns/plan9port/blob/wayland/src/cmd/devdraw/wayland.c
 # See: https://github.com/tw4452852/plan9port/blob/master/src/cmd/devdraw/wayland.c
 #

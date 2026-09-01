@@ -1,8 +1,9 @@
 [Unit]
 Description=acmefocused
 Documentation=https://pkg.go.dev/9fans.net/acme-lsp@master/cmd/acmefocused
-PartOf=graphical-session.target
-After=graphical-session.target
+# Not supported by superd(1). PartOf/After options considered harmful?
+# PartOf=graphical-session.target
+# After=graphical-session.target
 
 [Service]
 Type=simple
