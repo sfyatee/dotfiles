@@ -7,7 +7,6 @@ if [[ -z $l ]]; then
 	rm -rf -- $t
 	exit
 fi
-
 mkdir -p -- $t
 i=$(
 	print -r -- $l |
