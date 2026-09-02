@@ -1,27 +1,38 @@
-#!/bin/zsh
-local r p f
-local skip='(^|/)(\.bzr|\.git|\.hg|\.svn|CVS|RCS|_darcs|_build)($|/)|(^|/)([^/]*~|[^/]*\.o|tags)$'
-local -a o a e
-while (( $# > 1 )) && [[ $1 == -* && $1 != -- ]]; do
-	[[ $1 == -n ]] && r=-n1 || o+=("$1")
+#!/usr/bin/env rc
+rfork e
+nl='
+'
+flags=()
+recurse=()
+files=()
+while(! ~ $#* 1 && ~ $1 -* && ! ~ $1 --){
+	if(~ $1 '-n')
+		recurse=-n1
+	if not
+		flags=($flags $1);
 	shift
-done
-[[ $1 == -- ]] && shift
-if (( $# == 0 )); then
-	print -u2 'usage: g [flags] pattern [+ext ...] [file ...]'
-	exit 2
-fi
-p=$1
+}
+if(~ $1 --)
+	shift
+if(~ $#* 0) {
+	echo 'usage: g [flags] pattern [files]' >[1=2]
+	exit usage
+}
+pattern=$1
 shift
 
-a=(${@:#+*})
-(( $#a )) || a=(.)
-# +go +c → \.go$|\.c$
-e=(${${(M)@:#+*}:s/+/\\./})
-(( $#e )) && e=(${^e}\$)
-(( $#e )) && f=${(j:|:)e}
-{
-	for x in $a; do
-		[[ -d $x ]] && walk -f $r -- $x || print -r -- $x
-	done
-} | 9 grep -v "$skip" | { [[ -n $f ]] && 9 grep "$f" || cat } | xargs 9 grep -n $o -- "$p" /dev/null
+suffixes='\.([bcChlmsSy]|asm|awk|cc|cgi|cpp|cs|cxx|go|goc|ha|hpp|hs|hxx|in|java|lua|lx|md|mk|ml|mli|ms|myr|pl|py|rc|rs|sh|sl|tex|xy|txt)$'
+fullnames='(^|/)mkfile$'
+repodirs='(^|/)(.bzr|.git|.got|.hg|.jj|.svn|CVS|RCS|_darcs|_build)($|/)'
+switch($#*){
+case 0
+	walk -f $recurse | 9 grep -e $fullnames -e $suffixes >[2]/dev/null
+case *
+	for(f in $*){
+		if(test -d $f)
+			walk -f $recurse -- $f \
+				| 9 grep -e $fullnames -e $suffixes >[2]/dev/null
+		if not
+			echo $f
+	}
+} | 9 grep -v $repodirs | 9 xargs 9 grep -n $flags -- $pattern /dev/null
