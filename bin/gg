@@ -1,5 +1,14 @@
-#!/bin/zsh
-local p=$argv[-1] o=
-(( ARGC > 1 )) && { git rev-parse -q --verify $p >/dev/null || [ -d $p ] } &&
-argv[-1]=() || { o='--cached'; p=; }
-LC_ALL=C GIT_PAGER=$PAGER git grep $o -P ${@:?regexp missing} $p
+#!/usr/bin/env rc
+rfork e
+r=()
+while(! ~ $#* 1 && ~ $1 -r){
+	r=(-r $2)
+	shift 2
+}
+if(~ $#* 0){
+	echo 'usage: gg [-r revset] pattern [fileset ...]' >[1=2]
+	exit usage
+}
+p=$1
+shift
+jj file search -n $r --pattern $p $*

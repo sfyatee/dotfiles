@@ -212,7 +212,6 @@ font=/mnt/font/LucidaGrandeMonoDK/11a/font
 fixfont=(-F $font)
 
 # http://man.9front.org/1/emacs
-fn 9term{SHELL=hack $PLAN9/bin/9term $*}
 fn acme{SHELL=hack $PLAN9/bin/acme -a $varfont $fixfont $*}
 fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
 fn sam{builtin $PLAN9/bin/sam -a $*}

@@ -66,7 +66,6 @@ gl() {
 }
 
 # http://man.9front.org/1/emacs
-alias 9term="SHELL=hack $PLAN9/bin/9term"
 alias acme="SHELL=hack $PLAN9/bin/acme -a $varfont $fixfont"
 alias edwood="SHELL=hack edwood -a $varfont $fixfont"
 alias sam="SHELL=hack $PLAN9/bin/sam -a"

@@ -1,0 +1,22 @@
+[user]
+name = "demian garcia"
+email = "sfyatee@sfyatee.com"
+
+[ui]
+diff-formatter = ":git"
+merge-editor = "mergiraf"
+default-command = "log"
+
+# create a pull request using `gh` for closest_bookmark(@)
+pr = ["util", "exec", "--", "bash", "-c", """
+gh pr create --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph | cut -d ' ' -f 1)
+"""]
+
+# create a pull request from the last change and try to automatically merge it
+prl = ["util", "exec", "--", "bash", "-c", """
+branch="$(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph | cut -d ' ' -f 1)"
+branch="${branch%\\*}"
+title="$(jj log -r $branch -T 'description_title' --no-graph)"
+body="$(jj log -r $branch -T 'description_body' --no-graph)"
+gh pr create --head "$branch" --title "$title" --body "$body" && gh pr merge $branch --auto --merge
+"""]
