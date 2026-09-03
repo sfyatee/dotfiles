@@ -10,10 +10,10 @@ setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
 setopt promptsubst	# make `prompt` work
 setopt rcquotes	# plan9-like quoting
-PROMPT="$H:%~%(!.#.$) "
+PROMPT="$H:%~%(!.#.%%) "
 
 # We don't like vi.
-bindkey -e 
+bindkey -e
 
 # completion files: use xdg dirs
 autoload -Uz compinit	# unfortunate
@@ -45,8 +45,8 @@ osc7(){((ZSH_SUBSHELL))||osc7e}
 add-zsh-hook -Uz precmd osc7
 
 # Sets the label of the current X terminal window.
-precmd() { print -Pn "\e]0;$H:%~$\a" }
-preexec() { print -Pn "\e]0;$H:%~$ ${~1:gs/%/%%}\a" }
+precmd() { print -Pn "\e]0;$H:%~%%\a" }
+preexec() { print -Pn "\e]0;$H:%~%% ${~1:gs/%/%%}\a" }
 
 alias cp="cp -i"
 alias hg="chg"
@@ -66,7 +66,7 @@ gl() {
 }
 
 # http://man.9front.org/1/emacs
-alias acme="SHELL=hack $PLAN9/bin/acme -a $varfont $fixfont"
+alias acme="$PLAN9/bin/acme -a $varfont $fixfont"
 alias edwood="SHELL=hack edwood -a $varfont $fixfont"
 alias sam="SHELL=hack $PLAN9/bin/sam -a"
 
@@ -139,7 +139,7 @@ if [[ "$TERM" == "dumb" ]]; then
 	unfunction osc7 precmd preexec
 	# set prompt so middle-clicking whole line reruns line's command
 	# show last exit code if non-zero
-	PROMPT="%(?..{%?} )%m:$ "
+	PROMPT=": %(?..{%?} )$H; "
 	RPROMPT=""
 fi
 
