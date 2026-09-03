@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec g '^(type|struct)[ 	]+' "$@"
+g '^(type|struct)[ 	]+' "$@"
