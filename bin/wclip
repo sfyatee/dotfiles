@@ -37,7 +37,7 @@ case 19
 		rm -rf -- $c/db $t
 case 10
 	if(! ~ $#i 0){
-		id=`{printf '%s\n' $i | awk '{print $1}'}
+		id=`{printf '%s\n' $i | cut -f1}
 		printf '%s\n' $id | cliphist delete
 		rm -f -- $t/$id.*
 	}
