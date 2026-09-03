@@ -3,20 +3,19 @@ rfork e
 ifs='
 '
 c=$home/.cache/cliphist
-t=$c/thumbnails
 l=`{cliphist list}
 if(~ $#l 0){
 	fuzzel -d --prompt-only 'cliphist: please store something first '
-	rm -rf -- $t
+	rm -rf -- $c/thumbnails
 	exit
 }
-mkdir -p -- $t
+mkdir -p -- $c/thumbnails
 tmp=`{mktemp /tmp/cliphist.XXXXXXXXXX}
 fn sigexit{
 	rm -f -- $tmp
 }
 printf '%s\n' $l |
-awk -v d=$t '
+awk -v d=$c/thumbnails '
 	/^[0-9]+[[:space:]]+<meta http-equiv=/ { next }
 	/binary/ {
 		for(n=1;n<=NF;n++) if($n~/^(jpg|jpeg|png|bmp)$/) {
@@ -34,12 +33,12 @@ i=`{cat $tmp}
 switch($s){
 case 19
 	~ `{printf 'No\nYes\n' | fuzzel -d --placeholder 'Delete history?' --lines 2} Yes &&
-		rm -rf -- $c/db $t
+		rm -rf -- $c/db $c/thumbnails
 case 10
 	if(! ~ $#i 0){
 		id=`{printf '%s\n' $i | cut -f1}
 		printf '%s\n' $id | cliphist delete
-		rm -f -- $t/$id.*
+		rm -f -- $c/thumbnails/$id.*
 	}
 case *
 	if(! ~ $#i 0)
@@ -58,4 +57,4 @@ awk '
 		if(!(f in live))
 			print $0
 	}
-' <{printf '%s\n' $l} <{walk -f $t >[2]/dev/null} | 9 xargs rm -f --
+' <{printf '%s\n' $l} <{walk -f $c/thumbnails >[2]/dev/null} | 9 xargs rm -f --
