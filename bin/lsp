@@ -1,31 +1,24 @@
 #!/bin/rc
-
-# acme-lsp/acmefocused helper script
-# Igor B�hm -- https://9lab.org/9port/acme-with-lsp/
-# Look at:
-# ../.config/systemd/user/acmefocused.service
-# ../.config/systemd/user/acme-lsp.service
-services=(acme-lsp acmefocused)
-
+# acme-lsp helpers
+# macos version: https://9lab.org/9port/acme-with-lsp/
 if(~ `{which systemctl >[2]/dev/null} ?*){
 	rcctl=(systemctl --user)
 	rclist=(systemctl --user list-units --type=service --all)
 }
 if not{
-	# See: https://sr.ht/~craftyguy/superd/
+	# https://sr.ht/~craftyguy/superd/
 	rcctl=superctl
 	rclist=(superctl status)
 }
 
-fn usage{
-	echo `{basename $0}^' [list|stop|start|restart|log]'
-}
+fn usage{echo `{basename $0}^' [list|stop|start|restart|log]'}
 
+# go install 9fans.net/acme-lsp/cmd/acme{-lsp,focused}
+services=(acme-lsp acmefocused)
 fn list{$rclist | grep acme}
 fn start{for(s in $services) $rcctl enable --now $s}
 fn stop{for(s in $services) $rcctl disable --now $s}
 fn restart{for(s in $services) $rcctl restart $s}
-
 fn log{
 	switch($rcctl(1)){
 	case systemctl
