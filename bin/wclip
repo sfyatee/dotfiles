@@ -1,46 +1,61 @@
-#!/bin/zsh
-c=${XDG_CACHE_HOME:-$HOME/.cache}/cliphist
+#!/bin/rc
+rfork e
+ifs='
+'
+c=$home/.cache/cliphist
 t=$c/thumbnails
-l=$(cliphist list)
-if [[ -z $l ]]; then
+l=`{cliphist list}
+if(~ $#l 0){
 	fuzzel -d --prompt-only 'cliphist: please store something first '
 	rm -rf -- $t
 	exit
-fi
+}
 mkdir -p -- $t
-i=$(
-	print -r -- $l |
-	awk -v d="$t" '
-		/^[0-9]+[[:space:]]+<meta http-equiv=/ { next }
-		/binary/ {
-			for(n=1;n<=NF;n++) if($n~/^(jpg|jpeg|png|bmp)$/) {
-				f=d"/"$1"."$n
-				system("test -f \""f"\" || printf \""$1"\\t\" | cliphist decode >\""f"\"")
-				printf "%s%cicon%c%s\n",$0,0,31,f
-				next
-			}
+tmp=`{mktemp /tmp/cliphist.XXXXXXXXXX}
+fn sigexit{
+	rm -f -- $tmp
+}
+printf '%s\n' $l |
+awk -v d=$t '
+	/^[0-9]+[[:space:]]+<meta http-equiv=/ { next }
+	/binary/ {
+		for(n=1;n<=NF;n++) if($n~/^(jpg|jpeg|png|bmp)$/) {
+			f=d"/"$1"."$n
+			system("test -f \""f"\" || printf \""$1"\\t\" | cliphist decode >\""f"\"")
+			printf "%s%cicon%c%s\n",$0,0,31,f
+			next
 		}
-		1
-	' |
-	fuzzel -d --placeholder 'Search clipboard...' --counter --no-sort --with-nth 2
-)
-case $? in
-19)
-	[[ $(print -l No Yes |
-	fuzzel -d --placeholder 'Delete history?' --lines 2) == Yes ]] && rm -rf -- $c/db $t
-	;;
-10)
-	[[ -n $i ]] && {
-		id=${i%%$'\t'*}
-		print -r -- $id | cliphist delete; rm -f -- $t/$id.*(N)
 	}
-	;;
-*)
-	[[ -n $i ]] && print -r -- $i | cliphist decode | wl-copy
-	;;
-esac
-for f in $t/*(N.); do
-	id=${${f:t}%.*}
-	re="(^|"$'\n'")$id[[:space:]]+\\[\\[ binary data"
-	[[ $l =~ $re ]] || rm -f -- "$f"
-done
+	1
+' |
+fuzzel -d --placeholder 'Search clipboard...' --counter --no-sort --with-nth 2 > $tmp
+s=$status
+i=`{cat $tmp}
+switch($s){
+case 19
+	~ `{printf 'No\nYes\n' | fuzzel -d --placeholder 'Delete history?' --lines 2} Yes &&
+		rm -rf -- $c/db $t
+case 10
+	if(! ~ $#i 0){
+		id=`{printf '%s\n' $i | awk '{print $1}'}
+		printf '%s\n' $id | cliphist delete
+		rm -f -- $t/$id.*
+	}
+case *
+	if(! ~ $#i 0)
+		printf '%s\n' $i | cliphist decode | wl-copy
+}
+awk '
+	NR==FNR {
+		if($0 ~ /^[0-9]+[[:space:]]+\[\[ binary data/)
+			live[$1] = 1
+		next
+	}
+	{
+		f = $0
+		sub(/^.*\//, "", f)
+		sub(/\.[^.]*$/, "", f)
+		if(!(f in live))
+			print $0
+	}
+' <{printf '%s\n' $l} <{walk -f $t >[2]/dev/null} | 9 xargs rm -f --
