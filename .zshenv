@@ -14,7 +14,7 @@ XDG_CONFIG_HOME="$HOME/.config"
 XDG_DATA_HOME="$HOME/.local/share"
 
 # XDG offenders...
-# See: https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
+# https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
 CARGO_HOME=$XDG_DATA_HOME/cargo
 CUDA_CACHE_PATH=$XDG_CACHE_HOME/nv
 NUGET_PACKAGES=$XDG_CACHE_HOME/NuGetPackages
@@ -89,9 +89,8 @@ MYSQL_HISTFILE=/dev/null
 PYTHON_HISTORY=/dev/null
 
 # Override $NAMESPACE (see intro(4)) because the default on MacOS is too long.
-# See: https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
-# This matches the default on other Unices when $WSYS is running.
-# See: /usr/local/plan9/src/lib9/getns.c:43
+# https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
+# This matches other Unices and its $WSYS. /usr/local/plan9/src/lib9/getns.c:43
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # `hostname -s` is not POSIX!
@@ -110,8 +109,8 @@ font="/mnt/font/LucidaGrandeMonoDK/11a/font"
 fixfont="-F $font"
 
 # Secstore considered harmful?
-# See: https://9fans.topicbox.com/groups/9fans/T2e892f330bc0513b-M168e79b077a072dbe954da15
-# See: https://lists.9front.org/9front/2024/April/1714325162.00
+# https://9fans.topicbox.com/groups/9fans/T2e892f330bc0513b-M168e79b077a072dbe954da15
+# https://lists.9front.org/9front/2024/April/1714325162.00
 secstore=localhost
 
 # Equivalent variables for rc(1).
@@ -130,7 +129,7 @@ linux)
 	NPROC=`nproc`
 	;;
 openbsd)
-	# See: https://www.omarpolo.com/post/enjoying-cdpath.html
+	# https://www.omarpolo.com/post/enjoying-cdpath.html
 	CDPATH=/usr/ports:/usr/ports/mystuff
 esac
 
