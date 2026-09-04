@@ -129,7 +129,7 @@ fn prompt1{
 	case *
 		dir=$pwd
 	}
-	prompt=($"sys^':'^$dir^'% ')
+	prompt=($"sys^':'^$dir^'$ ')
 }
 
 # Change Working Directory (OSC 7)
@@ -148,7 +148,7 @@ fn osc7{
 
 # Sets the label of the current X terminal window.
 fn title{
-	printf '\033]0;%s:%s%%\007' $sys $dir
+	printf '\033]0;%s:%s$\007' $sys $dir
 }
 
 fn hook{

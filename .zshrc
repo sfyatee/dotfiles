@@ -10,7 +10,7 @@ setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
 setopt promptsubst	# make `prompt` work
 setopt rcquotes	# plan9-like quoting
-PROMPT="$H:%~%(!.#.%%) "
+PROMPT="$H:%~%(!.#.$) "
 
 # We don't like vi.
 bindkey -e
@@ -45,8 +45,8 @@ osc7(){((ZSH_SUBSHELL))||osc7e}
 add-zsh-hook -Uz precmd osc7
 
 # Sets the label of the current X terminal window.
-precmd() { print -Pn "\e]0;$H:%~%%\a" }
-preexec() { print -Pn "\e]0;$H:%~%% ${~1:gs/%/%%}\a" }
+precmd() { print -Pn "\e]0;%m:%~$\a" }
+preexec() { print -Pn "\e]0;%m:%~$ ${~1:gs/%/%%}\a" }
 
 alias cp="cp -i"
 alias hg="chg"
