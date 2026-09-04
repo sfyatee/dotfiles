@@ -1,4 +1,4 @@
-#!/usr/bin/env rc
+#!/bin/rc
 rfork e
 r=()
 while(! ~ $#* 1 && ~ $1 -r){
