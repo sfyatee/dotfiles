@@ -11,4 +11,4 @@ if(~ $#* 0){
 }
 p=$1
 shift
-jj file search -n $r --pattern $p $*
+jj file search -n $r -p $p $*
