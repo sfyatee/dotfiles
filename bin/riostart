@@ -76,4 +76,4 @@ stats -lmisce $fixfont
 
 # http://man.9front.org/1/emacs
 # https://research.swtch.com/acme
-SHELL=hack /usr/local/plan9/bin/acme -a $varfont $fixfont $dump &
+/usr/local/plan9/bin/acme -a $varfont $fixfont $dump &
