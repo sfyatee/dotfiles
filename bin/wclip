@@ -16,7 +16,7 @@ printf '%s\n' $l |
 awk -v d=$c/thumbnails '
 	/^[0-9]+[[:space:]]+<meta http-equiv=/ { next }
 	/binary/ {
-		for(n=1;n<=NF;n++) if($n~/^(jpg|jpeg|png|bmp)$/) {
+		for(n=1;n<=NF;n++) if($n~/^(jpg|jpeg|png|bmp)$/){
 			f=d"/"$1"."$n
 			system("test -f \""f"\" || printf \""$1"\\t\" | cliphist decode >\""f"\"")
 			printf "%s%cicon%c%s\n",$0,0,31,f
