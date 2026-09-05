@@ -3,3 +3,4 @@ gameoftrees
 knfmt
 libfsm-git
 pacman-mandoc-update-hook
+xe

@@ -55,4 +55,4 @@ awk '
 		if(!(f in live))
 			print $0
 	}
-' <{printf '%s\n' $l} <{walk -f $c/thumbnails >[2]/dev/null} | 9 xargs rm -f --
+' <{printf '%s\n' $l} <{walk -f $c/thumbnails >[2]/dev/null} | xe -N0 rm -f --

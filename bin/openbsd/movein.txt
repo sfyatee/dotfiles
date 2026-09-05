@@ -35,4 +35,5 @@ uv
 wayvnc
 wev
 wf-recorder
+xe
 zsh
