@@ -118,7 +118,8 @@ utilis)
 esac
 
 games() {
-	if [ -d "$HOME/.local/share/Steam/steamapps/common/Team Fortress 2/tf/custom" ]; then
+	TF2="$HOME/.local/share/Steam/steamapps/common/Team Fortress 2/tf/custom"
+	if [ -d "TF2" ]; then
 		cd "$TF2"
 
 		# hud
