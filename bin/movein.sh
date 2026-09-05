@@ -1,15 +1,29 @@
 #!/bin/sh
 
-# remove cruft installed by default in openbsd
-rm -f ~/.cshrc \
-	~/.login \
-	~/.mailrc \
-	~/.profile \
-	~/.Xdefaults \
-	~/.cvsrc
+OS=$(uname -s)
+PLAN9=/usr/local/plan9
+CARGO_HOME=$HOME/.local/share/cargo
+GOTELEMETRY=off
+GOTOOLCHAIN=local
+RUSTUP_HOME=$HOME/.local/share/rustup
+
+export OS PLAN9 CARGO_HOME GOTELEMETRY GOTOOLCHAIN RUSTUP_HOME
+
+snarf() {
+	git --git-dir=$HOME/lib/dotfiles --work-tree=$HOME "$@"
+}
+
+case $OS in
+Linux)
+	AUTH=run0
+	export PACMAN_AUTH=$AUTH
+	;;
+OpenBSD)
+	AUTH=doas
+	;;
+esac
 
 slop() {
-	RUSTUP_HOME=$HOME/.local/share/rustup; export RUSTUP_HOME
 	if [ -z "$(rustup toolchain list | grep -v 'default')" ]; then
 		rustup toolchain install stable
 	else
@@ -25,67 +39,83 @@ slop() {
 	fi
 }
 
-snarf() {
-	git --git-dir=$HOME/lib/dotfiles --work-tree=$HOME "$@"
+felloff(){
+	if [ ! -d "$PLAN9" ]; then
+		$AUTH mkdir -p "$PLAN9"
+		# set the correct owner group
+		$AUTH chown $(id -un):$(id -gn) "$PLAN9"
+		git clone https://github.com/9fans/plan9port "$PLAN9"
+	else
+		git pull -C "$PLAN9" pull --ff-only
+	fi
+	(
+		cd "$PLAN9"
+		./INSTALL
+	) || exit
+	$AUTH install -m 755 "$PLAN9/bin/rc" /bin/rc
 }
 
-if [ -d $DOTFILES ]; then
-	snarf remote set-url origin git@github.com:sfyatee/dotfiles.git
-	snarf fetch --prune origin
-else
-	mkdir -p ~/lib
-	git clone --bare https://github.com/sfyatee/dotfiles $HOME/lib/dotfiles
-fi
-snarf config status.showUntrackedFiles no
-snarf checkout -f master
+utilis() {
+	cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
+	go install 9fans.net/acme-lsp/cmd/L@master
+	go install 9fans.net/acme-lsp/cmd/acme-lsp@master
+	go install 9fans.net/acme-lsp/cmd/acme-focused@master
+	go install github.com/fzipp/ivy-prompt@latest
+	go install github.com/hdonnay/wercsrv@master
+	go install github.com/rjkroege/edwood/cmd/win@master
+	go install github.com/thimc/walk@latest
+	go install robpike.io/ivy@master
+	go install rsc.io/cmd/jj-sink@latest
+	go install rsc.io/grepdiff@master
+	go install git.sr.ht/~gzj/werc-quickstart@latest
+	go install git.sr.ht/~mkhl/xplor@master
+}
 
-case "$(uname)" in
-Linux)
-	PACMAN_AUTH=run0; export PACMAN_AUTH
-	AUTH="run0"
-	slop
-	# yay --noconfirm -S --needed - < ~/bin/linux/movein.txt
+case ${1-} in
+felloff)
+	felloff
 	;;
-OpenBSD)
-	AUTH="doas"
-	$AUTH pkg_add -l ~/bin/openbsd/movein.txt
+utilis)
+	utilis
+	;;
+'')
+	case $OS in
+	Linux)
+		slop
+		;;
+	OpenBSD)
+		$AUTH pkg_add git
+		rm -f \
+			"$HOME/.cshrc" \
+			"$HOME/.login" \
+			"$HOME/.mailrc" \
+			"$HOME/.profile" \
+			"$HOME/.Xdefaults" \
+			"$HOME/.cvsrc"
+		;;
+	esac
+
+	if [ -d "$DOTFILES" ]; then
+		snarf remote set-url origin git@github.com:sfyatee/dotfiles.git
+		snarf fetch --prune origin
+	else
+		mkdir -p "$HOME/lib"
+		git clone --bare \
+			https://github.com/sfyatee/dotfiles \
+			"$DOTFILES"
+	fi
+
+	snarf config status.showUntrackedFiles no
+	snarf checkout -f master
+
+	felloff
+	utilis
+	;;
+*)
+	echo "usage: $0 [felloff|utilis]" >&2
+	exit 1
 	;;
 esac
-
-# Plan 9 userspace ported to Unix.
-# See: https://9fans.github.io/plan9port/
-if [ ! -d /usr/local/plan9 ]; then
-	$AUTH mkdir -p /usr/local/plan9
-	$AUTH chgrp $(id -gn) /usr/local/plan9
-	$AUTH chmod g+rwx /usr/local/plan9
-	$AUTH chown $(id -un):$(id -gn) /usr/local/plan9
-	git clone https://github.com/9fans/plan9port.git /usr/local/plan9
-	cd /usr/local/plan9; ./INSTALL
-else
-	cd /usr/local/plan9; git pull; ./INSTALL
-fi
-$AUTH install -m 755 /usr/local/plan9/bin/rc /bin/rc
-
-# hide cargo elsewhere
-CARGO_HOME=$HOME/.local/share/cargo; export CARGO_HOME
-
-cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
-
-# no thanks
-GOTELEMETRY=off; export GOTELEMETRY
-# insanity
-GOTOOLCHAIN=local; export GOTOOLCHAIN
-
-go install 9fans.net/acme-lsp/cmd/{L,acme{-lsp,focused}}@master
-go install github.com/fzipp/ivy-prompt@latest
-go install github.com/hdonnay/wercsrv@master
-go install github.com/rjkroege/edwood/cmd/win@master
-go install github.com/thimc/walk@latest
-go install robpike.io/ivy@master
-go install rsc.io/cmd/jj-sink@latest
-go install rsc.io/grepdiff@master
-go install git.sr.ht/~gzj/werc-quickstart@latest
-go install git.sr.ht/~mkhl/xplor@master
 
 # 2007
 TF2="$HOME/.local/share/Steam/steamapps/common/Team Fortress 2/tf/custom"
