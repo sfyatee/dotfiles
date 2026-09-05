@@ -59,12 +59,13 @@ if [ -f "$HOME/acme.dump" ]; then
 	dump="-l $HOME/acme.dump"
 fi
 
-# For these Plan 9 programs, the Wayland backend for devdraw doesn't allow specifying @x.y
-# for -W winsize. Wayland doesnt allow windows to position themselves. This is by design...
-# The general workaround is to set compositor-specific rules. Welcome to the future! ʕ◔ϖ◔ʔ
+# For these Plan 9 programs, the Wayland backend for devdraw doesn't allow
+# specifying @x.y for -W winsize. Wayland doesnt allow windows to position
+# themselves. This is by design... The general workaround is to set
+# compositor-specific rules. Your milage may vary. Welcome to the future! ʕ◔ϖ◔ʔ
 #
 # Of interest:
-# ../.config/cow/cow.conf:369 and https://codeberg.org/cow-wm/cow (fvwm for Wayland).
+# ../.config/cow/cow.conf:369 and https://codeberg.org/cow-wm/cow (fvwm-like).
 # https://github.com/eaburns/plan9port/blob/wayland/src/cmd/devdraw/wayland.c
 # https://github.com/tw4452852/plan9port/blob/master/src/cmd/devdraw/wayland.c
 #
