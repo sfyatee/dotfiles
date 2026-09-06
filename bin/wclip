@@ -30,7 +30,7 @@ s=$status
 i=`{cat $tmp}
 switch($s){
 case 19
-	~ `{printf 'No\nYes\n' | fuzzel -d --placeholder 'Delete history?' --lines 2} Yes &&
+	~ `{printf 'No\nYes\n' | fuzzel -d --placeholder 'Delete history?' -l 2} Yes &&
 		rm -rf -- $c/db $c/thumbnails
 case 10
 	if(! ~ $#i 0){
