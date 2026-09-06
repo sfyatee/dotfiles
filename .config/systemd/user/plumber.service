@@ -1,16 +1,13 @@
 [Unit]
 Description=User-level file system for interprocess messaging
 Documentation=man:plumber(4)
-# Not supported by superd(1). PartOf/After options considered harmful?
-# See: https://github.com/lufia/plan9port-systemd-units/blob/main/user/plumber.service
-# PartOf=graphical-session.target
-# After=graphical-session.target
 
 [Service]
 Type=forking
 Environment=PLAN9=/usr/local/plan9
 Environment=PATH=/usr/bin:/usr/local/plan9/bin
 ExecStart=/usr/local/plan9/bin/plumber
+Restart = always
 
 [Install]
 WantedBy=default.target
