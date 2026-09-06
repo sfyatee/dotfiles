@@ -35,4 +35,4 @@ case *
 		if not
 			echo $f
 	}
-} | 9 grep -v $repodirs | 9 xargs 9 grep -n $flags -- $pattern /dev/null
+} | 9 grep -v $repodirs | xe -N0 9 grep -n $flags -- $pattern /dev/null
