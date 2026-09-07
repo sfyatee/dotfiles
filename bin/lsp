@@ -1,12 +1,11 @@
 #!/bin/rc
-# acme-lsp helpers
-# adapted from: https://9lab.org/9port/acme-with-lsp/
+# https://9lab.org/9port/acme-with-lsp/
+# https://sr.ht/~craftyguy/superd/
 if(~ `{which systemctl >[2]/dev/null} ?*){
 	rcctl=(systemctl --user)
 	rclist=(systemctl --user list-units -t service -a)
 }
 if not{
-	# https://sr.ht/~craftyguy/superd/
 	rcctl=(superctl)
 	rclist=(superctl status)
 }
