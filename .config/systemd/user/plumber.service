@@ -3,10 +3,9 @@ Description=User-level file system for interprocess messaging
 Documentation=man:plumber(4)
 
 [Service]
-Type=forking
 Environment=PLAN9=/usr/local/plan9
 Environment=PATH=/usr/bin:/usr/local/plan9/bin
-ExecStart=/usr/local/plan9/bin/plumber
+ExecStart=/usr/local/plan9/bin/plumber -f
 Restart = always
 
 [Install]
