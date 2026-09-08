@@ -1,9 +1,12 @@
 #!/bin/rc
-# https://9lab.org/9port/acme-with-lsp/
-# https://sr.ht/~craftyguy/superd/
-# https://pkg.go.dev/9fans.net/acme-lsp
+# lsp: systemd and superd helper script for acme-lsp
+# Dependencies:
+# https://git.sr.ht/~craftyguy/superd
 # ../.config/systemd/user/acme-lsp.service
 # ../.config/systemd/user/acmefocused.service
+# Prior art:
+# https://9lab.org/9port/acme-with-lsp/
+# https://github.com/xmonk/p9p/blob/master/bin/alsp
 fn usage{
 	echo `{basename $0}^' [list|start|stop|restart|log]'
 }
@@ -24,8 +27,7 @@ case start
 case stop
 	for(s in $services) $rcctl disable --now $s
 case restart
-	for(s in $services)
-		$rcctl restart $s
+	for(s in $services) $rcctl restart $s
 case log
 	if(~ $rcctl(1) systemctl){
 		args=()
