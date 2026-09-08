@@ -1,17 +1,21 @@
 #!/bin/rc
 # https://9lab.org/9port/acme-with-lsp/
 # https://sr.ht/~craftyguy/superd/
+# https://pkg.go.dev/9fans.net/acme-lsp
+# ../.config/systemd/user/acme-lsp.service
+# ../.config/systemd/user/acmefocused.service
+fn usage{
+	echo `{basename $0}^' [list|start|stop|restart|log]'
+}
 if(~ `{which systemctl >[2]/dev/null} ?*){
 	rcctl=(systemctl --user)
-	rclist=(systemctl --user list-units -t service -a)
+	rclist=($rcctl --user list-units -t service -a)
 }
 if not{
 	rcctl=(superctl)
-	rclist=(superctl status)
+	rclist=($rcctl status)
 }
-# https://pkg.go.dev/9fans.net/acme-lsp@master
 services=(acme-lsp acmefocused)
-fn usage{echo `{basename $0}^' [list|start|stop|restart|log]'}
 switch($1){
 case list
 	$rclist | grep acme
@@ -28,7 +32,11 @@ case log
 		for(s in $services) args=($args -u $s)
 		journalctl --user $args
 	}
-	if not for(s in $services) $rcctl log $s
+	if not{
+		state=$home/.local/state
+		logs=$state^'/superd/logs/'^$services^'.log'
+		tail -f $logs
+	}
 case *
 	usage
 }
