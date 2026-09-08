@@ -9,7 +9,7 @@ fn usage{
 }
 if(~ `{which systemctl >[2]/dev/null} ?*){
 	rcctl=(systemctl --user)
-	rclist=($rcctl --user list-units -t service -a)
+	rclist=($rcctl list-units -t service -a)
 }
 if not{
 	rcctl=(superctl)
