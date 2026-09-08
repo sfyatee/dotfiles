@@ -1,11 +1,14 @@
 #!/bin/rc
 # lsp: systemd and superd helper script for acme-lsp
 # Dependencies:
+# https://man.archlinux.org/man/systemd.service.5.en
 # https://git.sr.ht/~craftyguy/superd
 # ../.config/systemd/user/acme-lsp.service
 # ../.config/systemd/user/acmefocused.service
 # Prior art:
 # https://9lab.org/9port/acme-with-lsp/
+# https://github.com/NixOS/nixpkgs/pull/18228
+# https://github.com/lufia/plan9port-systemd-units/
 # https://github.com/xmonk/p9p/blob/master/bin/alsp
 fn usage{
 	echo `{basename $0}^' [list|start|stop|restart|log]'
