@@ -7,12 +7,8 @@
 # ../.config/systemd/user/acmefocused.service
 # Prior art:
 # https://9lab.org/9port/acme-with-lsp/
-# https://github.com/NixOS/nixpkgs/pull/18228
-# https://github.com/lufia/plan9port-systemd-units/
 # https://github.com/xmonk/p9p/blob/master/bin/alsp
-fn usage{
-	echo `{basename $0}^' [list|start|stop|restart|log]'
-}
+services=(acme-lsp acmefocused)
 if(~ `{which systemctl >[2]/dev/null} ?*){
 	rcctl=(systemctl --user)
 	rclist=($rcctl list-units -t service -a)
@@ -21,7 +17,9 @@ if not{
 	rcctl=(superctl)
 	rclist=($rcctl status)
 }
-services=(acme-lsp acmefocused)
+fn usage{
+	echo `{basename $0}^' [list|start|stop|restart|log]'
+}
 switch($1){
 case list
 	$rclist | grep acme

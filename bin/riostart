@@ -12,18 +12,16 @@ felloff() {
 	# eval `9 ssh-agent -e`
 }
 
-# Setups up the Plan 9 enviornment with a user service supervisor.
+# Setups up the Plan 9 enviornment with an user service supervisor.
 # Systems without systemd(1) can use: https://sr.ht/~craftyguy/superd/
 #
-# Modify to your preferences:
-# ../.config/systemd/user/acme-lsp.service
-# ../.config/systemd/user/acmefocused.service
+# Dependencies:
 # ../.config/systemd/user/factotum.service
 # ../.config/systemd/user/fontsrv.service
 # ../.config/systemd/user/plumber.service
-#
-# superctl enable -now plumber.service
-# superctl enable -now acme-lsp.service
+# Prior art:
+# https://github.com/NixOS/nixpkgs/pull/18228
+# https://github.com/lufia/plan9port-systemd-units/
 
 # Insurance, just in case the service supervisor somehow fails.
 [ -e "$NAMESPACE/font" ] &&
