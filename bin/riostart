@@ -22,8 +22,9 @@ fn felloff{
 # https://github.com/lufia/plan9port-systemd-units/
 
 # Insurance, just in case the service supervisor somehow fails.
-if(! test -e $NAMESPACE/font || ! test -e $NAMESPACE/factotum || ! test -e $NAMESPACE/plumb)
-	felloff
+if(! test -e $NAMESPACE/font ||
+	! test -e $NAMESPACE/factotum ||
+	! test -e $NAMESPACE/plumb) felloff
 
 # Default font for Plan 9 programs.
 fn lookforfont{
