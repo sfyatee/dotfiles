@@ -1,15 +1,13 @@
-#!/bin/sh
-
-# Setups up the Plan 9 enviornment. Acme and friends need the $(namespace).
-felloff() {
-	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
+#!/bin/rc
+# Set up the Plan 9 environment. Acme and friends need $NAMESPACE.
+fn felloff{
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
-	[ -e "$NAMESPACE/font" ] || fontsrv &
-	[ -e "$NAMESPACE/factotum" ] || factotum &
-	[ -e "$NAMESPACE/plumb" ] || plumber &
+	if(! test -e $NAMESPACE/font) fontsrv &
+	if(! test -e $NAMESPACE/factotum) factotum &
+	if(! test -e $NAMESPACE/plumb) plumber &
 	# Plan 9 ssh-agent connects to factotum(4).
-	# eval `9 ssh-agent -e`
+	# eval `{9 ssh-agent -e}
 }
 
 # Setups up the Plan 9 enviornment with an user service supervisor.
@@ -24,38 +22,35 @@ felloff() {
 # https://github.com/lufia/plan9port-systemd-units/
 
 # Insurance, just in case the service supervisor somehow fails.
-[ -e "$NAMESPACE/font" ] &&
-[ -e "$NAMESPACE/factotum" ] &&
-[ -e "$NAMESPACE/plumb" ] || felloff
+if(! test -e $NAMESPACE/font || ! test -e $NAMESPACE/factotum || ! test -e $NAMESPACE/plumb)
+	felloff
 
 # Default font for Plan 9 programs.
-lookforfont() {
-	font="`fontsrv -p .`"
-	for family in "$@"; do
-		case "$font" in
-		*"$family/"*)
-			echo "/mnt/font/$family/11a/font"
-			return 0
-		;;
-		esac
-	done
+fn lookforfont{
+	@{
+		font=`{fontsrv -p .}
+		for(family in $*)
+			if(~ $font *$family/*){
+				echo /mnt/font/$family/11a/font
+				exit
+			}
+	}
 }
 
 # sans-serif
-varfont=""
-font2="`lookforfont LucidaGrande GoRegular LuxiSans Geneva IBMPlexSans`"
-[ -n "$font2" ] && varfont="-f $font2"
+varfont=()
+font=`{lookforfont LucidaGrande GoRegular LuxiSans Geneva IBMPlexSans}
+if(! ~ $#font 0) varfont=(-f $font)
 
 # monospace
-fixfont=""
-font="`lookforfont LucidaGrandeMonoDK GoMono LuxiMono Monaco IBMPlexMono`"
-[ -n "$font" ] && fixfont="-F $font"
+fixfont=()
+font=`{lookforfont LucidaGrandeMonoDK GoMono LuxiMono Monaco IBMPlexMono}
+if(! ~ $#font 0) fixfont=(-F $font)
 
 # Restore the state of acme from a file.
-dump=""
-if [ -f "$HOME/acme.dump" ]; then
-	dump="-l $HOME/acme.dump"
-fi
+dump=()
+if(test -f $home/acme.dump)
+	dump=(-l $home/acme.dump)
 
 # For these Plan 9 programs, the Wayland backend for devdraw doesn't allow
 # specifying @x.y for -W winsize. Wayland doesnt allow windows to position
@@ -63,7 +58,8 @@ fi
 # compositor-specific rules. Your milage may vary. Welcome to the future! ʕ◔ϖ◔ʔ
 #
 # Of interest:
-# ../.config/cow/cow.conf:369 and https://codeberg.org/cow-wm/cow (fvwm-like).
+# ../.config/cow/cow.conf:374
+# https://cow-wm.codeberg.page/cow/man/release/cow.1.html#WINDOW_COMMANDS
 # https://github.com/eaburns/plan9port/blob/wayland/src/cmd/devdraw/wayland.c
 # https://github.com/tw4452852/plan9port/blob/master/src/cmd/devdraw/wayland.c
 #
