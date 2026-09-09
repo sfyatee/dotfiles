@@ -1,48 +1,57 @@
-#!/bin/sh
+#!/usr/bin/env rc
 # aplomb - send text to the Plan 9 plumber(4) from tmux copy mode
 
-text=''
-i=-1
+nl='
+'
+fn copy{tmux $* ';' save-buffer - ';' delete-buffer}
+fn sel{ifs=(){text=`{copy send-keys -X copy-selection}}}
 
-sel() {
-	tmux send-keys -X copy-selection \; show-buffer \; delete-buffer
+fn click{
+	ifs=(){
+		p=`{copy \
+			send-keys -X begin-selection ';' \
+			send-keys -X previous-space ';' \
+			send-keys -X copy-selection}
+
+		text=`{copy \
+			send-keys -X begin-selection ';' \
+			send-keys -X next-space ';' \
+			send-keys -X -N 2 cursor-left ';' \
+			send-keys -X copy-selection}
+	}
+
+	pos=`{printf '%s\n' $p | awk '{print length($0) - 1}'}
 }
 
-click() {
-	p="$(tmux \
-		send-keys -X begin-selection \; \
-		send-keys -X previous-space \; \
-		send-keys -X copy-selection \; \
-		show-buffer \; \
-		delete-buffer)"
+fn main{
+	ifs=$nl{
+		state=`{tmux \
+			display-message -p '#{selection_present}' ';' \
+			display-message -p '#{pane_current_path}'}
+	}
 
-	text="$(tmux \
-		send-keys -X begin-selection \; \
-		send-keys -X next-space \; \
-		send-keys -X -N 2 cursor-left \; \
-		send-keys -X copy-selection \; \
-		show-buffer \; \
-		delete-buffer)"
-
-	i=$(( ${#p} - 1 ))
-}
-
-main() {
-	if [ "$(tmux display-message -p '#{selection_present}')" = 0 ]; then
+	sel=$state(1)
+	cwd=$state(2)
+	text=()
+	pos=-1
+	if(~ $sel 0){
 		click
-	else
-		text="$(sel)"
-		[ "${#text}" -le 1 ] && click
-	fi
+	}
+	if not{
+		sel
+		if(~ $"text '' ?) click
+	}
 
-	wd="$(tmux display-message -p '#{pane_current_path}')"
-	set -- plumb -s tmux -w "$wd"
-	if [ "$i" -ge 0 ]; then
-		set -- "$@" -a "click=$i"
-	fi
-	set -- "$@" "$text"
+	args=(plumb -s tmux -w $cwd)
+	if(! ~ $pos -1)
+		args=($args -a 'click='^$pos)
 
-	err="$("$@" 2>&1)" || tmux display-message -- "$err"
+	args=($args $text)
+	err=`{$args >[2=1]}
+	if(~ $status '') exit
+
+	tmux display-message -- $"err
+	exit 1
 }
 
-main "$@"
+main
