@@ -30,7 +30,7 @@ BROWSER=firefox
 
 # less(1): ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd
-LESS=FRXi--mouse
+LESS=FRXi
 
 CVS_RSH=/usr/bin/ssh
 
@@ -118,7 +118,6 @@ linux)
 	NPROC=`nproc`
 	;;
 openbsd)
-	# https://www.omarpolo.com/post/enjoying-cdpath.html
 	CDPATH=/usr/ports:/usr/ports/mystuff
 esac
 

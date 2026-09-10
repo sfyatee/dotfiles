@@ -30,7 +30,7 @@ BROWSER=firefox
 
 # less(1): ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd
-LESS=FRXi--mouse
+LESS=FRXi
 
 CVS_RSH=/usr/bin/ssh
 
@@ -248,15 +248,14 @@ fn revpatch { interdiff -q $1 /dev/null }
 switch($os){
 case linux
 	NPROC=`{nproc}
+
 	fn ls{builtin ls -AFv $*}
 	fn pQm{pacman -Qm}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn superctl{systemctl --user $*}
 case openbsd
-	if(test `{sysctl -n hw.ncpuonline} -gt 1) MP=.MP; if not MP=''
-	fn cdg{cd /usr/src/sys/arch/`{machine}/compile/GENERIC^$MP}
-	# https://www.omarpolo.com/post/enjoying-cdpath.html
-	cdpath=(/usr/ports /usr/ports/mystuff)
+	cdpath=(/usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
+
 	# check shared libs version
 	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
 	fn cshlib{
@@ -272,6 +271,9 @@ case openbsd
 			shift libs
 		}
 	}
+
+	if(test `{sysctl -n hw.ncpuonline} -gt 1) MP=.MP; if not MP=''
+	fn cdg{cd /usr/src/sys/arch/`{machine}/compile/GENERIC^$MP}
 	fn cvs{opencvs $*}
 	fn mpldc{make port-lib-depends-check}
 	fn mup{make update-patches}
