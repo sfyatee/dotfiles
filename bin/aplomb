@@ -50,7 +50,6 @@ fn main{
 	if(~ $status '') exit
 
 	tmux display-message -- $"err
-	exit 1
 }
 
 main
