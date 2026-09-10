@@ -195,7 +195,6 @@ varfont=(-f $font2)
 font=/mnt/font/LucidaGrandeMonoDK/11a/font
 fixfont=(-F $font)
 
-# http://man.9front.org/1/emacs
 fn acme{SHELL=hack $PLAN9/bin/acme -a $varfont $fixfont $*}
 fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
 fn sam{builtin $PLAN9/bin/sam -a $*}
@@ -215,14 +214,14 @@ if not{
 
 # For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){
-	# plumb files instead of starting new editor
+	# Plumb files instead of starting new editor.
 	EDITOR=editinacme
-	# get rid of backspace characters in Unix man output
+	# Get rid of backspace characters in Unix man output.
 	PAGER=nobs
-	# make prompt executable
+	# Make prompt executable.
 	prompt=($sys^':% ' $tab)
 	fn $sys^':%' { if(! ~ $#* 0) $* }
-	# sets the current window label using awd (see label(1))
+	# Set the current window label using awd (see label(1))
 	fn hook{ if(flag i) { awd }; status='' }; awd
 	# no paging
 	fn git{builtin git --no-pager $*}

@@ -3,20 +3,18 @@ umask 022
 
 if [[ ! -o interactive ]]; then return; fi
 
-# options
 unset HISTFILE	# no
 setopt globdots	# hidden files in completion
 setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
 setopt promptsubst	# make `prompt` work
-setopt rcquotes	# plan9-like quoting
+setopt rcquotes	# rc(1)
 PROMPT="$H:%~%(!.#.$) "
 
-# We don't like vi.
 bindkey -e
 
-# completion files: use xdg dirs
-autoload -Uz compinit	# unfortunate
+# Enable auto completion and use XDG directories.
+autoload -Uz compinit
 [ -d "$HOME/.cache"/zsh ] || mkdir -p "$HOME/.cache"/zsh
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
@@ -41,7 +39,7 @@ osc7e() {
 }
 osc7(){((ZSH_SUBSHELL))||osc7e}
 # Makes osc7 execute before each prompt.
-# rc version: lib/profile:138:9
+# Same with rc(1): lib/profile:138:10
 add-zsh-hook -Uz precmd osc7
 
 precmd() { print -Pn "\e]0;%m:%~$\a" }
@@ -64,24 +62,22 @@ gl() {
 	got log "$@" | less
 }
 
-# http://man.9front.org/1/emacs
 alias acme="$PLAN9/bin/acme -a $varfont $fixfont"
 alias edwood="SHELL=hack edwood -a $varfont $fixfont"
 alias sam="SHELL=hack $PLAN9/bin/sam -a"
 
 # For 9term and acme's win.
 if [ "$termprog" ] || [ "$winid" ]; then
-	# plumb files instead of starting new editor
+	# Plumb files instead of starting new editor.
 	EDITOR=editinacme
-	# get rid of backspace characters in Unix man output
+	# Get rid of backspace characters in Unix man output.
 	PAGER=nobs
 	# disable
 	unsetopt zle	# zsh line editor
-	# no paging
 	alias git="git --no-pager"
 	alias ivy="ivy"
 	alias jj="jj --no-pager"
-	# sets the current window label using awd (see label(1))
+	# Set the current window label using awd (see label(1))
 	chpwd() { awd }
 	awd
 fi
@@ -90,7 +86,6 @@ fi
 # 24may2020  +leah+
 revpatch() { interdiff -q $1 /dev/null }
 
-# OS specificities.
 case "$OS" in
 linux)
 	alias ls="ls -AFv"
@@ -99,8 +94,6 @@ linux)
 	alias superctl="systemctl --user"
 	;;
 openbsd)
-	[ $(sysctl -n hw.ncpuonline) -gt 1 ] && MP=".MP" || MP=""
-	alias cdg='cd /usr/src/sys/arch/`machine`/compile/GENERIC${MP}'
 	# check shared libs version
 	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
 	cshlib() {
@@ -113,7 +106,10 @@ openbsd)
 			/usr/src/lib/check_sym /usr/local/lib/lib$f.so* \
 				$(make show=WRKINST)/usr/local/lib/lib$f.so*
 		done
-	}
+}
+
+	[ $(sysctl -n hw.ncpuonline) -gt 1 ] && MP=".MP" || MP=""
+	alias cdg='cd /usr/src/sys/arch/`machine`/compile/GENERIC${MP}'
 	alias cvs="opencvs"
 	alias mpldc="make port-lib-depends-check"
 	alias mup="make update-patches"
