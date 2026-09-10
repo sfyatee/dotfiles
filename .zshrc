@@ -44,7 +44,6 @@ osc7(){((ZSH_SUBSHELL))||osc7e}
 # rc version: lib/profile:138:9
 add-zsh-hook -Uz precmd osc7
 
-# Sets the label of the current X terminal window.
 precmd() { print -Pn "\e]0;%m:%~$\a" }
 preexec() { print -Pn "\e]0;%m:%~$ ${~1:gs/%/%%}\a" }
 

@@ -92,11 +92,8 @@ NAMESPACE=/tmp/ns.$LOGNAME.:0
 # https://lists.9front.org/9front/2024/April/1714325162.00
 secstore=localhost
 
-# special characters
 tab='	'
 nl='
-'
-cr='
 '
 fn :{}
 
@@ -135,7 +132,6 @@ fn osc7{
 	if(~ $"TMUX ?*) printf '\033Ptmux;\033%s\033\\' $"p
 }
 
-# Sets the label of the current X terminal window.
 fn title{
 	printf '\033]0;%s:%s$\007' $sys $dir
 }
