@@ -34,9 +34,8 @@ fn main{
 	cwd=$state(2)
 	text=()
 	pos=-1
-	if(~ $sel 0){
+	if(~ $sel 0)
 		click
-	}
 	if not{
 		sel
 		if(~ $"text '' ?) click
