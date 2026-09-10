@@ -103,7 +103,6 @@ h=`$ifs^'.-'{printf %s $H}
 sys=$h(1)
 h=()
 
-# custom cd, pwd
 pwd=`{pwd}
 lwd=$pwd
 fn prompt1{
