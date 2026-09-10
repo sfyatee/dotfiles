@@ -41,7 +41,6 @@ fn main{
 		sel
 		if(~ $"text '' ?) click
 	}
-
 	args=(plumb -s tmux -w $cwd)
 	if(! ~ $pos -1)
 		args=($args -a 'click='^$pos)
