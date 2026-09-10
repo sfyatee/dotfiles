@@ -139,7 +139,6 @@ if [[ "$TERM" == "dumb" ]]; then
 	RPROMPT=""
 fi
 
-# Make sure these are running.
 felloff() {
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
