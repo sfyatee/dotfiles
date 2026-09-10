@@ -87,14 +87,12 @@ PYTHON_HISTORY=/dev/null
 # This matches other Unices and its $WSYS. /usr/local/plan9/src/lib9/getns.c:43
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
-# `hostname -s` is not POSIX!
+# Prompt
 H=${BOX#* }
 H=${H% *}
-# While at it also strip the *.{lan,home,local} suffix in hostnames. $BOX
 H=${H%%.*}
-# Some hostnames get a '-'^'i++' suffix when a hostname matches an existing
-# one on the network. Strip that off. Use $PLAN9/bin/stats for the truth...
 H=${H%%-*}
+PS1=$H'=; '
 
 # Default font for Plan 9 programs.
 font2="/mnt/font/LucidaGrande/11a/font"
@@ -112,8 +110,6 @@ home=$HOME
 prompt="$H=; 	"
 user=$LOGNAME
 
-# Turn *off* vi line editing and
-# turn *on* autoexport of environment variables (like in rc).
 set +o vi
 set -a	# autoexport
 
@@ -144,7 +140,6 @@ export BROWSER CVS_RSH EDITOR GOT_AUTHOR GOTELEMETRY GOTOOLCHAIN GS_FONT_PATH\
     PACMAN_AUTH SYSTEMD_RUN_SHELL_PROMPT_PREFIX _JAVA_AWT_WM_NONREPARENTING\
     CDPATH NAMESPACE H SSH_ASKPASS_REQUIRE font font2 secstore home prompt user\
 
-ulimit -c 0	# don't litter
+ulimit -c 0
 
-# Site local config.
 [[ -e ~/.zshenv.local ]] && . ~/.zshenv.local || :
