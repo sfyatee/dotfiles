@@ -117,7 +117,6 @@ user=$LOGNAME
 set +o vi
 set -a	# autoexport
 
-# OS specificities.
 case "$OS" in
 linux)
 	NPROC=`nproc`

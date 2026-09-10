@@ -248,7 +248,6 @@ if not hook
 # 24may2020  +leah+
 fn revpatch { interdiff -q $1 /dev/null }
 
-# OS specificities.
 switch($os){
 case linux
 	NPROC=`{nproc}
