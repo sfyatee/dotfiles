@@ -72,8 +72,9 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	EDITOR=editinacme
 	# Get rid of backspace characters in Unix man output.
 	PAGER=nobs
-	# disable
-	unsetopt zle	# zsh line editor
+	# Disable the ZSH line editor
+	unsetopt zle
+	# No paging
 	alias git="git --no-pager"
 	alias ivy="ivy"
 	alias jj="jj --no-pager"

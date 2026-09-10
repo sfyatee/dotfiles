@@ -28,7 +28,7 @@ path=($prepend $path $append)
 # Browser used by web(1) and thus plumber.
 BROWSER=firefox
 
-# less(1): ok defaults
+# less: ok defaults
 # https://github.com/jj-vcs/jj/commit/4967bd
 LESS=FRXi
 
@@ -220,7 +220,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	fn $sys^':%' { if(! ~ $#* 0) $* }
 	# Set the current window label using awd (see label(1))
 	fn hook{ if(flag i) { awd }; status='' }; awd
-	# no paging
+	# No paging
 	fn git{builtin git --no-pager $*}
 	fn gl{
 		root=`{git rev-parse --show-toplevel}
