@@ -95,9 +95,9 @@ H=${H%%-*}
 PS1=$H'=; '
 
 # Default font for Plan 9 programs.
-font2="/mnt/font/LucidaGrande/11a/font"
+font2=/mnt/font/LucidaGrande/11a/font
 varfont="-f $font2"
-font="/mnt/font/LucidaGrandeMonoDK/11a/font"
+font=/mnt/font/LucidaGrandeMonoDK/11a/font
 fixfont="-F $font"
 
 # Secstore considered harmful?
