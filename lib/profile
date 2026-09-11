@@ -115,7 +115,7 @@ fn prompt1{
 	prompt=($"sys^':'^$dir^'$ ')
 }
 
-# Change Working Directory (OSC 7)
+# Report current working directory at each prompt.
 # https://codeberg.org/dnkl/foot/wiki#shell-integration
 fn osc7{
 	enc=`{echo $pwd | sed 's/%/%25/g; s/ /%20/g'}
@@ -191,10 +191,6 @@ font2=/mnt/font/LucidaGrande/11a/font
 varfont=(-f $font2)
 font=/mnt/font/LucidaGrandeMonoDK/11a/font
 fixfont=(-F $font)
-
-fn acme{SHELL=hack $PLAN9/bin/acme -a $varfont $fixfont $*}
-fn edwood{SHELL=hack builtin edwood -a $varfont $fixfont $*}
-fn sam{builtin $PLAN9/bin/sam -a $*}
 
 # When I say vi I mean kakoune (if it's installed).
 kak=`{which kak >[2]/dev/null}

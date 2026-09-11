@@ -19,7 +19,7 @@ autoload -Uz compinit
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
 
-# Change Working Directory (OSC 7)
+# Report current working directory at each prompt.
 # https://codeberg.org/dnkl/foot/wiki#shell-integration
 autoload -Uz add-zsh-hook
 osc7e() {
@@ -61,10 +61,6 @@ alias snarf='git --git-dir=$HOME/lib/dotfiles --work-tree=$HOME'
 gl() {
 	got log "$@" | less
 }
-
-alias acme="$PLAN9/bin/acme -a $varfont $fixfont"
-alias edwood="SHELL=hack edwood -a $varfont $fixfont"
-alias sam="SHELL=hack $PLAN9/bin/sam -a"
 
 # For 9term and acme's win.
 if [ "$termprog" ] || [ "$winid" ]; then
@@ -128,7 +124,6 @@ else
 	EDITOR=/usr/bin/vi
 fi
 
-# No fancy zsh prompt in dumb terminals.
 if [[ "$TERM" == "dumb" ]]; then
 	# disable
 	unsetopt promptcr	# carriage return before prompt in zle
