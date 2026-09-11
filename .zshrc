@@ -125,11 +125,10 @@ else
 fi
 
 if [[ "$TERM" == "dumb" ]]; then
-	# disable
-	unsetopt promptcr	# carriage return before prompt in zle
+	unsetopt promptcr
 	unfunction osc7 precmd preexec
-	# set prompt so middle-clicking whole line reruns line's command
-	# show last exit code if non-zero
+	# Set prompt so middle-clicking whole line reruns line's command
+	# Show last exit code if non-zero
 	PROMPT=": %(?..{%?} )$H; "
 	RPROMPT=""
 fi
