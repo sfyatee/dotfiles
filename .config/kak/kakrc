@@ -20,5 +20,3 @@ load rc plugins
 load rc options
 
 # granular settings
-load filetype aerc
-load filetype go
