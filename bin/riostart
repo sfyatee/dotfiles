@@ -40,8 +40,8 @@ fn lookforfont{
 
 # sans-serif
 varfont=()
-font=`{lookforfont LucidaGrande GoRegular LuxiSans Geneva IBMPlexSans}
-if(! ~ $#font 0) varfont=(-f $font)
+font2=`{lookforfont LucidaGrande GoRegular LuxiSans Geneva IBMPlexSans}
+if(! ~ $#font 0) varfont=(-f $font2)
 
 # monospace
 fixfont=()
