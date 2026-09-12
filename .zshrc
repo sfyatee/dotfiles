@@ -91,7 +91,6 @@ linux)
 	alias superctl="systemctl --user"
 	;;
 openbsd)
-	# check shared libs version
 	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
 	cshlib() {
 		local cnt=0
@@ -103,7 +102,7 @@ openbsd)
 			/usr/src/lib/check_sym /usr/local/lib/lib$f.so* \
 				$(make show=WRKINST)/usr/local/lib/lib$f.so*
 		done
-}
+	}
 
 	[ $(sysctl -n hw.ncpuonline) -gt 1 ] && MP=".MP" || MP=""
 	alias cdg='cd /usr/src/sys/arch/`machine`/compile/GENERIC${MP}'
