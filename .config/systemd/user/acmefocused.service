@@ -3,7 +3,7 @@ Description=server for acme that presents the focused window ID to clients
 Documentation=https://pkg.go.dev/9fans.net/acme-lsp@master/cmd/acmefocused
 
 [Service]
-ExecStart=/bin/sh -c 'exec "/home/$(/usr/bin/id -un)/go/bin/acmefocused"'
+ExecStart=/bin/sh -c 'exec "${HOME}/go/bin/acmefocused"'
 Restart=always
 RestartSec=10s
 
