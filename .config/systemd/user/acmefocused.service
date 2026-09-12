@@ -1,12 +1,11 @@
 [Unit]
-Description=Server that tells acme's focused window ID to clients
+Description=server for acme that presents the focused window ID to clients
 Documentation=https://pkg.go.dev/9fans.net/acme-lsp@master/cmd/acmefocused
 
 [Service]
-Environment=PLAN9=/usr/local/plan9
-Environment=PATH=/usr/bin:/usr/local/plan9/bin
-ExecStart=%h/go/bin/acmefocused
+ExecStart=/bin/sh -c 'exec "/home/$(/usr/bin/id -un)/go/bin/acmefocused"'
 Restart=always
+RestartSec=10s
 
 [Install]
 WantedBy=default.target

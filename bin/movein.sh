@@ -59,7 +59,7 @@ utilis() {
 	cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
 	go install 9fans.net/acme-lsp/cmd/L@master
 	go install 9fans.net/acme-lsp/cmd/acme-lsp@master
-	go install 9fans.net/acme-lsp/cmd/acme-focused@master
+	go install 9fans.net/acme-lsp/cmd/acmefocused@master
 	go install github.com/fzipp/ivy-prompt@latest
 	go install github.com/hdonnay/wercsrv@master
 	go install github.com/rjkroege/edwood/cmd/win@master

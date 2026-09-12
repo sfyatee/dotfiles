@@ -1,12 +1,11 @@
 [Unit]
-Description=Client for the acme text editor that acts as a proxy for LSP servers
+Description=acme editor client for LSP servers
 Documentation=https://pkg.go.dev/9fans.net/acme-lsp@master/cmd/acme-lsp
 
 [Service]
-Environment=PLAN9=/usr/local/plan9
-Environment=PATH=/usr/bin:/usr/local/plan9/bin
-ExecStart=%h/go/bin/acme-lsp
+ExecStart=/bin/sh -c 'exec "/home/$(/usr/bin/id -un)/go/bin/acme-lsp"'
 Restart=always
+RestartSec=10s
 
 [Install]
 WantedBy=default.target
