@@ -67,7 +67,7 @@ if(test -f $home/acme.dump)
 # 9 man stats, or...
 # /usr/local/plan9/src/cmd/auxstats
 # /usr/local/plan9/src/cmd/draw/stats.c
-stats -W 500x100@0,0 -lmisce $fixfont
+stats -W 400x213@0,0 -lmisce $fixfont
 
 # http://man.9front.org/1/emacs
 # https://research.swtch.com/acme
