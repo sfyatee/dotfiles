@@ -233,6 +233,8 @@ if not hook
 # 24may2020  +leah+
 fn revpatch { interdiff -q $1 /dev/null }
 
+cdpath-(.)
+
 switch($os){
 case linux
 	NPROC=`{nproc}
@@ -242,7 +244,7 @@ case linux
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn superctl{systemctl --user $*}
 case openbsd
-	cdpath=(. /usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
+	cdpath=($cdpath /usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
 
 	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
 	fn cshlib{
