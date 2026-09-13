@@ -71,7 +71,7 @@ _JAVA_AWT_WM_NONREPARENTING=1
 PACMAN_AUTH=run0
 SYSTEMD_RUN_SHELL_PROMPT_PREFIX=(': ')
 
-FZF_DEFAULT_COMMAND='walk'
+FZF_DEFAULT_COMMAND='walk -f'
 
 # 福山
 HISTFILE=/dev/null
@@ -242,7 +242,7 @@ case linux
 	fn ph{ps auwwx | sort -rk 3,3 | head}
 	fn superctl{systemctl --user $*}
 case openbsd
-	cdpath=(/usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
+	cdpath=(. /usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
 
 	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
 	fn cshlib{

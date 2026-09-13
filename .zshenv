@@ -71,7 +71,7 @@ _JAVA_AWT_WM_NONREPARENTING=1
 PACMAN_AUTH=run0
 SYSTEMD_RUN_SHELL_PROMPT_PREFIX=": "
 
-FZF_DEFAULT_COMMAND="walk"
+FZF_DEFAULT_COMMAND="walk -f"
 
 # 福山
 HISTFILE=/dev/null
@@ -116,7 +116,8 @@ linux)
 	NPROC=`nproc`
 	;;
 openbsd)
-	CDPATH=/usr/ports:/usr/ports/mystuff
+	TREE=/usr/src/bin:/usr/src/sbin:/usr/src/usr.bin:/usr/src/usr.sbin
+	CDPATH=.:$TREE:/usr/ports:/usr/ports/mystuff
 esac
 
 if [ "$OS" != "linux" ]; then
