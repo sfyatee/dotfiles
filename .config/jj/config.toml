@@ -7,6 +7,10 @@ diff-formatter = ":git"
 merge-editor = "mergiraf"
 default-command = "log"
 
+[aliases]
+prompt = ["op", "log", "--ignore-working-copy", "-n", "1", "--no-graph", "-T", 'id.short(6)']
+
+
 # create a pull request using `gh` for closest_bookmark(@)
 pr = ["util", "exec", "--", "bash", "-c", """
 gh pr create --head $(jj log -r 'closest_bookmark(@)' -T 'bookmarks' --no-graph | cut -d ' ' -f 1)
