@@ -233,7 +233,7 @@ if not hook
 # 24may2020  +leah+
 fn revpatch { interdiff -q $1 /dev/null }
 
-cdpath-(.)
+cdpath=(.)
 
 switch($os){
 case linux

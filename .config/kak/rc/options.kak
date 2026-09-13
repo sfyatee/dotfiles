@@ -12,7 +12,7 @@ hook global ModeChange .*:insert:.* %{ try %{
 } }
 
 # setopts
-colorscheme c64
+colorscheme default
 set global autoinfo ""
 set global ui_options terminal_assistant=off
 set global disabled_hooks '.+-highlight'

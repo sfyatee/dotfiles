@@ -10,7 +10,7 @@
 }
 
 window#waybar {
-    background-color: #ffffff;
+    background-color: #000000;
     border: none;
 }
 
@@ -20,7 +20,7 @@ window#waybar {
     color: #ffffff;
 }
 
-/* Centre \u2014 green over/underline, purple bg, white fg */
+/* Centre — green over/underline, purple bg, white fg */
 #custom-cow-title {
     background-color: #AC59FF;
     color: #ffffff;
@@ -30,12 +30,13 @@ window#waybar {
     border-bottom: 1px solid #00ff00;
 }
 
-/* Right modules \u2014 colours from ~/.conkyrc, cyan over/underline, white fg.
+/* Right modules — colours from ~/.conkyrc, cyan over/underline, white fg.
  * No left/right padding or margin so modules sit flush against each other. */
 #cpu,
 #memory,
 #custom-cpu,
 #custom-mem,
+#custom-cow-language,
 #custom-loadavg,
 #cpu.loadavg,
 #clock {
@@ -68,6 +69,11 @@ window#waybar {
 #tray {
     padding: 0 4px;
 }
+
+#custom-cow-language {
+    background-color: #0000ff;
+}
+
 
 #custom-cow-mode {
     padding: 0 8px;
