@@ -8,7 +8,7 @@ setopt globdots	# hidden files in completion
 setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
 setopt extendedglob
-setopt rcquotes
+setopt rcquotes	# à la rc(1)
 
 bindkey -e
 
@@ -32,7 +32,7 @@ gitpwd() {
 		branch=$(jj prompt 2>/dev/null)
 		if (( $#jjdir > NDIRS )); then
 			print -n "${segs[$#jjdir]}*$branch "
-        else
+		else
 			segs[$#jjdir]+="*$branch"
 		fi
 	elif gitprefix=$(git rev-parse --show-prefix 2>/dev/null); then
