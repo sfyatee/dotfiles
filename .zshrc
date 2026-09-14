@@ -7,9 +7,8 @@ unset HISTFILE	# no
 setopt globdots	# hidden files in completion
 setopt listtypes	# ls -F in completion
 setopt noclobber	# prevent accidents
-setopt promptsubst	# make `prompt` work
-setopt rcquotes	# rc(1)
-PROMPT="$H:%~%(!.#.$) "
+setopt extendedglob
+setopt rcquotes
 
 bindkey -e
 
@@ -18,6 +17,54 @@ autoload -Uz compinit
 [ -d "$HOME/.cache"/zsh ] || mkdir -p "$HOME/.cache"/zsh
 zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
 compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
+
+# gitpwd- print %~, limited to $NDIR segments, with inline git branch
+# 09feb2024  +leah+  jj support, needs jj prompt
+NDIRS=2
+gitpwd() {
+	local -a segs splitprefix jjdir; local gitprefix jjprefix branch
+	segs=("${(Oas:/:)${(D)PWD}}")
+	segs=("${(@)segs/(#b)(?(#c10))??*(?(#c5))/${(j:\u2026:)match}}")
+
+	jjdir=( (../)#.jj(/N[-1]) )
+	if [[ $jjdir ]]; then
+		jjdir=( "${(s:/:)jjdir}" )
+		branch=$(jj prompt 2>/dev/null)
+		if (( $#jjdir > NDIRS )); then
+			print -n "${segs[$#jjdir]}*$branch "
+        else
+			segs[$#jjdir]+="*$branch"
+		fi
+	elif gitprefix=$(git rev-parse --show-prefix 2>/dev/null); then
+		splitprefix=("${(s:/:)gitprefix}")
+		if ! branch=$(git symbolic-ref -q --short HEAD); then
+			branch=$(git name-rev --name-only HEAD 2>/dev/null)
+			[[ $branch = *\~* ]] || branch+="~0"    # distinguish detached HEAD
+		fi
+		if (( $#splitprefix > NDIRS )); then
+			print -n "${segs[$#splitprefix]}@$branch "
+		else
+			segs[$#splitprefix]+=@$branch
+		fi
+	fi
+
+	(( $#segs == NDIRS+1 )) && [[ $segs[-1] == "" ]] && print -n /
+	print "${(j:/:)${(@Oa)segs[1,NDIRS]}}"
+}
+
+nbsp=$'\u00A0'
+cnprompt6() {
+	precmd_psvar() { psvar=( "$(gitpwd)" ) }
+	PROMPT="%B%m${TDIR:+ [$TDIR:h:t]}%(?.. %??)%(1j. %j&.)%b %v%B%(!.%F{red}.%F{yellow})%#${SSH_CONNECTION:+%#}$nbsp%b%f"
+	RPROMPT=''
+}
+
+
+cnprompt6
+
+# Remove prompt on line paste (cf. last printed char in cnprompt6).
+# 09mar2013  +chris+
+bindkey -s $nbsp '^u'
 
 # Report current working directory at each prompt.
 # https://codeberg.org/dnkl/foot/wiki#shell-integration
@@ -39,8 +86,9 @@ osc7e() {
 }
 osc7(){((ZSH_SUBSHELL))||osc7e}
 # Makes osc7 execute before each prompt.
-# Same with rc(1): lib/profile:138:10
+# Rc implementation: lib/profile:138:10
 add-zsh-hook -Uz precmd osc7
+add-zsh-hook precmd precmd_psvar
 
 precmd() { print -Pn "\e]0;%m:%~$\a" }
 preexec() { print -Pn "\e]0;%m:%~$ ${~1:gs/%/%%}\a" }
