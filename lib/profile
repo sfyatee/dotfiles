@@ -34,7 +34,7 @@ LESS=FRXi
 
 CVS_RSH=/usr/bin/ssh
 
-GOT_AUTHOR=('demian garcia <d@sfyatee.com>')
+GOT_AUTHOR=('demian garcia <sfyatee@sfyatee.com>')
 
 # Let gs find the plan9port document fonts.
 GS_FONTPATH=$PLAN9/postscript/font
@@ -47,6 +47,16 @@ GS_FONTPATH=$PLAN9/postscript/font
 NO_COLOR=1
 CMAKE_COLOR_MAKEFILE=OFF
 AV_LOG_FORCE_NOCOLOR=1
+
+TOG_COLORS=yes
+TOG_COLOR_DIFF_MINUS=magenta
+TOG_COLOR_DIFF_PLUS=blue
+TOG_COLOR_DIFF_CHUNK_HEADER=green
+TOG_COLOR_DIFF_META=default
+TOG_COLOR_COMMIT=default
+TOG_COLOR_AUTHOR=default
+TOG_COLOR_DATE=default
+TOG_COLOR_REFS_REMOTES=red
 
 TF2=$home^'/.local/share/Steam/steamapps/common/Team Fortress 2/tf/custom'
 
@@ -67,7 +77,6 @@ MOZ_USE_XINPUT2=1
 OLLAMA_MODELS=$XDG_DATA_HOME/ollama/models
 _JAVA_AWT_WM_NONREPARENTING=1
 
-# run0(1)
 PACMAN_AUTH=run0
 SYSTEMD_RUN_SHELL_PROMPT_PREFIX=(': ')
 
@@ -97,18 +106,18 @@ fn :{}
 
 # Prompt
 H=$BOX(2)
-h=`$ifs^'.-'{printf %s $H}
-sys=$h(1)
+#h=`$ifs^'.-'{printf %s $H}
+#sys=$h(1)
 h=()
 
 pwd=`{pwd}
 lwd=$pwd
-fn prompt1{
+fn sfprompt{
 	switch($pwd){
 	case $home
 		dir='~'
-	case $home/*
-		dir='~'^`{echo -n $pwd | sed 's#^'$home'##'}
+#	case $home/*
+#		dir='~'^`{echo -n $pwd | sed 's#^'$home'##'}
 	case *
 		dir=$pwd
 	}
@@ -136,7 +145,7 @@ fn title{
 fn hook{
 	if(flag i){
 		osc7
-		prompt1
+		sfprompt
 		title
 	}
 	status=''
@@ -169,7 +178,47 @@ fn cd{
 	}
 }
 
+# Experimental edit, history and completion support.
+# https://github.com/benavento/rc
+fn err{ echo $* >[1=2] }
+
+fn complhist{
+	history | sort -u | fzf -0 --header 'History'
+}
+
+fn complarg{}
+
+fn complcmd{
+	walk -fx -n1,1 -e n -- $path >[2]/dev/null | sort -u |
+		fzf -q '^'^$1 -0 -1 --header Commands --prompt $prompt(1)
+}
+
+fn complete{
+#err complete: $#* "$"*"
+	if(~ $#* 0)
+		exit
+
+	lastsp=no
+	if(~ $"* *^' ')
+		lastsp=yes
+
+	*=`{echo $*}
+	switch($#*){
+	case 0
+		complhist
+	case 1
+		if(~ $lastsp yes)
+			complarg $1
+		if not
+			complcmd $1
+	case *
+		exit ''
+	}
+}
+
+
 fn cp{builtin cp -i $*}
+fn gl{tog $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
 fn lc{builtin lc -F $*}
@@ -180,11 +229,7 @@ fn mg{builtin mg -n $*}
 fn mv{builtin mv -i $*}
 fn ph{ps auwwx | head $*}
 fn publicip{curl -4 -w '\n' -s http://ifconfig.me}
-fn snarf{git --git-dir=$home/lib/dotfiles --work-tree=$home $*}
-
-fn gl{
-	got log $* | less
-}
+#fn snarf{git --git-dir=$home/lib/dotfiles --work-tree=$home $*}
 
 # Default font for Plan 9 programs.
 font2=/mnt/font/LucidaGrande/11a/font
@@ -192,7 +237,6 @@ varfont=(-f $font2)
 font=/mnt/font/LucidaGrandeMonoDK/11a/font
 fixfont=(-F $font)
 
-# When I say vi I mean kakoune (if it's installed).
 kak=`{which kak >[2]/dev/null}
 if(~ $#kak 1 && test -x $kak){
 	fn vi{$kak $*}
@@ -205,7 +249,6 @@ if not{
 	EDITOR=/usr/bin/vi
 }
 
-# For 9term and acme's win.
 if(~ $#termprog 1 || ~ $#winid 1){
 	# Plumb files instead of starting new editor.
 	EDITOR=editinacme
@@ -223,15 +266,11 @@ if(~ $#termprog 1 || ~ $#winid 1){
 		got log $* |
 			plumb -i -d edit -a ('action=showdata filename='^$root^'/+log')
 	}
-	fn hg{chg --pager=no $*}
+#	fn hg{chg --pager=no $*}
 	fn ivy{builtin ivy}
 	fn jj{builtin jj --no-pager $*}
 }
 if not hook
-
-# revpatch - reverse a patch
-# 24may2020  +leah+
-fn revpatch { interdiff -q $1 /dev/null }
 
 cdpath=(.)
 
@@ -248,13 +287,13 @@ case openbsd
 
 	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
 	fn cshlib{
-		libs=`{make show=SHARED_LIBS}
+		libs=`{make 'show=SHARED_LIBS'}
 
 		while(! ~ $#libs 0){
 			echo '===>' $libs(1)
 			/usr/src/lib/check_sym \
 				/usr/local/lib/lib$libs(1).so* \
-				`{make show=WRKINST}/usr/local/lib/lib$libs(1).so*
+				`{make 'show=WRKINST'}/usr/local/lib/lib$libs(1).so*
 
 			shift libs
 			shift libs
@@ -267,7 +306,7 @@ case openbsd
 	fn mpldc{make port-lib-depends-check}
 	fn mup{make update-patches}
 	fn mupl{make update-plist $*}
-	fn pclean{make clean='package plist'}
+	fn pclean{make 'clean=package' plist}
 	fn rsync{openrsync $*}
 }
 

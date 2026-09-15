@@ -101,6 +101,7 @@ precmd() { print -Pn "\e]0;%m:%~$\a" }
 preexec() { print -Pn "\e]0;%m:%~$ ${~1:gs/%/%%}\a" }
 
 alias cp="cp -i"
+alias gl="tog"
 alias hg="chg"
 alias ivy="ivy-prompt"
 alias lc="lc -F"
@@ -113,11 +114,6 @@ alias ph="ps auwwx | head"
 alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
 alias snarf='git --git-dir=$HOME/lib/dotfiles --work-tree=$HOME'
 
-gl() {
-	tog "$@"
-}
-
-# For 9term and acme's win.
 if [ "$termprog" ] || [ "$winid" ]; then
 	# Plumb files instead of starting new editor.
 	EDITOR=editinacme
@@ -133,10 +129,6 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	chpwd() { awd }
 	awd
 fi
-
-# revpatch - reverse a patch
-# 24may2020  +leah+
-revpatch() { interdiff -q $1 /dev/null }
 
 case "$OS" in
 linux)
@@ -169,7 +161,6 @@ openbsd)
 	alias rsync="openrsync"
 esac
 
-# When I say vi I mean kakoune (if it's installed).
 if command -v kak >/dev/null 2>&1; then
 	alias vi="kak"
 	alias view="kak -ro"
