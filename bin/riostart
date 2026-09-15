@@ -7,7 +7,7 @@ fn felloff{
 	if(! test -e $NAMESPACE/factotum) factotum &
 	if(! test -e $NAMESPACE/plumb) plumber &
 	# Plan 9 ssh-agent connects to factotum(4).
-	# eval `{9 ssh-agent -e}
+	# eval `{9 ssh-agent}
 }
 
 # Setups up the Plan 9 enviornment with an user service supervisor.
