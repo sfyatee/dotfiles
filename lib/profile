@@ -89,9 +89,10 @@ LESSHISTFILE=/dev/null
 MYSQL_HISTFILE=/dev/null
 PYTHON_HISTORY=/dev/null
 
-# Override $NAMESPACE (see intro(4)) because the default on MacOS is too long.
+# Override $NAMESPACE (see intro(4)).
+# ../bin/riostart:3
 # https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
-# This matches other Unices and its $WSYS. /usr/local/plan9/src/lib9/getns.c:43
+# /usr/local/plan9/src/lib9/getns.c:16
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # Secstore considered harmful?
