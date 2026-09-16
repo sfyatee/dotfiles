@@ -107,7 +107,7 @@ fn :{}
 
 # Prompt
 H=$BOX(2)
-#h=`$ifs^'.-'{printf %s $H}
+h=`{echo $H |sed 's/\-..*//'}	# XXX: $ifs^'.-'{printf %s $H}
 sys=$h(1)
 h=()
 
@@ -181,8 +181,6 @@ fn cd{
 
 # Experimental edit, history and completion support.
 # https://github.com/benavento/rc
-fn err{ echo $* >[1=2] }
-
 fn complhist{
 	query=$"*
 
@@ -195,8 +193,7 @@ fn complhist{
 			--highlight-line \
 			--wrap-sign $tab^'↳ ' \
 			--exit-0 \
-			--header History \
-			--prompt 'History> ' \
+			--prompt '> ' \
 			'--query='^$query
 }
 
