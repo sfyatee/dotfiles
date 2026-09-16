@@ -113,29 +113,6 @@ h=()
 
 pwd=`{pwd}
 lwd=$pwd
-fn vcroot{
-	marker=$1
-	p=$pwd
-	root=()
-
-	while(~ $#root 0 && ! ~ $p /){
-		if(test -d $p/$marker)
-			root=$p
-		if(~ $#root 0)
-			p=`{cleanname $p^'/..'}
-	}
-
-	printf '%s\n' $root
-}
-
-# gitpwd - print %~,
-fn gitpwd{
-	root=()
-	kind=()
-	branch=()
-	mark=()
-}
-
 fn sfprompt{
 	switch($pwd){
 	case $home
