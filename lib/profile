@@ -108,7 +108,7 @@ fn :{}
 # Prompt
 H=$BOX(2)
 #h=`$ifs^'.-'{printf %s $H}
-#sys=$h(1)
+sys=$h(1)
 h=()
 
 pwd=`{pwd}
@@ -207,7 +207,20 @@ fn cd{
 fn err{ echo $* >[1=2] }
 
 fn complhist{
-	history | sort -u | fzf -0 --header 'History'
+	query=$"*
+
+	history | sort -u |
+		fzf \
+			--height 40% \
+			--min-height 20+ \
+			--bind 'ctrl-z:ignore,ctrl-r:toggle-sort,alt-r:toggle-raw' \
+			'--scheme=history' \
+			--highlight-line \
+			--wrap-sign $tab^'↳ ' \
+			--exit-0 \
+			--header History \
+			--prompt 'History> ' \
+			'--query='^$query
 }
 
 fn complarg{}
@@ -218,10 +231,6 @@ fn complcmd{
 }
 
 fn complete{
-#err complete: $#* "$"*"
-	if(~ $#* 0)
-		exit
-
 	lastsp=no
 	if(~ $"* *^' ')
 		lastsp=yes
