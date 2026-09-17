@@ -193,6 +193,4 @@ felloff() {
 
 if [ -d "$PLAN9" ]; then felloff; fi
 
-source <(fzf --zsh)
-
 [[ -e ~/.zshrc.local ]] && . ~/.zshrc.local || :
