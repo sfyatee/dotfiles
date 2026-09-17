@@ -25,6 +25,9 @@ append=(/usr/games /usr/games/bin $PLAN9/bin $PLAN9/bin/upas)
 prepend=($BIN $home/.local/bin $home/go/bin $CARGO_HOME/bin)
 path=($prepend $path $append)
 
+# == SITE LOCAL CONFIG
+if(test -r $home/lib/profile.local) . $home/lib/profile.local # XXX: . -q
+
 # Browser used by web(1) and thus plumber.
 BROWSER=firefox
 
@@ -79,8 +82,6 @@ _JAVA_AWT_WM_NONREPARENTING=1
 
 PACMAN_AUTH=run0
 SYSTEMD_RUN_SHELL_PROMPT_PREFIX=(': ')
-
-FZF_DEFAULT_COMMAND='walk -f'
 
 # 福山
 HISTFILE=/dev/null
@@ -339,5 +340,3 @@ fn felloff{
 }
 
 if(test -d $PLAN9) felloff
-
-# . -q $home/lib/profile.local
