@@ -4,10 +4,12 @@ umask 022
 if [[ ! -o interactive ]]; then return; fi
 
 unset HISTFILE
+setopt globdots
 setopt listtypes
 setopt noclobber	# insurance
 setopt extendedglob
 setopt rcquotes	# à la rc(1)
+setopt bashautolist
 
 bindkey -e
 
@@ -190,5 +192,7 @@ felloff() {
 }
 
 if [ -d "$PLAN9" ]; then felloff; fi
+
+source <(fzf --zsh)
 
 [[ -e ~/.zshrc.local ]] && . ~/.zshrc.local || :
