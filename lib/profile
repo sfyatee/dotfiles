@@ -224,6 +224,11 @@ fn complete{
 	}
 }
 
+fn alias{
+	name=$1
+	shift
+	eval 'fn' $name '{' $* '$*' '}'
+}
 
 fn cp{builtin cp -i $*}
 fn gl{tog $*}
