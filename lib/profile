@@ -193,7 +193,7 @@ fn complhist{
 			'--scheme=history' \
 			--highlight-line \
 			--wrap-sign $tab^'↳ ' \
-			--exit-0 \
+			-0 \
 			--prompt '> ' \
 			'--query='^$query
 }
