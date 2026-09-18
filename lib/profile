@@ -182,7 +182,7 @@ fn cd{
 
 # Experimental edit, history and completion support.
 # https://github.com/benavento/rc
-fn complhist{
+fn complh{
 	history | sort -u |
 		fzf \
 			--height 40% \
@@ -194,6 +194,12 @@ fn complhist{
 			-0 \
 			--prompt '> ' \
 			-q $"*
+}
+
+fn complhtmux{
+	tmux deleteb -b complete >[2]/dev/null
+	complh $* | tmux loadb -b complete -
+	tmux pasteb -d -p -s '' -b complete -t $TMUX_PANE >[2]/dev/null
 }
 
 fn complarg{}
@@ -211,7 +217,7 @@ fn complete{
 	*=`{echo $*}
 	switch($#*){
 	case 0
-		complhist
+		complhtmux
 	case 1
 		if(~ $lastsp yes)
 			complarg $1
