@@ -183,8 +183,6 @@ fn cd{
 # Experimental edit, history and completion support.
 # https://github.com/benavento/rc
 fn complhist{
-	query=$"*
-
 	history | sort -u |
 		fzf \
 			--height 40% \
@@ -195,7 +193,7 @@ fn complhist{
 			--wrap-sign $tab^'↳ ' \
 			-0 \
 			--prompt '> ' \
-			'--query='^$query
+			-q $"*
 }
 
 fn complarg{}
