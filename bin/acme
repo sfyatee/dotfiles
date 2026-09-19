@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/local/plan9/bin/acme -a -f$font2 -F$font "$@"
