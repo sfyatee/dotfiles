@@ -13,8 +13,6 @@ define-command load -params 2 %{
 
 colorscheme default
 
-load rc plugins
-
 set global autoinfo ""
 set global ui_options terminal_assistant=off
 set global ui_options terminal_set_title=false
