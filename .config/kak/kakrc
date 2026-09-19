@@ -7,10 +7,6 @@ evaluate-commands %sh{
 }
 bundle-noload kak-bundle https://codeberg.org/jdugan6240/kak-bundle
 
-define-command load -params 2 %{
-    source "%val{config}/%arg{1}/%arg{2}.kak"
-}
-
 colorscheme default
 
 set global autoinfo ""
