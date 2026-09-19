@@ -1,4 +1,3 @@
-# init kak-plug
 evaluate-commands %sh{
     bundle="$kak_config/bundle"
     mkdir -p "$bundle"
@@ -8,15 +7,28 @@ evaluate-commands %sh{
 }
 bundle-noload kak-bundle https://codeberg.org/jdugan6240/kak-bundle
 
-# load config files
 define-command load -params 2 %{
     source "%val{config}/%arg{1}/%arg{2}.kak"
 }
 
-# load plugins
+colorscheme default
+
 load rc plugins
 
-# colorscheme and defaults
-load rc options
+set global autoinfo ""
+set global ui_options terminal_assistant=off
+set global ui_options terminal_set_title=false
+set global disabled_hooks '.+-highlight'
 
-# granular settings
+# Switch cursor color in insert mode
+set-face global InsertCursor default,green+B
+
+hook global ModeChange .*:.*:insert %{
+    set-face window PrimaryCursor InsertCursor
+    set-face window PrimaryCursorEol InsertCursor
+}
+
+hook global ModeChange .*:insert:.* %{ try %{
+    unset-face window PrimaryCursor
+    unset-face window PrimaryCursorEol
+} }
