@@ -10,7 +10,7 @@ RUSTUP_HOME=$HOME/.local/share/rustup
 export OS PLAN9 CARGO_HOME GOTELEMETRY GOTOOLCHAIN RUSTUP_HOME
 
 snarf() {
-	git --git-dir=$HOME/lib/dotfiles --work-tree=$HOME "$@"
+	git --git-dir $HOME/lib/dotfiles --work-tree $HOME "$@"
 }
 
 case $OS in
