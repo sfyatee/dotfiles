@@ -1,5 +1,5 @@
 #!/usr/bin/env rc
-# tplomb - send text to the Plan 9 plumber(4) from tmux copy mode
+# tplomb - send text to the plumber(4) from tmux copy mode
 
 nl='
 '
