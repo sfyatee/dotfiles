@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/local/plan9/bin/acme -a -b -f$font2 -F$font "$@"
+SHELL=hack /usr/local/plan9/bin/acme -a -b -f$font2 -F$font "$@"
