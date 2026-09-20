@@ -2,8 +2,8 @@
 Comment[en_US]=interactive text windows
 Comment=interactive text windows
 Exec=/usr/local/plan9/bin/rc -l -c 'exec $home/bin/acme' # ../../../bin/acme
-GenericName[en_US]=Acme manages windows of text that may be edited interactively or by external programs.
-GenericName=Acme manages windows of text that may be edited interactively or by external programs.
+GenericName[en_US]=Manages windows of text that may be edited interactively or by external programs.
+GenericName=Manages windows of text that may be edited interactively or by external programs.
 Icon=/usr/local/plan9/dist/spaceglenda100.png
 MimeType=
 Name[en_US]=Acme
