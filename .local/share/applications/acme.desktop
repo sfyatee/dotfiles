@@ -1,18 +1,18 @@
 [Desktop Entry]
-Comment[en_US]=interactive text windows
+Type=Application
+Name=Acme
+Name[en_US]=Acme
 Comment=interactive text windows
+Comment[en_US]=interactive text windows
 Exec=/usr/local/plan9/bin/rc -l -c 'exec $home/bin/acme' # ../../../bin/acme
+Icon=/usr/local/plan9/dist/spaceglenda100.png
 GenericName[en_US]=Manages windows of text that may be edited interactively or by external programs.
 GenericName=Manages windows of text that may be edited interactively or by external programs.
-Icon=/usr/local/plan9/dist/spaceglenda100.png
 MimeType=
-Name[en_US]=Acme
-Name=Acme
 Path=
 StartupNotify=true
 Terminal=false
 TerminalOptions=
-Type=Application
 X-DBUS-ServiceName=
 X-DBUS-StartupType=
 X-KDE-SubstituteUID=false
