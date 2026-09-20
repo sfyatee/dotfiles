@@ -182,7 +182,7 @@ fn cd{
 
 # Experimental edit, history and completion support.
 # https://github.com/benavento/rc
-fn complh{
+fn atuin{
 	history | sort -u |
 		fzf \
 			--height 40% \
@@ -196,15 +196,19 @@ fn complh{
 			-q $"*
 }
 
-fn complhtmux{
+fn histtmux{
 	tmux deleteb -bcomplete >[2]/dev/null
-	complh $* | tmux loadb -bcomplete -
+	atuin $* | tmux loadb -bcomplete -
 	tmux pasteb -d -p -s '' -bcomplete -t$TMUX_PANE >[2]/dev/null
 }
 
-fn complarg{}
+fn dohist{
+	histtmux
+}
 
-fn complcmd{
+fn comparg{}
+
+fn compcmd{
 	walk -fx -n1,1 -e n -- $path >[2]/dev/null | sort -u |
 		fzf -q '^'^$1 -0 -1 --header Commands --prompt $prompt(1)
 }
@@ -217,12 +221,12 @@ fn complete{
 	*=`{echo $*}
 	switch($#*){
 	case 0
-		complhtmux
+		dohist
 	case 1
 		if(~ $lastsp yes)
-			complarg $1
+			comparg $1
 		if not
-			complcmd $1
+			compcmd $1
 	case *
 		exit ''
 	}
