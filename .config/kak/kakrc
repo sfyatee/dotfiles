@@ -26,3 +26,9 @@ hook global ModeChange .*:insert:.* %{ try %{
     unset-face window PrimaryCursor
     unset-face window PrimaryCursorEol
 } }
+
+# Unix Keyboard Shortcuts
+map global insert <c-a> <home>
+map global insert <c-e> <end>
+map global normal <c-a> gh
+map global normal <c-e> gl
