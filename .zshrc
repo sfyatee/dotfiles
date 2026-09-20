@@ -136,6 +136,9 @@ case "$OS" in
 linux)
 	alias ls="ls -AFv"
 	alias pQm="pacman -Qm"
+	alias mup="makepkg -o"
+	alias mupl="makepkg --printsrcinfo > .SRCINFO"
+	alias pclean="makepkg -C"
 	alias ph="ps auwwx | sort -rk 3,3 | head"
 	alias superctl="systemctl --user"
 	;;
