@@ -3,7 +3,7 @@ rfork e
 ifs='
 '
 c=$home/.cache/cliphist
-l=`{cliphist list}
+l=`{cliphist list -fields id,format,preview}
 if(~ $#l 0){
 	fuzzel -d --prompt-only 'cliphist: please store something first '
 	rm -rf -- $c/thumbnails
@@ -13,17 +13,15 @@ mkdir -p -- $c/thumbnails
 tmp=`{mktemp /tmp/cliphist.XXXXXXXXXX}
 fn sigexit{rm -f -- $tmp}
 printf '%s\n' $l |
-awk -v d=$c/thumbnails '
-	/^[0-9]+[[:space:]]+<meta http-equiv=/ { next }
-	/binary/ {
-		for(n=1;n<=NF;n++) if($n~/^(jpg|jpeg|png|bmp)$/){
-			f=d"/"$1"."$n
-			system("test -f \""f"\" || printf \""$1"\\t\" | cliphist decode >\""f"\"")
-			printf "%s%cicon%c%s\n",$0,0,31,f
-			next
-		}
+awk -F'\t' -v d=$c/thumbnails '
+	$3 ~ /^<meta http-equiv=/ {next}
+	$2 {
+		f=d"/"$1"."$2
+		system("test -f \""f"\" || cliphist decode "$1" >\""f"\"")
+		printf "%s\t%s%cicon%c%s\n",$1,$3,0,31,f
+		next
 	}
-	1
+	{print $1"\t"$3}
 ' |
 fuzzel -d --placeholder 'Search clipboard...' --counter --no-sort --with-nth 2 > $tmp
 switch($status){
@@ -32,24 +30,18 @@ case 19
 		cliphist wipe && rm -rf -- $c/thumbnails
 case 10
 	id=`{cut -f1 $tmp}
-	if(! ~ $#id 0){
+	if(! ~ $#id 0)
 		printf '%s\n' $id | cliphist delete && rm -f -- $c/thumbnails/$id.*
-	}
 case *
 	if(test -s $tmp)
 		cliphist decode < $tmp | wl-copy
 }
-awk '
-	NR==FNR {
-		if($0 ~ /^[0-9]+[[:space:]]+\[\[ binary data/)
-			live[$1] = 1
-		next
-	}
+awk -F'\t' '
+	NR==FNR {if($2)live[$1]=1;next}
 	{
-		f = $0
-		sub(/^.*\//, "", f)
-		sub(/\.[^.]*$/, "", f)
-		if(!(f in live))
-			print $0
+		f=$0
+		sub(/^.*\//,"",f)
+		sub(/\.[^.]*$/,"",f)
+		if(!live[f]) print
 	}
 ' <{printf '%s\n' $l} <{walk -f $c/thumbnails >[2]/dev/null} | xe -N0 rm -f --
