@@ -196,14 +196,10 @@ fn atuin{
 			-q $"*
 }
 
-fn histtmux{
+fn dohist{
 	tmux deleteb -bcomplete >[2]/dev/null
 	atuin $* | tmux loadb -bcomplete -
 	tmux pasteb -d -p -s '' -bcomplete -t$TMUX_PANE >[2]/dev/null
-}
-
-fn dohist{
-	histtmux
 }
 
 fn comparg{}
