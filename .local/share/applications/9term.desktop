@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=9term
-Name[en_US]=Acme
+Name[en_US]=9term
 Comment=A terminal window program providing an interface similar to that used on Plan 9.
 Comment[en_US]=A terminal window program providing an interface similar to that used on Plan 9.
 Exec=/usr/local/plan9/bin/rc -l -c 'exec $home/bin/9term' # ../../../bin/9term
@@ -9,7 +9,6 @@ Icon=/usr/local/plan9/dist/glendacircle.png
 GenericName[en_US]=Terminal
 GenericName=Terminal
 MimeType=
-Name[en_US]=9term
 Path=
 StartupNotify=true
 Terminal=false
