@@ -184,6 +184,7 @@ fn cd{
 
 # Experimental edit, history and completion support.
 # https://github.com/benavento/rc
+# fzf 0.74.4: "Fixed fzf erasing the line the prompt was on when it exits..."
 fn atuin{
 	history | sort -u |
 		fzf \
@@ -340,7 +341,7 @@ if(! ~ $os linux){
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
 
-ulimit -c 0
+# ulimit -c 0
 
 fn felloff{
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
