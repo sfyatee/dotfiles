@@ -85,9 +85,8 @@ osc7e() {
 	p+=${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
 	p+=$'\e\\'
 	printf '%s' "$p"
-	# XXX: set -g allow-passthrough needed or not?
+	# set -g allow-passthrough needed
 	# "...it’s required to pass OSC 7 message to vt explicitely"
-	# https://github.com/tmux/tmux/wiki/FAQ
 	# https://wiki.9front.org/plumber-vt
 	# "What I have in my ~/.tmux.conf is `set-option -s terminal-features[2]
 	# *:osc7`. This is slightly wrong but does the job." - sigrid
