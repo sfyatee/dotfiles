@@ -90,7 +90,9 @@ osc7e() {
 	# https://wiki.9front.org/plumber-vt
 	# "What I have in my ~/.tmux.conf is `set-option -s terminal-features[2]
 	# *:osc7`. This is slightly wrong but does the job." - sigrid
-	[[ -n "$TMUX" ]] && printf '%s' $'\ePtmux;\e'"$p"$'\e\\'
+	if [[ -n "$TMUX" ]]; then
+		printf '%s' "$p" >`tmux display-message -p '#{client_tty}'`
+	fi
 }
 osc7(){((ZSH_SUBSHELL))||osc7e}
 
