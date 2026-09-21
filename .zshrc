@@ -86,10 +86,11 @@ osc7e() {
 	p+=$'\e\\'
 	printf '%s' "$p"
 	# XXX: set -g allow-passthrough needed or not?
-	# NOTE: https://github.com/tmux/tmux/wiki/FAQ
 	# "...it’s required to pass OSC 7 message to vt explicitely"
+	# https://github.com/tmux/tmux/wiki/FAQ
 	# https://wiki.9front.org/plumber-vt
-	# Do not delete this! This makes ctrl-shift+n spawn in $cwd.
+	# "What I have in my ~/.tmux.conf is `set-option -s terminal-features[2]
+	# *:osc7`. This is slightly wrong but does the job." - sigrid
 	[[ -n "$TMUX" ]] && printf '%s' $'\ePtmux;\e'"$p"$'\e\\'
 }
 osc7(){((ZSH_SUBSHELL))||osc7e}
