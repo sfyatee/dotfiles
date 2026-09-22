@@ -186,14 +186,13 @@ fn cd{
 # https://github.com/benavento/rc
 # fzf 0.74.4: "Fixed fzf erasing the line the prompt was on when it exits..."
 fn atuin{
+	FZF_DEFAULT_OPTS=('--scheme=history --wrap-sign $tab^'↳ ' --highlight-line')
+
 	history | sort -u |
 		fzf \
 			--height 40% \
 			--min-height 20+ \
 			--bind 'ctrl-z:ignore,ctrl-r:toggle-sort,alt-r:toggle-raw' \
-			'--scheme=history' \
-			--highlight-line \
-			--wrap-sign $tab^'↳ ' \
 			-0 \
 			--prompt '> ' \
 			-q $"*
