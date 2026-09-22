@@ -199,9 +199,15 @@ fn atuin{
 }
 
 fn dohist{
-	tmux deleteb -bcomplete >[2]/dev/null
-	atuin $* | tmux loadb -bcomplete -
-	tmux pasteb -d -p -s '' -bcomplete -t$TMUX_PANE >[2]/dev/null
+	if(~ $"TMUX ?*){
+		tmux deleteb -bcomplete >[2]/dev/null
+		atuin $* | tmux loadb -bcomplete -
+		tmux pasteb -d -p -s '' -bcomplete -t$TMUX_PANE >[2]/dev/null
+	}
+	if not{
+		if(~ $"WAYLAND_DISPLAY ?*)
+			atuin $* | tr -d  '\n' | wtype -
+	}
 }
 
 fn comparg{}
