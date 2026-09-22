@@ -111,6 +111,7 @@ H=$BOX(2)
 h=`{echo $H |sed 's/\-..*//'}	# XXX: $ifs^'.-'{printf %s $H}
 sys=$h(1)
 h=()
+PS1=$sys'=; '
 
 pwd=`{pwd}
 lwd=$pwd
