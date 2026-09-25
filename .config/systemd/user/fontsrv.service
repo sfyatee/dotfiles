@@ -9,7 +9,7 @@ Environment=PATH=/bin:/usr/bin:/usr/local/plan9/bin
 Environment=NAMESPACE=/tmp/ns.d.:0
 ExecStartPre=/bin/sh -c 'mkdir -p "$(/usr/local/plan9/bin/namespace)"'
 ExecStart=/usr/local/plan9/bin/fontsrv
-Restart = always
+Restart=always
 
 [Install]
 WantedBy=default.target

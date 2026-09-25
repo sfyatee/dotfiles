@@ -10,7 +10,7 @@ Environment=secstore=localhost
 # Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 Environment=NAMESPACE=/tmp/ns.d.:0
 ExecStartPre=/bin/sh -c 'mkdir -p "$(/usr/local/plan9/bin/namespace)"'
-ExecStart=/usr/local/plan9/bin/factotum
+ExecStart=/usr/local/plan9/bin/factotum -n
 
 [Install]
 WantedBy=default.target
