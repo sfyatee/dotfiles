@@ -142,7 +142,7 @@ linux)
 	alias mupl="makepkg --printsrcinfo > .SRCINFO"
 	alias pclean="makepkg -C"
 	alias ph="ps auwwx | sort -rk 3,3 | head"
-	alias superctl="systemctl --user"
+	alias rcctl="systemctl"
 	;;
 openbsd)
 	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29

@@ -309,7 +309,7 @@ case linux
 	fn mupl{makepkg --printsrcinfo > .SRCINFO}
 	fn pclean{makepkg -C $*}
 	fn ph{ps auwwx | sort -rk 3,3 | head}
-	fn superctl{systemctl --user $*}
+	fn rcctl{systemctl $*}
 case openbsd
 	cdpath=($cdpath /usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
 
