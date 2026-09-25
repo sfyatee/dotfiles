@@ -6,11 +6,15 @@ Documentation=man:factotum(4)
 Type=forking
 Environment=PLAN9=/usr/local/plan9
 Environment=PATH=/bin:/usr/bin:/usr/local/plan9/bin
+# Secstore considered harmful?
+# https://9fans.topicbox.com/groups/9fans/T2e892f330bc0513b-M168e79b077a072dbe954da15
+# https://lists.9front.org/9front/2024/April/1714325162.00
 Environment=secstore=localhost
 # Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 Environment=NAMESPACE=/tmp/ns.d.:0
 ExecStartPre=/bin/sh -c 'mkdir -p "$(/usr/local/plan9/bin/namespace)"'
 ExecStart=/usr/local/plan9/bin/factotum -n
+# ExecStartPost=/bin/sh -c '| 9p write -l factotum/ctl'
 
 [Install]
 WantedBy=default.target
