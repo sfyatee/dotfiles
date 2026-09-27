@@ -158,6 +158,18 @@ openbsd)
 		done
 	}
 
+	rcctl() {
+		case ${1-} in
+		--user)
+			shift
+			superctl "$@"
+			;;
+		*)
+			/usr/sbin/rcctl "$@"
+			;;
+		esac
+	}
+
 	[ $(sysctl -n hw.ncpuonline) -gt 1 ] && MP=".MP" || MP=""
 	alias cdg='cd /usr/src/sys/arch/`machine`/compile/GENERIC${MP}'
 	alias cvs="opencvs"

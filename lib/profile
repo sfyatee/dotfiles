@@ -328,6 +328,14 @@ case openbsd
 		}
 	}
 
+	fn rcctl{
+		if(~ $1 --user){
+			shift
+			superctl $*
+		}
+		if not builtin rcctl $*
+	}
+
 	if(test `{sysctl -n hw.ncpuonline} -gt 1) MP=.MP; if not MP=''
 	fn cdg{cd /usr/src/sys/arch/`{machine}/compile/GENERIC^$MP}
 	fn cvs{opencvs $*}
