@@ -180,10 +180,10 @@ openbsd)
 	alias rsync="openrsync"
 esac
 
-if command -v kak >/dev/null 2>&1; then
-	alias vi="kak"
-	alias view="kak -ro"
-	EDITOR=kak
+if command -v hx >/dev/null 2>&1; then
+	alias vi="hx"
+	alias view="hx"
+	EDITOR=hx
 else
 	EDITOR=/usr/bin/vi
 fi

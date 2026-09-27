@@ -262,11 +262,11 @@ varfont=(-f $font2)
 font=/mnt/font/LucidaGrandeMonoDK/11a/font
 fixfont=(-F $font)
 
-kak=`{which kak >[2]/dev/null}
-if(~ $#kak 1 && test -x $kak){
-	fn vi{$kak $*}
-	fn view{$kak -ro $*}
-	EDITOR=$kak
+hx=`{which hx>[2]/dev/null}
+if(~ $#hx 1 && test -x $kak){
+	fn vi{$hx $*}
+	fn view{$hx $*}
+	EDITOR=$hx
 }
 if not{
 	fn vi{/usr/bin/vi $*}
