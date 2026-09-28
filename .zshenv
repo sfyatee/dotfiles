@@ -2,8 +2,8 @@
 typeset -U path PATH
 
 BOX=`uname -snm`
-OS=`printf '%s\n' "${BOX%% *}" | tr '[:upper:]' '[:lower:]'`
-ARCH=`printf '%s\n' "${BOX##* }" | sed 's/x86_64/amd64/'`
+OS=`echo "${BOX%% *}" | tr '[:upper:]' '[:lower:]'`
+ARCH=`echo "${BOX##* }" | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 PLAN9=/usr/local/plan9
