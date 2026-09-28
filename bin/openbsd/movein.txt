@@ -24,6 +24,7 @@ mergiraf
 mumble
 plakar
 playerctl
+prismlauncher
 racket-minimal
 ripgrep
 roboto-fonts
