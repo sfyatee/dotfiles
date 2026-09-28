@@ -284,13 +284,16 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	fn $sys^':%' { if(! ~ $#* 0) $* }
 	# Set the current window label using awd (see label(1))
 	fn hook{ if(flag i) { awd }; status='' }; awd
-	# No paging
-	fn git{builtin git --no-pager $*}
+	# 9 utilis
 	fn gl{
 		root=`{git rev-parse --show-toplevel}
 		got log $* |
 			plumb -i -d edit -a ('action=showdata filename='^$root^'/+log')
 	}
+
+	fn ll{9 ls -lF $*}
+	# No paging
+	fn git{builtin git --no-pager $*}
 	fn hg{chg '--pager=no' $*}
 	fn ivy{builtin ivy}
 	fn jj{builtin jj --no-pager $*}

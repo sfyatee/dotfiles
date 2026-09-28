@@ -125,6 +125,8 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	PAGER=nobs
 	# Disable the ZSH line editor
 	unsetopt zle
+	# 9 utilis
+	alias ll="9 ls -lF"
 	# No paging
 	alias git="git --no-pager"
 	alias ivy="ivy"
