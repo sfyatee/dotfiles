@@ -153,4 +153,4 @@ export BROWSER CVS_RSH EDITOR GOT_AUTHOR GOTELEMETRY GOTOOLCHAIN GS_FONT_PATH\
 
 ulimit -c 0
 
-[[ -e ~/.zshenv.local ]] && . ~/.zshenv.local || :
+[ -e ~/.zshenv.local ] && . ~/.zshenv.local || :
