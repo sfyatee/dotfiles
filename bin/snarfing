@@ -33,9 +33,9 @@ switch($status){
 case 10
 	id=`{cut -f1 $tmp}
 	if(! ~ $#id 0)
-		echo $id | cliphist delete && rm -f -- $c/thumbnails/$id.*
+		printf '%s\n' $id | cliphist delete && rm -f -- $c/thumbnails/$id.*
 case 19
-	~ `{echo -e 'No\nYes' | $d --placeholder 'Clear History?' -l 2} Yes &&
+	~ `{printf 'No\nYes\n' | $d --placeholder 'Clear History?' -l 2} Yes &&
 		cliphist wipe && rm -rf -- $c/thumbnails
 case *
 	if(test -s $tmp)
