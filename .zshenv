@@ -28,8 +28,6 @@ PATH=$prepend:$PATH:$append:.
 # Browser used by web(1) and thus plumber.
 BROWSER=firefox
 
-# less: ok defaults
-# https://github.com/jj-vcs/jj/commit/4967bd
 LESS=FRXi
 
 CVS_RSH=/usr/bin/ssh
