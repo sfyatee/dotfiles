@@ -38,7 +38,8 @@ fn main{
 		click
 	if not{
 		sel
-		if(~ $"text '' ?) click
+		if(~ $"text '' ?)
+			click
 	}
 	args=(plumb -s tmux -w $cwd)
 	if(! ~ $pos -1)
@@ -46,7 +47,8 @@ fn main{
 
 	args=($args $text)
 	err=`{$args >[2=1]}
-	if(~ $status '') exit
+	if(~ $status '')
+		exit
 
 	tmux display-message -- $"err
 }
