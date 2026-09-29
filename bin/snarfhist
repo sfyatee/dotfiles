@@ -3,9 +3,10 @@ rfork e
 ifs='
 '
 c=$home/.cache/cliphist
+d=`{fuzzel -d $*}
 l=`{cliphist list -fields id,format,preview}
 if(~ $#l 0){
-	fuzzel -d --prompt-only 'cliphist: please store something first '
+	$d --prompt-only 'cliphist: please store something first '
 	rm -rf -- $c/thumbnails
 	exit
 }
@@ -23,14 +24,14 @@ awk -F'\t' -v d=$c/thumbnails '
 	}
 	{print $1"\t"$3}
 ' |
-fuzzel -d --placeholder 'Search clipboard...' --counter --no-sort --with-nth 2 >$tmp
+$d --placeholder 'Search clipboard...' --counter --no-sort --with-nth 2 >$tmp
 switch($status){
 case 10
 	id=`{cut -f1 $tmp}
 	if(! ~ $#id 0)
 		printf '%s\n' $id | cliphist delete && rm -f -- $c/thumbnails/$id.*
 case 19
-	~ `{printf 'No\nYes\n' | fuzzel -d --placeholder 'Delete history?' -l 2} Yes &&
+	~ `{printf 'No\nYes\n' | $d --placeholder 'Delete history?' -l 2} Yes &&
 		cliphist wipe && rm -rf -- $c/thumbnails
 case *
 	if(test -s $tmp)
