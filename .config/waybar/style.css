@@ -10,7 +10,7 @@
 }
 
 window#waybar {
-    background-color: #000000;
+    background-color: #0000ff;
     border: none;
 }
 
@@ -71,7 +71,7 @@ window#waybar {
 }
 
 #custom-cow-language {
-    background-color: #0000ff;
+    background-color: #000000;
 }
 
 
