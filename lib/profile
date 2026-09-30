@@ -278,8 +278,8 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	# Get rid of backspace characters in Unix man output.
 	PAGER=nobs
 	# Make prompt executable.
-	prompt=($sys^':% ' $tab)
-	fn $sys^':%' { if(! ~ $#* 0) $* }
+	prompt=($sys^'% ' $tab)
+	fn $sys^'%' { if(! ~ $#* 0) $* }
 	# Set the current window label using awd (see label(1))
 	fn hook{ if(flag i) { awd }; status='' }; awd
 	# 9 utilis
