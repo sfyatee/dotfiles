@@ -109,16 +109,16 @@ sys=$h(1)
 h=()
 PS1=$sys'=; '
 
-pwd=`{pwd}
-lwd=$pwd
+PWD=`{pwd}
+lwd=$PWD
 fn sfprompt{
-	switch($pwd){
+	switch($PWD){
 	case $home
 		dir='~'
 	case $home/*
-		dir='~'^`{echo -n $pwd | sed 's#^'$home'##'}
+		dir='~'^`{echo -n $PWD | sed 's#^'$home'##'}
 	case *
-		dir=$pwd
+		dir=$PWD
 	}
 	prompt=($"sys^':'^$dir^'$ ')
 }
@@ -127,7 +127,7 @@ fn sfprompt{
 # Report current working directory at each prompt.
 # https://codeberg.org/dnkl/foot/wiki#shell-integration
 fn osc7{
-	enc=`{printf '%s' $"pwd | sed 's/%/%25/g; s/ /%20/g'}
+	enc=`{printf '%s' $"PWD | sed 's/%/%25/g; s/ /%20/g'}
 	p=`{printf '\033]7;file://%s%s\033\\' $H $enc}
 	printf '%s' $"p
 	# set -g allow-passthrough needed
@@ -153,7 +153,7 @@ fn hook{
 }
 
 fn cd{
-	odir=$pwd
+	odir=$PWD
 
 	switch($#*){
 	case 0
@@ -170,9 +170,9 @@ fn cd{
 	}
 
 	if(builtin cd $arg){
-		pwd=`{pwd}
+		PWD=`{pwd}
 
-		if(! ~ $odir $pwd)
+		if(! ~ $odir $PWD)
 			lwd=$odir
 
 		hook
