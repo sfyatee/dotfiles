@@ -6,7 +6,7 @@ ifs='
 c=$home/.cache/cliphist
 l=`{cliphist list -fields id,format,preview}
 if(~ $#l 0){
-	fuzzel -d --prompt-only 'Clipboard: No Items'
+	fuzzel -d --prompt-only 'Clipboard: No Items in /dev/snarf'
 	rm -rf -- $c/thumbnails
 	exit
 }
