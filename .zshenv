@@ -104,9 +104,7 @@ varfont="-f $font2"
 font=/mnt/font/LucidaGrandeMonoDK/11a/font
 fixfont="-F $font"
 
-# Secstore considered harmful?
-# https://9fans.topicbox.com/groups/9fans/T2e892f330bc0513b-M168e79b077a072dbe954da15
-# https://lists.9front.org/9front/2024/April/1714325162.00
+# ...or secstore Considered Harmful
 secstore=localhost
 
 # Equivalent variables for rc(1).
