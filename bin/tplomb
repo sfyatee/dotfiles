@@ -1,6 +1,5 @@
 #!/usr/bin/env rc
 # tplomb - send text to the plumber(4) from tmux copy mode
-
 nl='
 '
 fn copy{tmux $* ';' save-buffer - ';' delete-buffer}
@@ -20,7 +19,7 @@ fn click{
 			send-keys -X copy-selection}
 	}
 
-	pos=`{printf '%s\n' $p | awk '{print length($0) - 1}'}
+	pos=`{expr length $"p" - 1}
 }
 
 fn main{
