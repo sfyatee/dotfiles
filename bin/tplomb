@@ -1,5 +1,5 @@
 #!/usr/bin/env rc
-# tplomb - send text to the plumber(4) from tmux copy mode
+# tplomb - send text to the plumber(4) via tmux copy mode
 nl='
 '
 fn copy{tmux $* ';' save-buffer - ';' delete-buffer}
