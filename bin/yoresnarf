@@ -1,5 +1,5 @@
 #!/bin/rc
-# snarfing - search through clipboard history
+# yoresnarf - select an entry from the clipboard history to snarf
 rfork e
 ifs='
 '
