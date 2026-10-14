@@ -1,9 +1,8 @@
 #!/bin/rc
 umask 022
 
-GNOT=`{uname -snm}
-os=`{echo $GNOT(1) | tr '[:upper:]' '[:lower:]'}
-arch=`{echo $GNOT(3) | sed 's/x86_64/amd64/'}
+os=`{uname -s | tr '[:upper:]' '[:lower:]'}
+arch=`{uname -m | sed 's/x86_64/amd64/'}
 path=(/usr/local/bin /usr/local/sbin /bin /usr/bin /sbin /usr/sbin /usr/X11R6/bin)
 BIN=($home/bin $home/bin/$os $home/bin/$os/$arch)
 PLAN9=/usr/local/plan9
@@ -103,7 +102,7 @@ nl='
 fn :{}
 
 # Prompt
-H=$GNOT(2)
+H=`{uname -n}
 h=`{echo $H |sed 's/\-..*//'}	# XXX: $ifs^'.-'{printf %s $H}
 sys=$h(1)
 h=()

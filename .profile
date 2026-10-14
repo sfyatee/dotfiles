@@ -1,9 +1,5 @@
-#!/bin/zsh
-typeset -U path PATH
-
-GNOT=`uname -snm`
-OS=`echo "${GNOT%% *}" | tr '[:upper:]' '[:lower:]'`
-ARCH=`echo "${GNOT##* }" | sed 's/x86_64/amd64/'`
+OS=`uname -s | tr '[:upper:]' '[:lower:]'`
+ARCH=`uname -m | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 PLAN9=/usr/local/plan9
@@ -92,8 +88,7 @@ PYTHON_HISTORY=/dev/null
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # Prompt
-H=${GNOT#* }
-H=${H% *}
+H=`uname -n`
 H=${H%%.*}
 H=${H%%-*}
 PS1=$H'=; '
@@ -149,4 +144,4 @@ export BROWSER CVS_RSH EDITOR GOT_AUTHOR GOTELEMETRY GOTOOLCHAIN GS_FONT_PATH\
 
 ulimit -c 0
 
-[ -e ~/.zshenv.local ] && . ~/.zshenv.local || :
+[ -e ~/.profile.local ] && . ~/.profile.local || :
