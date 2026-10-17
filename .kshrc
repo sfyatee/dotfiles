@@ -1,108 +1,102 @@
-#!/bin/zsh
 umask 022
 
 if [[ ! -o interactive ]]; then return; fi
 
 unset HISTFILE
-setopt globdots
-setopt listtypes
-setopt noclobber	# insurance
-setopt extendedglob
-setopt rcquotes	# à la rc(1)
-setopt bashautolist
+HISTCONTROL=ignoredups:ignorespace
+HISTSIZE=5000
 
-bindkey -e
+set -o emacs
+set -o csh-history
 
-# Enable auto completion and use XDG directories.
-autoload -Uz compinit
-[ -d "$HOME/.cache"/zsh ] || mkdir -p "$HOME/.cache"/zsh
-zstyle ':completion:*' cache-path "$HOME/.cache"/zsh/zcompcache
-compinit -C -d "$HOME/.cache"/zsh/zcompdump-$ZSH_VERSION
-
-# gitpwd- print %~, limited to $NDIR segments, with inline (git|got|jj) branch
 NDIRS=2
-gitpwd() {
-	local -a segs splitprefix gotdir jjdir; local gitprefix jjprefix branch
-	segs=("${(Oas:/:)${(D)PWD}}")
-	segs=("${(@)segs/(#b)(?(#c10))??*(?(#c5))/${(j:\u2026:)match}}")
+vcspwd() {
+	typeset path rest part short branch mark dir
+	typeset -i n=0
 
-	jjdir=( (../)#.jj(/N[-1]) )
-	gotdir=( (../)#.got(/N[-1]) )
-	if [[ $jjdir ]]; then
-		jjdir=( "${(s:/:)jjdir}" )
-		branch=$(jj prompt 2>/dev/null)
-		if (( $#jjdir > NDIRS )); then
-			print -n "${segs[$#jjdir]}*$branch "
+	case $PWD in
+	"$HOME")   path='~' ;;
+	"$HOME"/*) path="~${PWD#"$HOME"}" ;;
+	*)         path=$PWD ;;
+	esac
+
+	rest=$path
+	short=
+	while [[ -n $rest ]] && (( n < NDIRS )); do
+		if [[ $rest = */* ]]; then
+			part=${rest##*/}
+			rest=${rest%/*}
 		else
-			segs[$#jjdir]+="*$branch"
+			part=$rest
+			rest=
 		fi
-	elif [[ $gotdir ]]; then
-		gotdir=( "${(s:/:)gotdir}" )
-		branch=$(got branch 2>/dev/null)
-		if (( $#gotdir > NDIRS )); then
-			print -n "${segs[$#gotdir]}!$branch "
+
+		if [[ -n $short ]]; then
+			short=$part/$short
 		else
-			segs[$#gotdir]+="!$branch"
+			short=$part
 		fi
-	elif gitprefix=$(git rev-parse --show-prefix 2>/dev/null); then
-		splitprefix=("${(s:/:)gitprefix}")
-		if ! branch=$(git symbolic-ref -q --short HEAD); then
-			branch=$(git name-rev --name-only HEAD 2>/dev/null)
-			[[ $branch = *\~* ]] || branch+="~0"    # distinguish detached HEAD
-		fi
-		if (( $#splitprefix > NDIRS )); then
-			print -n "${segs[$#splitprefix]}@$branch "
-		else
-			segs[$#splitprefix]+=@$branch
-		fi
+		(( ++n ))
+	done
+
+	if [[ -z $rest && $path = /* ]]; then
+		short=/$short
 	fi
+	[[ -n $short ]] || short=/
 
-	(( $#segs == NDIRS+1 )) && [[ $segs[-1] == "" ]] && print -n /
-	print "${(j:/:)${(@Oa)segs[1,NDIRS]}}"
+	dir=$PWD
+	while :; do
+		if [[ -e $dir/.jj ]]; then
+			branch=$(jj prompt 2>/dev/null) || branch=
+			mark='*'
+			break
+		elif [[ -e $dir/.got ]]; then
+			branch=$(got branch 2>/dev/null) || branch=
+			mark='!'
+			break
+		fi
+
+		[[ $dir = / ]] && break
+		dir=${dir%/*}
+		[[ -n $dir ]] || dir=/
+	done
+
+	[[ -n $branch ]] && short=$short$mark$branch
+	print -rn -- "$short"
 }
 
-nbsp=$'\u00A0'
-sfprompt() {
-	precmd_psvar() { psvar=( "$(gitpwd)" ) }
-	PROMPT="%B$H${TDIR:+ [$TDIR:h:t]}%(?.. %??)%(1j. %j&.)%b %v%B%(!.%F{red}.%F{yellow})%#${SSH_CONNECTION:+%#}$nbsp%b%f"
-	RPROMPT=''
-}
-
-
-sfprompt
-
-# Remove prompt on line paste (cf. last printed char in sfprompt().
-bindkey -s $nbsp '^u'
+PS1=': $H $(vcspwd)% '
 
 # Report current working directory at each prompt.
 # https://codeberg.org/dnkl/foot/wiki#shell-integration
-autoload -Uz add-zsh-hook
-osc7e() {
-	emulate -L zsh # also sets localoptions for us
-	setopt extendedglob
-	local LC_ALL=C p
-	p=$'\e]7;file://'"$HOST"
-	p+=${PWD//(#m)([^@-Za-z&-;_~])/%${(l:2::0:)$(([##16]#MATCH))}}
-	p+=$'\e\\'
+# rc(1) implementation: lib/profile:127
+osc7() {
+	cd "$@" || return $?
+
+	local tmp="$PWD"
+	local enc p
+	while [ -n "$tmp" ]; do
+		local cut="${tmp#?}"
+		local c="${tmp%"$cut"}"
+		case "$c" in
+		[-/:_.!\'\(\)~[:alnum:]] ) enc="$enc$c" ;;
+		* ) enc="$enc$(printf '%%%02X' """\"$c")"  ;;
+		esac
+		tmp="$cut"
+	done
+
+	p=$(printf "\033]7;file://%s%s\033\\" "$sys" "$enc")
 	printf '%s' "$p"
-	# set -g allow-passthrough needed
-	# "...it’s required to pass OSC 7 message to vt explicitely"
-	# https://wiki.9front.org/plumber-vt
-	# "What I have in my ~/.tmux.conf is `set-option -s terminal-features[2]
-	# *:osc7`. This is slightly wrong but does the job." - sigrid
-	if [[ -n "$TMUX" ]]; then
-		printf '%s' "$p" >`tmux display-message -p '#{client_tty}'`
+
+	# On 9front:
+	# ; sshfs -s $HOSTNAME -r / $HOSTNAME
+	# ; plumb 'Local mount -c /srv/$HOSTNAME /n/$HOSTNAME'
+	# Run uname -n on UNIX to determine $HOSTNAME.
+	if [ -n "$TMUX" ]; then
+		printf '%s' "$p" >$(tmux display-message -p '#{client_tty}')
 	fi
-}
-osc7(){((ZSH_SUBSHELL))||osc7e}
-
-# Make osc7() execute before each prompt.
-# Rc implementation: lib/profile:138:10
-add-zsh-hook -Uz precmd osc7
-add-zsh-hook precmd precmd_psvar
-
-precmd() { print -Pn "\e]0;%m:%~$\a" }
-preexec() { print -Pn "\e]0;%m:%~$ ${~1:gs/%/%%}\a" }
+}; osc7
+alias cd=osc7
 
 alias cp="cp -i"
 alias gl="tog"
@@ -123,31 +117,35 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	EDITOR=editinacme
 	# Get rid of backspace characters in Unix man output.
 	PAGER=nobs
-	# Disable the ZSH line editor
-	unsetopt zle
+	# Disable the line editor
+	set +o emacs
 	# 9 utilis
-	alias ll="9 ls -lF"
 	# No paging
 	alias git="git --no-pager"
 	alias ivy="ivy"
 	alias jj="jj --no-pager"
 	# Set the current window label using awd (see label(1))
-	chpwd() { awd }
-	awd
+	_cd () {
+		\cd "$@" &&
+		case "$TERM!$-" in
+		linux!*)
+			;;
+		*!*i*)
+			awd
+		esac
+	}; awd
+	alias cd=_cd
 fi
 
 case "$OS" in
 linux)
 	alias ls="ls -AFv"
-	alias pQm="pacman -Qm"
-	alias mup="makepkg -o"
-	alias mupl="makepkg --printsrcinfo > .SRCINFO"
 	alias pclean="makepkg -C"
 	alias ph="ps auwwx | sort -rk 3,3 | head"
 	alias rcctl="systemctl"
 	;;
 openbsd)
-	# https://github.com/omar-polo/dotsnew/blob/main/kshrc.lp#L178C2-L178C29
+	# https://dots.omarpolo.com/kshrc.html
 	cshlib() {
 		local cnt=0
 		local f
@@ -191,11 +189,9 @@ else
 fi
 
 if [[ "$TERM" == "dumb" ]]; then
-	unsetopt promptcr
-	unfunction osc7 precmd preexec
 	# Set prompt so middle-clicking whole line reruns line's command
 	# Show last exit code if non-zero
-	PROMPT=": %(?..{%?} )$H; "
+	PS1=': $(s=$?; [ "$s" -eq 0 ] || print -rn "{$s} ")$H; '
 	RPROMPT=""
 fi
 
@@ -203,13 +199,13 @@ felloff() {
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
 	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
-	[ -e "$NAMESPACE/font" ] || fontsrv &!
-	[ -e "$NAMESPACE/factotum" ] || factotum &!
-	[ -e "$NAMESPACE/plumb" ] || plumber &!
+	if [ ! -e "$NAMESPACE/font" ]; then fontsrv & fi
+	if [ ! -e "$NAMESPACE/factotum" ]; then factotum & fi
+	if [ ! -e "$NAMESPACE/plumb" ]; then plumber & fi
 	# Plan 9 ssh-agent connects to factotum(4).
 	# eval `9 ssh-agent -e`
 }
 
 if [ -d "$PLAN9" ]; then felloff; fi
 
-[ -e ~/.zshrc.local ] && . ~/.zshrc.local || :
+[ -e ~/.kshrc.local ] && . ~/.kshrc.local || :

@@ -87,6 +87,7 @@ NAMESPACE=/tmp/ns.$LOGNAME.:0
 
 # Prompt
 H=`uname -n`
+sys=$H
 H=${H%%.*}
 H=${H%%-*}
 PS1=$H'=; '
