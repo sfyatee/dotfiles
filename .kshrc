@@ -52,7 +52,7 @@ vcspwd() {
 			break
 		elif [[ -e $dir/.got ]]; then
 			branch=$(got branch 2>/dev/null) || branch=
-			mark='!'
+			mark='@'
 			break
 		fi
 
