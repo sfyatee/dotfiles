@@ -134,7 +134,7 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	}; awd
 	alias cd=_cd
 else
-	osc7
+	osc7 $PWD
 	alias cd=osc7
 fi
 
