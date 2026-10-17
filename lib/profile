@@ -92,7 +92,7 @@ PYTHON_HISTORY=/dev/null
 # /usr/local/plan9/src/lib9/getns.c:16
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
-#  ...or secstore Considered Harmful
+# say no
 secstore=localhost
 
 tab='	'
