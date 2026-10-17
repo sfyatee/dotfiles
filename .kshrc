@@ -95,8 +95,7 @@ osc7() {
 	if [ -n "$TMUX" ]; then
 		printf '%s' "$p" >$(tmux display-message -p '#{client_tty}')
 	fi
-}; osc7
-alias cd=osc7
+}
 
 alias cp="cp -i"
 alias gl="tog"
@@ -119,7 +118,6 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	PAGER=nobs
 	# Disable the line editor
 	set +o emacs
-	# 9 utilis
 	# No paging
 	alias git="git --no-pager"
 	alias ivy="ivy"
@@ -135,6 +133,9 @@ if [ "$termprog" ] || [ "$winid" ]; then
 		esac
 	}; awd
 	alias cd=_cd
+else
+	osc7
+	alias cd=osc7
 fi
 
 case "$OS" in
