@@ -20,9 +20,9 @@ window#waybar {
     color: #ffffff;
 }
 
-/* Centre — green over/underline, purple bg, white fg */
+/* Centre — green over/underline, plum bg, white fg */
 #custom-cow-title {
-    background-color: #AC59FF;
+    background-color: #D18CBC;
     color: #ffffff;
     padding: 0 8px;
     min-width: 200px;
