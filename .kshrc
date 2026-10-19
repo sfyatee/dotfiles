@@ -193,7 +193,6 @@ if [[ "$TERM" == "dumb" ]]; then
 	# Set prompt so middle-clicking whole line reruns line's command
 	# Show last exit code if non-zero
 	PS1=': $(s=$?; [ "$s" -eq 0 ] || print -rn "{$s} ")$H; '
-	RPROMPT=""
 fi
 
 felloff() {
