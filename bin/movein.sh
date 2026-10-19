@@ -1,13 +1,14 @@
 #!/bin/sh
 
 OS=$(uname -s)
-PLAN9=/usr/local/plan9
+
 CARGO_HOME=$HOME/.local/share/cargo
+DOTFILES=$HOME/lib/dotfiles
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 RUSTUP_HOME=$HOME/.local/share/rustup
 
-export OS PLAN9 CARGO_HOME GOTELEMETRY GOTOOLCHAIN RUSTUP_HOME
+export OS CARGO_HOME DOTFILES GOTELEMETRY GOTOOLCHAIN PACMAN_AUTH RUSTUP_HOME
 
 snarf() {
 	git --git-dir $HOME/lib/dotfiles --work-tree $HOME "$@"
@@ -16,7 +17,7 @@ snarf() {
 case $OS in
 Linux)
 	AUTH=run0
-	export PACMAN_AUTH=$AUTH
+	PACMAN_AUTH=$AUTH
 	;;
 OpenBSD)
 	AUTH=doas
@@ -40,19 +41,6 @@ slop() {
 }
 
 felloff(){
-	if [ ! -d "$PLAN9" ]; then
-		$AUTH mkdir -p "$PLAN9"
-		# set the correct owner group
-		$AUTH chown $(id -un):$(id -gn) "$PLAN9"
-		git clone https://github.com/9fans/plan9port "$PLAN9"
-	else
-		git pull -C "$PLAN9" pull --ff-only
-	fi
-	(
-		cd "$PLAN9"
-		./INSTALL
-	) || exit
-	$AUTH install -m 755 "$PLAN9/bin/rc" /bin/rc
 }
 
 utilis() {
