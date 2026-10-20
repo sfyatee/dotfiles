@@ -88,7 +88,7 @@ osc7() {
 	# On 9front:
 	# ; sshfs -s $HOSTNAME -r / $HOSTNAME
 	# ; plumb 'Local mount -c /srv/$HOSTNAME /n/$HOSTNAME'
-	# Run uname -n on UNIX to determine $HOSTNAME.
+	# Run uname -n on Unix to determine $HOSTNAME.
 	if [ -n "$TMUX" ]; then
 		printf '%s' "$p" >$(tmux display-message -p '#{client_tty}')
 	fi
