@@ -69,6 +69,6 @@ stats -W 400x213@0,0 -lmisce $fixfont
 
 # http://man.9front.org/1/emacs
 # http://sam.cat-v.org/
-9term &
+9term -W 650x850 &
 footclient &
-sam &
+sam -W 1124x868@0,104 &

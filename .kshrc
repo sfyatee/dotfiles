@@ -1,5 +1,3 @@
-umask 022
-
 if [[ ! -o interactive ]]; then return; fi
 
 unset HISTFILE
@@ -69,7 +67,6 @@ PS1=': $H $(vcspwd)% '
 
 # Report current working directory at each prompt.
 # https://codeberg.org/dnkl/foot/wiki#shell-integration
-# rc(1) implementation: lib/profile:127
 osc7() {
 	cd "$@" || return $?
 

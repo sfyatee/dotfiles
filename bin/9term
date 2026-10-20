@@ -1,2 +1,2 @@
 #!/bin/sh
-SHELL=hack /usr/local/plan9/bin/9term
+SHELL=hack /usr/local/plan9/bin/9term "$@"
