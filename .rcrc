@@ -243,7 +243,6 @@ fn ls{builtin ls -AF $*}
 fn ltr{builtin ls -AlFtr $*}
 fn mg{builtin mg -n $*}
 fn mv{builtin mv -i $*}
-fn ph{ps auwwx | head $*}
 fn publicip{curl -4 -w '\n' -s http://ifconfig.me}
 fn snarf{git --git-dir $home^'/lib/dotfiles' --work-tree $home $*}
 
@@ -297,7 +296,7 @@ case linux
 
 	fn ls{builtin ls -AFv $*}
 	fn pclean{makepkg -C $*}
-	fn ph{ps auwwx | sort -rk 3,3 | head}
+	fn pstree{ps -e f -ww -o pid,args}
 	fn rcctl{systemctl $*}
 case openbsd
 	cdpath=($cdpath /usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
@@ -332,6 +331,7 @@ case openbsd
 	fn mup{make update-patches}
 	fn mupl{make update-plist $*}
 	fn pclean{make 'clean=package' plist}
+	fn pstree{ps -Aww -f -o pid,command}
 	fn rsync{openrsync $*}
 }
 

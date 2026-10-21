@@ -94,17 +94,16 @@ osc7() {
 	fi
 }
 
-alias cp="cp -i"
-alias gl="tog"
-alias hg="chg"
-alias ivy="ivy-prompt"
-alias lc="lc -F"
-alias ll="ls -AlF"
-alias ls="ls -AF"
-alias ltr="ls -AlFtr"
-alias mg="mg -n"
-alias mv="mv -i"
-alias ph="ps auwwx | head"
+alias cp='cp -i'
+alias gl=tog
+alias hg=chg
+alias ivy=ivy-prompt
+alias lc='lc -F'
+alias ll='ls -AlF'
+alias ls='ls -AF'
+alias ltr='ls -AlFtr'
+alias mg='mg -n'
+alias mv='mv -i'
 alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
 alias snarf='git --git-dir $HOME/lib/dotfiles --work-tree $HOME'
 
@@ -116,9 +115,9 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	# Disable the line editor
 	set +o emacs
 	# No paging
-	alias git="git --no-pager"
-	alias ivy="ivy"
-	alias jj="jj --no-pager"
+	alias git='git --no-pager'
+	alias ivy=ivy
+	alias jj='jj --no-pager'
 	# Set the current window label using awd (see label(1))
 	_cd () {
 		\cd "$@" &&
@@ -137,10 +136,10 @@ fi
 
 case "$OS" in
 linux)
-	alias ls="ls -AFv"
+	alias ls='ls -AFv'
 	alias pclean="makepkg -C"
-	alias ph="ps auwwx | sort -rk 3,3 | head"
-	alias rcctl="systemctl"
+	alias pstree="ps -e f -ww -o pid,args"
+	alias rcctl=systemctl
 	;;
 openbsd)
 	# https://dots.omarpolo.com/kshrc.html
@@ -170,11 +169,12 @@ openbsd)
 
 	[ $(sysctl -n hw.ncpuonline) -gt 1 ] && MP=".MP" || MP=""
 	alias cdg='cd /usr/src/sys/arch/`machine`/compile/GENERIC${MP}'
-	alias cvs="opencvs"
+	alias cvs=opencvs
 	alias mpldc="make port-lib-depends-check"
 	alias mup="make update-patches"
 	alias mupl="make update-plist"
 	alias pclean='make clean="package plist"'
+	alias pstree="ps -Aww -f -o pid,command"
 	alias rsync="openrsync"
 esac
 
