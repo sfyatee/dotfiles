@@ -98,7 +98,6 @@ varfont="-f $font2"
 font=/mnt/font/LucidaGrandeMonoDK/11a/font
 fixfont="-F $font"
 
-# say no
 secstore=localhost
 
 # Equivalent variables for rc(1).

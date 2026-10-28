@@ -85,7 +85,6 @@ osc7() {
 	p=$(printf "\033]7;file://%s%s\033\\" "$sys" "$enc")
 	printf '%s' "$p"
 
-	# On 9front:
 	# ; sshfs -s $HOSTNAME -r / $HOSTNAME
 	# ; plumb 'Local mount -c /srv/$HOSTNAME /n/$HOSTNAME'
 	# Run uname -n on Unix to determine $HOSTNAME.

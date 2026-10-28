@@ -22,7 +22,7 @@ prepend=($BIN $home/.local/bin $home/go/bin $CARGO_HOME/bin)
 path=($prepend $path $append)
 
 # == SITE LOCAL CONFIG
-if(test -r $home/lib/profile.local) . $home/lib/profile.local # XXX: . -q
+if(test -r $home/.rcrc.local) . $home/.rcrc.local # XXX: . -q
 
 # Browser used by web(1) and thus plumber.
 BROWSER=firefox
@@ -85,40 +85,75 @@ MYSQL_HISTFILE=/dev/null
 PYTHON_HISTORY=/dev/null
 
 # Override $NAMESPACE (see intro(4)).
-# ../bin/riostart:3
+# bin/riostart:3
 # https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
 # /usr/local/plan9/src/lib9/getns.c:16
 NAMESPACE=/tmp/ns.$LOGNAME.:0
 
-# say no
 secstore=localhost
-
-tab='	'
-nl='
-'
-fn :{}
 
 # Prompt
 H=`{uname -n}
 h=`{echo $H |sed 's/\-..*//'}	# XXX: $ifs^'.-'{printf %s $H}
 sys=$h(1)
-h=()
 PS1=$sys'=; '
+h=()
+
+fn :{}
+ps1='% '
+tab='	'
+nl='
+'
 
 PWD=`{pwd}
 lwd=$PWD
-fn sfprompt{
-	switch($PWD){
+fn cwd{
+	cwd=$PWD
+	switch($cwd){
+	case /
+		echo -n /
 	case $home
-		dir='~'
-	case $home/*
-		dir='~'^`{echo -n $PWD | sed 's#^'$home'##'}
+		echo -n '~'
 	case *
-		dir=$PWD
+		parts=`/{echo $cwd}
+		root=no
+		if(~ $cwd $home/*){
+			root=yes
+			for(part in `/{echo $home})
+				parts=$parts(2-)
+		}
+
+		tail=()
+		trunc=no
+		for(part in $parts)
+			if(! ~ $part ''){
+				tail=($tail $part)
+				if(~ $#tail 3){
+					tail=$tail(2-)
+					trunc=yes
+				}
+			}
+
+		switch($#tail){
+		case 0
+			echo -n /
+		case 1
+			if(~ $root yes)
+				echo -n '~/'^$tail
+			if not
+				echo -n '/'^$tail
+		case *
+			if(~ $root yes || ~ $trunc yes)
+				echo -n $tail(1)^/$tail(2)
+			if not
+				echo -n '/'^$tail(1)^'/'^$tail(2)
+		}
 	}
-	prompt=($"sys^':'^$dir^'$ ')
 }
 
+fn sfprompt{
+	prompt=($"sys^':'^`$nl{cwd}^$ps1)
+}
 
 # Report current working directory at each prompt.
 # https://codeberg.org/dnkl/foot/wiki#shell-integration
@@ -126,7 +161,6 @@ fn osc7{
 	enc=`{printf '%s' $"PWD | sed 's/%/%25/g; s/ /%20/g'}
 	p=`{printf '\033]7;file://%s%s\033\\' $H $enc}
 	printf '%s' $"p
-	# On 9front:
 	# ; sshfs -s $HOSTNAME -r / $HOSTNAME
 	# ; plumb 'Local mount -c /srv/$HOSTNAME /n/$HOSTNAME'
 	# Run uname -n on Unix to determine $HOSTNAME.
@@ -172,65 +206,6 @@ fn cd{
 
 		hook
 	}
-}
-
-# Experimental edit, history and completion support.
-# https://github.com/benavento/rc
-# fzf 0.74.4: "Fixed fzf erasing the line the prompt was on when it exits..."
-fn atuin{
-	FZF_DEFAULT_OPTS=('--scheme=history --wrap-sign $tab^'↳ ' --highlight-line')
-
-	history | sort -u | sed '/^$/d' |
-		fzf \
-			--height 40% \
-			--min-height 20+ \
-			--bind 'ctrl-z:ignore,ctrl-r:toggle-sort,alt-r:toggle-raw' \
-			-0 \
-			-q $"*
-}
-
-fn dohist{
-	if(~ $"TMUX ?*){
-		tmux deleteb -bcomplete >[2]/dev/null
-		atuin $* | tmux loadb -bcomplete -
-		tmux pasteb -d -p -s '' -bcomplete -t$TMUX_PANE >[2]/dev/null
-	}
-	if not{
-		if(~ $"WAYLAND_DISPLAY ?*)
-			atuin $* | tr -d  '\n' | wtype -
-	}
-}
-
-fn comparg{}
-
-fn compcmd{
-	walk -fx -n1,1 -e n -- $path >[2]/dev/null | sort -u |
-		fzf -q '^'^$1 -0 -1 --header Commands --prompt $prompt(1)
-}
-
-fn complete{
-	lastsp=no
-	if(~ $"* *^' ')
-		lastsp=yes
-
-	*=`{echo $*}
-	switch($#*){
-	case 0
-		dohist
-	case 1
-		if(~ $lastsp yes)
-			comparg $1
-		if not
-			compcmd $1
-	case *
-		exit ''
-	}
-}
-
-fn alias{
-	name=$1
-	shift
-	eval 'fn' $name '{' $* '$*' '}'
 }
 
 fn cp{builtin cp -i $*}
