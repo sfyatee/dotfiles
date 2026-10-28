@@ -135,13 +135,10 @@ fn cwd{
 			}
 
 		switch($#tail){
-		case 0
-			echo -n /
+		case 0;	echo -n /
 		case 1
-			if(~ $root yes)
-				echo -n '~/'^$tail
-			if not
-				echo -n '/'^$tail
+			if(~ $root yes)	echo -n '~/'^$tail
+			if not		echo -n '/'^$tail
 		case *
 			if(~ $root yes || ~ $trunc yes)
 				echo -n $tail(1)^/$tail(2)
