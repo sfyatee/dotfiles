@@ -110,16 +110,16 @@ lwd=$PWD
 fn cwd{
 	cwd=$PWD
 	switch($cwd){
-	case /
-		echo -n /
-	case $home
-		echo -n '~'
+	case /;		echo -n /
+	case $home;	echo -n '~'
 	case *
 		parts=`/{echo $cwd}
 		root=no
 		if(~ $cwd $home/*){
 			root=yes
-			for(part in `/{echo $home})
+			if(~ $#split 0)
+				split=`/{echo $home}
+			for(part in $split)
 				parts=$parts(2-)
 		}
 
@@ -156,7 +156,6 @@ fn sfprompt{
 }
 
 # Report current working directory at each prompt.
-# https://codeberg.org/dnkl/foot/wiki#shell-integration
 fn osc7{
 	enc=`{printf '%s' $"PWD | sed 's/%/%25/g; s/ /%20/g'}
 	p=`{printf '\033]7;file://%s%s\033\\' $H $enc}

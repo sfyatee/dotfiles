@@ -66,7 +66,6 @@ vcspwd() {
 PS1=': $H $(vcspwd)% '
 
 # Report current working directory at each prompt.
-# https://codeberg.org/dnkl/foot/wiki#shell-integration
 osc7() {
 	cd "$@" || return $?
 
