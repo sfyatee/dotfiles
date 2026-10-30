@@ -108,50 +108,51 @@ nl='
 PWD=`{pwd}
 lwd=$PWD
 fn cwd{
-	cwd=$PWD
-	switch($cwd){
-	case /;		echo -n /
-	case $home;	echo -n '~'
+	switch($PWD){
+	case /;	echo /
 	case *
-		parts=`/{echo $cwd}
+		parts=`/{echo $PWD}
 		root=no
-		if(~ $cwd $home/*){
+		if(~ $PWD $home/*){
 			root=yes
 			if(~ $#split 0)
 				split=`/{echo $home}
 			for(part in $split)
 				parts=$parts(2-)
 		}
+		if(~ $root no)
+			parts=$parts(2-)
 
 		tail=()
 		trunc=no
-		for(part in $parts)
-			if(! ~ $part ''){
-				tail=($tail $part)
-				if(~ $#tail 3){
-					tail=$tail(2-)
-					trunc=yes
-				}
+		for(part in $parts){
+			if(~ $#tail 2){
+				tail=$tail(2-)
+				trunc=yes
 			}
+			tail=($tail $part)
+		}
+
+		prefix='/'
+		if(~ $root yes || ~ $trunc yes)
+			prefix=''
 
 		switch($#tail){
-		case 0;	echo -n /
-		case 1
-			if(~ $root yes)	echo -n '~/'^$tail
-			if not		echo -n '/'^$tail
-		case *
-			if(~ $root yes || ~ $trunc yes)
-				echo -n $tail(1)^/$tail(2)
-			if not
-				echo -n '/'^$tail(1)^'/'^$tail(2)
+		case 0;	echo /
+		case 1;	echo $prefix^$tail
+		case *;	echo $prefix^$tail(1)^/$tail(2)
 		}
 	}
 }
 
 fn sfprompt{
-	prompt=($"sys^':'^`$nl{cwd}^$ps1)
+	switch($PWD){
+	case $home
+		prompt=($"sys^':'^$ps1)
+	case *
+		prompt=($"sys^':'^`{cwd}^$ps1)
+	}
 }
-
 # Report current working directory at each prompt.
 fn osc7{
 	enc=`{printf '%s' $"PWD | sed 's/%/%25/g; s/ /%20/g'}
