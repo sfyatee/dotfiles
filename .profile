@@ -28,7 +28,7 @@ LESS=FRXi
 
 CVS_RSH=/usr/bin/ssh
 
-GOT_AUTHOR="demian garcia <sfyatee@sfyatee.com>"
+GOT_AUTHOR="demian garcia <dag@demians.org>"
 
 # Let gs find the plan9port document fonts.
 GS_FONTPATH=$PLAN9/postscript/font
@@ -144,5 +144,4 @@ ulimit -c 0
 
 [ -e ~/.profile.local ] && . ~/.profile.local || :
 
-# ksh(1)
 ENV="$HOME/.kshrc"
