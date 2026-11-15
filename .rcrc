@@ -31,7 +31,7 @@ LESS=FRXi
 
 CVS_RSH=/usr/bin/ssh
 
-GOT_AUTHOR=('demian garcia <sfyatee@sfyatee.com>')
+GOT_AUTHOR=('demian garcia <dag@demians.org>')
 
 # Let gs find the plan9port document fonts.
 GS_FONTPATH=$PLAN9/postscript/font
@@ -107,52 +107,19 @@ nl='
 
 PWD=`{pwd}
 lwd=$PWD
-fn cwd{
-	switch($PWD){
-	case /;	echo /
-	case *
-		parts=`/{echo $PWD}
-		root=no
-		if(~ $PWD $home/*){
-			root=yes
-			if(~ $#split 0)
-				split=`/{echo $home}
-			for(part in $split)
-				parts=$parts(2-)
-		}
-		if(~ $root no)
-			parts=$parts(2-)
-
-		tail=()
-		trunc=no
-		for(part in $parts){
-			if(~ $#tail 2){
-				tail=$tail(2-)
-				trunc=yes
-			}
-			tail=($tail $part)
-		}
-
-		prefix='/'
-		if(~ $root yes || ~ $trunc yes)
-			prefix=''
-
-		switch($#tail){
-		case 0;	echo /
-		case 1;	echo $prefix^$tail
-		case *;	echo $prefix^$tail(1)^/$tail(2)
-		}
-	}
-}
-
 fn sfprompt{
 	switch($PWD){
 	case $home
-		prompt=($"sys^':'^$ps1)
+		dir='~'
+	case $home/*
+		dir='~'^`{echo -n $PWD | sed 's#^'$home'##'}
 	case *
-		prompt=($"sys^':'^`{cwd}^$ps1)
+		dir=$PWD
 	}
+	prompt=($"sys^':'^$dir^'$ ')
 }
+
+
 # Report current working directory at each prompt.
 fn osc7{
 	enc=`{printf '%s' $"PWD | sed 's/%/%25/g; s/ /%20/g'}
