@@ -1,15 +1,17 @@
 [user]
 name = "demian garcia"
-email = "sfyatee@sfyatee.com"
+email = "dag@demians.org"
 
 [ui]
 diff-formatter = ":git"
 merge-editor = "mergiraf"
 default-command = "log"
 
-# $PAGER https://github.com/jj-vcs/jj/commit/4967bd
+# $PAGER
+# https://github.com/jj-vcs/jj/commit/4967bd
 
 [aliases]
+bump = ["bookmark", "move", "--from", "heads(::@- & bookmarks())", "--to", "@-"]
 prompt = ["op", "log", "--ignore-working-copy", "-n", "1", "--no-graph", "-T", 'id.short(6)']
 
 
