@@ -147,7 +147,6 @@ fn hook{
 
 fn cd{
 	odir=$PWD
-
 	switch($#*){
 	case 0
 		arg=()
@@ -164,7 +163,6 @@ fn cd{
 
 	if(builtin cd $arg){
 		PWD=`{pwd}
-
 		if(! ~ $odir $PWD)
 			lwd=$odir
 
