@@ -16,7 +16,7 @@ NUGET_PACKAGES=$XDG_CACHE_HOME/NuGetPackages
 RUFF_CACHE_DIR=$XDG_CACHE_HOME/ruff
 RUSTUP_HOME=$XDG_DATA_HOME/rustup
 
-append=/usr/games:/usr/games/bin:$PLAN9/bin:$PLAN9/bin/upas
+append=/usr/games:/usr/games/bin
 prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
 PATH=$prepend:$PATH:$append:.
 
@@ -28,9 +28,6 @@ LESS=FRXi
 CVS_RSH=/usr/bin/ssh
 
 GOT_AUTHOR="demian garcia <dag@demians.org>"
-
-# Let gs find the plan9port document fonts.
-GS_FONTPATH=$PLAN9/postscript/font
 
 # When I was a child, I used to speak like a child, think like a child,
 # reason like a child; when I became a man, I did away with childish
