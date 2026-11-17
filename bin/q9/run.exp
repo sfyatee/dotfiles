@@ -7,7 +7,7 @@ if {$env(KVM)} {
 }
 lappend qemu \
 	-drive "file=$env(DISK),if=virtio,format=qcow2" \
-	-nic "user,hostfwd=tcp:127.0.0.1:17019-:17019,model=virtio-net-pci"
+	-nic "user,hostfwd=tcp::17019-:17019"
 
 spawn {*}$qemu
 set halted 0
@@ -35,7 +35,7 @@ foreach command {
 }
 
 send "aux/listen1 -t 'tcp!*!17019' /rc/bin/service/tcp17019 &\n"
-expect "listen started"
+expect "17019 started"
 after 2000
 
 set env(PASS) password
