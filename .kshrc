@@ -137,10 +137,9 @@ linux)
 	alias ls='ls -AFv'
 	alias pclean="makepkg -C"
 	alias pstree="ps -e f -ww -o pid,args"
-	alias rcctl=systemctl
 	;;
 openbsd)
-	# https://dots.omarpolo.com/kshrc.html
+	# from @jca
 	cshlib() {
 		local cnt=0
 		local f
