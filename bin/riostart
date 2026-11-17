@@ -12,46 +12,7 @@ fn felloff{
 
 if(test -d $PLAN9) felloff
 
-# Default font for Plan 9 programs.
-fn lookforfont{
-	@{
-		font=`{fontsrv -p .}
-		for(family in $*)
-			if(~ $font *$family/*){
-				echo /mnt/font/$family/11a/font
-				exit
-			}
-	}
-}
-
-# sans-serif
-varfont=()
-font2=`{lookforfont LucidaGrande GoRegular LuxiSans Geneva IBMPlexSans}
-if(! ~ $#font 0) varfont=(-f $font2)
-
-# monospace
-fixfont=()
-font=`{lookforfont LucidaGrandeMonoDK GoMono LuxiMono Monaco IBMPlexMono}
-if(! ~ $#font 0) fixfont=(-F $font)
-
-# Restore the state of acme from a file.
-dump=()
-if(test -f $home/acme.dump)
-	dump=(-l $home/acme.dump)
-
-# For these Plan 9 programs, the Wayland backend for devdraw doesn't allow
-# specifying @x.y for -W winsize. Wayland doesnt allow windows to position
-# themselves. This is by design... The general workaround is to set
-# compositor-specific rules. Your milage may vary. Welcome to the future! ʕ◔ϖ◔ʔ
-#
-# Of interest:
-# ../.config/cow/cow.conf:374
-# https://cow-wm.codeberg.page/cow/man/release/cow.1.html#WINDOW_COMMANDS
-# https://github.com/eaburns/plan9port/blob/wayland/src/cmd/devdraw/wayland.c
-# https://github.com/tw4452852/plan9port/blob/master/src/cmd/devdraw/wayland.c
-
 # http://man.9front.org/1/emacs
 # http://sam.cat-v.org/
-9term -W 650x850 &
 footclient &
 sam -W 1124x868@0,104 &
