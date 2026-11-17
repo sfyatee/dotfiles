@@ -10,18 +10,6 @@ fn felloff{
 	# eval `{9 ssh-agent}
 }
 
-# Setups up the Plan 9 enviornment with an user service supervisor.
-# Systems without systemd(1) can use: https://sr.ht/~craftyguy/superd/
-#
-# Dependencies:
-# ../.config/systemd/user/factotum.service
-# ../.config/systemd/user/fontsrv.service
-# ../.config/systemd/user/plumber.service
-# Prior art:
-# https://github.com/NixOS/nixpkgs/pull/18228
-# https://github.com/lufia/plan9port-systemd-units/
-
-# Insurance, just in case the service supervisor somehow fails.
 if(test -d $PLAN9) felloff
 
 # Default font for Plan 9 programs.
@@ -61,11 +49,6 @@ if(test -f $home/acme.dump)
 # https://cow-wm.codeberg.page/cow/man/release/cow.1.html#WINDOW_COMMANDS
 # https://github.com/eaburns/plan9port/blob/wayland/src/cmd/devdraw/wayland.c
 # https://github.com/tw4452852/plan9port/blob/master/src/cmd/devdraw/wayland.c
-#
-# 9 man stats, or...
-# /usr/local/plan9/src/cmd/auxstats
-# /usr/local/plan9/src/cmd/draw/stats.c
-stats -W 400x213@0,0 -lmisce $fixfont
 
 # http://man.9front.org/1/emacs
 # http://sam.cat-v.org/
