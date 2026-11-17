@@ -218,14 +218,12 @@ cdpath=(.)
 switch($os){
 case linux
 	NPROC=`{nproc}
-
 	fn ls{builtin ls -AFv $*}
 	fn pclean{makepkg -C $*}
 	fn pstree{ps -e f -ww -o pid,args}
 	fn rcctl{systemctl $*}
 case openbsd
 	cdpath=($cdpath /usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
-
 	# https://dots.omarpolo.com/kshrc.html
 	fn cshlib{
 		libs=`{make 'show=SHARED_LIBS'}
@@ -239,14 +237,6 @@ case openbsd
 			shift libs
 			shift libs
 		}
-	}
-
-	fn rcctl{
-		if(~ $1 --user){
-			shift
-			superctl $*
-		}
-		if not builtin rcctl $*
 	}
 
 	if(test `{sysctl -n hw.ncpuonline} -gt 1) MP=.MP; if not MP=''
