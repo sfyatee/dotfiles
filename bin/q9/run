@@ -1,24 +1,40 @@
 #!/bin/sh
+set -eu
 
 mem=4G
 smp=4
-mac=mac=52:54:00:12:34:56
-while getopts ':M:G' name; do
+nogui=0
+disk="$HOME/v/9front.amd64.qcow2"
+qemu=${QEMU:-qemu-system-x86_64}
+drawterm=${DRAWTERM:-/Applications/drawterm.app/drawterm}
+
+usage() {
+	echo 'usage: q9/run [-G] [-M memory] [-s cpus] [-d disk]' >&2
+}
+
+while getopts ':M:s:d:G' name; do
 	case $name in
-	M)	mem=$2 ;;
-	G)	nogui=1 ;;
-	?)	echo "usage: q9 [ -M mem ]" >&2; exit 1 ;;
+	M) mem=$OPTARG ;;
+	s) smp=$OPTARG ;;
+	d) disk=$OPTARG ;;
+	G) nogui=1 ;;
+	:) printf 'run: -%s requires an argument\n' "$OPTARG" >&2; exit 2 ;;
+	\?) usage; exit 2 ;;
 	esac
 done
+shift $((OPTIND - 1))
+[ "$#" -eq 0 ] || { usage; exit 2; }
 
-kvm=
-if [ -w /dev/kvm ]; then
-	kvm='-enable-kvm -cpu host'
+if [ ! -f "$disk" ]; then
+	printf 'could not find %s\n' "$disk" >&2
+	exit 1
 fi
 
-slirp="-device virtio-net-pci,netdev=net0,$mac -netdev user,id=net0"
+kvm=0
+if [ -w /dev/kvm ]; then
+	kvm=1
+fi
 
-exec qemu-system-x86_64 -m $mem -smp $smp -nographic $kvm \
-	$slirp 
-
-drawterm -u glenda -h localhost -a localhost
+QEMU="$qemu" DRAWTERM="$drawterm" DISK="$disk" MEM="$mem" SMP="$smp" \
+KVM="$kvm" NOGUI="$nogui" \
+	expect "$(dirname "$0")/run.exp"

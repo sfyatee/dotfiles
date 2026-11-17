@@ -1,25 +1,46 @@
 #!/bin/sh
+set -eu
 
-: "${src:=https://build.9front.org/9front}"
-latest=$(curl -fsSL "$src/latest") || exit 1
+die() {
+	printf 'inst: %s\n' "$*" >&2
+	exit 1
+}
 
-gz="$cache_root/releases/9front-$latest.amd64.qcow2.gz"
-qcow2=${latest%.gz}
-download="$src/9front-$latest.amd64.qcow2.gz"
-
-if [ ! -f "$gz" ]; then
-	printf 'Downloading %s\n' "$download" >&2
-	curl -fL "$download" -o "$gz.tmp" || exit 1
-	mv "$gz.tmp" "$gz" || exit 1
+v="$HOME/v"
+disk="$v/9front.amd64.qcow2"
+if [ -e "$disk" ]; then
+	printf 'Already exists: %s\n' "$disk" >&2
+	exit 0
 fi
 
-if [ ! -f "$qcow2" ]; then
-	printf 'Extracting %s\n' "$gz" >&2
-	gzip -dc "$gz" >"$qcow2.tmp" || exit 1
-	mv "$qcow2.tmp" "$qcow2" || exit 1
+mkdir -p "$v"
+
+src=${src:-https://build.9front.org/9front}
+qemu=${QEMU:-qemu-system-x86_64}
+latest=$(curl -fsSL "${src%/}/latest")
+image="$v/9front-$latest.amd64.qcow2"
+archive="$image.gz"
+
+cleanup() {
+	rm -f "$archive.tmp.$$" "$image.tmp.$$" "$disk.tmp.$$"
+}
+trap cleanup 0
+trap 'exit 1' HUP INT TERM
+
+if [ ! -f "$image" ]; then
+	if [ ! -f "$archive" ]; then
+		url="${src%/}/9front-$latest.amd64.qcow2.gz"
+		curl -fL "$url" -o "$archive.tmp.$$" || die "download failed"
+		mv "$archive.tmp.$$" "$archive"
+	fi
+
+	gzip -dc "$archive" >"$image.tmp.$$"
+	mv "$image.tmp.$$" "$image"
+	rm -f "$archive"
 fi
 
-rm -f "$disk"
+qemu-img create -f qcow2 "$disk.tmp.$$" 50G >/dev/null
+qcow2="$image" disk="$disk.tmp.$$" QEMU=$qemu expect "$(dirname "$0")/inst.exp"
 
-# qemu-img create -f qcow2 "$disk" 50G
-# expect inst.exp
+mv "$disk.tmp.$$" "$disk"
+printf 'Created %s\n' "$disk"

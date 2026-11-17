@@ -1,0 +1,60 @@
+#!/usr/bin/env expect -f
+set timeout -1
+
+set qemu [list $env(QEMU) -m $env(MEM) -smp $env(SMP) -nographic]
+if {$env(KVM)} {
+	lappend qemu -accel kvm -cpu host
+}
+lappend qemu \
+	-drive "file=$env(DISK),if=virtio,format=qcow2" \
+	-nic "user,hostfwd=tcp:127.0.0.1:17019-:17019,model=virtio-net-pci"
+
+spawn {*}$qemu
+set halted 0
+trap {
+	if {!$halted} {
+		set halted 1
+		catch {send "fshalt\n"}
+	}
+} SIGINT
+
+expect "bootargs is"
+send "\n"
+expect "user"
+send "\n"
+expect "%"
+
+foreach command {
+	{echo 'key proto=dp9ik dom=9front user=glenda !password=password' >/mnt/factotum/ctl}
+	{ip/ipconfig -6 ether /net/ether0}
+	{ip/ipconfig ether /net/ether0}
+	{ip/ipconfig ether /net/ether0 ra6 recvra 1}
+} {
+	send "$command\n"
+	expect "%"
+}
+
+send "aux/listen1 -t 'tcp!*!17019' /rc/bin/service/tcp17019 &\n"
+expect "listen started"
+after 2000
+
+set env(PASS) password
+set drawterm [list $env(DRAWTERM)]
+if {$env(NOGUI)} {
+	lappend drawterm -G -r .
+}
+lappend drawterm -u glenda -h 127.0.0.1 -a 127.0.0.1
+if {$env(NOGUI)} {
+	lappend drawterm -c {service=cpu rc -lI}
+} else {
+	lappend drawterm -x 1 -c rc -c {console=() service=terminal rc -l}
+}
+if {[catch {exec {*}$drawterm <@stdin >@stdout 2>@stderr} err]} {
+	puts stderr $err
+}
+
+if {!$halted} {
+	send "fshalt\n"
+}
+expect "done halting"
+wait

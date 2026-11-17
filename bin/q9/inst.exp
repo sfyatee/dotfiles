@@ -2,20 +2,20 @@
 set timeout -1
 set debug 5
 
-if {![info exists env(SOURCE_QCOW2)]} {
-  puts stderr "SOURCE_QCOW2 is required"
+if {![info exists env(qcow2)]} {
+  puts stderr "qcow2 is required"
   exit 1
 }
-if {![info exists env(TARGET_QCOW2)]} {
-  puts stderr "TARGET_QCOW2 is required"
+if {![info exists env(disk)]} {
+  puts stderr "disk is required"
   exit 1
 }
 
-set qemu [expr {[info exists env(QEMU_SYSTEM)] ? $env(QEMU_SYSTEM) : "qemu-system-x86_64"}]
+set qemu [expr {[info exists env(QEMU)] ? $env(QEMU) : "qemu-system-x86_64"}]
 
-spawn $qemu -enable-kvm -m 2G -smp 4 \
-  -drive file=$env(SOURCE_QCOW2),media=disk,if=virtio,index=0 \
-  -drive file=$env(TARGET_QCOW2),index=1,media=disk,if=virtio \
+spawn $qemu -m 2G -smp 4 \
+  -drive file=$env(qcow2),media=disk,if=virtio,index=0 \
+  -drive file=$env(disk),index=1,media=disk,if=virtio \
   -nographic -nic none
 
 expect "bootfile="
