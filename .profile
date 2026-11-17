@@ -82,12 +82,6 @@ H=${H%%.*}
 H=${H%%-*}
 PS1=$H'=; '
 
-# Default font for Plan 9 programs.
-font2=/mnt/font/LucidaGrande/11a/font
-varfont="-f $font2"
-font=/mnt/font/LucidaGrandeMonoDK/11a/font
-fixfont="-F $font"
-
 # Equivalent variables for rc(1).
 home=$HOME
 prompt="$H=; 	"
