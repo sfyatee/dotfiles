@@ -2,7 +2,6 @@ OS=`uname -s | tr '[:upper:]' '[:lower:]'`
 ARCH=`uname -m | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
-PLAN9=/usr/local/plan9
 
 # XDG
 XDG_CACHE_HOME="$HOME/.cache"
@@ -79,12 +78,6 @@ LESSHISTFILE=/dev/null
 MYSQL_HISTFILE=/dev/null
 PYTHON_HISTORY=/dev/null
 
-# Override $NAMESPACE (see intro(4)).
-# bin/riostart:3
-# https://github.com/rsc/tmp/blob/master/ssh-namespace-agent/main.go#L446
-# /usr/local/plan9/src/lib9/getns.c:16
-NAMESPACE=/tmp/ns.$LOGNAME.:0
-
 # Prompt
 H=`uname -n`
 sys=$H
@@ -97,8 +90,6 @@ font2=/mnt/font/LucidaGrande/11a/font
 varfont="-f $font2"
 font=/mnt/font/LucidaGrandeMonoDK/11a/font
 fixfont="-F $font"
-
-secstore=localhost
 
 # Equivalent variables for rc(1).
 home=$HOME
@@ -135,10 +126,10 @@ export BROWSER CVS_RSH EDITOR GOT_AUTHOR GOTELEMETRY GOTOOLCHAIN GS_FONT_PATH\
     TOG_COLOR_DIFF_CHUNK_HEADER TOG_COLOR_DIFF_META TOG_COLOR_COMMIT\
     TOG_COLOR_AUTHOR TOG_COLOR_DATE TOG_COLOR_REFS_REMOTES\
     CARGO_HOME CUDA_CACHE_PATH NUGET_PACKAGES RUFF_CACHE_DIR RUSTUP_HOME\
-    PAGER PATH PLAN9 PS1 NPROC MAKEFLAGS SAMUFLAGS CMAKE_COLOR_MAKEFILE\
+    PAGER PATH PS1 NPROC MAKEFLAGS SAMUFLAGS CMAKE_COLOR_MAKEFILE\
     CLAUDE_CONFIG_DIR CODEX_HOME COPILOT_HOME OLLAMA_MODELS MOZ_USE_XINPUT2\
     PACMAN_AUTH SYSTEMD_RUN_SHELL_PROMPT_PREFIX _JAVA_AWT_WM_NONREPARENTING\
-    CDPATH NAMESPACE H SSH_ASKPASS_REQUIRE font font2 secstore home prompt user\
+    CDPATH H SSH_ASKPASS_REQUIRE font font2 home prompt user\
 
 ulimit -c 0
 

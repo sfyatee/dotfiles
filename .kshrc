@@ -192,15 +192,8 @@ fi
 
 felloff() {
 	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
-	mkdir -p $NAMESPACE
 	# Start factotum before secstore so it does not prompt for a password.
-	if [ ! -e "$NAMESPACE/font" ]; then fontsrv & fi
-	if [ ! -e "$NAMESPACE/factotum" ]; then factotum & fi
-	if [ ! -e "$NAMESPACE/plumb" ]; then plumber & fi
-	# Plan 9 ssh-agent connects to factotum(4).
-	# eval `9 ssh-agent -e`
+	# Plan 9 ssh-agent connects to factotum(4): % eval `9 ssh-agent -e`
 }
-
-if [ -d "$PLAN9" ]; then felloff; fi
 
 [ -e ~/.kshrc.local ] && . ~/.kshrc.local || :
