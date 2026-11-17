@@ -1,4 +1,4 @@
-aerc
+asclock
 cliphist
 cow
 curl
@@ -10,14 +10,10 @@ go
 go-fonts
 gopls
 got
-hack-fonts
 hare
-hermit-font
-ibm-plex
+helix
 jq
 jujutsu
-just
-kakoune
 knfmt
 lilypond
 mergiraf
@@ -27,7 +23,6 @@ playerctl
 prismlauncher
 racket-minimal
 ripgrep
-roboto-fonts
 senpai
 syncthing
 tailscale
@@ -37,4 +32,3 @@ wayvnc
 wev
 wf-recorder
 xe
-zsh

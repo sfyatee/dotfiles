@@ -84,9 +84,7 @@ utilis)
 		snarf fetch --prune origin
 	else
 		mkdir -p "$HOME/lib"
-		git clone --bare \
-			https://github.com/sfyatee/dotfiles \
-			"$DOTFILES"
+		git clone --bare  https://github.com/sfyatee/dotfiles "$DOTFILES"
 	fi
 
 	snarf config status.showUntrackedFiles no
