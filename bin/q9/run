@@ -1,0 +1,24 @@
+#!/bin/sh
+
+mem=4G
+smp=4
+mac=mac=52:54:00:12:34:56
+while getopts ':M:G' name; do
+	case $name in
+	M)	mem=$2 ;;
+	G)	nogui=1 ;;
+	?)	echo "usage: q9 [ -M mem ]" >&2; exit 1 ;;
+	esac
+done
+
+kvm=
+if [ -w /dev/kvm ]; then
+	kvm='-enable-kvm -cpu host'
+fi
+
+slirp="-device virtio-net-pci,netdev=net0,$mac -netdev user,id=net0"
+
+exec qemu-system-x86_64 -m $mem -smp $smp -nographic $kvm \
+	$slirp 
+
+drawterm -u glenda -h localhost -a localhost

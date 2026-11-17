@@ -1,0 +1,25 @@
+#!/bin/sh
+
+: "${src:=https://build.9front.org/9front}"
+latest=$(curl -fsSL "$src/latest") || exit 1
+
+gz="$cache_root/releases/9front-$latest.amd64.qcow2.gz"
+qcow2=${latest%.gz}
+download="$src/9front-$latest.amd64.qcow2.gz"
+
+if [ ! -f "$gz" ]; then
+	printf 'Downloading %s\n' "$download" >&2
+	curl -fL "$download" -o "$gz.tmp" || exit 1
+	mv "$gz.tmp" "$gz" || exit 1
+fi
+
+if [ ! -f "$qcow2" ]; then
+	printf 'Extracting %s\n' "$gz" >&2
+	gzip -dc "$gz" >"$qcow2.tmp" || exit 1
+	mv "$qcow2.tmp" "$qcow2" || exit 1
+fi
+
+rm -f "$disk"
+
+# qemu-img create -f qcow2 "$disk" 50G
+# expect inst.exp
