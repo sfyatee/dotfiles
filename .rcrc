@@ -185,7 +185,7 @@ if not{
 
 if(~ $#termprog 1 || ~ $#winid 1){
 	# Plumb files instead of starting new editor.
-	EDITOR=editinacme
+	EDITOR=B
 	# Get rid of backspace characters in Unix man output.
 	PAGER=nobs
 	# Make prompt executable.
@@ -193,12 +193,6 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	fn $sys^'%' { if(! ~ $#* 0) $* }
 	# Set the current window label using awd (see label(1))
 	fn hook{ if(flag i) { awd }; status='' }; awd
-	# 9 utilis
-	fn gl{
-		root=`{git rev-parse --show-toplevel}
-		got log $* |
-			plumb -i -d edit -a ('action=showdata filename='^$root^'/+log')
-	}
 	# No paging
 	fn git{builtin git --no-pager $*}
 	fn hg{chg '--pager=no' $*}

@@ -107,7 +107,7 @@ alias snarf='git --git-dir $HOME/lib/dotfiles --work-tree $HOME'
 
 if [ "$termprog" ] || [ "$winid" ]; then
 	# Plumb files instead of starting new editor.
-	EDITOR=editinacme
+	EDITOR=B
 	# Get rid of backspace characters in Unix man output.
 	PAGER=nobs
 	# Disable the line editor
