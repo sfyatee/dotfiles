@@ -49,7 +49,7 @@ alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
 alias snarf='git --git-dir $HOME/lib/dotfiles --work-tree $HOME'
 
 lc() {
-    ls -1F "$@" | mc
+    ls -1AF "$@" | mc
 }
 
 if [ "$termprog" ] || [ "$winid" ]; then

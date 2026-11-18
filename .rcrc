@@ -12,7 +12,6 @@ XDG_DATA_HOME=$home/.local/share
 # https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
 CARGO_HOME=$XDG_DATA_HOME/cargo
 CUDA_CACHE_PATH=$XDG_CACHE_HOME/nv
-NUGET_PACKAGES=$XDG_CACHE_HOME/NuGetPackages
 RUFF_CACHE_DIR=$XDG_CACHE_HOME/ruff
 RUSTUP_HOME=$XDG_DATA_HOME/rustup
 
@@ -84,7 +83,7 @@ PS1=$sys'=; '
 h=()
 
 fn :{}
-ps1='% '
+ps1='$ '
 tab='	'
 nl='
 '
@@ -100,7 +99,7 @@ fn sfprompt{
 	case *
 		dir=$PWD
 	}
-	prompt=($"sys^'['^':'^$dir^']'^'$ ')
+	prompt=($"sys^'['^':'^$dir^']'^$ps1)
 }
 
 
@@ -167,7 +166,7 @@ fn publicip{curl -4 -w '\n' -s http://ifconfig.me}
 fn snarf{git --git-dir $home^'/lib/dotfiles' --work-tree $home $*}
 
 fn lc{
-	builtin ls -1F $* | mc
+	builtin ls -1AF $* | mc
 }
 
 hx=`{which hx>[2]/dev/null}
@@ -188,8 +187,7 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	# Get rid of backspace characters in Unix man output.
 	PAGER=nobs
 	# Make prompt executable.
-	prompt=($sys^'% ' $tab)
-	fn $sys^'%' { if(! ~ $#* 0) $* }
+	prompt=(':% ' $tab)
 	# Set the current window label using awd (see label(1))
 	fn hook{ if(flag i) { awd }; status='' }; awd
 	# No paging
