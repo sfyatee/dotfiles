@@ -158,7 +158,6 @@ fn cp{builtin cp -i $*}
 fn gl{tog $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
-fn lc{builtin ls -1F | mc $*}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
 fn ltr{builtin ls -AlFtr $*}
@@ -166,6 +165,10 @@ fn mg{builtin mg -n $*}
 fn mv{builtin mv -i $*}
 fn publicip{curl -4 -w '\n' -s http://ifconfig.me}
 fn snarf{git --git-dir $home^'/lib/dotfiles' --work-tree $home $*}
+
+fn lc{
+	builtin ls -1F $* | mc
+}
 
 hx=`{which hx>[2]/dev/null}
 if(~ $#hx 1 && test -x $kak){

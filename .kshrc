@@ -40,7 +40,6 @@ alias cp='cp -i'
 alias gl=tog
 alias hg=chg
 alias ivy=ivy-prompt
-alias lc='ls -1F | mc'
 alias ll='ls -AlF'
 alias ls='ls -AF'
 alias ltr='ls -AlFtr'
@@ -48,6 +47,10 @@ alias mg='mg -n'
 alias mv='mv -i'
 alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
 alias snarf='git --git-dir $HOME/lib/dotfiles --work-tree $HOME'
+
+lc() {
+    ls -1F "$@" | mc
+}
 
 if [ "$termprog" ] || [ "$winid" ]; then
 	# Plumb files instead of starting new editor.
