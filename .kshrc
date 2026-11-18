@@ -177,10 +177,4 @@ if [[ "$TERM" == "dumb" ]]; then
 	PS1=': $(s=$?; [ "$s" -eq 0 ] || print -rn "{$s} ")$H; '
 fi
 
-felloff() {
-	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
-	# Start factotum before secstore so it does not prompt for a password.
-	# Plan 9 ssh-agent connects to factotum(4): % eval `9 ssh-agent -e`
-}
-
 [ -e ~/.kshrc.local ] && . ~/.kshrc.local || :

@@ -60,14 +60,10 @@ LC_COLLATE=C
 LC_TIME=C
 
 # https://youtu.be/2jdM_WdrvGY?si=D1renRZL3lep6kWs
-CLAUDE_CONFIG_DIR=$XDG_CONFIG_HOME/claude
-CODEX_HOME=$XDG_CONFIG_HOME/codex
-COPILOT_HOME=$XDG_CONFIG_HOME/copilot
 DO_NOT_TRACK=true
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 MOZ_USE_XINPUT2=1
-OLLAMA_MODELS=$XDG_DATA_HOME/ollama/models
 _JAVA_AWT_WM_NONREPARENTING=1
 
 PACMAN_AUTH=run0
@@ -246,9 +242,3 @@ MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
 
 # ulimit -c 0
-
-fn felloff{
-	# Override $NAMESPACE (see intro(4)) because $WSYS is not running yet.
-	# Start factotum before secstore so it does not prompt for a password.
-	# Plan 9 ssh-agent connects to factotum(4): % eval `{9 ssh-agent}
-}
