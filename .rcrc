@@ -158,7 +158,7 @@ fn cp{builtin cp -i $*}
 fn gl{tog $*}
 fn hg{chg $*}
 fn ivy{ivy-prompt}
-fn lc{builtin lc -F $*}
+fn lc{builtin ls -1F | mc $*}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
 fn ltr{builtin ls -AlFtr $*}
