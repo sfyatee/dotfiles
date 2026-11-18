@@ -7,63 +7,7 @@ HISTSIZE=5000
 set -o emacs
 set -o csh-history
 
-NDIRS=2
-vcspwd() {
-	typeset path rest part short branch mark dir
-	typeset -i n=0
-
-	case $PWD in
-	"$HOME")   path='~' ;;
-	"$HOME"/*) path="~${PWD#"$HOME"}" ;;
-	*)         path=$PWD ;;
-	esac
-
-	rest=$path
-	short=
-	while [[ -n $rest ]] && (( n < NDIRS )); do
-		if [[ $rest = */* ]]; then
-			part=${rest##*/}
-			rest=${rest%/*}
-		else
-			part=$rest
-			rest=
-		fi
-
-		if [[ -n $short ]]; then
-			short=$part/$short
-		else
-			short=$part
-		fi
-		(( ++n ))
-	done
-
-	if [[ -z $rest && $path = /* ]]; then
-		short=/$short
-	fi
-	[[ -n $short ]] || short=/
-
-	dir=$PWD
-	while :; do
-		if [[ -e $dir/.jj ]]; then
-			branch=$(jj prompt 2>/dev/null) || branch=
-			mark='*'
-			break
-		elif [[ -e $dir/.got ]]; then
-			branch=$(got branch 2>/dev/null) || branch=
-			mark='@'
-			break
-		fi
-
-		[[ $dir = / ]] && break
-		dir=${dir%/*}
-		[[ -n $dir ]] || dir=/
-	done
-
-	[[ -n $branch ]] && short=$short$mark$branch
-	print -rn -- "$short"
-}
-
-PS1=': $H $(vcspwd)% '
+PS1=':; '
 
 # Report current working directory at each prompt.
 osc7() {
