@@ -102,13 +102,10 @@ fn osc7{
 	enc=`{printf '%s' $"PWD | sed 's/%/%25/g; s/ /%20/g'}
 	p=`{printf '\033]7;file://%s%s\033\\' $H $enc}
 	printf '%s' $"p
-	if(~ $"TMUX ?*)
-		printf '%s' $"p >`{tmux display-message -p '#{client_tty}'}
+	if(~ $"TMUX ?*) printf '%s' $"p >`{tmux display-message -p '#{client_tty}'}
 }
 
-fn title{
-	printf '\033]0;%s:%s$\007' $sys $dir
-}
+fn title{printf '\033]0;%s:%s$\007' $sys $dir}
 
 fn hook{
 	if(flag i){
