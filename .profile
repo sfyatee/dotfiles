@@ -89,8 +89,7 @@ linux)
 	NPROC=`nproc`
 	;;
 openbsd)
-	TREE=/usr/src/bin:/usr/src/sbin:/usr/src/usr.bin:/usr/src/usr.sbin
-	CDPATH=$CDPATH:$TREE:/usr/ports:/usr/ports/mystuff
+	CDPATH=$CDPATH:/usr/ports:/usr/ports/mystuff
 esac
 
 if [ "$OS" != "linux" ]; then

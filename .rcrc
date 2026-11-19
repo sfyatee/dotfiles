@@ -179,7 +179,7 @@ case linux
 	fn pclean{makepkg -C $*}
 	fn pstree{ps -e f -ww -o pid,args $*}
 case openbsd
-	cdpath=($cdpath /usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
+	cdpath=($cdpath /usr/ports^('' /mystuff))
 	# check shared libs version
 	fn cshlib{
 		libs=`{make 'show=SHARED_LIBS'}
