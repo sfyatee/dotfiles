@@ -4,31 +4,6 @@
 # Use with mblaze and offmap.
 mb=mbox
 msg=()
-fn printhelp{
-echo 'Commands are of the form [<range>] <command> [args]
-<range> := <addr> | <addr>','<addr>
-<command> :=
-a		reply to sender and recipients
-b		print the next ten headers
-d		mark for deletion
-e ...		enter message (args passed to upas/marshal)
-g/regexp/cmd	grep headlines for regexp and run cmd on matches
-h		print message headline (,h for all)
-help		print this help message
-m ...		forward mail to address(es)
-mb ...		change to specified mailbox
-p		print the processed message
-P		print the raw message
-q		quit
-r		reply to message
-s ...		store message in specified mailbox
-u		remove deletion mark
-y		synchronize with mail box
-"		print message in quoted form, suitable for reply
-|cmd		pipe the processed message to a command
-||cmd		pipe the raw message to a command
-!cmd		run a command'
-}
 fn usage{
 	echo usage: mother [ -b ] [ -d ] [ -f mbox ] [ -p msg ] [ -r ] >[1=2]
 	exit usage
