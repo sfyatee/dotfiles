@@ -1,0 +1,21 @@
+#!/usr/bin/env rc
+# Mother wants to talk to you.
+# Unix clone of sl's mother.
+# Use with mblaze and offmap.
+fn usage{
+	echo usage: mother [ -b ] [ -d ] [ -f mbox ] [ -p msg ] [ -r ] >[1=2]
+	exit usage
+}
+while(~ $1 -*){
+	switch($1){
+	case -b;	biff=-b
+	case -d;	debug=1
+	case -f;	mb=$2; shift
+	case -p;	msg=$2; shift
+	case -r;	sort=(); shift
+	case *;	usage
+	}
+	shift
+}
+if(! ~ $#* 0)
+	usage

@@ -5,14 +5,12 @@ sink='@DEFAULT_AUDIO_SINK@'
 
 volume()
 {
-	wpctl get-volume "$sink" |
-		awk '{ printf "%d\n", $2 * 100 }'
+	wpctl get-volume "$sink" | awk '{ printf "%d\n", $2 * 100 }'
 }
 
 muted()
 {
-	wpctl get-volume "$sink" |
-		grep -q '\[MUTED\]'
+	wpctl get-volume "$sink" | grep -q '\[MUTED\]'
 }
 
 send()
@@ -24,9 +22,7 @@ send()
 volnotify()
 {
 	v=$(volume)
-
-	send -i audio-volume-muted-blocking \
-		-h "int:value:$v" Volume "${v}%"
+	send -i audio-volume-muted-blocking -h "int:value:$v" Volume "${v}%"
 }
 
 mutenotify()

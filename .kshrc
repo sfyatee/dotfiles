@@ -19,8 +19,8 @@ osc7() {
 		local cut="${tmp#?}"
 		local c="${tmp%"$cut"}"
 		case "$c" in
-		[-/:_.!\'\(\)~[:alnum:]] ) enc="$enc$c" ;;
-		* ) enc="$enc$(printf '%%%02X' """\"$c")"  ;;
+		[-/:_.!\'\(\)~[:alnum:]]) enc="$enc$c" ;;
+		*) enc="$enc$(printf '%%%02X' """\"$c")"  ;;
 		esac
 		tmp="$cut"
 	done
@@ -30,7 +30,6 @@ osc7() {
 
 	# ; sshfs -s $HOSTNAME -r / $HOSTNAME
 	# ; plumb 'Local mount -c /srv/$HOSTNAME /n/$HOSTNAME'
-	# Run uname -n on Unix to determine $HOSTNAME.
 	if [ -n "$TMUX" ]; then
 		printf '%s' "$p" >$(tmux display-message -p '#{client_tty}')
 	fi
@@ -38,18 +37,16 @@ osc7() {
 
 alias cp='cp -i'
 alias gl=tog
-alias hg=chg
 alias ivy=ivy-prompt
 alias ll='ls -AlF'
 alias ls='ls -AF'
 alias ltr='ls -AlFtr'
-alias mg='mg -n'
 alias mv='mv -i'
 alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
 alias snarf='git --git-dir $HOME/lib/dotfiles --work-tree $HOME'
 
 lc() {
-    ls -1AF "$@" | mc
+	ls -1AF "$@" | mc
 }
 
 if [ "$termprog" ] || [ "$winid" ]; then
@@ -64,16 +61,10 @@ if [ "$termprog" ] || [ "$winid" ]; then
 	alias ivy=ivy
 	alias jj='jj --no-pager'
 	# Set the current window label using awd (see label(1))
-	_cd () {
-		\cd "$@" &&
-		case "$TERM!$-" in
-		linux!*)
-			;;
-		*!*i*)
-			awd
-		esac
+	cd() {
+		command cd "$@" || return
+		case $- in *i*) awd;; esac
 	}; awd
-	alias cd=_cd
 else
 	osc7 $PWD
 	alias cd=osc7
@@ -86,7 +77,7 @@ linux)
 	alias pstree="ps -e f -ww -o pid,args"
 	;;
 openbsd)
-	# from @jca
+	# check shared libs version
 	cshlib() {
 		local cnt=0
 		local f
@@ -119,9 +110,7 @@ else
 fi
 
 if [[ "$TERM" == "dumb" ]]; then
-	# Set prompt so middle-clicking whole line reruns line's command
-	# Show last exit code if non-zero
-	PS1=': $(s=$?; [ "$s" -eq 0 ] || print -rn "{$s} ")$H; '
+	PS1=': $(s=$?; ((s == 0)) || print -rn "{$s} ")$H; '
 fi
 
 [ -e ~/.kshrc.local ] && . ~/.kshrc.local || :

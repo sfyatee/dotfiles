@@ -20,7 +20,7 @@ prepend=($BIN $home/.local/bin $home/go/bin $CARGO_HOME/bin)
 path=($prepend $path $append)
 
 # == SITE LOCAL CONFIG
-if(test -r $home/.rcrc.local) . $home/.rcrc.local # XXX: . -q
+if(test -r $home/.rcrc.local) . $home/.rcrc.local
 
 # Browser used by web(1) and thus plumber.
 BROWSER=firefox
@@ -76,7 +76,7 @@ PYTHON_HISTORY=/dev/null
 
 # Prompt
 H=`{uname -n}
-h=`{echo $H |sed 's/\-..*//'}	# XXX: $ifs^'.-'{printf %s $H}
+h=`{echo $H |sed 's/\-..*//'}
 sys=$h(1)
 PS1=$sys'=; '
 h=()
@@ -109,7 +109,6 @@ fn osc7{
 	printf '%s' $"p
 	# ; sshfs -s $HOSTNAME -r / $HOSTNAME
 	# ; plumb 'Local mount -c /srv/$HOSTNAME /n/$HOSTNAME'
-	# Run uname -n on Unix to determine $HOSTNAME.
 	if(~ $"TMUX ?*)
 		printf '%s' $"p >`{tmux display-message -p '#{client_tty}'}
 }
@@ -154,12 +153,10 @@ fn cd{
 
 fn cp{builtin cp -i $*}
 fn gl{tog $*}
-fn hg{chg $*}
 fn ivy{ivy-prompt}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
 fn ltr{builtin ls -AlFtr $*}
-fn mg{builtin mg -n $*}
 fn mv{builtin mv -i $*}
 fn publicip{curl -4 -w '\n' -s http://ifconfig.me}
 fn snarf{git --git-dir $home^'/lib/dotfiles' --work-tree $home $*}
@@ -186,12 +183,11 @@ if(~ $#termprog 1 || ~ $#winid 1){
 	# Get rid of backspace characters in Unix man output.
 	PAGER=nobs
 	# Make prompt executable.
-	prompt=(':% ' $tab)
+	prompt=(':; ' $tab)
 	# Set the current window label using awd (see label(1))
 	fn hook{ if(flag i) { awd }; status='' }; awd
 	# No paging
 	fn git{builtin git --no-pager $*}
-	fn hg{chg '--pager=no' $*}
 	fn ivy{builtin ivy}
 	fn jj{builtin jj --no-pager $*}
 }
@@ -204,10 +200,10 @@ case linux
 	NPROC=`{nproc}
 	fn ls{builtin ls -AFv $*}
 	fn pclean{makepkg -C $*}
-	fn pstree{ps -e f -ww -o pid,args}
+	fn pstree{ps -e f -ww -o pid,args $*}
 case openbsd
 	cdpath=($cdpath /usr/src/^(bin sbin usr.^(bin sbin)) /usr/ports^('' /mystuff))
-	# from @jca
+	# check shared libs version
 	fn cshlib{
 		libs=`{make 'show=SHARED_LIBS'}
 
@@ -229,7 +225,7 @@ case openbsd
 	fn mup{make update-patches}
 	fn mupl{make update-plist $*}
 	fn pclean{make 'clean=package' plist}
-	fn pstree{ps -Aww -f -o pid,command}
+	fn pstree{ps -Aww -f -o pid,command $*}
 	fn rsync{openrsync $*}
 }
 
@@ -240,5 +236,3 @@ if(! ~ $os linux){
 
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
-
-# ulimit -c 0
