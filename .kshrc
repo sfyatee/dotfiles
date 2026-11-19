@@ -33,7 +33,6 @@ osc7() {
 
 alias cp='cp -i'
 alias gl=tog
-alias ivy=ivy-prompt
 alias ll='ls -AlF'
 alias ls='ls -AF'
 alias ltr='ls -AlFtr'

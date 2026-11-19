@@ -3,13 +3,11 @@ ARCH=`uname -m | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
 BIN=$HOME/bin:$HOME/bin/$OS:$HOME/bin/$OS/$ARCH
 
-# XDG
 XDG_CACHE_HOME="$HOME/.cache"
 XDG_CONFIG_HOME="$HOME/.config"
 XDG_DATA_HOME="$HOME/.local/share"
 
-# XDG offenders...
-# https://wiki.archlinux.org/title/XDG_Base_Directory#Partial
+# offenders
 CARGO_HOME=$XDG_DATA_HOME/cargo
 CUDA_CACHE_PATH=$XDG_CACHE_HOME/nv
 RUFF_CACHE_DIR=$XDG_CACHE_HOME/ruff
@@ -55,13 +53,11 @@ LC_CTYPE=$LANG
 LC_COLLATE=C
 LC_TIME=C
 
-# https://youtu.be/2jdM_WdrvGY?si=D1renRZL3lep6kWs
 DO_NOT_TRACK=true
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 MOZ_USE_XINPUT2=1
 _JAVA_AWT_WM_NONREPARENTING=1
-
 PACMAN_AUTH=run0
 SYSTEMD_RUN_SHELL_PROMPT_PREFIX=": "
 
