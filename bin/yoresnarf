@@ -1,4 +1,4 @@
-#!/bin/rc
+#!/usr/bin/env rc
 # yoresnarf - select an entry from the clipboard history to snarf
 ifs='
 '

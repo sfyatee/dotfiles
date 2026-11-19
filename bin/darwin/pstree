@@ -1,0 +1,47 @@
+#!/bin/sh
+root=${1-0}
+ps -Aww -o pid= -o ppid= -o command= | LC_ALL=C sort -n | awk -v root="$root" '
+{
+	p = $1
+	if (p !~ /^[0-9]+$/ || $2 !~ /^[0-9]+$/ || p == 0)
+		next
+
+	cmd = $0
+	sub(/^[[:space:]]*[0-9]+[[:space:]]+[0-9]+[[:space:]]+/, "", cmd)
+	command[p] = cmd
+	ppid[p] = $2
+	order[++nproc] = p
+}
+function walk(p, prefix, last, top, n, i, c, nextprefix) {
+	if (p != 0) {
+		if (top)
+			printf "%s %s\n", p, command[p]
+		else
+			printf "%s%s %s %s\n", prefix, last ? "└─" : "├─", p, command[p]
+	}
+
+	n = nchild[p]
+	for (i = 1; i <= n; i++) {
+		c = child[p, i]
+		nextprefix = top ? prefix : prefix (last ? "  " : "│ ")
+		walk(c, nextprefix, i == n, 0)
+	}
+}
+END {
+	for (i = 1; i <= nproc; i++) {
+		p = order[i]
+		parent = ppid[p]
+		if (parent == 0 || !(parent in command))
+			parent = 0
+		child[parent, ++nchild[parent]] = p
+	}
+
+	if (root != 0) {
+		root += 0
+		if (!(root in command)) {
+			printf "pstree: no such process: %s\n", root > "/dev/stderr"
+			exit 1
+		}
+	}
+	walk(root, "", 1, 1)
+}'
