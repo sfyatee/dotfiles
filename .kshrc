@@ -32,7 +32,6 @@ osc7() {
 }
 
 alias cp='cp -i'
-alias gl=tog
 alias ll='ls -AlF'
 alias ls='ls -AF'
 alias ltr='ls -AlFtr'
@@ -64,9 +63,6 @@ openbsd)
 				$(make show=WRKINST)/usr/local/lib/lib$f.so*
 		done
 	}
-
-	[ $(sysctl -n hw.ncpuonline) -gt 1 ] && MP=".MP" || MP=""
-	alias cdg='cd /usr/src/sys/arch/`machine`/compile/GENERIC${MP}'
 	alias cvs=opencvs
 	alias mpldc="make port-lib-depends-check"
 	alias mup="make update-patches"

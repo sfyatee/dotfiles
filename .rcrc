@@ -27,8 +27,6 @@ LESS=FRXi
 
 CVS_RSH=/usr/bin/ssh
 
-GOT_AUTHOR=('demian garcia <dag@demians.org>')
-
 # When I was a child, I used to speak like a child, think like a child,
 # reason like a child; when I became a man, I did away with childish
 # things.
@@ -143,7 +141,6 @@ fn cd{
 }
 
 fn cp{builtin cp -i $*}
-fn gl{tog $*}
 fn ll{builtin ls -AFl $*}
 fn ls{builtin ls -AF $*}
 fn ltr{builtin ls -AlFtr $*}
@@ -192,9 +189,6 @@ case openbsd
 			shift libs
 		}
 	}
-
-	if(test `{sysctl -n hw.ncpuonline} -gt 1) MP=.MP; if not MP=''
-	fn cdg{cd /usr/src/sys/arch/`{machine}/compile/GENERIC^$MP}
 	fn cvs{opencvs $*}
 	fn mpldc{make port-lib-depends-check}
 	fn mup{make update-patches}
