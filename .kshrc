@@ -11,25 +11,21 @@ PS1=':; '
 
 # Report current working directory at each prompt.
 osc7() {
-	cd "$@" || return $?
+	command cd "$@" || return
 
-	local tmp="$PWD"
-	local enc p
-	while [ -n "$tmp" ]; do
-		local cut="${tmp#?}"
-		local c="${tmp%"$cut"}"
-		case "$c" in
-		[-/:_.!\'\(\)~[:alnum:]]) enc="$enc$c" ;;
-		*) enc="$enc$(printf '%%%02X' """\"$c")"  ;;
+	typeset tmp=$PWD enc= cut c p
+	while [[ -n $tmp ]]; do
+		cut=${tmp#?}
+		c=${tmp%"$cut"}
+		case $c in
+		[-/:_.!\'\(\)~[:alnum:]]) enc=$enc$c ;;
+		*) enc=$enc$(printf '%%%02X' "'$c")  ;;
 		esac
-		tmp="$cut"
+		tmp=$cut
 	done
 
 	p=$(printf "\033]7;file://%s%s\033\\" "$sys" "$enc")
 	printf '%s' "$p"
-
-	# ; sshfs -s $HOSTNAME -r / $HOSTNAME
-	# ; plumb 'Local mount -c /srv/$HOSTNAME /n/$HOSTNAME'
 	if [ -n "$TMUX" ]; then
 		printf '%s' "$p" >$(tmux display-message -p '#{client_tty}')
 	fi
@@ -49,26 +45,8 @@ lc() {
 	ls -1AF "$@" | mc
 }
 
-if [ "$termprog" ] || [ "$winid" ]; then
-	# Plumb files instead of starting new editor.
-	EDITOR=B
-	# Get rid of backspace characters in Unix man output.
-	PAGER=nobs
-	# Disable the line editor
-	set +o emacs
-	# No paging
-	alias git='git --no-pager'
-	alias ivy=ivy
-	alias jj='jj --no-pager'
-	# Set the current window label using awd (see label(1))
-	cd() {
-		command cd "$@" || return
-		case $- in *i*) awd;; esac
-	}; awd
-else
-	osc7 $PWD
-	alias cd=osc7
-fi
+osc7 $PWD
+alias cd=osc7
 
 case "$OS" in
 linux)

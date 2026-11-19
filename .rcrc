@@ -107,8 +107,6 @@ fn osc7{
 	enc=`{printf '%s' $"PWD | sed 's/%/%25/g; s/ /%20/g'}
 	p=`{printf '\033]7;file://%s%s\033\\' $H $enc}
 	printf '%s' $"p
-	# ; sshfs -s $HOSTNAME -r / $HOSTNAME
-	# ; plumb 'Local mount -c /srv/$HOSTNAME /n/$HOSTNAME'
 	if(~ $"TMUX ?*)
 		printf '%s' $"p >`{tmux display-message -p '#{client_tty}'}
 }
@@ -177,21 +175,8 @@ if not{
 	EDITOR=/usr/bin/vi
 }
 
-if(~ $#termprog 1 || ~ $#winid 1){
-	# Plumb files instead of starting new editor.
-	EDITOR=B
-	# Get rid of backspace characters in Unix man output.
-	PAGER=nobs
-	# Make prompt executable.
-	prompt=(':; ' $tab)
-	# Set the current window label using awd (see label(1))
-	fn hook{ if(flag i) { awd }; status='' }; awd
-	# No paging
-	fn git{builtin git --no-pager $*}
-	fn ivy{builtin ivy}
-	fn jj{builtin jj --no-pager $*}
-}
-if not hook
+#prompt=(':; ' $tab)
+hook
 
 cdpath=(.)
 
