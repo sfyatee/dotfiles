@@ -40,9 +40,7 @@ alias mv='mv -i'
 alias publicip="curl -4 -w '\n' -s http://ifconfig.me"
 alias snarf='git --git-dir $HOME/lib/dotfiles --work-tree $HOME'
 
-lc() {
-	ls -1AF "$@" | mc
-}
+lc() { ls -1AF "$@" | mc; }
 
 osc7 $PWD
 alias cd=osc7

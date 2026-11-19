@@ -151,9 +151,7 @@ fn mv{builtin mv -i $*}
 fn publicip{curl -4 -w '\n' -s http://ifconfig.me}
 fn snarf{git --git-dir $home^'/lib/dotfiles' --work-tree $home $*}
 
-fn lc{
-	builtin ls -1AF $* | mc
-}
+fn lc{builtin ls -1AF $* | mc}
 
 hx=`{which hx>[2]/dev/null}
 if(~ $#hx 1 && test -x $kak){
