@@ -36,16 +36,6 @@ NO_COLOR=1
 CMAKE_COLOR_MAKEFILE=OFF
 AV_LOG_FORCE_NOCOLOR=1
 
-TOG_COLORS=yes
-TOG_COLOR_DIFF_MINUS=magenta
-TOG_COLOR_DIFF_PLUS=blue
-TOG_COLOR_DIFF_CHUNK_HEADER=green
-TOG_COLOR_DIFF_META=default
-TOG_COLOR_COMMIT=default
-TOG_COLOR_AUTHOR=default
-TOG_COLOR_DATE=default
-TOG_COLOR_REFS_REMOTES=red
-
 TF2=$home^'/.local/share/Steam/steamapps/common/Team Fortress 2/tf/custom'
 
 # Unix means english and 24h clock. but do use UTF-8! and sort like a machine.
