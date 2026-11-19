@@ -179,13 +179,11 @@ case openbsd
 			shift libs
 		}
 	}
-	fn cvs{opencvs $*}
 	fn mpldc{make port-lib-depends-check}
 	fn mup{make update-patches}
 	fn mupl{make update-plist $*}
 	fn pclean{make 'clean=package' plist}
 	fn pstree{ps -Aww -f -o pid,command $*}
-	fn rsync{openrsync $*}
 }
 
 if(! ~ $os linux){

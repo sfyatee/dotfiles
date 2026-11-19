@@ -63,13 +63,11 @@ openbsd)
 				$(make show=WRKINST)/usr/local/lib/lib$f.so*
 		done
 	}
-	alias cvs=opencvs
 	alias mpldc="make port-lib-depends-check"
 	alias mup="make update-patches"
 	alias mupl="make update-plist"
 	alias pclean='make clean="package plist"'
 	alias pstree="ps -Aww -f -o pid,command"
-	alias rsync="openrsync"
 esac
 
 if command -v hx >/dev/null 2>&1; then
