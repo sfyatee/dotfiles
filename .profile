@@ -1,3 +1,8 @@
+# à la rc
+set -a	# autoexport
+set +o vi
+
+# The undiscovered country from whose bourn No traveler returns, puzzles the will
 OS=`uname -s | tr '[:upper:]' '[:lower:]'`
 ARCH=`uname -m | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
@@ -77,9 +82,6 @@ home=$HOME
 prompt="$H=; 	"
 user=$LOGNAME
 
-set +o vi
-set -a	# autoexport
-
 CDPATH=.
 
 case "$OS" in
@@ -98,17 +100,6 @@ fi
 
 MAKEFLAGS=-j$NPROC
 SAMUFLAGS=-j$NPROC
-
-export BROWSER CVS_RSH EDITOR GOT_AUTHOR GOTELEMETRY GOTOOLCHAIN GS_FONT_PATH\
-    PAGER LESS LESSHISTFILE PYTHON_HISTORY MAKEFLAGS SAMUFLAGS TF2 DO_NOT_TRACK\
-    LC_CTYPE LC_COLLATE LC_TIME XDG_CACHE_HOME XDG_CONFIG_HOME XDG_DATA_HOME\
-    NO_COLOR AV_LOG_FORCE_NOCOLOR MAKEFLAGS SAMUFLAGS CMAKE_COLOR_MAKEFILE\
-    TOG_COLORS TOG_COLOR_DIFF_MINUS TOG_COLOR_DIFF_PLUS\
-    TOG_COLOR_DIFF_CHUNK_HEADER TOG_COLOR_DIFF_META TOG_COLOR_COMMIT\
-    TOG_COLOR_AUTHOR TOG_COLOR_DATE TOG_COLOR_REFS_REMOTES\
-    CARGO_HOME CUDA_CACHE_PATH RUFF_CACHE_DIR RUSTUP_HOME\
-    SYSTEMD_RUN_SHELL_PROMPT_PREFIX _JAVA_AWT_WM_NONREPARENTING MOZ_USE_XINPUT2\
-    PATH ENV PS1 H SSH_ASKPASS_REQUIRE PACMAN_AUTH font font2 home prompt user\
 
 ulimit -c 0
 
