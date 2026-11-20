@@ -60,7 +60,7 @@ H=${H%%.*}
 H=${H%%-*}
 PS1=$H'=; '
 
-# Equivalent variables for rc(1).
+# Equivalent variables for rc.
 home=$HOME
 prompt="$H=; 	"
 user=$LOGNAME
