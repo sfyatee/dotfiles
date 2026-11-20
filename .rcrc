@@ -30,8 +30,6 @@ CVS_RSH=/usr/bin/ssh
 #
 # -rob
 NO_COLOR=1
-CMAKE_COLOR_MAKEFILE=OFF
-AV_LOG_FORCE_NOCOLOR=1
 
 TF2=$home^'/.local/share/Steam/steamapps/common/Team Fortress 2/tf/custom'
 
