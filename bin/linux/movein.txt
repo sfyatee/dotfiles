@@ -1,7 +1,7 @@
 asclock-classic 
 drawterm-9front-wl-git
-gameoftrees
 knfmt
 libfsm-git
 pacman-mandoc-update-hook
+u-boot-qemu-bin
 xe
