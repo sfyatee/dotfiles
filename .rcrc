@@ -20,9 +20,6 @@ path=($prepend $path $append)
 
 if(test -r $home/.rcrc.local) . $home/.rcrc.local
 
-# Browser used by web(1) and thus plumber.
-BROWSER=firefox
-
 LESS=FRXi
 
 CVS_RSH=/usr/bin/ssh

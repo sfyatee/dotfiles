@@ -1,4 +1,4 @@
-# à la rc
+# à la RC(1)
 set -a	# autoexport
 set +o vi
 
@@ -21,9 +21,6 @@ RUSTUP_HOME=$XDG_DATA_HOME/rustup
 append=/usr/games:/usr/games/bin
 prepend=$BIN:$HOME/.local/bin:$HOME/go/bin:$CARGO_HOME/bin
 PATH=$prepend:$PATH:$append:.
-
-# Browser used by web(1) and thus plumber.
-BROWSER=firefox
 
 LESS=FRXi
 

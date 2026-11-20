@@ -47,7 +47,6 @@ utilis() {
 	cargo install --git https://github.com/bergercookie/asm-lsp asm-lsp
 	go install github.com/hdonnay/wercsrv@master
 	go install github.com/kr/text/mc@master
-	go install github.com/thimc/walk@latest
 	go install robpike.io/ivy@master
 	go install rsc.io/cmd/jj-sink@latest
 	go install rsc.io/grepdiff@master

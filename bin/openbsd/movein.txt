@@ -9,7 +9,6 @@ gitlab-cli
 go
 go-fonts
 gopls
-got
 hare
 helix
 jq

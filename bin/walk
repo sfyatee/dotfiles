@@ -1,0 +1,13 @@
+#!/bin/sh
+d= f= x=
+while getopts dfx opt; do
+	case $opt in
+	d) d='-type d' ;;
+	f) f='! -type d' ;;
+	x) x='( -perm -100 -o -perm -010 -o -perm -001 )' ;;
+	esac
+done
+shift "$((OPTIND - 1))"
+[ "$#" -gt 0 ] || set -- .
+
+find "$@" $d $f $x -print
