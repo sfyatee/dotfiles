@@ -2,7 +2,7 @@
 set -a	# autoexport
 set +o vi
 
-# The undiscovered country from whose bourn No traveler returns, puzzles the will
+#The undiscovered country from whose bourn No traveler returns, puzzles the will
 OS=`uname -s | tr '[:upper:]' '[:lower:]'`
 ARCH=`uname -m | sed 's/x86_64/amd64/'`
 PATH=/usr/local/bin:/usr/local/sbin:/bin:/usr/bin:/sbin:/usr/sbin:/usr/X11R6/bin
