@@ -8,7 +8,6 @@ ssh-add -D
 if [ `uname -s` = "OpenBSD" ]; then
 	doas -L
 else
-	# pkcheck(1)
 	# pkcheck --revoke-temp && sudo -k
 fi
 
@@ -16,6 +15,4 @@ fi
 wl-copy -c
 wl-copy -p -c
 
-# http://man.9front.org/8/screenlock
-# https://github.com/sfyatee/screenlock/
-# screenlock
+# gscreenlock
