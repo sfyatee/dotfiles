@@ -3,7 +3,7 @@
 OS=$(uname -s)
 
 CARGO_HOME=$HOME/.local/share/cargo
-DOTFILES=$HOME/lib/dotfiles
+DOTFILES=$HOME/.local/share/dotfiles
 GOTELEMETRY=off
 GOTOOLCHAIN=local
 RUSTUP_HOME=$HOME/.local/share/rustup
@@ -11,7 +11,7 @@ RUSTUP_HOME=$HOME/.local/share/rustup
 export OS CARGO_HOME DOTFILES GOTELEMETRY GOTOOLCHAIN PACMAN_AUTH RUSTUP_HOME
 
 snarf() {
-	git --git-dir $HOME/lib/dotfiles --work-tree $HOME "$@"
+	git --git-dir $DOTFILES --work-tree $HOME "$@"
 }
 
 case $OS in
@@ -82,7 +82,7 @@ utilis)
 		snarf remote set-url origin git@github.com:sfyatee/dotfiles.git
 		snarf fetch --prune origin
 	else
-		mkdir -p "$HOME/lib"
+		mkdir -p "$DOTFILES"
 		git clone --bare  https://github.com/sfyatee/dotfiles "$DOTFILES"
 	fi
 
