@@ -6,7 +6,13 @@ smp=4
 nogui=0
 disk="$HOME/v/9front.amd64.qcow2"
 qemu=${QEMU:-qemu-system-x86_64}
-drawterm=${DRAWTERM:-/Applications/drawterm.app/drawterm}
+
+case $(uname -s) in
+Darwin) drawterm=${DRAWTERM:-/Applications/drawterm.app/drawterm} ;;
+*)      drawterm=${DRAWTERM:-drawterm} ;;
+esac
+
+unset NAMESPACE
 
 usage() {
 	echo 'usage: q9/run [-G] [-M memory] [-s cpus] [-d disk]' >&2

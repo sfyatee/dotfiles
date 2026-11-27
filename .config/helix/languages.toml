@@ -38,3 +38,8 @@ name = "markdown"
 soft-wrap = { enable = true, wrap-at-text-width = true }
 text-width = 79
 rulers = [81]
+
+# bash is almost ksh compatible
+[[language]]
+name = "bash"
+file-types = [{ glob = ".kshrc" }]
