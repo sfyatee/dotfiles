@@ -39,7 +39,15 @@ soft-wrap = { enable = true, wrap-at-text-width = true }
 text-width = 79
 rulers = [81]
 
-# bash is almost ksh compatible
+# close enough...
 [[language]]
 name = "bash"
-file-types = [{ glob = ".kshrc" }]
+file-types = [
+  "sh", "bash", "ksh", "mksh", "zsh",
+  { glob = ".kshrc" },
+  { glob = ".profile" },
+  { glob = "tmux.conf" },
+  { glob = ".tmux.conf" },
+]
+indent = { tab-width = 8, unit = "\t" }
+rulers = [81]
